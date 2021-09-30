@@ -8,6 +8,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 {
     static class Program
     {
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,6 +17,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            DBClass.PrepareConnectionString();
             Application.Run(new Form1());
         }
     }

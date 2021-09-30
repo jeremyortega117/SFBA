@@ -18,6 +18,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             InitializeComponent();
             leftBarButtonHide();
+            PrepareListViews();
+        }
+
+
+        private void PrepareListViews()
+        {
             ListViewRepo lvr1 = new ListViewRepo(listViewOne);
             ListViewRepo lvr2 = new ListViewRepo(listViewTwo);
         }

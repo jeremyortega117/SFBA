@@ -19,13 +19,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void FillListViewData(List<ListViewModel> listViewData)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
 
         private void CreateListViewColumnHeaders(ListView lvo)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }
