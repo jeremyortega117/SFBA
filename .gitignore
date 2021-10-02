@@ -1,3 +1,7 @@
+.gitignore
+*.config
+*.Config
+
 # Compiled source #
 ###################
 *.com
