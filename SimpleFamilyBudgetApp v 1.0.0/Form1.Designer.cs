@@ -29,6 +29,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panelTopAccountSummary = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.panelLeftFilterBar = new System.Windows.Forms.Panel();
@@ -37,14 +38,28 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.panelMainDisplayFullBackground = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panelleftMainBottom = new System.Windows.Forms.Panel();
+            this.listViewOne = new System.Windows.Forms.ListView();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.panelLeftMainTop = new System.Windows.Forms.Panel();
             this.panelRIghtMainBottom = new System.Windows.Forms.Panel();
+            this.listViewTwo = new System.Windows.Forms.ListView();
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.panelRightMainTop = new System.Windows.Forms.Panel();
-            this.listViewOne = new System.Windows.Forms.ListView();
-            this.listViewTwo = new System.Windows.Forms.ListView();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.excelxlsxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.csvcsvToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bankAcctToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.expenseTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.billTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.transactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelTopAccountSummary.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.panelleftFilterCloseOpen.SuspendLayout();
             this.panelMainDisplayFullBackground.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -67,6 +82,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // toolStrip1
             // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripDropDownButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1904, 25);
@@ -143,6 +160,16 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.panelleftMainBottom.Size = new System.Drawing.Size(742, 379);
             this.panelleftMainBottom.TabIndex = 2;
             // 
+            // listViewOne
+            // 
+            this.listViewOne.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewOne.HideSelection = false;
+            this.listViewOne.Location = new System.Drawing.Point(0, 0);
+            this.listViewOne.Name = "listViewOne";
+            this.listViewOne.Size = new System.Drawing.Size(742, 379);
+            this.listViewOne.TabIndex = 0;
+            this.listViewOne.UseCompatibleStateImageBehavior = false;
+            // 
             // splitter1
             // 
             this.splitter1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -170,6 +197,16 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.panelRIghtMainBottom.Size = new System.Drawing.Size(767, 379);
             this.panelRIghtMainBottom.TabIndex = 2;
             // 
+            // listViewTwo
+            // 
+            this.listViewTwo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewTwo.HideSelection = false;
+            this.listViewTwo.Location = new System.Drawing.Point(0, 0);
+            this.listViewTwo.Name = "listViewTwo";
+            this.listViewTwo.Size = new System.Drawing.Size(767, 379);
+            this.listViewTwo.TabIndex = 0;
+            this.listViewTwo.UseCompatibleStateImageBehavior = false;
+            // 
             // splitter2
             // 
             this.splitter2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -188,25 +225,100 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.panelRightMainTop.Size = new System.Drawing.Size(767, 488);
             this.panelRightMainTop.TabIndex = 0;
             // 
-            // listViewOne
+            // toolStripDropDownButton1
             // 
-            this.listViewOne.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listViewOne.HideSelection = false;
-            this.listViewOne.Location = new System.Drawing.Point(0, 0);
-            this.listViewOne.Name = "listViewOne";
-            this.listViewOne.Size = new System.Drawing.Size(742, 379);
-            this.listViewOne.TabIndex = 0;
-            this.listViewOne.UseCompatibleStateImageBehavior = false;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem3,
+            this.addToolStripMenuItem});
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(63, 22);
+            this.toolStripDropDownButton1.Text = "Tools";
             // 
-            // listViewTwo
+            // toolStripMenuItem1
             // 
-            this.listViewTwo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listViewTwo.HideSelection = false;
-            this.listViewTwo.Location = new System.Drawing.Point(0, 0);
-            this.listViewTwo.Name = "listViewTwo";
-            this.listViewTwo.Size = new System.Drawing.Size(767, 379);
-            this.listViewTwo.TabIndex = 0;
-            this.listViewTwo.UseCompatibleStateImageBehavior = false;
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.excelxlsxToolStripMenuItem,
+            this.toolStripTextBox1,
+            this.csvcsvToolStripMenuItem});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Text = "Import File";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.userToolStripMenuItem,
+            this.bankAcctToolStripMenuItem,
+            this.expenseTypeToolStripMenuItem,
+            this.billTypeToolStripMenuItem,
+            this.transactionToolStripMenuItem});
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem3.Text = "Edit";
+            // 
+            // excelxlsxToolStripMenuItem
+            // 
+            this.excelxlsxToolStripMenuItem.Name = "excelxlsxToolStripMenuItem";
+            this.excelxlsxToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.excelxlsxToolStripMenuItem.Text = "Excel(.xlsx)";
+            // 
+            // toolStripTextBox1
+            // 
+            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripTextBox1.Name = "toolStripTextBox1";
+            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 23);
+            this.toolStripTextBox1.Text = "Text(.txt)";
+            // 
+            // csvcsvToolStripMenuItem
+            // 
+            this.csvcsvToolStripMenuItem.Name = "csvcsvToolStripMenuItem";
+            this.csvcsvToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.csvcsvToolStripMenuItem.Text = "Csv(.csv)";
+            // 
+            // addToolStripMenuItem
+            // 
+            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem.Text = "Create Budget";
+            // 
+            // userToolStripMenuItem
+            // 
+            this.userToolStripMenuItem.Name = "userToolStripMenuItem";
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.userToolStripMenuItem.Text = "User";
+            // 
+            // bankAcctToolStripMenuItem
+            // 
+            this.bankAcctToolStripMenuItem.Name = "bankAcctToolStripMenuItem";
+            this.bankAcctToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bankAcctToolStripMenuItem.Text = "Bank Acct";
+            // 
+            // expenseTypeToolStripMenuItem
+            // 
+            this.expenseTypeToolStripMenuItem.Name = "expenseTypeToolStripMenuItem";
+            this.expenseTypeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.expenseTypeToolStripMenuItem.Text = "Expense Type";
+            // 
+            // billTypeToolStripMenuItem
+            // 
+            this.billTypeToolStripMenuItem.Name = "billTypeToolStripMenuItem";
+            this.billTypeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.billTypeToolStripMenuItem.Text = "Bill Type";
+            // 
+            // transactionToolStripMenuItem
+            // 
+            this.transactionToolStripMenuItem.Name = "transactionToolStripMenuItem";
+            this.transactionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.transactionToolStripMenuItem.Text = "Transaction";
             // 
             // Form1
             // 
@@ -221,6 +333,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.Text = "Form1";
             this.panelTopAccountSummary.ResumeLayout(false);
             this.panelTopAccountSummary.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.panelleftFilterCloseOpen.ResumeLayout(false);
             this.panelMainDisplayFullBackground.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -250,6 +364,19 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private System.Windows.Forms.Panel panelRightMainTop;
         private System.Windows.Forms.ListView listViewOne;
         private System.Windows.Forms.ListView listViewTwo;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem excelxlsxToolStripMenuItem;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
+        private System.Windows.Forms.ToolStripMenuItem csvcsvToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem userToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bankAcctToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem expenseTypeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem billTypeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem transactionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
     }
 }
 

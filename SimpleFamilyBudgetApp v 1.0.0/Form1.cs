@@ -55,6 +55,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 buttonLeftFilterHide.Text = "<";
             }
         }
-        #endregion 
+        #endregion
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
