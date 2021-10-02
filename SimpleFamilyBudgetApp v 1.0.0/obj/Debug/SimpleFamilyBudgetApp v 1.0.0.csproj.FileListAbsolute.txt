@@ -18,3 +18,4 @@ C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleF
 C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\bin\Debug\SimpleFamilyBudgetApp v 1.0.0.exe.config
 C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\bin\Debug\SimpleFamilyBudgetApp v 1.0.0.exe
 C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\bin\Debug\SimpleFamilyBudgetApp v 1.0.0.pdb
+C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp_v_1._0._0.User_Editor.resources

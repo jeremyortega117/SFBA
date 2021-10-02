@@ -61,5 +61,27 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
 
         }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        /// <summary>
+        /// Open User Editor Form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void userToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            User_Editor editor = new User_Editor();
+            editor.ShowDialog();
+        }
+
+        private void form_close(object sender, FormClosingEventArgs e)
+        {
+            DBClass.DB.Close();
+        }
     }
 }

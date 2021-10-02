@@ -11,6 +11,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             DB = new SqlConnection(connectionString);
+            DB.Open();
         }
     }
 }

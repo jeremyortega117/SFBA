@@ -32,6 +32,19 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panelTopAccountSummary = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.excelxlsxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.csvcsvToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bankAcctToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.expenseTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.billTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.transactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelLeftFilterBar = new System.Windows.Forms.Panel();
             this.panelleftFilterCloseOpen = new System.Windows.Forms.Panel();
             this.buttonLeftFilterHide = new System.Windows.Forms.Button();
@@ -45,19 +58,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.listViewTwo = new System.Windows.Forms.ListView();
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.panelRightMainTop = new System.Windows.Forms.Panel();
-            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.excelxlsxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
-            this.csvcsvToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bankAcctToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.expenseTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.billTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.transactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelTopAccountSummary.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panelleftFilterCloseOpen.SuspendLayout();
@@ -89,6 +89,103 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.toolStrip1.Size = new System.Drawing.Size(1904, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem3,
+            this.addToolStripMenuItem});
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(63, 22);
+            this.toolStripDropDownButton1.Text = "Tools";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.excelxlsxToolStripMenuItem,
+            this.toolStripTextBox1,
+            this.csvcsvToolStripMenuItem});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Text = "Import File";
+            // 
+            // excelxlsxToolStripMenuItem
+            // 
+            this.excelxlsxToolStripMenuItem.Name = "excelxlsxToolStripMenuItem";
+            this.excelxlsxToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.excelxlsxToolStripMenuItem.Text = "Excel(.xlsx)";
+            // 
+            // toolStripTextBox1
+            // 
+            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripTextBox1.Name = "toolStripTextBox1";
+            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 23);
+            this.toolStripTextBox1.Text = "Text(.txt)";
+            // 
+            // csvcsvToolStripMenuItem
+            // 
+            this.csvcsvToolStripMenuItem.Name = "csvcsvToolStripMenuItem";
+            this.csvcsvToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.csvcsvToolStripMenuItem.Text = "Csv(.csv)";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.userToolStripMenuItem,
+            this.bankAcctToolStripMenuItem,
+            this.expenseTypeToolStripMenuItem,
+            this.billTypeToolStripMenuItem,
+            this.transactionToolStripMenuItem});
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem3.Text = "Add / Edit";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+            // 
+            // userToolStripMenuItem
+            // 
+            this.userToolStripMenuItem.Name = "userToolStripMenuItem";
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.userToolStripMenuItem.Text = "User";
+            this.userToolStripMenuItem.Click += new System.EventHandler(this.userToolStripMenuItem_Click);
+            // 
+            // bankAcctToolStripMenuItem
+            // 
+            this.bankAcctToolStripMenuItem.Name = "bankAcctToolStripMenuItem";
+            this.bankAcctToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bankAcctToolStripMenuItem.Text = "Bank Acct";
+            // 
+            // expenseTypeToolStripMenuItem
+            // 
+            this.expenseTypeToolStripMenuItem.Name = "expenseTypeToolStripMenuItem";
+            this.expenseTypeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.expenseTypeToolStripMenuItem.Text = "Expense Type";
+            // 
+            // billTypeToolStripMenuItem
+            // 
+            this.billTypeToolStripMenuItem.Name = "billTypeToolStripMenuItem";
+            this.billTypeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.billTypeToolStripMenuItem.Text = "Bill Type";
+            // 
+            // transactionToolStripMenuItem
+            // 
+            this.transactionToolStripMenuItem.Name = "transactionToolStripMenuItem";
+            this.transactionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.transactionToolStripMenuItem.Text = "Transaction";
+            // 
+            // addToolStripMenuItem
+            // 
+            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem.Text = "Create Budget";
             // 
             // panelLeftFilterBar
             // 
@@ -225,101 +322,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.panelRightMainTop.Size = new System.Drawing.Size(767, 488);
             this.panelRightMainTop.TabIndex = 0;
             // 
-            // toolStripDropDownButton1
-            // 
-            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.toolStripMenuItem2,
-            this.toolStripMenuItem3,
-            this.addToolStripMenuItem});
-            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
-            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(63, 22);
-            this.toolStripDropDownButton1.Text = "Tools";
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.excelxlsxToolStripMenuItem,
-            this.toolStripTextBox1,
-            this.csvcsvToolStripMenuItem});
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem1.Text = "Import File";
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.userToolStripMenuItem,
-            this.bankAcctToolStripMenuItem,
-            this.expenseTypeToolStripMenuItem,
-            this.billTypeToolStripMenuItem,
-            this.transactionToolStripMenuItem});
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem3.Text = "Edit";
-            // 
-            // excelxlsxToolStripMenuItem
-            // 
-            this.excelxlsxToolStripMenuItem.Name = "excelxlsxToolStripMenuItem";
-            this.excelxlsxToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.excelxlsxToolStripMenuItem.Text = "Excel(.xlsx)";
-            // 
-            // toolStripTextBox1
-            // 
-            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 23);
-            this.toolStripTextBox1.Text = "Text(.txt)";
-            // 
-            // csvcsvToolStripMenuItem
-            // 
-            this.csvcsvToolStripMenuItem.Name = "csvcsvToolStripMenuItem";
-            this.csvcsvToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.csvcsvToolStripMenuItem.Text = "Csv(.csv)";
-            // 
-            // addToolStripMenuItem
-            // 
-            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.addToolStripMenuItem.Text = "Create Budget";
-            // 
-            // userToolStripMenuItem
-            // 
-            this.userToolStripMenuItem.Name = "userToolStripMenuItem";
-            this.userToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.userToolStripMenuItem.Text = "User";
-            // 
-            // bankAcctToolStripMenuItem
-            // 
-            this.bankAcctToolStripMenuItem.Name = "bankAcctToolStripMenuItem";
-            this.bankAcctToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.bankAcctToolStripMenuItem.Text = "Bank Acct";
-            // 
-            // expenseTypeToolStripMenuItem
-            // 
-            this.expenseTypeToolStripMenuItem.Name = "expenseTypeToolStripMenuItem";
-            this.expenseTypeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.expenseTypeToolStripMenuItem.Text = "Expense Type";
-            // 
-            // billTypeToolStripMenuItem
-            // 
-            this.billTypeToolStripMenuItem.Name = "billTypeToolStripMenuItem";
-            this.billTypeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.billTypeToolStripMenuItem.Text = "Bill Type";
-            // 
-            // transactionToolStripMenuItem
-            // 
-            this.transactionToolStripMenuItem.Name = "transactionToolStripMenuItem";
-            this.transactionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.transactionToolStripMenuItem.Text = "Transaction";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -331,6 +333,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.Controls.Add(this.panelTopAccountSummary);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.form_close);
             this.panelTopAccountSummary.ResumeLayout(false);
             this.panelTopAccountSummary.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
