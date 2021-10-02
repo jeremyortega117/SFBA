@@ -13,6 +13,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
     public partial class Form1 : Form
     {
         internal static bool sideBarVisible = true;
+        
 
         public Form1()
         {
