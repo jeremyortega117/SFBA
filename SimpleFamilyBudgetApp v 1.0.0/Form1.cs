@@ -83,5 +83,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             DBClass.DB.Close();
         }
+
+        private void bankAcctToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BankAccount bankAccount = new BankAccount();
+            bankAccount.ShowDialog();
+        }
     }
 }

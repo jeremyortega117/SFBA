@@ -116,7 +116,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // excelxlsxToolStripMenuItem
             // 
             this.excelxlsxToolStripMenuItem.Name = "excelxlsxToolStripMenuItem";
-            this.excelxlsxToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.excelxlsxToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.excelxlsxToolStripMenuItem.Text = "Excel(.xlsx)";
             // 
             // toolStripTextBox1
@@ -129,7 +129,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // csvcsvToolStripMenuItem
             // 
             this.csvcsvToolStripMenuItem.Name = "csvcsvToolStripMenuItem";
-            this.csvcsvToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.csvcsvToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.csvcsvToolStripMenuItem.Text = "Csv(.csv)";
             // 
             // toolStripMenuItem2
@@ -162,6 +162,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.bankAcctToolStripMenuItem.Name = "bankAcctToolStripMenuItem";
             this.bankAcctToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.bankAcctToolStripMenuItem.Text = "Bank Acct";
+            this.bankAcctToolStripMenuItem.Click += new System.EventHandler(this.bankAcctToolStripMenuItem_Click);
             // 
             // expenseTypeToolStripMenuItem
             // 

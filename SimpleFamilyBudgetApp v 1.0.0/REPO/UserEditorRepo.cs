@@ -30,6 +30,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                     user.FirstName = Reader["FNAME"].ToString();
                     user.LastName = Reader["LNAME"].ToString();
                     user.MiddleInitial = Convert.ToChar(Reader["MI"]);
+                    user.userName = Reader["USERNAME"].ToString();
                     user.UserPass = Reader["USER_PASS"].ToString();
                     users.Add(user.UserKey,user);
                 }
@@ -47,7 +48,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         internal static void EditUser(List<UserEditorModel> users, char editType)
         {
             foreach (UserEditorModel user in users) {
-                string SQL = $"EXECUTE proc_USER_EDITOR";
+                string SQL = $"EXECUTE proc_USER_EDITOR @USER_KEY, @USER_FNAME, @MI, @USER_LNAME, @USER_NAME, @USER_PASS, @EDIT_TYPE";
                 SqlCommand Command = new SqlCommand(SQL, DBClass.DB);
                 List<SqlParameter> parameters = new List<SqlParameter>();
                 SqlParameter user_key = new SqlParameter("@USER_KEY", user.UserKey);
@@ -76,7 +77,5 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 }
             }
         }
-
-
     }
 }

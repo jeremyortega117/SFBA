@@ -47,6 +47,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BankAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BankAccount.Designer.cs">
+      <DependentUpon>BankAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MODEL\BankAccountModel.cs" />
+    <Compile Include="REPO\BankAccountRepo.cs" />
     <Compile Include="DBClass.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -55,7 +63,6 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="ListViewHeadersClass.cs" />
-    <Compile Include="ListViewModel.cs" />
     <Compile Include="ListViewRepo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -65,8 +72,11 @@
     <Compile Include="UserEditor.Designer.cs">
       <DependentUpon>UserEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserEditorModel.cs" />
-    <Compile Include="UserEditorRepo.cs" />
+    <Compile Include="MODEL\UserEditorModel.cs" />
+    <Compile Include="REPO\UserEditorRepo.cs" />
+    <EmbeddedResource Include="BankAccount.resx">
+      <DependentUpon>BankAccount.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
