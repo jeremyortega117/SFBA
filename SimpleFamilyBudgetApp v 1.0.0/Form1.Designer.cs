@@ -41,7 +41,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bankAcctToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.expenseTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.billTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -142,7 +141,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.toolStripMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.userToolStripMenuItem,
             this.bankAcctToolStripMenuItem,
-            this.expenseTypeToolStripMenuItem,
             this.billTypeToolStripMenuItem,
             this.transactionToolStripMenuItem});
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
@@ -164,17 +162,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.bankAcctToolStripMenuItem.Text = "Bank Acct";
             this.bankAcctToolStripMenuItem.Click += new System.EventHandler(this.bankAcctToolStripMenuItem_Click);
             // 
-            // expenseTypeToolStripMenuItem
-            // 
-            this.expenseTypeToolStripMenuItem.Name = "expenseTypeToolStripMenuItem";
-            this.expenseTypeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.expenseTypeToolStripMenuItem.Text = "Expense Type";
-            // 
             // billTypeToolStripMenuItem
             // 
             this.billTypeToolStripMenuItem.Name = "billTypeToolStripMenuItem";
             this.billTypeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.billTypeToolStripMenuItem.Text = "Bill Type";
+            this.billTypeToolStripMenuItem.Text = "Bill";
             // 
             // transactionToolStripMenuItem
             // 
@@ -377,7 +369,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private System.Windows.Forms.ToolStripMenuItem csvcsvToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bankAcctToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem expenseTypeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem billTypeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem transactionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;

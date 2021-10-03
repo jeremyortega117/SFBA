@@ -25,8 +25,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void PrepareListViews()
         {
-            ListViewRepo lvr1 = new ListViewRepo(listViewOne);
-            ListViewRepo lvr2 = new ListViewRepo(listViewTwo);
+            ListViewRepoMain lvr1 = new ListViewRepoMain(listViewOne);
+            ListViewRepoMain lvr2 = new ListViewRepoMain(listViewTwo);
         }
 
 

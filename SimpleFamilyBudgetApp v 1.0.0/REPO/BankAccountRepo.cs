@@ -11,19 +11,89 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
     public class BankAccountRepo
     {
         internal static Dictionary<int, BankAccountModel> Accounts;
+        internal static Dictionary<int, AccountType> AccountTypes;
+
+
+        /// <summary>
+        /// Retrieve account types previously created available.
+        /// </summary>
+        #region Retrieve Account Types
+        internal static void PrepareAccountTypes()
+        {
+            string SQL = "SELECT * FROM ACCOUNT_TYPE WITH(NOLOCK)";
+            SqlCommand Command = new SqlCommand(SQL, DBClass.DB);
+            SqlDataReader Reader = Command.ExecuteReader();
+            AccountTypes = new Dictionary<int, AccountType>();
+            if (Reader != null)
+            {
+                while (Reader.Read())
+                {
+                    AccountType acctType = new AccountType();
+                    acctType.AcctTypeKey = Convert.ToInt32(Reader["ACC_TYPE_KEY"]);
+                    acctType.AcctType = Reader["ACC_TYPE"].ToString();
+                    AccountTypes.Add(acctType.AcctTypeKey, acctType);
+                }
+            }
+            Reader.Close();
+        }
+        #endregion
+
+        /// <summary>
+        /// Add New Account Type
+        /// </summary>
+        internal static void EditAccountType(List<AccountType> AcctTypes, char editType)
+        {
+            foreach (AccountType acctType in AcctTypes)
+            {
+                string SQL = $"EXECUTE proc_ACCT_TYPE_EDITOR @ACC_TYPE_KEY, @ACC_TYPE, @EDIT_TYPE";
+                SqlCommand Command = new SqlCommand(SQL, DBClass.DB);
+                List<SqlParameter> parameters = new List<SqlParameter>();
+                SqlParameter AccTypeKey = new SqlParameter("@ACC_TYPE_KEY", acctType.AcctTypeKey);
+                SqlParameter AcctType = new SqlParameter("@ACC_TYPE", acctType.AcctType);
+                SqlParameter editTypeParam = new SqlParameter("@EDIT_TYPE", editType);
+                parameters.Add(AccTypeKey);
+                parameters.Add(AcctType);
+                parameters.Add(editTypeParam);
+                Command.Parameters.AddRange(parameters.ToArray());
+                try
+                {
+                    Command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"ERROR: Adding/Editing Account Type: '{acctType.AcctType}'. " + ex.Message);
+                }
+            }
+        }
+
+        internal static int RetrieveAcctTypeKeyFromName(string acctType)
+        {
+            foreach(int Key in AccountTypes.Keys)
+            {
+                AccountType at = AccountTypes[Key];
+                if(at.AcctType == acctType)
+                {
+                    return Key;
+                }
+            }
+            return -1;
+        }
+
+
+
 
 
         /// <summary>
         /// Grab data from database.
         /// </summary>
-        internal static void PrepareUserEditorData()
+        internal static void PrepareAcctEditorData()
         {
             string SQL = "SELECT * FROM ACCOUNT WITH(NOLOCK)";
             SqlCommand Command = new SqlCommand(SQL, DBClass.DB);
             SqlDataReader Reader = Command.ExecuteReader();
+            Accounts = new Dictionary<int, BankAccountModel>();
             if (Reader != null)
             {
-                Accounts = new Dictionary<int, BankAccountModel>();
                 while (Reader.Read())
                 {
                     BankAccountModel acct = new BankAccountModel();
@@ -48,7 +118,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         /// 'U' : Update
         /// </summary>
         /// <param name="users"></param>
-        internal static void EditUser(List<BankAccountModel> Accounts, char editType)
+        internal static void EditAccts(List<BankAccountModel> Accounts, char editType)
         {
             foreach (BankAccountModel account in Accounts)
             {

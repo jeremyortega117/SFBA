@@ -18,6 +18,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             lvo.Sorting = SortOrder.Ascending;
             lvo.View = View.Details;
             lvo.Columns.AddRange(PrepareAsColHeaders(headerList).ToArray());
+
         }
 
         internal List<ColumnHeader> PrepareAsColHeaders(List<string> headerList)

@@ -30,23 +30,22 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private void InitializeComponent()
         {
             this.listView1 = new System.Windows.Forms.ListView();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxAccountType = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.buttonAddBankName = new System.Windows.Forms.Button();
             this.buttonAddAccountType = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxAcctLastFour = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxBalance = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.comboBoxInterestFreq = new System.Windows.Forms.ComboBox();
+            this.textBoxInterestRate = new System.Windows.Forms.TextBox();
             this.buttonSubmitNewAccount = new System.Windows.Forms.Button();
             this.comboBoxUser = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.textBoxBankName = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // listView1
@@ -59,13 +58,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
-            // comboBox1
+            // comboBoxAccountType
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(291, 222);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(190, 21);
-            this.comboBox1.TabIndex = 1;
+            this.comboBoxAccountType.FormattingEnabled = true;
+            this.comboBoxAccountType.Location = new System.Drawing.Point(291, 222);
+            this.comboBoxAccountType.Name = "comboBoxAccountType";
+            this.comboBoxAccountType.Size = new System.Drawing.Size(190, 21);
+            this.comboBoxAccountType.TabIndex = 1;
             // 
             // label1
             // 
@@ -84,24 +83,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Bank Name:";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(291, 195);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(190, 21);
-            this.comboBox2.TabIndex = 4;
-            // 
-            // buttonAddBankName
-            // 
-            this.buttonAddBankName.Location = new System.Drawing.Point(487, 194);
-            this.buttonAddBankName.Name = "buttonAddBankName";
-            this.buttonAddBankName.Size = new System.Drawing.Size(75, 23);
-            this.buttonAddBankName.TabIndex = 5;
-            this.buttonAddBankName.Text = "Add Bank";
-            this.buttonAddBankName.UseVisualStyleBackColor = true;
-            this.buttonAddBankName.Click += new System.EventHandler(this.buttonAddBankName_Click);
             // 
             // buttonAddAccountType
             // 
@@ -122,12 +103,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.label3.TabIndex = 7;
             this.label3.Text = "Acct Last Four:";
             // 
-            // textBox1
+            // textBoxAcctLastFour
             // 
-            this.textBox1.Location = new System.Drawing.Point(291, 249);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(65, 20);
-            this.textBox1.TabIndex = 8;
+            this.textBoxAcctLastFour.Location = new System.Drawing.Point(291, 249);
+            this.textBoxAcctLastFour.Name = "textBoxAcctLastFour";
+            this.textBoxAcctLastFour.Size = new System.Drawing.Size(65, 20);
+            this.textBoxAcctLastFour.TabIndex = 8;
             // 
             // label4
             // 
@@ -138,12 +119,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.label4.TabIndex = 9;
             this.label4.Text = "Balance:";
             // 
-            // textBox2
+            // textBoxBalance
             // 
-            this.textBox2.Location = new System.Drawing.Point(291, 276);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(190, 20);
-            this.textBox2.TabIndex = 10;
+            this.textBoxBalance.Location = new System.Drawing.Point(291, 276);
+            this.textBoxBalance.Name = "textBoxBalance";
+            this.textBoxBalance.Size = new System.Drawing.Size(190, 20);
+            this.textBoxBalance.TabIndex = 10;
             // 
             // label5
             // 
@@ -163,20 +144,20 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.label6.TabIndex = 12;
             this.label6.Text = "Interest Rate:";
             // 
-            // comboBox3
+            // comboBoxInterestFreq
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(291, 331);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 13;
+            this.comboBoxInterestFreq.FormattingEnabled = true;
+            this.comboBoxInterestFreq.Location = new System.Drawing.Point(291, 331);
+            this.comboBoxInterestFreq.Name = "comboBoxInterestFreq";
+            this.comboBoxInterestFreq.Size = new System.Drawing.Size(190, 21);
+            this.comboBoxInterestFreq.TabIndex = 13;
             // 
-            // textBox3
+            // textBoxInterestRate
             // 
-            this.textBox3.Location = new System.Drawing.Point(291, 358);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 14;
+            this.textBoxInterestRate.Location = new System.Drawing.Point(291, 358);
+            this.textBoxInterestRate.Name = "textBoxInterestRate";
+            this.textBoxInterestRate.Size = new System.Drawing.Size(65, 20);
+            this.textBoxInterestRate.TabIndex = 14;
             // 
             // buttonSubmitNewAccount
             // 
@@ -184,7 +165,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.buttonSubmitNewAccount.Name = "buttonSubmitNewAccount";
             this.buttonSubmitNewAccount.Size = new System.Drawing.Size(190, 36);
             this.buttonSubmitNewAccount.TabIndex = 15;
-            this.buttonSubmitNewAccount.Text = "Add Bank Type";
+            this.buttonSubmitNewAccount.Text = "Add New Account";
             this.buttonSubmitNewAccount.UseVisualStyleBackColor = true;
             this.buttonSubmitNewAccount.Click += new System.EventHandler(this.buttonSubmitNewAccount_Click);
             // 
@@ -206,31 +187,37 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.label7.TabIndex = 16;
             this.label7.Text = "User: ";
             // 
+            // textBoxBankName
+            // 
+            this.textBoxBankName.Location = new System.Drawing.Point(291, 196);
+            this.textBoxBankName.Name = "textBoxBankName";
+            this.textBoxBankName.Size = new System.Drawing.Size(190, 20);
+            this.textBoxBankName.TabIndex = 18;
+            // 
             // BankAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBoxBankName);
             this.Controls.Add(this.comboBoxUser);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.buttonSubmitNewAccount);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.textBoxInterestRate);
+            this.Controls.Add(this.comboBoxInterestFreq);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBoxBalance);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxAcctLastFour);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.buttonAddAccountType);
-            this.Controls.Add(this.buttonAddBankName);
-            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxAccountType);
             this.Controls.Add(this.listView1);
             this.Name = "BankAccount";
-            this.Text = "d";
+            this.Text = "Bank Account Editor";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -239,22 +226,21 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         #endregion
 
         private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxAccountType;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Button buttonAddBankName;
         private System.Windows.Forms.Button buttonAddAccountType;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxAcctLastFour;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxBalance;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.ComboBox comboBoxInterestFreq;
+        private System.Windows.Forms.TextBox textBoxInterestRate;
         private System.Windows.Forms.Button buttonSubmitNewAccount;
         private System.Windows.Forms.ComboBox comboBoxUser;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBoxBankName;
     }
 }

@@ -77,5 +77,18 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 }
             }
         }
+
+        internal static object RetrieveUserKeyFromName(string text)
+        {
+            foreach (UserEditorModel user in users.Values)
+            {
+                string userCombonation = $"{user.LastName}, {user.FirstName} {user.MiddleInitial} : {user.userName}.";
+                if(userCombonation == text)
+                {
+                    return user.UserKey;
+                }
+            }
+            return -1;
+        }
     }
 }

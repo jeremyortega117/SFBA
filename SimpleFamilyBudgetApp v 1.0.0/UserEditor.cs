@@ -12,37 +12,20 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 {
     public partial class User_Editor : Form
     {
-        internal static List<string> UserHeaderList = new List<string>() { "User Id", "User Name", "First Name", "MI","Last Name" };
-
+        ListViewRepoUserEditor lvue;
         public User_Editor()
         {
             InitializeComponent();
-            PrepareListView();
+            RefreshData();
+            
+        }
+
+        private void RefreshData()
+        {
+            lvue = new ListViewRepoUserEditor(listViewUserEditor);
             UserEditorRepo.PrepareUserEditorData();
-            AddDataToListView(UserEditorRepo.users);
+            lvue.AddDataToListView(listViewUserEditor);
             ResetUI();
-        }
-
-        private void AddDataToListView(Dictionary<int, UserEditorModel> users)
-        {
-            listViewUserEditor.Items.Clear();
-            foreach(int key in users.Keys)
-            {
-                List<string> userHeaders = new List<string>();
-                userHeaders.Add(users[key].UserKey.ToString());
-                userHeaders.Add(users[key].userName.ToString());
-                userHeaders.Add(users[key].FirstName.ToString());
-                userHeaders.Add(users[key].MiddleInitial.ToString());
-                userHeaders.Add(users[key].LastName.ToString());
-                ListViewItem lvi = new ListViewItem(userHeaders.ToArray());
-                listViewUserEditor.Items.Add(lvi);
-            }
-        }
-
-        private void PrepareListView()
-        {
-            ListViewHeadersClass prepListView = new ListViewHeadersClass();
-            prepListView.PrepareListViewHeaders(listViewUserEditor, UserHeaderList);
         }
 
 
@@ -64,9 +47,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             user.UserKey = 0;
             users.Add(user);
             UserEditorRepo.EditUser(users, 'A');
-            ResetUI();
-            UserEditorRepo.PrepareUserEditorData();
-            AddDataToListView(UserEditorRepo.users);
+            RefreshData();
         }
 
         private void ResetUI()
