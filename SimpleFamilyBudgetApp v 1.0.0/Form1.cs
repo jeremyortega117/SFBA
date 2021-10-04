@@ -16,6 +16,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         ListViewRepoTransactions lvr1;
         ListViewRepoTransactions lvr2;
+        List<string> Accounts;
+        List<string> ExpenseTypes;
 
         public Form1()
         {
@@ -25,13 +27,31 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             BankAccountRepo.PrepareAccountTypes();
             BankAccountRepo.PrepareAcctEditorData();
             TransactionRepo.PrepareTransTypes();
-            TransactionRepo.PrepareTransData();
+            DisplayAllExpenseCheckTypes();
+            DisplayAllAccounts();
+            FillAccountsAndExpenseTypesChecked();
+            TransactionRepo.PrepareTransDataWithFilters(Accounts, ExpenseTypes);
             PrepareListViews();
         }
 
+        private void FillAccountsAndExpenseTypesChecked()
+        {
+            Accounts = new List<string>();
+            ExpenseTypes = new List<string>();
+            foreach(var checkedIndex in checkedListBox1.CheckedItems)
+            {
+                ExpenseTypes.Add(checkedIndex.ToString());
+            }
+            foreach (var checkedIndex in checkedListBox2.CheckedItems)
+            {
+                Accounts.Add(checkedIndex.ToString());
+            }
+        }
 
         private void PrepareListViews()
         {
+            listViewOne.Clear();
+            listViewTwo.Clear(); 
             lvr1 = new ListViewRepoTransactions(listViewOne);
             lvr2 = new ListViewRepoTransactions(listViewTwo);
             lvr1.AddDataToListView(listViewOne);
@@ -105,6 +125,46 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             TransactionEditor transEditor = new TransactionEditor();
             transEditor.ShowDialog();
+            PrepareListViews();
+        }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void DisplayAllExpenseCheckTypes()
+        {
+            foreach(var types in TransactionRepo.TransTypes.Values)
+            {
+                checkedListBox1.Items.Add(types.TransDesc, CheckState.Checked);
+            }
+        }
+
+        private void DisplayAllAccounts()
+        {
+            foreach (var acct in BankAccountRepo.Accounts.Values)
+            {
+                string acctType = BankAccountRepo.AccountTypes[acct.AcctTypeKey].AcctType;
+                string acctInfo = $"{acct.BankName}, {acct.AcctLastFour}, {acctType}";
+                checkedListBox2.Items.Add(acctInfo, CheckState.Checked);
+            }
+        }
+
+        private void checkedListBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Make Adjustment To Filter.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FillAccountsAndExpenseTypesChecked();
+            TransactionRepo.PrepareTransDataWithFilters(Accounts, ExpenseTypes);
             PrepareListViews();
         }
     }

@@ -96,6 +96,48 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             Reader.Close();
         }
 
+
+        internal static void PrepareTransDataWithFilters(List<string> Accts, List<string> ExpenseTypes)
+        {
+            List<int> AcctKeys = new List<int>();
+            List<int> ExpenseTypeKeys = new List<int>();
+
+            foreach (string acct in Accts)
+            {
+                AcctKeys.Add(GetAcctKeyFromSelected(acct));
+            }
+            foreach (string expenseType in ExpenseTypes)
+            {
+                ExpenseTypeKeys.Add(GetTransTypeKeyFromSelected(expenseType));
+            }
+
+            StringBuilder Builder = new StringBuilder();
+            Builder.AppendLine("SELECT * ");
+            Builder.AppendLine("FROM TRANSACTIONS WITH(NOLOCK)");
+            Builder.AppendLine($"WHERE ACC_KEY IN ({string.Join(",", AcctKeys.ToArray())})");
+            Builder.AppendLine($"AND TRANS_TYPE_KEY IN ({string.Join(",", ExpenseTypeKeys.ToArray())})");
+            Builder.AppendLine("ORDER BY TRANS_DATE DESC");
+            string SQL = Builder.ToString();
+            SqlCommand Command = new SqlCommand(SQL, DBClass.DB);
+            SqlDataReader Reader = Command.ExecuteReader();
+            Trans = new Dictionary<int, TransModel>();
+            if (Reader != null)
+            {
+                while (Reader.Read())
+                {
+                    TransModel trans = new TransModel();
+                    trans.TransDate = Convert.ToDateTime(Reader["TRANS_DATE"]);
+                    trans.TransDesc = Reader["TRANS_DESC"].ToString();
+                    trans.TransKey = Convert.ToInt32(Reader["TRANS_KEY"]);
+                    trans.Amount = Convert.ToDouble(Reader["AMOUNT"]);
+                    trans.TransTypeKey = Convert.ToInt32(Reader["TRANS_TYPE_KEY"]);
+                    trans.AcctKey = Convert.ToInt32(Reader["ACC_KEY"]);
+                    Trans.Add(trans.TransKey, trans);
+                }
+            }
+            Reader.Close();
+        }
+
         internal static int GetTransTypeKeyFromSelected(string text)
         {
             foreach(int Key in TransTypes.Keys)
