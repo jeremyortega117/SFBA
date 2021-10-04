@@ -22,6 +22,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void RefreshData()
         {
+            listViewUserEditor.Clear();
             lvue = new ListViewRepoUserEditor(listViewUserEditor);
             UserEditorRepo.PrepareUserEditorData();
             lvue.AddDataToListView(listViewUserEditor);

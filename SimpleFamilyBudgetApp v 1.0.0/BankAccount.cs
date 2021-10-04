@@ -63,12 +63,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void buttonAddAccountType_Click(object sender, EventArgs e)
         {
-            if(comboBoxAccountType.Text != "")
+            if(comboBoxAccountType.Text.Trim() != "")
             {
                 List<AccountType> AccountTypes = new List<AccountType>();
                 AccountType accountType = new AccountType();
                 accountType.AcctType = comboBoxAccountType.Text;
                 AccountTypes.Add(accountType);
+                BankAccountRepo.EditAccountType(AccountTypes, 'A');
                 BankAccountRepo.PrepareAccountTypes();
                 PrepareComboBoxes();
             }
@@ -83,11 +84,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 && textBoxBalance.Text != ""
                 && comboBoxUser.Text != "")
             {
+                listView1.Clear();
                 List<BankAccountModel> BankAccounts = new List<BankAccountModel>();
                 BankAccountModel BankAccount = new BankAccountModel();
                 BankAccount.BankName = textBoxBankName.Text;
                 BankAccount.AcctTypeKey = BankAccountRepo.RetrieveAcctTypeKeyFromName(comboBoxAccountType.Text);
-                BankAccount.AcctLastFour = Convert.ToInt32(textBoxAcctLastFour.Text);
+                BankAccount.AcctLastFour = textBoxAcctLastFour.Text;
                 BankAccount.Balance = Convert.ToDouble(textBoxBalance.Text);
                 BankAccount.UserKey = Convert.ToInt32(UserEditorRepo.RetrieveUserKeyFromName(comboBoxUser.Text));
                 BankAccount.InterestFreq = Convert.ToInt32(comboBoxInterestFreq.Text);

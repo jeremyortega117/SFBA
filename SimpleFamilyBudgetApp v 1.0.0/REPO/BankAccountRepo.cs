@@ -20,7 +20,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         #region Retrieve Account Types
         internal static void PrepareAccountTypes()
         {
-            string SQL = "SELECT * FROM ACCOUNT_TYPE WITH(NOLOCK)";
+            string SQL = "SELECT * FROM ACCOUNT_TYPE WITH(NOLOCK) ORDER BY ACC_TYPE";
             SqlCommand Command = new SqlCommand(SQL, DBClass.DB);
             SqlDataReader Reader = Command.ExecuteReader();
             AccountTypes = new Dictionary<int, AccountType>();
@@ -88,7 +88,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         /// </summary>
         internal static void PrepareAcctEditorData()
         {
-            string SQL = "SELECT * FROM ACCOUNT WITH(NOLOCK)";
+            string SQL = "SELECT * FROM ACCOUNT WITH(NOLOCK) ORDER BY BANK_NAME, ACC_LAST_FOUR";
             SqlCommand Command = new SqlCommand(SQL, DBClass.DB);
             SqlDataReader Reader = Command.ExecuteReader();
             Accounts = new Dictionary<int, BankAccountModel>();
@@ -102,7 +102,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                     acct.UserKey = Convert.ToInt32(Reader["USER_KEY"]);
                     acct.Balance = Convert.ToDouble(Reader["BAL"]);
                     acct.BankName = Reader["BANK_NAME"].ToString();
-                    acct.AcctLastFour = Convert.ToInt32(Reader["ACC_LAST_FOUR"]);
+                    acct.AcctLastFour = Reader["ACC_LAST_FOUR"].ToString();
                     acct.InterestFreq = Convert.ToInt32(Reader["INT_FREQ_DAYS"]);
                     acct.InterestPercent = Convert.ToDouble(Reader["INT_PERC"]);
                     Accounts.Add(acct.AcctKey, acct);

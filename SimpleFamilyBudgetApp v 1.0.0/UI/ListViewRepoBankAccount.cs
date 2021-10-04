@@ -33,7 +33,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 userHeaders.Add(Accounts[key].AcctLastFour.ToString());
                 var acctType = BankAccountRepo.AccountTypes[Accounts[key].AcctTypeKey];
                 userHeaders.Add(acctType.AcctType);
-                userHeaders.Add(Accounts[key].Balance.ToString());
+                userHeaders.Add(string.Format("{0:C}",Accounts[key].Balance));
                 userHeaders.Add(Accounts[key].InterestFreq.ToString());
                 userHeaders.Add(Accounts[key].InterestPercent.ToString());
                 ListViewItem lvi = new ListViewItem(userHeaders.ToArray());

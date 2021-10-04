@@ -13,7 +13,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         public int UserKey { get; set; }
         public double Balance { get; set; }
         public string BankName { get; set; }
-        public int AcctLastFour { get; set; }
+        public string AcctLastFour { get; set; }
         public int InterestFreq { get; set; }
         public double InterestPercent { get; set; }
     }

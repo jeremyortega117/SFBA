@@ -17,7 +17,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         /// </summary>
         internal static void PrepareUserEditorData()
         {
-            string SQL = "SELECT * FROM USERS WITH(NOLOCK)";
+            string SQL = "SELECT * FROM USERS WITH(NOLOCK) ORDER BY LNAME, FNAME";
             SqlCommand Command = new SqlCommand(SQL, DBClass.DB);
             SqlDataReader Reader = Command.ExecuteReader();
             if (Reader != null)
