@@ -53,6 +53,18 @@
     <Compile Include="BankAccount.Designer.cs">
       <DependentUpon>BankAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="BillEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BillEditor.Designer.cs">
+      <DependentUpon>BillEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrequencyClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrequencyClass.Designer.cs">
+      <DependentUpon>FrequencyClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="TransactionEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,8 +99,14 @@
     <EmbeddedResource Include="BankAccount.resx">
       <DependentUpon>BankAccount.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BillEditor.resx">
+      <DependentUpon>BillEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrequencyClass.resx">
+      <DependentUpon>FrequencyClass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

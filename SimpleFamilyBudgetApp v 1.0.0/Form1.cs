@@ -79,7 +79,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             }
             else
             {
-                panelLeftFilterBar.Width = 343;
+                panelLeftFilterBar.Width = 211;
                 sideBarVisible = true;
                 buttonLeftFilterHide.Text = "<";
             }
@@ -166,6 +166,44 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             FillAccountsAndExpenseTypesChecked();
             TransactionRepo.PrepareTransDataWithFilters(Accounts, ExpenseTypes);
             PrepareListViews();
+        }
+
+        private void buttonAllExpenses_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < checkedListBox1.Items.Count; i++)
+            {
+                checkedListBox1.SetItemChecked(i, true);
+            }
+        }
+
+        private void buttonUncheckAllExpenses_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < checkedListBox1.Items.Count; i++)
+            {
+                checkedListBox1.SetItemChecked(i, false);
+            }
+        }
+
+        private void buttonCheckAllAccounts_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < checkedListBox2.Items.Count; i++)
+            {
+                checkedListBox2.SetItemChecked(i, true);
+            }
+        }
+
+        private void buttonUncheckAllBoxes_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < checkedListBox2.Items.Count; i++)
+            {
+                checkedListBox2.SetItemChecked(i, false);
+            }
+        }
+
+        private void billTypeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BillEditor Bill = new BillEditor();
+
         }
     }
 }
