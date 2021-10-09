@@ -45,6 +45,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.transactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelLeftFilterBar = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.buttonUncheckAllBoxes = new System.Windows.Forms.Button();
+            this.buttonCheckAllAccounts = new System.Windows.Forms.Button();
+            this.buttonUncheckAllExpenses = new System.Windows.Forms.Button();
+            this.buttonAllExpenses = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -59,18 +65,14 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.listViewOne = new System.Windows.Forms.ListView();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.panelLeftMainTop = new System.Windows.Forms.Panel();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.panelRIghtMainBottom = new System.Windows.Forms.Panel();
             this.listViewTwo = new System.Windows.Forms.ListView();
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.panelRightMainTop = new System.Windows.Forms.Panel();
-            this.buttonAllExpenses = new System.Windows.Forms.Button();
-            this.buttonUncheckAllExpenses = new System.Windows.Forms.Button();
-            this.buttonCheckAllAccounts = new System.Windows.Forms.Button();
-            this.buttonUncheckAllBoxes = new System.Windows.Forms.Button();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.webBrowser2 = new System.Windows.Forms.WebBrowser();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.listViewBudget = new System.Windows.Forms.ListView();
             this.panelTopAccountSummary.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panelLeftFilterBar.SuspendLayout();
@@ -89,7 +91,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // panelTopAccountSummary
             // 
             this.panelTopAccountSummary.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panelTopAccountSummary.Controls.Add(this.label5);
+            this.panelTopAccountSummary.Controls.Add(this.listViewBudget);
+            this.panelTopAccountSummary.Controls.Add(this.label4);
             this.panelTopAccountSummary.Controls.Add(this.toolStrip1);
+            this.panelTopAccountSummary.Controls.Add(this.listView1);
             this.panelTopAccountSummary.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTopAccountSummary.Location = new System.Drawing.Point(0, 0);
             this.panelTopAccountSummary.Name = "panelTopAccountSummary";
@@ -126,13 +132,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.toolStripTextBox1,
             this.csvcsvToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 22);
             this.toolStripMenuItem1.Text = "Import File";
             // 
             // excelxlsxToolStripMenuItem
             // 
             this.excelxlsxToolStripMenuItem.Name = "excelxlsxToolStripMenuItem";
-            this.excelxlsxToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.excelxlsxToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.excelxlsxToolStripMenuItem.Text = "Excel(.xlsx)";
             // 
             // toolStripTextBox1
@@ -145,13 +151,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // csvcsvToolStripMenuItem
             // 
             this.csvcsvToolStripMenuItem.Name = "csvcsvToolStripMenuItem";
-            this.csvcsvToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.csvcsvToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.csvcsvToolStripMenuItem.Text = "Csv(.csv)";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(146, 6);
             // 
             // toolStripMenuItem3
             // 
@@ -161,49 +167,47 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.billTypeToolStripMenuItem,
             this.transactionToolStripMenuItem});
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(149, 22);
             this.toolStripMenuItem3.Text = "Add / Edit";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
             // userToolStripMenuItem
             // 
             this.userToolStripMenuItem.Name = "userToolStripMenuItem";
-            this.userToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.userToolStripMenuItem.Text = "User";
             this.userToolStripMenuItem.Click += new System.EventHandler(this.userToolStripMenuItem_Click);
             // 
             // bankAcctToolStripMenuItem
             // 
             this.bankAcctToolStripMenuItem.Name = "bankAcctToolStripMenuItem";
-            this.bankAcctToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bankAcctToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.bankAcctToolStripMenuItem.Text = "Bank Acct";
             this.bankAcctToolStripMenuItem.Click += new System.EventHandler(this.bankAcctToolStripMenuItem_Click);
             // 
             // billTypeToolStripMenuItem
             // 
             this.billTypeToolStripMenuItem.Name = "billTypeToolStripMenuItem";
-            this.billTypeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.billTypeToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.billTypeToolStripMenuItem.Text = "Bill";
             this.billTypeToolStripMenuItem.Click += new System.EventHandler(this.billTypeToolStripMenuItem_Click);
             // 
             // transactionToolStripMenuItem
             // 
             this.transactionToolStripMenuItem.Name = "transactionToolStripMenuItem";
-            this.transactionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.transactionToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.transactionToolStripMenuItem.Text = "Transaction";
             this.transactionToolStripMenuItem.Click += new System.EventHandler(this.transactionToolStripMenuItem_Click);
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.addToolStripMenuItem.Text = "Create Budget";
             // 
             // panelLeftFilterBar
             // 
             this.panelLeftFilterBar.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panelLeftFilterBar.Controls.Add(this.label4);
-            this.panelLeftFilterBar.Controls.Add(this.listView1);
             this.panelLeftFilterBar.Controls.Add(this.buttonUncheckAllBoxes);
             this.panelLeftFilterBar.Controls.Add(this.buttonCheckAllAccounts);
             this.panelLeftFilterBar.Controls.Add(this.buttonUncheckAllExpenses);
@@ -220,12 +224,75 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.panelLeftFilterBar.Size = new System.Drawing.Size(211, 881);
             this.panelLeftFilterBar.TabIndex = 1;
             // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(1482, 34);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(39, 22);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Bills";
+            // 
+            // listView1
+            // 
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(1527, 34);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(365, 120);
+            this.listView1.TabIndex = 10;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // buttonUncheckAllBoxes
+            // 
+            this.buttonUncheckAllBoxes.Location = new System.Drawing.Point(12, 233);
+            this.buttonUncheckAllBoxes.Name = "buttonUncheckAllBoxes";
+            this.buttonUncheckAllBoxes.Size = new System.Drawing.Size(31, 27);
+            this.buttonUncheckAllBoxes.TabIndex = 9;
+            this.buttonUncheckAllBoxes.Text = "[ ]";
+            this.buttonUncheckAllBoxes.UseVisualStyleBackColor = true;
+            this.buttonUncheckAllBoxes.Click += new System.EventHandler(this.buttonUncheckAllBoxes_Click);
+            // 
+            // buttonCheckAllAccounts
+            // 
+            this.buttonCheckAllAccounts.Location = new System.Drawing.Point(167, 233);
+            this.buttonCheckAllAccounts.Name = "buttonCheckAllAccounts";
+            this.buttonCheckAllAccounts.Size = new System.Drawing.Size(31, 27);
+            this.buttonCheckAllAccounts.TabIndex = 8;
+            this.buttonCheckAllAccounts.Text = "[x]";
+            this.buttonCheckAllAccounts.UseVisualStyleBackColor = true;
+            this.buttonCheckAllAccounts.Click += new System.EventHandler(this.buttonCheckAllAccounts_Click);
+            // 
+            // buttonUncheckAllExpenses
+            // 
+            this.buttonUncheckAllExpenses.Location = new System.Drawing.Point(36, 50);
+            this.buttonUncheckAllExpenses.Name = "buttonUncheckAllExpenses";
+            this.buttonUncheckAllExpenses.Size = new System.Drawing.Size(29, 21);
+            this.buttonUncheckAllExpenses.TabIndex = 7;
+            this.buttonUncheckAllExpenses.Text = "[ ]";
+            this.buttonUncheckAllExpenses.UseVisualStyleBackColor = true;
+            this.buttonUncheckAllExpenses.Click += new System.EventHandler(this.buttonUncheckAllExpenses_Click);
+            // 
+            // buttonAllExpenses
+            // 
+            this.buttonAllExpenses.Location = new System.Drawing.Point(146, 50);
+            this.buttonAllExpenses.Name = "buttonAllExpenses";
+            this.buttonAllExpenses.Size = new System.Drawing.Size(29, 23);
+            this.buttonAllExpenses.TabIndex = 6;
+            this.buttonAllExpenses.Text = "[x]";
+            this.buttonAllExpenses.UseVisualStyleBackColor = true;
+            this.buttonAllExpenses.Click += new System.EventHandler(this.buttonAllExpenses_Click);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(72, 183);
+            this.label3.Location = new System.Drawing.Point(72, 243);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 17);
             this.label3.TabIndex = 5;
@@ -234,9 +301,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // checkedListBox2
             // 
             this.checkedListBox2.FormattingEnabled = true;
-            this.checkedListBox2.Location = new System.Drawing.Point(12, 203);
+            this.checkedListBox2.Location = new System.Drawing.Point(12, 263);
             this.checkedListBox2.Name = "checkedListBox2";
-            this.checkedListBox2.Size = new System.Drawing.Size(186, 64);
+            this.checkedListBox2.Size = new System.Drawing.Size(186, 94);
             this.checkedListBox2.TabIndex = 4;
             this.checkedListBox2.SelectedIndexChanged += new System.EventHandler(this.checkedListBox2_SelectedIndexChanged);
             // 
@@ -266,7 +333,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.button1.Location = new System.Drawing.Point(36, 325);
+            this.button1.Location = new System.Drawing.Point(36, 404);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(139, 41);
             this.button1.TabIndex = 1;
@@ -279,7 +346,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.checkedListBox1.FormattingEnabled = true;
             this.checkedListBox1.Location = new System.Drawing.Point(36, 73);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(139, 94);
+            this.checkedListBox1.Size = new System.Drawing.Size(139, 124);
             this.checkedListBox1.TabIndex = 0;
             this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
@@ -373,6 +440,15 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.panelLeftMainTop.Size = new System.Drawing.Size(806, 488);
             this.panelLeftMainTop.TabIndex = 0;
             // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(806, 488);
+            this.webBrowser1.TabIndex = 0;
+            // 
             // panelRIghtMainBottom
             // 
             this.panelRIghtMainBottom.Controls.Add(this.listViewTwo);
@@ -411,55 +487,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.panelRightMainTop.Size = new System.Drawing.Size(835, 488);
             this.panelRightMainTop.TabIndex = 0;
             // 
-            // buttonAllExpenses
-            // 
-            this.buttonAllExpenses.Location = new System.Drawing.Point(146, 50);
-            this.buttonAllExpenses.Name = "buttonAllExpenses";
-            this.buttonAllExpenses.Size = new System.Drawing.Size(29, 23);
-            this.buttonAllExpenses.TabIndex = 6;
-            this.buttonAllExpenses.Text = "[x]";
-            this.buttonAllExpenses.UseVisualStyleBackColor = true;
-            this.buttonAllExpenses.Click += new System.EventHandler(this.buttonAllExpenses_Click);
-            // 
-            // buttonUncheckAllExpenses
-            // 
-            this.buttonUncheckAllExpenses.Location = new System.Drawing.Point(36, 50);
-            this.buttonUncheckAllExpenses.Name = "buttonUncheckAllExpenses";
-            this.buttonUncheckAllExpenses.Size = new System.Drawing.Size(29, 21);
-            this.buttonUncheckAllExpenses.TabIndex = 7;
-            this.buttonUncheckAllExpenses.Text = "[ ]";
-            this.buttonUncheckAllExpenses.UseVisualStyleBackColor = true;
-            this.buttonUncheckAllExpenses.Click += new System.EventHandler(this.buttonUncheckAllExpenses_Click);
-            // 
-            // buttonCheckAllAccounts
-            // 
-            this.buttonCheckAllAccounts.Location = new System.Drawing.Point(167, 173);
-            this.buttonCheckAllAccounts.Name = "buttonCheckAllAccounts";
-            this.buttonCheckAllAccounts.Size = new System.Drawing.Size(31, 27);
-            this.buttonCheckAllAccounts.TabIndex = 8;
-            this.buttonCheckAllAccounts.Text = "[x]";
-            this.buttonCheckAllAccounts.UseVisualStyleBackColor = true;
-            this.buttonCheckAllAccounts.Click += new System.EventHandler(this.buttonCheckAllAccounts_Click);
-            // 
-            // buttonUncheckAllBoxes
-            // 
-            this.buttonUncheckAllBoxes.Location = new System.Drawing.Point(12, 173);
-            this.buttonUncheckAllBoxes.Name = "buttonUncheckAllBoxes";
-            this.buttonUncheckAllBoxes.Size = new System.Drawing.Size(31, 27);
-            this.buttonUncheckAllBoxes.TabIndex = 9;
-            this.buttonUncheckAllBoxes.Text = "[ ]";
-            this.buttonUncheckAllBoxes.UseVisualStyleBackColor = true;
-            this.buttonUncheckAllBoxes.Click += new System.EventHandler(this.buttonUncheckAllBoxes_Click);
-            // 
-            // webBrowser1
-            // 
-            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(806, 488);
-            this.webBrowser1.TabIndex = 0;
-            // 
             // webBrowser2
             // 
             this.webBrowser2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -469,26 +496,28 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.webBrowser2.Size = new System.Drawing.Size(835, 488);
             this.webBrowser2.TabIndex = 0;
             // 
-            // listView1
+            // label5
             // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(3, 452);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(205, 426);
-            this.listView1.TabIndex = 10;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(1019, 34);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(63, 22);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Budget";
             // 
-            // label4
+            // listViewBudget
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(86, 427);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 22);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Bills";
+            this.listViewBudget.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.listViewBudget.HideSelection = false;
+            this.listViewBudget.Location = new System.Drawing.Point(1088, 34);
+            this.listViewBudget.Name = "listViewBudget";
+            this.listViewBudget.Size = new System.Drawing.Size(365, 120);
+            this.listViewBudget.TabIndex = 12;
+            this.listViewBudget.UseCompatibleStateImageBehavior = false;
             // 
             // Form1
             // 
@@ -499,6 +528,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.Controls.Add(this.panelleftFilterCloseOpen);
             this.Controls.Add(this.panelLeftFilterBar);
             this.Controls.Add(this.panelTopAccountSummary);
+            this.MinimumSize = new System.Drawing.Size(925, 300);
             this.Name = "Form1";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.form_close);
@@ -565,6 +595,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.WebBrowser webBrowser2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ListView listViewBudget;
     }
 }
 

@@ -114,9 +114,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             StringBuilder Builder = new StringBuilder();
             Builder.AppendLine("SELECT * ");
             Builder.AppendLine("FROM TRANSACTIONS WITH(NOLOCK)");
-            Builder.AppendLine($"WHERE ACC_KEY IN ({string.Join(",", AcctKeys.ToArray())})");
-            Builder.AppendLine($"AND TRANS_TYPE_KEY IN ({string.Join(",", ExpenseTypeKeys.ToArray())})");
-            Builder.AppendLine("ORDER BY TRANS_DATE DESC");
+            if(AcctKeys.Count > 0)
+                Builder.AppendLine($"WHERE ACC_KEY IN ({string.Join(",", AcctKeys.ToArray())})");
+            if(ExpenseTypeKeys.Count > 0)
+                Builder.AppendLine($"AND TRANS_TYPE_KEY IN ({string.Join(",", ExpenseTypeKeys.ToArray())})");
+            if(AcctKeys.Count > 0 || ExpenseTypeKeys.Count > 0)
+                Builder.AppendLine("ORDER BY TRANS_DATE DESC");
             string SQL = Builder.ToString();
             SqlCommand Command = new SqlCommand(SQL, DBClass.DB);
             SqlDataReader Reader = Command.ExecuteReader();

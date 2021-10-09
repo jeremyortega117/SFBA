@@ -203,7 +203,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private void billTypeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BillEditor Bill = new BillEditor();
-
+            Bill.ShowDialog();
         }
     }
 }

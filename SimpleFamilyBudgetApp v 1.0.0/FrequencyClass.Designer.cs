@@ -44,6 +44,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonSubmitFrequency = new System.Windows.Forms.Button();
+            this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
             this.SuspendLayout();
             // 
             // listViewFrequency
@@ -239,5 +240,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonSubmitFrequency;
+        private System.DirectoryServices.DirectoryEntry directoryEntry1;
     }
 }
