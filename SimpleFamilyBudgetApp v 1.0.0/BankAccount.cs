@@ -22,9 +22,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void RefreshData()
         {
-            UserEditorRepo.PrepareUserEditorData();
-            BankAccountRepo.PrepareAccountTypes();
-            BankAccountRepo.PrepareAcctEditorData();
+            RepoUserEditor.PrepareUserEditorData();
+            RepoBankAccount.PrepareAccountTypes();
+            RepoBankAccount.PrepareAcctEditorData();
             PrepareComboBoxes();
             ClearData();
             ListViewRepoBankAccount lvrba = new ListViewRepoBankAccount(listView1);
@@ -46,11 +46,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private void PrepareComboBoxes()
         {
             comboBoxUser.Items.Clear();
-            foreach (UserEditorModel user in UserEditorRepo.users.Values) {
+            foreach (ModelUserEditor user in RepoUserEditor.users.Values) {
                 comboBoxUser.Items.Add($"{user.LastName}, {user.FirstName} {user.MiddleInitial} : {user.userName}.");
             }
             comboBoxAccountType.Items.Clear();
-            foreach (AccountType AccountType in BankAccountRepo.AccountTypes.Values)
+            foreach (ModelAccountType AccountType in RepoBankAccount.AccountTypes.Values)
             {
                 comboBoxAccountType.Items.Add($"{AccountType.AcctType}");
             }
@@ -65,12 +65,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             if(comboBoxAccountType.Text.Trim() != "")
             {
-                List<AccountType> AccountTypes = new List<AccountType>();
-                AccountType accountType = new AccountType();
+                List<ModelAccountType> AccountTypes = new List<ModelAccountType>();
+                ModelAccountType accountType = new ModelAccountType();
                 accountType.AcctType = comboBoxAccountType.Text;
                 AccountTypes.Add(accountType);
-                BankAccountRepo.EditAccountType(AccountTypes, 'A');
-                BankAccountRepo.PrepareAccountTypes();
+                RepoBankAccount.EditAccountType(AccountTypes, 'A');
+                RepoBankAccount.PrepareAccountTypes();
                 PrepareComboBoxes();
             }
         }
@@ -85,22 +85,27 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 && comboBoxUser.Text != "")
             {
                 listView1.Clear();
-                List<BankAccountModel> BankAccounts = new List<BankAccountModel>();
-                BankAccountModel BankAccount = new BankAccountModel();
+                List<ModelBankAccount> BankAccounts = new List<ModelBankAccount>();
+                ModelBankAccount BankAccount = new ModelBankAccount();
                 BankAccount.BankName = textBoxBankName.Text;
-                BankAccount.AcctTypeKey = BankAccountRepo.RetrieveAcctTypeKeyFromName(comboBoxAccountType.Text);
+                BankAccount.AcctTypeKey = RepoBankAccount.RetrieveAcctTypeKeyFromName(comboBoxAccountType.Text);
                 BankAccount.AcctLastFour = textBoxAcctLastFour.Text;
                 BankAccount.Balance = Convert.ToDouble(textBoxBalance.Text);
-                BankAccount.UserKey = Convert.ToInt32(UserEditorRepo.RetrieveUserKeyFromName(comboBoxUser.Text));
+                BankAccount.UserKey = Convert.ToInt32(RepoUserEditor.RetrieveUserKeyFromName(comboBoxUser.Text));
                 BankAccount.InterestFreq = Convert.ToInt32(comboBoxInterestFreq.Text);
                 BankAccount.InterestPercent = Convert.ToDouble(textBoxInterestRate.Text);
                 BankAccounts.Add(BankAccount);
-                BankAccountRepo.EditAccts(BankAccounts, 'A');
+                RepoBankAccount.EditAccts(BankAccounts, 'A');
                 RefreshData();
             }
         }
 
         private void comboBoxUser_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxAccountType_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

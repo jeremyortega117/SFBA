@@ -23,15 +23,47 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             InitializeComponent();
             leftBarButtonHide();
-            UserEditorRepo.PrepareUserEditorData();
-            BankAccountRepo.PrepareAccountTypes();
-            BankAccountRepo.PrepareAcctEditorData();
-            TransactionRepo.PrepareTransTypes();
+            RepoUserEditor.PrepareUserEditorData();
+            RepoBankAccount.PrepareAccountTypes();
+            RepoBankAccount.PrepareAcctEditorData();
+            RepoTransaction.PrepareTransTypes();
             DisplayAllExpenseCheckTypes();
             DisplayAllAccounts();
             FillAccountsAndExpenseTypesChecked();
-            TransactionRepo.PrepareTransDataWithFilters(Accounts, ExpenseTypes);
+            RepoTransaction.PrepareTransDataWithFilters(Accounts, ExpenseTypes);
             PrepareListViews();
+            PrepareToolOptions();
+        }
+
+        private void PrepareToolOptions()
+        {
+            DisableAllTools();
+
+            // If a user exists you can make an account.
+            if (RepoUserEditor.users.Count == 0)
+            {
+                return;
+            }
+            ToolStripMenuItembankAcct.Enabled = true;
+
+            // If a user and account exist you can make a bill.
+            if (RepoBankAccount.Accounts.Count == 0)
+            {
+                return;
+            }
+            ToolStripMenuItembillType.Enabled = true;
+
+            // If a user, an account exist you can start adding transactions.
+            ToolStripMenuItemtransaction.Enabled = true;
+        }
+
+        private void DisableAllTools()
+        {
+            toolStripMenuItemImportFile.Enabled = false;
+            ToolStripMenuItembankAcct.Enabled = false;
+            ToolStripMenuItemCreateBudget.Enabled = false;
+            ToolStripMenuItembillType.Enabled = false;
+            ToolStripMenuItemtransaction.Enabled = false;
         }
 
         private void FillAccountsAndExpenseTypesChecked()
@@ -107,11 +139,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             User_Editor editor = new User_Editor();
             editor.ShowDialog();
             PrepareListViews();
+            PrepareToolOptions();
         }
 
         private void form_close(object sender, FormClosingEventArgs e)
         {
-            DBClass.DB.Close();
+            RepoDBClass.DB.Close();
         }
 
         private void bankAcctToolStripMenuItem_Click(object sender, EventArgs e)
@@ -119,6 +152,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             BankAccount bankAccount = new BankAccount();
             bankAccount.ShowDialog();
             PrepareListViews();
+            PrepareToolOptions();
         }
 
         private void transactionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -135,7 +169,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void DisplayAllExpenseCheckTypes()
         {
-            foreach(var types in TransactionRepo.TransTypes.Values)
+            foreach(var types in RepoTransaction.TransTypes.Values)
             {
                 checkedListBox1.Items.Add(types.TransDesc, CheckState.Checked);
             }
@@ -143,9 +177,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void DisplayAllAccounts()
         {
-            foreach (var acct in BankAccountRepo.Accounts.Values)
+            foreach (var acct in RepoBankAccount.Accounts.Values)
             {
-                string acctType = BankAccountRepo.AccountTypes[acct.AcctTypeKey].AcctType;
+                string acctType = RepoBankAccount.AccountTypes[acct.AcctTypeKey].AcctType;
                 string acctInfo = $"{acct.BankName}, {acct.AcctLastFour}, {acctType}";
                 checkedListBox2.Items.Add(acctInfo, CheckState.Checked);
             }
@@ -164,7 +198,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private void button1_Click(object sender, EventArgs e)
         {
             FillAccountsAndExpenseTypesChecked();
-            TransactionRepo.PrepareTransDataWithFilters(Accounts, ExpenseTypes);
+            RepoTransaction.PrepareTransDataWithFilters(Accounts, ExpenseTypes);
             PrepareListViews();
         }
 
@@ -204,6 +238,20 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             BillEditor Bill = new BillEditor();
             Bill.ShowDialog();
+        }
+
+        private void createNewAccountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BankAccount bankAccount = new BankAccount();
+            bankAccount.ShowDialog();
+            PrepareListViews();
+            PrepareToolOptions();
+        }
+
+        private void moveDeleteAccountsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeOrDeleteAccount changeAccountForm = new ChangeOrDeleteAccount();
+            changeAccountForm.ShowDialog();
         }
     }
 }

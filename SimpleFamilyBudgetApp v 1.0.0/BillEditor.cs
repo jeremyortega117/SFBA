@@ -108,19 +108,69 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             dateTimePickerToDate.Enabled = true;
         }
 
+        private void radioButtonMonthly_CheckedChanged(object sender, EventArgs e)
+        {
+            radioButtonFreqChanged();
+        }
+
+        private void radioButtonWeekly_CheckedChanged(object sender, EventArgs e)
+        {
+            radioButtonFreqChanged();
+        }
+
+        private void radioButtonDaily_CheckedChanged(object sender, EventArgs e)
+        {
+            radioButtonFreqChanged();
+        }
+
+        private void radioButtonYearly_CheckedChanged(object sender, EventArgs e)
+        {
+            radioButtonFreqChanged();
+        }
+
+        private void radioButtonFreqChanged()
+        {
+            if (radioButtonDaily.Checked)
+            {
+                EnableDaysOfWeek(false);
+            }
+            else if (radioButtonMonthly.Checked)
+            {
+                EnableDaysOfWeek(false);
+            }
+            else if (radioButtonWeekly.Checked)
+            {
+                EnableDaysOfWeek(true);
+            }
+            else if (radioButtonYearly.Checked)
+            {
+                EnableDaysOfWeek(false);
+            }
+        }
+
         private void EnableFrequency()
         {
             radioButtonDaily.Enabled = true;
             radioButtonMonthly.Enabled = true;
             radioButtonWeekly.Enabled = true;
             radioButtonYearly.Enabled = true;
-            checkBoxWednesday.Enabled = true;
-            checkBoxTuesday.Enabled = true;
-            checkBoxThursday.Enabled = true;
-            checkBoxSunday.Enabled = true;
-            checkBoxSaturday.Enabled = true;
-            checkBoxMonday.Enabled = true;
-            checkBoxFriday.Enabled = true;
+            EnableDaysOfWeek(true);
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EnableDaysOfWeek(bool trueFalse)
+        {
+            checkBoxWednesday.Enabled = trueFalse;
+            checkBoxTuesday.Enabled = trueFalse;
+            checkBoxThursday.Enabled = trueFalse;
+            checkBoxSunday.Enabled = trueFalse;
+            checkBoxSaturday.Enabled = trueFalse;
+            checkBoxMonday.Enabled = trueFalse;
+            checkBoxFriday.Enabled = trueFalse;
         }
 
         private void buttonInsertNewBill_Click(object sender, EventArgs e)

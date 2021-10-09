@@ -60,6 +60,12 @@
     <Compile Include="BillEditor.Designer.cs">
       <DependentUpon>BillEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChangeOrDeleteAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeOrDeleteAccount.Designer.cs">
+      <DependentUpon>ChangeOrDeleteAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrequencyClass.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,13 +78,13 @@
     <Compile Include="TransactionEditor.Designer.cs">
       <DependentUpon>TransactionEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="REPO\TransactionRepo.cs" />
-    <Compile Include="MODEL\TransModel.cs" />
+    <Compile Include="REPO\RepoTransaction.cs" />
+    <Compile Include="MODEL\ModelTrans.cs" />
     <Compile Include="UI\ListViewRepoBankAccount.cs" />
     <Compile Include="UI\ListViewRepoUserEditor.cs" />
-    <Compile Include="MODEL\BankAccountModel.cs" />
-    <Compile Include="REPO\BankAccountRepo.cs" />
-    <Compile Include="REPO\DBClass.cs" />
+    <Compile Include="MODEL\ModelBankAccount.cs" />
+    <Compile Include="REPO\RepoBankAccount.cs" />
+    <Compile Include="REPO\RepoDBClass.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,13 +101,16 @@
     <Compile Include="UserEditor.Designer.cs">
       <DependentUpon>UserEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="MODEL\UserEditorModel.cs" />
-    <Compile Include="REPO\UserEditorRepo.cs" />
+    <Compile Include="MODEL\ModelUserEditor.cs" />
+    <Compile Include="REPO\RepoUserEditor.cs" />
     <EmbeddedResource Include="BankAccount.resx">
       <DependentUpon>BankAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BillEditor.resx">
       <DependentUpon>BillEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeOrDeleteAccount.resx">
+      <DependentUpon>ChangeOrDeleteAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

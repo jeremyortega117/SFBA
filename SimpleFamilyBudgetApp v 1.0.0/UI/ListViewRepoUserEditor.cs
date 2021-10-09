@@ -22,7 +22,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
 
             lview.Items.Clear();
-            var users = UserEditorRepo.users;
+            var users = RepoUserEditor.users;
             foreach (int key in users.Keys)
             {
                 List<string> userHeaders = new List<string>();

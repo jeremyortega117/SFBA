@@ -8,10 +8,10 @@ using System.Windows.Forms;
 
 namespace SimpleFamilyBudgetApp_v_1._0._0
 {
-    public class BankAccountRepo
+    public class RepoBankAccount
     {
-        internal static Dictionary<int, BankAccountModel> Accounts;
-        internal static Dictionary<int, AccountType> AccountTypes;
+        internal static Dictionary<int, ModelBankAccount> Accounts;
+        internal static Dictionary<int, ModelAccountType> AccountTypes;
 
 
         /// <summary>
@@ -21,14 +21,14 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         internal static void PrepareAccountTypes()
         {
             string SQL = "SELECT * FROM ACCOUNT_TYPE WITH(NOLOCK) ORDER BY ACC_TYPE";
-            SqlCommand Command = new SqlCommand(SQL, DBClass.DB);
+            SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);
             SqlDataReader Reader = Command.ExecuteReader();
-            AccountTypes = new Dictionary<int, AccountType>();
+            AccountTypes = new Dictionary<int, ModelAccountType>();
             if (Reader != null)
             {
                 while (Reader.Read())
                 {
-                    AccountType acctType = new AccountType();
+                    ModelAccountType acctType = new ModelAccountType();
                     acctType.AcctTypeKey = Convert.ToInt32(Reader["ACC_TYPE_KEY"]);
                     acctType.AcctType = Reader["ACC_TYPE"].ToString();
                     AccountTypes.Add(acctType.AcctTypeKey, acctType);
@@ -41,12 +41,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         /// <summary>
         /// Add New Account Type
         /// </summary>
-        internal static void EditAccountType(List<AccountType> AcctTypes, char editType)
+        internal static void EditAccountType(List<ModelAccountType> AcctTypes, char editType)
         {
-            foreach (AccountType acctType in AcctTypes)
+            foreach (ModelAccountType acctType in AcctTypes)
             {
                 string SQL = $"EXECUTE proc_ACCT_TYPE_EDITOR @ACC_TYPE_KEY, @ACC_TYPE, @EDIT_TYPE";
-                SqlCommand Command = new SqlCommand(SQL, DBClass.DB);
+                SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);
                 List<SqlParameter> parameters = new List<SqlParameter>();
                 SqlParameter AccTypeKey = new SqlParameter("@ACC_TYPE_KEY", acctType.AcctTypeKey);
                 SqlParameter AcctType = new SqlParameter("@ACC_TYPE", acctType.AcctType);
@@ -70,7 +70,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             foreach(int Key in AccountTypes.Keys)
             {
-                AccountType at = AccountTypes[Key];
+                ModelAccountType at = AccountTypes[Key];
                 if(at.AcctType == acctType)
                 {
                     return Key;
@@ -89,14 +89,14 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         internal static void PrepareAcctEditorData()
         {
             string SQL = "SELECT * FROM ACCOUNT WITH(NOLOCK) ORDER BY BANK_NAME, ACC_LAST_FOUR";
-            SqlCommand Command = new SqlCommand(SQL, DBClass.DB);
+            SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);
             SqlDataReader Reader = Command.ExecuteReader();
-            Accounts = new Dictionary<int, BankAccountModel>();
+            Accounts = new Dictionary<int, ModelBankAccount>();
             if (Reader != null)
             {
                 while (Reader.Read())
                 {
-                    BankAccountModel acct = new BankAccountModel();
+                    ModelBankAccount acct = new ModelBankAccount();
                     acct.AcctKey = Convert.ToInt32(Reader["ACC_KEY"]);
                     acct.AcctTypeKey = Convert.ToInt32(Reader["ACC_TYPE_KEY"]);
                     acct.UserKey = Convert.ToInt32(Reader["USER_KEY"]);
@@ -118,12 +118,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         /// 'U' : Update
         /// </summary>
         /// <param name="users"></param>
-        internal static void EditAccts(List<BankAccountModel> Accounts, char editType)
+        internal static void EditAccts(List<ModelBankAccount> Accounts, char editType)
         {
-            foreach (BankAccountModel account in Accounts)
+            foreach (ModelBankAccount account in Accounts)
             {
                 string SQL = $"EXECUTE proc_ACCT_EDITOR @ACC_KEY, @ACC_TYPE_KEY, @USER_KEY, @BAL, @BANK_NAME, @ACC_LAST_FOUR, @INT_FREQ_DAYS, @INT_PERC, @EDIT_TYPE";
-                SqlCommand Command = new SqlCommand(SQL, DBClass.DB);
+                SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);
                 List<SqlParameter> parameters = new List<SqlParameter>();
                 SqlParameter Acctkey = new SqlParameter("@ACC_KEY", account.AcctKey);
                 SqlParameter AccTypeKey = new SqlParameter("@ACC_TYPE_KEY", account.AcctTypeKey);

@@ -26,10 +26,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             textBoxAmount.Text = "";
             textBoxDescription.Text = "";
             dateTimePickerTransDate.Value = DateTime.Now;
-            BankAccountRepo.PrepareAccountTypes();
-            BankAccountRepo.PrepareAcctEditorData();
-            TransactionRepo.PrepareTransTypes();
-            TransactionRepo.PrepareTransData();
+            RepoBankAccount.PrepareAccountTypes();
+            RepoBankAccount.PrepareAcctEditorData();
+            RepoTransaction.PrepareTransTypes();
+            RepoTransaction.PrepareTransData();
             ListViewRepoTransactions lvrt = new ListViewRepoTransactions(listView1);
             lvrt.AddDataToListView(listView1);
             PrepareComboBoxes();
@@ -38,15 +38,15 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private void PrepareComboBoxes()
         {
             comboBoxTransType.Items.Clear();
-            foreach (TransTypeModel trans in TransactionRepo.TransTypes.Values)
+            foreach (ModelTransType trans in RepoTransaction.TransTypes.Values)
             {
                 comboBoxTransType.Items.Add($"{trans.TransDesc}");
             }
 
             comboBoxAcct.Items.Clear();
-            foreach (var BankInfo in BankAccountRepo.Accounts.Values)
+            foreach (var BankInfo in RepoBankAccount.Accounts.Values)
             {
-                var acctType = BankAccountRepo.AccountTypes[BankInfo.AcctTypeKey];
+                var acctType = RepoBankAccount.AccountTypes[BankInfo.AcctTypeKey];
                 comboBoxAcct.Items.Add($"{BankInfo.BankName}, {BankInfo.AcctLastFour}, {acctType.AcctType}");
             }
         }
@@ -61,11 +61,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             if (comboBoxTransType.Text.Trim() != "")
             {
                 listView1.Clear();
-                List<TransTypeModel> transTypes = new List<TransTypeModel>();
-                TransTypeModel transType = new TransTypeModel();
+                List<ModelTransType> transTypes = new List<ModelTransType>();
+                ModelTransType transType = new ModelTransType();
                 transType.TransDesc = comboBoxTransType.Text;
                 transTypes.Add(transType);
-                TransactionRepo.EditTransType(transTypes, 'A');
+                RepoTransaction.EditTransType(transTypes, 'A');
                 ResetUI();
             }
         }
@@ -78,15 +78,15 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private void button1_Click(object sender, EventArgs e)
         {
             listView1.Clear();
-            List<TransModel> transTypes = new List<TransModel>();
-            TransModel transType = new TransModel();
+            List<ModelTrans> transTypes = new List<ModelTrans>();
+            ModelTrans transType = new ModelTrans();
             transType.Amount = Convert.ToDouble(textBoxAmount.Text);
             transType.TransDate = dateTimePickerTransDate.Value;
-            transType.AcctKey = TransactionRepo.GetAcctKeyFromSelected(comboBoxAcct.Text);
-            transType.TransTypeKey = TransactionRepo.GetTransTypeKeyFromSelected(comboBoxTransType.Text);
+            transType.AcctKey = RepoTransaction.GetAcctKeyFromSelected(comboBoxAcct.Text);
+            transType.TransTypeKey = RepoTransaction.GetTransTypeKeyFromSelected(comboBoxTransType.Text);
             transType.TransDesc = textBoxDescription.Text;
             transTypes.Add(transType);
-            TransactionRepo.EditTrans(transTypes, 'A');
+            RepoTransaction.EditTrans(transTypes, 'A');
             ResetUI();
         }
 

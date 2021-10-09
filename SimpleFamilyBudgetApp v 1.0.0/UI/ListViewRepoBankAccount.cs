@@ -22,16 +22,16 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         internal void AddDataToListView(ListView lview)
         {
-            var Accounts = BankAccountRepo.Accounts;
+            var Accounts = RepoBankAccount.Accounts;
             lview.Items.Clear();
             foreach (int key in Accounts.Keys)
             {
                 List<string> userHeaders = new List<string>();
-                var user = UserEditorRepo.users[Accounts[key].UserKey];
+                var user = RepoUserEditor.users[Accounts[key].UserKey];
                 userHeaders.Add($"{user.userName} : {user.LastName}, {user.FirstName} {user.MiddleInitial}");
                 userHeaders.Add(Accounts[key].BankName);
                 userHeaders.Add(Accounts[key].AcctLastFour.ToString());
-                var acctType = BankAccountRepo.AccountTypes[Accounts[key].AcctTypeKey];
+                var acctType = RepoBankAccount.AccountTypes[Accounts[key].AcctTypeKey];
                 userHeaders.Add(acctType.AcctType);
                 userHeaders.Add(string.Format("{0:C}",Accounts[key].Balance));
                 userHeaders.Add(Accounts[key].InterestFreq.ToString());

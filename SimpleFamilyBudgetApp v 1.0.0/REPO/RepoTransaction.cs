@@ -8,10 +8,10 @@ using System.Windows.Forms;
 
 namespace SimpleFamilyBudgetApp_v_1._0._0
 {
-    class TransactionRepo
+    class RepoTransaction
     {
-        internal static Dictionary<int, TransModel> Trans;
-        internal static Dictionary<int, TransTypeModel> TransTypes;
+        internal static Dictionary<int, ModelTrans> Trans;
+        internal static Dictionary<int, ModelTransType> TransTypes;
 
 
         /// <summary>
@@ -21,14 +21,14 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         internal static void PrepareTransTypes()
         {
             string SQL = "SELECT * FROM TRANS_TYPE WITH(NOLOCK) ORDER BY TRANS_DESC";
-            SqlCommand Command = new SqlCommand(SQL, DBClass.DB);
+            SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);
             SqlDataReader Reader = Command.ExecuteReader();
-            TransTypes = new Dictionary<int, TransTypeModel>();
+            TransTypes = new Dictionary<int, ModelTransType>();
             if (Reader != null)
             {
                 while (Reader.Read())
                 {
-                    TransTypeModel transType = new TransTypeModel();
+                    ModelTransType transType = new ModelTransType();
                     transType.TransTypeKey = Convert.ToInt32(Reader["TRANS_TYPE_KEY"]);
                     transType.TransDesc = Reader["TRANS_DESC"].ToString();
                     TransTypes.Add(transType.TransTypeKey, transType);
@@ -41,12 +41,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         /// <summary>
         /// Add New Account Type
         /// </summary>
-        internal static void EditTransType(List<TransTypeModel> TransTypes, char editType)
+        internal static void EditTransType(List<ModelTransType> TransTypes, char editType)
         {
-            foreach (TransTypeModel transType in TransTypes)
+            foreach (ModelTransType transType in TransTypes)
             {
                 string SQL = $"EXECUTE proc_TRANS_TYPE_EDITOR @TRANS_TYPE_KEY, @TRANS_TYPE, @EDIT_TYPE";
-                SqlCommand Command = new SqlCommand(SQL, DBClass.DB);
+                SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);
                 List<SqlParameter> parameters = new List<SqlParameter>();
                 SqlParameter TransTypeKey = new SqlParameter("@TRANS_TYPE_KEY", transType.TransTypeKey);
                 SqlParameter TransType = new SqlParameter("@TRANS_TYPE", transType.TransDesc);
@@ -76,14 +76,14 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         internal static void PrepareTransData()
         {
             string SQL = "SELECT * FROM TRANSACTIONS WITH(NOLOCK) ORDER BY TRANS_DATE DESC";
-            SqlCommand Command = new SqlCommand(SQL, DBClass.DB);
+            SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);
             SqlDataReader Reader = Command.ExecuteReader();
-            Trans = new Dictionary<int, TransModel>();
+            Trans = new Dictionary<int, ModelTrans>();
             if (Reader != null)
             {
                 while (Reader.Read())
                 {
-                    TransModel trans = new TransModel();
+                    ModelTrans trans = new ModelTrans();
                     trans.TransDate = Convert.ToDateTime(Reader["TRANS_DATE"]);
                     trans.TransDesc = Reader["TRANS_DESC"].ToString();
                     trans.TransKey = Convert.ToInt32(Reader["TRANS_KEY"]);
@@ -121,14 +121,14 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             if(AcctKeys.Count > 0 || ExpenseTypeKeys.Count > 0)
                 Builder.AppendLine("ORDER BY TRANS_DATE DESC");
             string SQL = Builder.ToString();
-            SqlCommand Command = new SqlCommand(SQL, DBClass.DB);
+            SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);
             SqlDataReader Reader = Command.ExecuteReader();
-            Trans = new Dictionary<int, TransModel>();
+            Trans = new Dictionary<int, ModelTrans>();
             if (Reader != null)
             {
                 while (Reader.Read())
                 {
-                    TransModel trans = new TransModel();
+                    ModelTrans trans = new ModelTrans();
                     trans.TransDate = Convert.ToDateTime(Reader["TRANS_DATE"]);
                     trans.TransDesc = Reader["TRANS_DESC"].ToString();
                     trans.TransKey = Convert.ToInt32(Reader["TRANS_KEY"]);
@@ -155,10 +155,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         internal static int GetAcctKeyFromSelected(string text)
         {
-            var Accounts = BankAccountRepo.Accounts;
+            var Accounts = RepoBankAccount.Accounts;
             foreach (int Key in Accounts.Keys)
             {
-                string acctType = BankAccountRepo.AccountTypes[Accounts[Key].AcctTypeKey].AcctType;
+                string acctType = RepoBankAccount.AccountTypes[Accounts[Key].AcctTypeKey].AcctType;
                 if (text == $"{Accounts[Key].BankName}, {Accounts[Key].AcctLastFour}, {acctType}")
                 {
                     return Key;
@@ -167,6 +167,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             return -1;
         }
 
+       
 
         /// <summary>
         /// Edit User Record.
@@ -175,12 +176,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         /// 'U' : Update
         /// </summary>
         /// <param name="users"></param>
-        internal static void EditTrans(List<TransModel> Trans, char editType)
+        internal static void EditTrans(List<ModelTrans> Trans, char editType)
         {
-            foreach (TransModel trans in Trans)
+            foreach (ModelTrans trans in Trans)
             {
                 string SQL = $"EXECUTE proc_TRANS_EDITOR @TRANS_KEY, @TRANS_TYPE_KEY, @ACC_KEY, @AMOUNT, @TRANS_DESC, @TRANS_DATE, @EDIT_TYPE";
-                SqlCommand Command = new SqlCommand(SQL, DBClass.DB);
+                SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);
                 List<SqlParameter> parameters = new List<SqlParameter>();
                 SqlParameter TransKey = new SqlParameter("@TRANS_KEY", trans.TransKey);
                 SqlParameter TransTypeKey = new SqlParameter("@TRANS_TYPE_KEY", trans.TransTypeKey);

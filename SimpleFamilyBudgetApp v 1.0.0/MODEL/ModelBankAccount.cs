@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SimpleFamilyBudgetApp_v_1._0._0
 {
-    public class BankAccountModel
+    public class ModelBankAccount
     {
         public int AcctKey { get; set; }
         public int AcctTypeKey { get; set; }
@@ -18,7 +18,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         public double InterestPercent { get; set; }
     }
 
-    public class AccountType
+    public class ModelAccountType
     {
         public int AcctTypeKey { get; set; }
         public string AcctType { get; set; }

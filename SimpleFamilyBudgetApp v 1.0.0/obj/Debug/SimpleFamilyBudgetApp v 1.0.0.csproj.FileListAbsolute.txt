@@ -23,3 +23,4 @@ C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleF
 C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp_v_1._0._0.TransactionEditor.resources
 C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp_v_1._0._0.BillEditor.resources
 C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp_v_1._0._0.FrequencyClass.resources
+C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp_v_1._0._0.ChangeOrDeleteAccount.resources

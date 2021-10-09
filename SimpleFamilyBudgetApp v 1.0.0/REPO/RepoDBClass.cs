@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace SimpleFamilyBudgetApp_v_1._0._0
 {
-    internal class DBClass
+    internal class RepoDBClass
     {
         internal static SqlConnection DB;
         internal static void PrepareConnectionString()

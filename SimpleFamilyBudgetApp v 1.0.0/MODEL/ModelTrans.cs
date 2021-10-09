@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SimpleFamilyBudgetApp_v_1._0._0
 {
-    internal class TransModel
+    internal class ModelTrans
     {
         public int TransKey { get; set; }
         public int TransTypeKey { get; set; }
@@ -16,7 +16,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         public DateTime TransDate { get; set; }
     }
 
-    internal class TransTypeModel
+    internal class ModelTransType
     {
         public int TransTypeKey { get; set; }
         public string TransDesc { get; set; }

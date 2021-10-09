@@ -21,16 +21,16 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
 
             lview.Items.Clear();
-            var trans = TransactionRepo.Trans;
+            var trans = RepoTransaction.Trans;
             foreach (int key in trans.Keys)
             {
                 List<string> transaction = new List<string>();
                 transaction.Add(trans[key].TransDate.ToString());
-                var bank = BankAccountRepo.Accounts[trans[key].AcctKey];
+                var bank = RepoBankAccount.Accounts[trans[key].AcctKey];
                 transaction.Add(bank.BankName);
                 transaction.Add(bank.AcctLastFour.ToString());
                 transaction.Add(string.Format("{0:C}", trans[key].Amount));
-                var transType = TransactionRepo.TransTypes[trans[key].TransTypeKey];
+                var transType = RepoTransaction.TransTypes[trans[key].TransTypeKey];
                 transaction.Add(transType.TransDesc);
                 transaction.Add(trans[key].TransDesc);
                 ListViewItem lvi = new ListViewItem(transaction.ToArray());
