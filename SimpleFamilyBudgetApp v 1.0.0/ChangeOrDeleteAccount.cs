@@ -16,25 +16,43 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         public ChangeOrDeleteAccount()
         {
             InitializeComponent();
-            FillCheckBoxWithAccounts();
-            FillUserComboBoxWithAvaiulableUsers();
+            FillUserComboBoxWithAvaiulableUsers(comboBox1);
+            FillUserComboBoxWithAvaiulableUsers(comboBox2);
+            ResetUI();
         }
 
-        private void FillUserComboBoxWithAvaiulableUsers()
+        private void ResetUI()
+        {
+            comboBox1.Text = "";
+            comboBox1.Enabled = false;
+            comboBox2.Text = "";
+            checkedListBox1.Enabled = false;
+            checkedListBox1.Items.Clear();
+            button1.Enabled = false;
+            button2.Enabled = false;
+            button3.Enabled = false;
+            button4.Enabled = false;
+        }
+
+        private void FillUserComboBoxWithAvaiulableUsers(ComboBox comboB)
         {
             foreach (var user in RepoUserEditor.users.Values)
             {
                 string userval = $"{user.LastName}, {user.FirstName} {user.MiddleInitial} : {user.userName}.";
-                comboBox1.Items.Add(userval);
+                comboB.Items.Add(userval);
             }
         }
 
-        private void FillCheckBoxWithAccounts()
+        private void FillCheckBoxWithAccounts(int userKey)
         {
+            checkedListBox1.Items.Clear();
             foreach (var account in RepoBankAccount.Accounts.Values)
             {
-                var acctType = RepoBankAccount.AccountTypes[account.AcctTypeKey];
-                checkedListBox1.Items.Add($"{account.BankName}, {account.AcctLastFour}, {acctType.AcctType}", CheckState.Checked);
+                if (account.UserKey == userKey)
+                {
+                    var acctType = RepoBankAccount.AccountTypes[account.AcctTypeKey];
+                    checkedListBox1.Items.Add($"{account.BankName}, {account.AcctLastFour}, {acctType.AcctType}", CheckState.Checked);
+                }
             }
         }
 
@@ -45,7 +63,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         /// <param name="e"></param>
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            button3.Enabled = true;
+            button4.Enabled = true;
         }
 
         /// <summary>
@@ -63,8 +82,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 BankAccounts.Add(account);
             }
             RepoBankAccount.EditAccts(BankAccounts, 'U');
-            FillCheckBoxWithAccounts();
-            FillUserComboBoxWithAvaiulableUsers();
+            ResetUI();
         }
 
         /// <summary>
@@ -74,6 +92,24 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         /// <param name="e"></param>
         private void button4_Click(object sender, EventArgs e)
         {
+
+            int userKey = RepoUserEditor.RetrieveUserKeyFromName(comboBox2.Text);
+            foreach (int accountKey in RepoBankAccount.Accounts.Keys)
+            {
+                if (RepoBankAccount.Accounts[accountKey].UserKey == userKey)
+                {
+                    DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete all records associated with this Bank Account?", "Delete All Account Records?", MessageBoxButtons.YesNo);
+                    if(dialogResult == DialogResult.Yes)
+                    {
+                        RepoTransaction.RemoveAllTransactionsAssociatedWithUserKey(userKey);
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+            }
+
             List<ModelBankAccount> BankAccounts = new List<ModelBankAccount>();
             foreach (var checkedIndex in checkedListBox1.CheckedItems)
             {
@@ -81,8 +117,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 BankAccounts.Add(account);
             }
             RepoBankAccount.EditAccts(BankAccounts, 'D');
-            FillCheckBoxWithAccounts();
-            FillUserComboBoxWithAvaiulableUsers();
+            ResetUI();
         }
 
 
@@ -93,7 +128,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
-
+            for (int i = 0; i < checkedListBox1.Items.Count; i++)
+            {
+                checkedListBox1.SetItemChecked(i, true);
+            }
         }
 
         /// <summary>
@@ -103,7 +141,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-
+            for (int i = 0; i < checkedListBox1.Items.Count; i++)
+            {
+                checkedListBox1.SetItemChecked(i, false);
+            }
         }
 
 
@@ -111,6 +152,20 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        /// <summary>
+        /// Select User whose accounts will be managed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FillCheckBoxWithAccounts(RepoUserEditor.users[RepoUserEditor.RetrieveUserKeyFromName(comboBox2.Text)].UserKey);
+            comboBox1.Enabled = true;
+            button1.Enabled = true;
+            button2.Enabled = true;
+            checkedListBox1.Enabled = true;
         }
     }
 }

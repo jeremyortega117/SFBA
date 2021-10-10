@@ -96,6 +96,23 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             Reader.Close();
         }
 
+        internal static void RemoveAllTransactionsAssociatedWithUserKey(int userKey)
+        {
+            string SQL = "DELETE FROM TRANSACTION WHERE USER_KEY = @USER_KEY";
+            SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            SqlParameter UserKey = new SqlParameter("@USER_KEY", userKey);
+            parameters.Add(UserKey);
+            Command.Parameters.AddRange(parameters.ToArray());
+            try
+            {
+                Command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"ERROR: Deleting transactions tied to user: '{RepoUserEditor.users[userKey].userName}'. " + ex.Message);
+            }
+        }
 
         internal static void PrepareTransDataWithFilters(List<string> Accts, List<string> ExpenseTypes)
         {

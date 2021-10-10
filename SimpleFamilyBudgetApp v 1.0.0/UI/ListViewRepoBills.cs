@@ -1,0 +1,46 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace SimpleFamilyBudgetApp_v_1._0._0
+{
+    internal class ListViewRepoBills
+    {
+        internal static List<string> BillHeaderList = new List<string>() { "BK", "Start Date", "End Date", "Bill Description", "Amount", "Bill Type", "Account", "Frequency", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat", "Sun" };
+
+        public ListViewRepoBills(ListView lview)
+        {
+            ListViewHeadersClass prepHeader = new ListViewHeadersClass();
+            prepHeader.PrepareListViewHeaders(lview, BillHeaderList);
+            lview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            lview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+
+
+        internal void AddDataToListView(ListView lview)
+        {
+            var Accounts = RepoBankAccount.Accounts;
+            lview.Items.Clear();
+            foreach (int key in Accounts.Keys)
+            {
+                List<string> userHeaders = new List<string>();
+                var user = RepoUserEditor.users[Accounts[key].UserKey];
+                userHeaders.Add($"{user.userName} : {user.LastName}, {user.FirstName} {user.MiddleInitial}");
+                userHeaders.Add(Accounts[key].BankName);
+                userHeaders.Add(Accounts[key].AcctLastFour.ToString());
+                var acctType = RepoBankAccount.AccountTypes[Accounts[key].AcctTypeKey];
+                userHeaders.Add(acctType.AcctType);
+                userHeaders.Add(string.Format("{0:C}", Accounts[key].Balance));
+                userHeaders.Add(Accounts[key].InterestFreq.ToString());
+                userHeaders.Add(Accounts[key].InterestPercent.ToString());
+                ListViewItem lvi = new ListViewItem(userHeaders.ToArray());
+                lview.Items.Add(lvi);
+            }
+            lview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            lview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+    }
+}

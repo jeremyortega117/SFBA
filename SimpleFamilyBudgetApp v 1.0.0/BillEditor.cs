@@ -16,18 +16,36 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         internal static string C = "Continuous", T = "Timefreame (\"start - end time\")", P = "Pay To Own";
         internal static char billChar = '-';
         internal static decimal billAmount = 0;
+        internal static decimal billTotal = 0;
+        internal static bool ignore = true;
+
         public BillEditor()
         {
             InitializeComponent();
+            PrepComboBox();
+            JustDisableEverything();
+            ignore = true;
+            radioButtonMonthly.Checked = true;
+            checkBoxMonday.Checked = true;
+            ignore = false;
+        }
+
+        private void PrepComboBox()
+        {
             BillTypes.Add('c', C);
             BillTypes.Add('t', T);
             BillTypes.Add('p', P);
             foreach (var billType in BillTypes)
             {
-                comboBox1.Items.Add(billType.Value);
+                comboBoxBillType.Items.Add(billType.Value);
             }
-            JustDisableEverything();
-            
+
+            foreach(int Key in RepoBankAccount.Accounts.Keys)
+            {
+                var account = RepoBankAccount.Accounts[Key];
+                string acc = $"{account.BankName}, {account.AcctLastFour}, {RepoBankAccount.AccountTypes[account.AcctTypeKey].AcctType}";
+                comboBoxAccount.Items.Add(acc);
+            }
         }
 
         private void JustDisableEverything()
@@ -47,6 +65,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             radioButtonWeekly.Enabled = false;
             radioButtonYearly.Enabled = false;
             buttonInsertNewBill.Enabled = false;
+            textBoxPayOffTotal.Enabled = false;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -56,11 +75,24 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string billType = comboBox1.Text.Trim();
+            string billType = comboBoxBillType.Text.Trim();
             if (billType != "")
             {
                 JustDisableEverything();
                 billChar = getCharFromString(billType);
+                if (billChar == 'p')
+                {
+                    textBoxPayOffTotal.Enabled = true;
+                    dateTimePickerFromDate.Enabled = false;
+                    dateTimePickerToDate.Enabled = false;
+                    CheckIfEnableCreate();
+                }
+                else
+                {
+                    dateTimePickerFromDate.Enabled = true;
+                    if(billChar != 'c')
+                        dateTimePickerToDate.Enabled = true;
+                }
             }
         }
 
@@ -68,17 +100,127 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             if (textBoxAmount.Text.Trim() != "")
             {
+                string billType = comboBoxBillType.Text.Trim();
                 decimal amount = 0;
                 if(Decimal.TryParse(textBoxAmount.Text, out amount))
                 {
                     billAmount = amount;
+                    billChar = getCharFromString(billType);
+                    if (billChar == 'p')
+                    {
+                        PredictDates();
+                        CheckIfEnableCreate();
+                    }
                 }
                 else
                 {
                     MessageBox.Show("Please Enter a dollar amount and try again.");
                     textBoxAmount.Text = "";
+                    billAmount = 0;
                 }
             }
+        }
+
+        private void textBoxPayOffTotal_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxPayOffTotal.Text.Trim() != "")
+            {
+                decimal amount;
+                if (decimal.TryParse(textBoxPayOffTotal.Text, out amount))
+                {
+                    billTotal = amount;
+                }
+                else
+                {
+                    MessageBox.Show("Please Enter a dollar amount and try again.");
+                    textBoxPayOffTotal.Text = "";
+                    billTotal = 0;
+                }
+            }
+            PredictDates();
+        }
+
+        private void PredictDates()
+        {
+            if(billTotal > billAmount && billAmount > 0)
+            {
+                int interval = Convert.ToInt32(Math.Floor(billTotal / billAmount));
+                decimal remainder = billTotal % billAmount;
+                if (remainder != 0)
+                {
+                    interval++;
+                }
+                DateTime dates = dateTimePickerFromDate.Value;
+
+
+                if (radioButtonMonthly.Checked)
+                {
+                    dateTimePickerToDate.Value = dates.AddMonths(interval);
+                }
+
+                else if (radioButtonYearly.Checked)
+                {
+                    dateTimePickerToDate.Value = dates.AddYears(interval);
+                }
+
+                else if (radioButtonDaily.Checked) 
+                {
+                    dateTimePickerToDate.Value = dates.AddDays(interval);
+                }
+
+                else
+                {
+                    if (checkBoxFriday.Checked
+                        || checkBoxMonday.Checked
+                        || checkBoxTuesday.Checked
+                        || checkBoxWednesday.Checked
+                        || checkBoxThursday.Checked
+                        || checkBoxSaturday.Checked
+                        || checkBoxSunday.Checked)
+                    {
+                        int countdown = interval;
+                        DateTime day = dates;
+                        while (countdown > 0)
+                        {
+                            day = day.AddDays(1);
+                            if (checkBoxFriday.Checked && day.DayOfWeek == DayOfWeek.Friday)
+                            {
+                                countdown--;
+                            }
+                            else if (checkBoxSaturday.Checked && day.DayOfWeek == DayOfWeek.Saturday)
+                            {
+                                countdown--;
+                            }
+                            else if (checkBoxSunday.Checked && day.DayOfWeek == DayOfWeek.Sunday)
+                            {
+                                countdown--;
+                            }
+                            else if (checkBoxMonday.Checked && day.DayOfWeek == DayOfWeek.Monday)
+                            {
+                                countdown--;
+                            }
+                            else if (checkBoxTuesday.Checked && day.DayOfWeek == DayOfWeek.Tuesday)
+                            {
+                                countdown--;
+                            }
+                            else if (checkBoxWednesday.Checked && day.DayOfWeek == DayOfWeek.Wednesday)
+                            {
+                                countdown--;
+                            }
+                            else if(checkBoxThursday.Checked && day.DayOfWeek == DayOfWeek.Thursday)
+                            {
+                                countdown--;
+                            }
+                        }
+                        dateTimePickerToDate.Value = day;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please check at least one day of the week if you are paying weekly before trying again.");
+                    }
+                }
+            }
+            CheckIfEnableCreate();
         }
 
         private char getCharFromString(string text)
@@ -106,26 +248,43 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             dateTimePickerFromDate.Enabled = true;
             dateTimePickerToDate.Enabled = true;
+            CheckIfEnableCreate();
         }
 
         private void radioButtonMonthly_CheckedChanged(object sender, EventArgs e)
         {
-            radioButtonFreqChanged();
+            if (radioButtonMonthly.Checked && !ignore)
+            {
+                radioButtonFreqChanged();
+                PredictDates();
+            }
         }
 
         private void radioButtonWeekly_CheckedChanged(object sender, EventArgs e)
         {
-            radioButtonFreqChanged();
+            if (radioButtonWeekly.Checked && !ignore)
+            {
+                radioButtonFreqChanged();
+                PredictDates();
+            }
         }
 
         private void radioButtonDaily_CheckedChanged(object sender, EventArgs e)
         {
-            radioButtonFreqChanged();
+            if (radioButtonDaily.Checked && !ignore)
+            {
+                radioButtonFreqChanged();
+                PredictDates();
+            }
         }
 
         private void radioButtonYearly_CheckedChanged(object sender, EventArgs e)
         {
-            radioButtonFreqChanged();
+            if (radioButtonYearly.Checked && !ignore)
+            {
+                radioButtonFreqChanged();
+                PredictDates();
+            }
         }
 
         private void radioButtonFreqChanged()
@@ -159,7 +318,120 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
+            CheckIfEnableCreate();
+        }
 
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBoxMonday_CheckedChanged(object sender, EventArgs e)
+        {
+            PredictDates();
+        }
+
+        private void checkBoxWednesday_CheckedChanged(object sender, EventArgs e)
+        {
+            PredictDates();
+        }
+
+        private void checkBoxFriday_CheckedChanged(object sender, EventArgs e)
+        {
+            PredictDates();
+        }
+
+        private void checkBoxSunday_CheckedChanged(object sender, EventArgs e)
+        {
+            PredictDates();
+        }
+
+        private void checkBoxTuesday_CheckedChanged(object sender, EventArgs e)
+        {
+            PredictDates();
+        }
+
+        private void checkBoxThursday_CheckedChanged(object sender, EventArgs e)
+        {
+            PredictDates();
+        }
+
+        private void checkBoxSaturday_CheckedChanged(object sender, EventArgs e)
+        {
+            PredictDates();
+        }
+
+        private void textBoxDescription_TextChanged(object sender, EventArgs e)
+        {
+            CheckIfEnableCreate();
+        }
+
+        private void CheckIfEnableCreate()
+        {
+            char c = getCharFromString(comboBoxBillType.Text);
+            if(c == 'c')
+            {
+                if (comboBoxAccount.Text.Trim() != ""
+                    && textBoxAmount.Text.Trim() != ""
+                    && FrequencyFound()
+                    && textBoxDescription.Text.Trim() != ""
+                    )
+                {
+                    buttonInsertNewBill.Enabled = true;
+                    return;
+                }
+            }
+            else if (c == 't')
+            {
+                if (comboBoxAccount.Text.Trim() != ""
+                    && textBoxAmount.Text.Trim() != ""
+                    && FrequencyFound()
+                    && datesWork()
+                    && textBoxDescription.Text.Trim() != ""
+                    )
+                {
+                    buttonInsertNewBill.Enabled = true;
+                    return;
+                }
+            }
+            else if (c == 'p')
+            {
+                if (comboBoxAccount.Text.Trim() != ""
+                    && textBoxAmount.Text.Trim() != ""
+                    && textBoxPayOffTotal.Text.Trim() != ""
+                    && FrequencyFound()
+                    && datesWork()
+                    && textBoxDescription.Text.Trim() != ""
+                    )
+                {
+                    buttonInsertNewBill.Enabled = true;
+                    return;
+                }
+            }
+            buttonInsertNewBill.Enabled = false;
+        }
+
+        private bool datesWork()
+        {
+            return dateTimePickerFromDate.Value < dateTimePickerToDate.Value;
+        }
+
+        private bool FrequencyFound()
+        {
+            if(radioButtonDaily.Checked
+               || radioButtonMonthly.Checked
+               || radioButtonYearly.Checked
+               || (radioButtonWeekly.Checked && (checkBoxFriday.Checked
+                                                || checkBoxMonday.Checked
+                                                || checkBoxSaturday.Checked
+                                                || checkBoxSunday.Checked
+                                                || checkBoxThursday.Checked
+                                                || checkBoxTuesday.Checked
+                                                || checkBoxWednesday.Checked)))
+            {
+                return true;
+            }
+            return false;
         }
 
         private void EnableDaysOfWeek(bool trueFalse)
@@ -171,6 +443,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             checkBoxSaturday.Enabled = trueFalse;
             checkBoxMonday.Enabled = trueFalse;
             checkBoxFriday.Enabled = trueFalse;
+
         }
 
         private void buttonInsertNewBill_Click(object sender, EventArgs e)

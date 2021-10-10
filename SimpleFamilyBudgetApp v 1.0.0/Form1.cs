@@ -55,6 +55,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
             // If a user, an account exist you can start adding transactions.
             ToolStripMenuItemtransaction.Enabled = true;
+            toolStripMenuItemImportFile.Enabled = true;
+            ToolStripMenuItemCreateBudget.Enabled = true;
         }
 
         private void DisableAllTools()
@@ -238,6 +240,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             BillEditor Bill = new BillEditor();
             Bill.ShowDialog();
+            PrepareListViews();
+            PrepareToolOptions();
         }
 
         private void createNewAccountToolStripMenuItem_Click(object sender, EventArgs e)
@@ -252,6 +256,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             ChangeOrDeleteAccount changeAccountForm = new ChangeOrDeleteAccount();
             changeAccountForm.ShowDialog();
+            PrepareListViews();
+            PrepareToolOptions(); 
         }
     }
 }

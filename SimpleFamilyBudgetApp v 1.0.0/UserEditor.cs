@@ -154,8 +154,26 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             RefreshData();
         }
 
+        /// <summary>
+        /// Delete User
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
+
+            int userKey = RepoUserEditor.RetrieveUserKeyFromName(selectedUser);
+            foreach (int accountKey in RepoBankAccount.Accounts.Keys)
+            {
+                if (RepoBankAccount.Accounts[accountKey].UserKey == userKey)
+                {
+                    MessageBox.Show("This user key has account(s) associated with it. Please move accounts to another user or delete them before deleting this user.");
+                    ChangeOrDeleteAccount moveaccounts = new ChangeOrDeleteAccount();
+                    moveaccounts.ShowDialog();
+                    return;
+                }
+            }
+
             List<ModelUserEditor> users = new List<ModelUserEditor>();
             ModelUserEditor user = prepareUserData();
             user.UserKey = RepoUserEditor.RetrieveUserKeyFromName(selectedUser);
