@@ -35,6 +35,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 }
             }
             Reader.Close();
+            Command.Dispose();
         }
         #endregion
 
@@ -63,6 +64,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 {
                     MessageBox.Show($"ERROR: Adding/Editing Account Type: '{acctType.AcctType}'. " + ex.Message);
                 }
+                Command.Dispose();
             }
         }
 
@@ -108,6 +110,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                     Accounts.Add(acct.AcctKey, acct);
                 }
             }
+            Command.Dispose();
             Reader.Close();
         }
 
@@ -152,6 +155,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 {
                     MessageBox.Show($"ERROR: editing Account '{account.BankName}' ''{account.AcctLastFour}'. " + ex.Message);
                 }
+                Command.Dispose();
             }
         }
     }

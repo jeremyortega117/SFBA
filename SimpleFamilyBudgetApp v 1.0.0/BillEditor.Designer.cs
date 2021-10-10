@@ -218,6 +218,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.dateTimePickerFromDate.Name = "dateTimePickerFromDate";
             this.dateTimePickerFromDate.Size = new System.Drawing.Size(99, 20);
             this.dateTimePickerFromDate.TabIndex = 29;
+            this.dateTimePickerFromDate.ValueChanged += new System.EventHandler(this.dateTimePickerFromDate_ValueChanged);
             // 
             // label2
             // 

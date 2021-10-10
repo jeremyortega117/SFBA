@@ -28,9 +28,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             Builder.AppendLine("FROM USERS WITH(NOLOCK) ORDER BY LNAME, FNAME");
             string SQL = Builder.ToString();
             SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);
+            SqlDataReader Reader = null;
             try
             {
-                SqlDataReader Reader = Command.ExecuteReader();
+                Reader = Command.ExecuteReader();
                 if (Reader != null)
                 {
                     users = new Dictionary<int, ModelUserEditor>();
@@ -46,12 +47,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                         users.Add(user.UserKey, user);
                     }
                 }
-                Reader.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("ERROR: Grabbing user data. "+ex.Message);
             }
+            Command.Dispose();
+            Reader.Close();
         }
 
         /// <summary>
@@ -90,6 +92,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 {
                     MessageBox.Show($"ERROR: editing User '{user.userName}'. " + ex.Message);
                 }
+                Command.Dispose();
             }
         }
 

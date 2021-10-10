@@ -27,6 +27,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             RepoBankAccount.PrepareAccountTypes();
             RepoBankAccount.PrepareAcctEditorData();
             RepoTransaction.PrepareTransTypes();
+            RepoFrequency.PrepareFrequencyData();
+            RepoBills.PrepareBillEditorData();
             DisplayAllExpenseCheckTypes();
             DisplayAllAccounts();
             FillAccountsAndExpenseTypesChecked();

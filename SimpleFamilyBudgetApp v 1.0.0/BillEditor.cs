@@ -18,6 +18,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         internal static decimal billAmount = 0;
         internal static decimal billTotal = 0;
         internal static bool ignore = true;
+        internal static ListViewRepoBills lvue;
 
         public BillEditor()
         {
@@ -28,10 +29,19 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             radioButtonMonthly.Checked = true;
             checkBoxMonday.Checked = true;
             ignore = false;
+            PrepareListViewData();
+        }
+
+        private void PrepareListViewData()
+        {
+            listViewExistingBills.Clear();
+            lvue = new ListViewRepoBills(listViewExistingBills);
+            lvue.AddDataToListView(listViewExistingBills);
         }
 
         private void PrepComboBox()
         {
+            BillTypes.Clear();
             BillTypes.Add('c', C);
             BillTypes.Add('t', T);
             BillTypes.Add('p', P);
@@ -51,7 +61,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private void JustDisableEverything()
         {
             textBoxAmount.Enabled = false;
-            dateTimePickerFromDate.Enabled = false;
             dateTimePickerToDate.Enabled = false;
             checkBoxFriday.Enabled = false;
             checkBoxMonday.Enabled = false;
@@ -80,12 +89,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             {
                 JustDisableEverything();
                 billChar = getCharFromString(billType);
+                textBoxAmount.Enabled = true;
                 if (billChar == 'p')
                 {
                     textBoxPayOffTotal.Enabled = true;
-                    dateTimePickerFromDate.Enabled = false;
                     dateTimePickerToDate.Enabled = false;
-                    CheckIfEnableCreate();
                 }
                 else
                 {
@@ -93,6 +101,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                     if(billChar != 'c')
                         dateTimePickerToDate.Enabled = true;
                 }
+                EnableRadioFrequencyButtons();
+                if (radioButtonWeekly.Checked)
+                {
+                    radioButtonFreqChanged();
+                }
+                CheckIfEnableCreate();
             }
         }
 
@@ -225,30 +239,28 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private char getCharFromString(string text)
         {
-            EnableFrequency();
-            textBoxAmount.Enabled = true;
             if (C == text)
             {
                 return 'c';
             }
-            if (T == text)
+            else if (T == text)
             {
-                EnableFromEndDate();
                 return 't';
             }
-            if (P == text)
+            else if (P == text)
             {
-                EnableFromEndDate();
                 return 'p';
             }
-            return '-';
+            else
+            {
+                return '-';
+            }
         }
 
         private void EnableFromEndDate()
         {
             dateTimePickerFromDate.Enabled = true;
             dateTimePickerToDate.Enabled = true;
-            CheckIfEnableCreate();
         }
 
         private void radioButtonMonthly_CheckedChanged(object sender, EventArgs e)
@@ -307,13 +319,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             }
         }
 
-        private void EnableFrequency()
+        private void EnableRadioFrequencyButtons()
         {
             radioButtonDaily.Enabled = true;
             radioButtonMonthly.Enabled = true;
             radioButtonWeekly.Enabled = true;
             radioButtonYearly.Enabled = true;
-            EnableDaysOfWeek(true);
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -368,6 +379,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void CheckIfEnableCreate()
         {
+            if(comboBoxBillType.Text.Trim() == "")
+            {
+                return;
+            }
             char c = getCharFromString(comboBoxBillType.Text);
             if(c == 'c')
             {
@@ -446,9 +461,73 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         }
 
+        private void dateTimePickerFromDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (comboBoxBillType.Text.Trim() != "") {
+                char c = getCharFromString(comboBoxBillType.Text);
+                if (c != 't' && c != '-') {
+                    radioButtonFreqChanged();
+                    PredictDates();
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Add Bill.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonInsertNewBill_Click(object sender, EventArgs e)
         {
+            List<ModelBill> Bills = new List<ModelBill>();
+            ModelBill Bill = new ModelBill();
+            Bill.Frequency = getCharFromRadioButtonFreq(new ModelFrequency());
+            Bill.AccKey = RepoTransaction.GetAcctKeyFromSelected(comboBoxAccount.Text);
+            Bill.Amount = billAmount;
+            Bill.Total = billTotal;
+            Bill.BillStartDate = dateTimePickerFromDate.Value;
+            Bill.BillEndDate = dateTimePickerToDate.Value;
+            Bill.BillDesc = textBoxDescription.Text;
+            Bill.BillType = getCharFromString(comboBoxBillType.Text);
+            Bills.Add(Bill);
 
+            RepoBills.EditBill(Bills, 'A');
+            JustDisableEverything();
+            PrepareListViewData();
+        }
+
+
+
+
+
+        private ModelFrequency getCharFromRadioButtonFreq(ModelFrequency freq)
+        {
+            if (radioButtonWeekly.Checked)
+            {
+                freq.FreqType = 'w';
+                freq.Monday = checkBoxMonday.Checked;
+                freq.Tuesday = checkBoxTuesday.Checked;
+                freq.Wednesday = checkBoxWednesday.Checked;
+                freq.Thursday = checkBoxThursday.Checked;
+                freq.Friday = checkBoxFriday.Checked;
+                freq.Saturday = checkBoxSaturday.Checked;
+                freq.Sunday = checkBoxSunday.Checked;
+            }
+
+            if (radioButtonDaily.Checked)
+            {
+                freq.FreqType = 'r';
+            }
+            if (radioButtonMonthly.Checked)
+            {
+                freq.FreqType = 'm';
+            }
+            if (radioButtonYearly.Checked)
+            {
+                freq.FreqType = 'y';
+            }
+            return freq;
         }
     }
 }

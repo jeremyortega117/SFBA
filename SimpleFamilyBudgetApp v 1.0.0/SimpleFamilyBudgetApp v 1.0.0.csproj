@@ -72,6 +72,11 @@
     <Compile Include="FrequencyClass.Designer.cs">
       <DependentUpon>FrequencyClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="MODEL\ModelFrequency.cs" />
+    <Compile Include="REPO\RepoFrequency.cs" />
+    <Compile Include="REPO\RepoBills.cs" />
+    <Compile Include="UI\ListViewRepoBills.cs" />
+    <Compile Include="MODEL\ModelBill.cs" />
     <Compile Include="TransactionEditor.cs">
       <SubType>Form</SubType>
     </Compile>

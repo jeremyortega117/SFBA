@@ -22,18 +22,27 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             string SQL = "SELECT * FROM TRANS_TYPE WITH(NOLOCK) ORDER BY TRANS_DESC";
             SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);
-            SqlDataReader Reader = Command.ExecuteReader();
-            TransTypes = new Dictionary<int, ModelTransType>();
-            if (Reader != null)
+            SqlDataReader Reader = null;
+            try
             {
-                while (Reader.Read())
+                Reader = Command.ExecuteReader();
+                TransTypes = new Dictionary<int, ModelTransType>();
+                if (Reader != null)
                 {
-                    ModelTransType transType = new ModelTransType();
-                    transType.TransTypeKey = Convert.ToInt32(Reader["TRANS_TYPE_KEY"]);
-                    transType.TransDesc = Reader["TRANS_DESC"].ToString();
-                    TransTypes.Add(transType.TransTypeKey, transType);
+                    while (Reader.Read())
+                    {
+                        ModelTransType transType = new ModelTransType();
+                        transType.TransTypeKey = Convert.ToInt32(Reader["TRANS_TYPE_KEY"]);
+                        transType.TransDesc = Reader["TRANS_DESC"].ToString();
+                        TransTypes.Add(transType.TransTypeKey, transType);
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR: retrieving Trans Type Information. " + ex.Message);
+            }
+            Command.Dispose();
             Reader.Close();
         }
         #endregion
@@ -63,6 +72,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 {
                     MessageBox.Show($"ERROR: Adding/Editing Account Type: '{transType.TransDesc}'. " + ex.Message);
                 }
+                Command.Dispose();
             }
         }
 
@@ -77,22 +87,31 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             string SQL = "SELECT * FROM TRANSACTIONS WITH(NOLOCK) ORDER BY TRANS_DATE DESC";
             SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);
-            SqlDataReader Reader = Command.ExecuteReader();
-            Trans = new Dictionary<int, ModelTrans>();
-            if (Reader != null)
+            SqlDataReader Reader = null;
+            try
             {
-                while (Reader.Read())
+                Reader = Command.ExecuteReader();
+                Trans = new Dictionary<int, ModelTrans>();
+                if (Reader != null)
                 {
-                    ModelTrans trans = new ModelTrans();
-                    trans.TransDate = Convert.ToDateTime(Reader["TRANS_DATE"]);
-                    trans.TransDesc = Reader["TRANS_DESC"].ToString();
-                    trans.TransKey = Convert.ToInt32(Reader["TRANS_KEY"]);
-                    trans.Amount = Convert.ToDouble(Reader["AMOUNT"]);
-                    trans.TransTypeKey = Convert.ToInt32(Reader["TRANS_TYPE_KEY"]);
-                    trans.AcctKey = Convert.ToInt32(Reader["ACC_KEY"]);
-                    Trans.Add(trans.TransKey, trans);
+                    while (Reader.Read())
+                    {
+                        ModelTrans trans = new ModelTrans();
+                        trans.TransDate = Convert.ToDateTime(Reader["TRANS_DATE"]);
+                        trans.TransDesc = Reader["TRANS_DESC"].ToString();
+                        trans.TransKey = Convert.ToInt32(Reader["TRANS_KEY"]);
+                        trans.Amount = Convert.ToDouble(Reader["AMOUNT"]);
+                        trans.TransTypeKey = Convert.ToInt32(Reader["TRANS_TYPE_KEY"]);
+                        trans.AcctKey = Convert.ToInt32(Reader["ACC_KEY"]);
+                        Trans.Add(trans.TransKey, trans);
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"ERROR: selecting transactions. " + ex.Message);
+            }
+            Command.Dispose();
             Reader.Close();
         }
 
@@ -112,6 +131,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             {
                 MessageBox.Show($"ERROR: Deleting transactions tied to user: '{RepoUserEditor.users[userKey].userName}'. " + ex.Message);
             }
+            Command.Dispose();
         }
 
         internal static void PrepareTransDataWithFilters(List<string> Accts, List<string> ExpenseTypes)
@@ -139,22 +159,31 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 Builder.AppendLine("ORDER BY TRANS_DATE DESC");
             string SQL = Builder.ToString();
             SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);
-            SqlDataReader Reader = Command.ExecuteReader();
-            Trans = new Dictionary<int, ModelTrans>();
-            if (Reader != null)
+            SqlDataReader Reader = null;
+            try
             {
-                while (Reader.Read())
+                Reader = Command.ExecuteReader();
+                Trans = new Dictionary<int, ModelTrans>();
+                if (Reader != null)
                 {
-                    ModelTrans trans = new ModelTrans();
-                    trans.TransDate = Convert.ToDateTime(Reader["TRANS_DATE"]);
-                    trans.TransDesc = Reader["TRANS_DESC"].ToString();
-                    trans.TransKey = Convert.ToInt32(Reader["TRANS_KEY"]);
-                    trans.Amount = Convert.ToDouble(Reader["AMOUNT"]);
-                    trans.TransTypeKey = Convert.ToInt32(Reader["TRANS_TYPE_KEY"]);
-                    trans.AcctKey = Convert.ToInt32(Reader["ACC_KEY"]);
-                    Trans.Add(trans.TransKey, trans);
+                    while (Reader.Read())
+                    {
+                        ModelTrans trans = new ModelTrans();
+                        trans.TransDate = Convert.ToDateTime(Reader["TRANS_DATE"]);
+                        trans.TransDesc = Reader["TRANS_DESC"].ToString();
+                        trans.TransKey = Convert.ToInt32(Reader["TRANS_KEY"]);
+                        trans.Amount = Convert.ToDouble(Reader["AMOUNT"]);
+                        trans.TransTypeKey = Convert.ToInt32(Reader["TRANS_TYPE_KEY"]);
+                        trans.AcctKey = Convert.ToInt32(Reader["ACC_KEY"]);
+                        Trans.Add(trans.TransKey, trans);
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR: Retrieving filtered transactions. " + ex.Message);
+            }
+            Command.Dispose();
             Reader.Close();
         }
 
@@ -223,6 +252,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 {
                     MessageBox.Show($"ERROR: editing Transaction '{trans.Amount}' amount for '{trans.TransDesc}' on {trans.TransDate}. " + ex.Message);
                 }
+                Command.Dispose();
             }
         }
     }

@@ -9,7 +9,25 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 {
     internal class ListViewRepoBills
     {
-        internal static List<string> BillHeaderList = new List<string>() { "BK", "Start Date", "End Date", "Bill Description", "Amount", "Bill Type", "Account", "Frequency", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat", "Sun" };
+        internal static List<string> BillHeaderList = new List<string>() 
+        { 
+            "BK", 
+            "Start Date", 
+            "End Date", 
+            "Bill Description", 
+            "Amount", 
+            "Total",
+            "Bill Type", 
+            "Account", 
+            "Frequency", 
+            "Mon", 
+            "Tues", 
+            "Wed", 
+            "Thur", 
+            "Fri", 
+            "Sat", 
+            "Sun" 
+        };
 
         public ListViewRepoBills(ListView lview)
         {
@@ -22,21 +40,35 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         internal void AddDataToListView(ListView lview)
         {
-            var Accounts = RepoBankAccount.Accounts;
+            var Bills = RepoBills.Bills;
             lview.Items.Clear();
-            foreach (int key in Accounts.Keys)
+            foreach (int key in Bills.Keys)
             {
-                List<string> userHeaders = new List<string>();
-                var user = RepoUserEditor.users[Accounts[key].UserKey];
-                userHeaders.Add($"{user.userName} : {user.LastName}, {user.FirstName} {user.MiddleInitial}");
-                userHeaders.Add(Accounts[key].BankName);
-                userHeaders.Add(Accounts[key].AcctLastFour.ToString());
-                var acctType = RepoBankAccount.AccountTypes[Accounts[key].AcctTypeKey];
-                userHeaders.Add(acctType.AcctType);
-                userHeaders.Add(string.Format("{0:C}", Accounts[key].Balance));
-                userHeaders.Add(Accounts[key].InterestFreq.ToString());
-                userHeaders.Add(Accounts[key].InterestPercent.ToString());
-                ListViewItem lvi = new ListViewItem(userHeaders.ToArray());
+                List<string> billHeaders = new List<string>();
+
+                billHeaders.Add(Bills[key].BillKey.ToString());
+                billHeaders.Add(Bills[key].BillStartDate.ToString("MM/dd/yyyy"));
+                billHeaders.Add(Bills[key].BillEndDate.ToString("MM/dd/yyyy"));
+                billHeaders.Add(Bills[key].BillDesc.ToString());
+                billHeaders.Add(Bills[key].Amount.ToString());
+                billHeaders.Add(Bills[key].Total.ToString());
+                billHeaders.Add(Bills[key].BillType.ToString());
+
+                var acct = RepoBankAccount.Accounts[Bills[key].AccKey];
+                var acctType = RepoBankAccount.AccountTypes[acct.AcctTypeKey];
+                billHeaders.Add($"{acct.BankName}, {acct.AcctLastFour}, {acctType.AcctType}");
+
+                billHeaders.Add(Bills[key].Frequency.FreqType.ToString());
+                billHeaders.Add(Bills[key].Frequency.Monday ? "X" : "");
+                billHeaders.Add(Bills[key].Frequency.Tuesday ? "X" : "");
+                billHeaders.Add(Bills[key].Frequency.Wednesday ? "X" : "");
+                billHeaders.Add(Bills[key].Frequency.Thursday ? "X" : "");
+                billHeaders.Add(Bills[key].Frequency.Friday ? "X" : "");
+                billHeaders.Add(Bills[key].Frequency.Saturday ? "X" : "");
+                billHeaders.Add(Bills[key].Frequency.Sunday ? "X" : "");
+
+
+                ListViewItem lvi = new ListViewItem(billHeaders.ToArray());
                 lview.Items.Add(lvi);
             }
             lview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
