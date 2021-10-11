@@ -16,8 +16,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         ListViewRepoTransactions lvr1;
         ListViewRepoTransactions lvr2;
+        ListViewRepoBills lvBill;
         List<string> Accounts;
         List<string> ExpenseTypes;
+
+        internal static DateTime BillFrom;
+        internal static DateTime BillTo;
 
         public Form1()
         {
@@ -29,13 +33,49 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             RepoTransaction.PrepareTransTypes();
             RepoFrequency.PrepareFrequencyData();
             RepoBills.PrepareBillEditorData();
+            BillFrom = dateTimePickerBillFromDate.Value = GetFirstOfMonth();
+            BillTo = dateTimePickerBillToDate.Value = GetEndOfMonth();
             DisplayAllExpenseCheckTypes();
             DisplayAllAccounts();
             FillAccountsAndExpenseTypesChecked();
             RepoTransaction.PrepareTransDataWithFilters(Accounts, ExpenseTypes);
             PrepareListViews();
-            PrepareToolOptions();
+            PrepareToolOptions(); 
         }
+
+        private DateTime GetFirstOfMonth()
+        {
+            DateTime date = DateTime.Now;
+            return new DateTime(date.Year, date.Month, 1);
+        }
+
+
+        private DateTime GetEndOfMonth()
+        {
+            int daysInMonth;
+            int month = DateTime.Now.Month;
+            int year = DateTime.Now.Year;
+            DateTime tempdate = DateTime.Now;
+            if (tempdate.Day > 9)
+            {
+                if (month == 12)
+                {
+                    year++;
+                    month = 1;
+                }
+                else
+                {
+                    month++;
+                }
+                daysInMonth = DateTime.DaysInMonth(year, month);
+            }
+            else
+            {
+                daysInMonth = DateTime.DaysInMonth(year, month);
+            }
+            return new DateTime(year, month, daysInMonth);
+        }
+
 
         private void PrepareToolOptions()
         {
@@ -87,11 +127,16 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private void PrepareListViews()
         {
             listViewOne.Clear();
-            listViewTwo.Clear(); 
+            listViewTwo.Clear();
+            listViewBill.Clear();
+
             lvr1 = new ListViewRepoTransactions(listViewOne);
             lvr2 = new ListViewRepoTransactions(listViewTwo);
+            lvBill = new ListViewRepoBills(listViewBill, ListViewRepoBills.BillCycleHeaderList);
+
             lvr1.AddDataToListView(listViewOne);
             lvr2.AddDataToListView(listViewTwo);
+            lvBill.AddDataToCycleListView(listViewBill, BillFrom, BillTo);
         }
 
 
@@ -260,6 +305,21 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             changeAccountForm.ShowDialog();
             PrepareListViews();
             PrepareToolOptions(); 
+        }
+
+        private void dateTimePickerBillFromDate_ValueChanged(object sender, EventArgs e)
+        {
+            BillFrom = dateTimePickerBillFromDate.Value;
+        }
+
+        private void dateTimePickerBillToDate_ValueChanged(object sender, EventArgs e)
+        {
+            BillTo = dateTimePickerBillToDate.Value;
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            PrepareListViews();
         }
     }
 }

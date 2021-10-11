@@ -44,10 +44,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.toolStripMenuItemAddEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemuser = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItembankAcct = new System.Windows.Forms.ToolStripMenuItem();
+            this.createNewAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.moveDeleteAccountsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItembillType = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemtransaction = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemCreateBudget = new System.Windows.Forms.ToolStripMenuItem();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listViewBill = new System.Windows.Forms.ListView();
             this.panelLeftFilterBar = new System.Windows.Forms.Panel();
             this.buttonUncheckAllBoxes = new System.Windows.Forms.Button();
             this.buttonCheckAllAccounts = new System.Windows.Forms.Button();
@@ -73,8 +75,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.panelRightMainTop = new System.Windows.Forms.Panel();
             this.webBrowser2 = new System.Windows.Forms.WebBrowser();
-            this.createNewAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.moveDeleteAccountsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dateTimePickerBillFromDate = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerBillToDate = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
             this.panelTopAccountSummary.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panelLeftFilterBar.SuspendLayout();
@@ -93,11 +97,15 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // panelTopAccountSummary
             // 
             this.panelTopAccountSummary.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panelTopAccountSummary.Controls.Add(this.dateTimePickerBillToDate);
+            this.panelTopAccountSummary.Controls.Add(this.label7);
+            this.panelTopAccountSummary.Controls.Add(this.dateTimePickerBillFromDate);
+            this.panelTopAccountSummary.Controls.Add(this.label6);
             this.panelTopAccountSummary.Controls.Add(this.label5);
             this.panelTopAccountSummary.Controls.Add(this.listViewBudget);
             this.panelTopAccountSummary.Controls.Add(this.label4);
             this.panelTopAccountSummary.Controls.Add(this.toolStrip1);
-            this.panelTopAccountSummary.Controls.Add(this.listView1);
+            this.panelTopAccountSummary.Controls.Add(this.listViewBill);
             this.panelTopAccountSummary.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTopAccountSummary.Location = new System.Drawing.Point(0, 0);
             this.panelTopAccountSummary.Name = "panelTopAccountSummary";
@@ -111,7 +119,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.label5.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(1019, 34);
+            this.label5.Location = new System.Drawing.Point(779, 36);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(63, 22);
             this.label5.TabIndex = 13;
@@ -121,7 +129,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.listViewBudget.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewBudget.HideSelection = false;
-            this.listViewBudget.Location = new System.Drawing.Point(1088, 34);
+            this.listViewBudget.Location = new System.Drawing.Point(848, 36);
             this.listViewBudget.Name = "listViewBudget";
             this.listViewBudget.Size = new System.Drawing.Size(365, 120);
             this.listViewBudget.TabIndex = 12;
@@ -139,6 +147,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.label4.Size = new System.Drawing.Size(39, 22);
             this.label4.TabIndex = 11;
             this.label4.Text = "Bills";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // toolStrip1
             // 
@@ -170,13 +179,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.toolStripTextBox1,
             this.csvcsvToolStripMenuItem});
             this.toolStripMenuItemImportFile.Name = "toolStripMenuItemImportFile";
-            this.toolStripMenuItemImportFile.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemImportFile.Size = new System.Drawing.Size(149, 22);
             this.toolStripMenuItemImportFile.Text = "Import File";
             // 
             // excelxlsxToolStripMenuItem
             // 
             this.excelxlsxToolStripMenuItem.Name = "excelxlsxToolStripMenuItem";
-            this.excelxlsxToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.excelxlsxToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.excelxlsxToolStripMenuItem.Text = "Excel(.xlsx)";
             // 
             // toolStripTextBox1
@@ -189,13 +198,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // csvcsvToolStripMenuItem
             // 
             this.csvcsvToolStripMenuItem.Name = "csvcsvToolStripMenuItem";
-            this.csvcsvToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.csvcsvToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.csvcsvToolStripMenuItem.Text = "Csv(.csv)";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(146, 6);
             // 
             // toolStripMenuItemAddEdit
             // 
@@ -205,14 +214,14 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.ToolStripMenuItembillType,
             this.ToolStripMenuItemtransaction});
             this.toolStripMenuItemAddEdit.Name = "toolStripMenuItemAddEdit";
-            this.toolStripMenuItemAddEdit.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemAddEdit.Size = new System.Drawing.Size(149, 22);
             this.toolStripMenuItemAddEdit.Text = "Add / Edit";
             this.toolStripMenuItemAddEdit.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
             // ToolStripMenuItemuser
             // 
             this.ToolStripMenuItemuser.Name = "ToolStripMenuItemuser";
-            this.ToolStripMenuItemuser.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItemuser.Size = new System.Drawing.Size(134, 22);
             this.ToolStripMenuItemuser.Text = "User";
             this.ToolStripMenuItemuser.Click += new System.EventHandler(this.userToolStripMenuItem_Click);
             // 
@@ -222,39 +231,53 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.createNewAccountToolStripMenuItem,
             this.moveDeleteAccountsToolStripMenuItem});
             this.ToolStripMenuItembankAcct.Name = "ToolStripMenuItembankAcct";
-            this.ToolStripMenuItembankAcct.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItembankAcct.Size = new System.Drawing.Size(134, 22);
             this.ToolStripMenuItembankAcct.Text = "Bank Acct";
             this.ToolStripMenuItembankAcct.Click += new System.EventHandler(this.bankAcctToolStripMenuItem_Click);
+            // 
+            // createNewAccountToolStripMenuItem
+            // 
+            this.createNewAccountToolStripMenuItem.Name = "createNewAccountToolStripMenuItem";
+            this.createNewAccountToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.createNewAccountToolStripMenuItem.Text = "Create New Account";
+            this.createNewAccountToolStripMenuItem.Click += new System.EventHandler(this.createNewAccountToolStripMenuItem_Click);
+            // 
+            // moveDeleteAccountsToolStripMenuItem
+            // 
+            this.moveDeleteAccountsToolStripMenuItem.Name = "moveDeleteAccountsToolStripMenuItem";
+            this.moveDeleteAccountsToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.moveDeleteAccountsToolStripMenuItem.Text = "Move / Delete Accounts";
+            this.moveDeleteAccountsToolStripMenuItem.Click += new System.EventHandler(this.moveDeleteAccountsToolStripMenuItem_Click);
             // 
             // ToolStripMenuItembillType
             // 
             this.ToolStripMenuItembillType.Name = "ToolStripMenuItembillType";
-            this.ToolStripMenuItembillType.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItembillType.Size = new System.Drawing.Size(134, 22);
             this.ToolStripMenuItembillType.Text = "Bill";
             this.ToolStripMenuItembillType.Click += new System.EventHandler(this.billTypeToolStripMenuItem_Click);
             // 
             // ToolStripMenuItemtransaction
             // 
             this.ToolStripMenuItemtransaction.Name = "ToolStripMenuItemtransaction";
-            this.ToolStripMenuItemtransaction.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItemtransaction.Size = new System.Drawing.Size(134, 22);
             this.ToolStripMenuItemtransaction.Text = "Transaction";
             this.ToolStripMenuItemtransaction.Click += new System.EventHandler(this.transactionToolStripMenuItem_Click);
             // 
             // ToolStripMenuItemCreateBudget
             // 
             this.ToolStripMenuItemCreateBudget.Name = "ToolStripMenuItemCreateBudget";
-            this.ToolStripMenuItemCreateBudget.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItemCreateBudget.Size = new System.Drawing.Size(149, 22);
             this.ToolStripMenuItemCreateBudget.Text = "Create Budget";
             // 
-            // listView1
+            // listViewBill
             // 
-            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(1527, 34);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(365, 120);
-            this.listView1.TabIndex = 10;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listViewBill.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.listViewBill.HideSelection = false;
+            this.listViewBill.Location = new System.Drawing.Point(1527, 34);
+            this.listViewBill.Name = "listViewBill";
+            this.listViewBill.Size = new System.Drawing.Size(365, 120);
+            this.listViewBill.TabIndex = 10;
+            this.listViewBill.UseCompatibleStateImageBehavior = false;
             // 
             // panelLeftFilterBar
             // 
@@ -524,19 +547,45 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.webBrowser2.Size = new System.Drawing.Size(835, 488);
             this.webBrowser2.TabIndex = 0;
             // 
-            // createNewAccountToolStripMenuItem
+            // label6
             // 
-            this.createNewAccountToolStripMenuItem.Name = "createNewAccountToolStripMenuItem";
-            this.createNewAccountToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
-            this.createNewAccountToolStripMenuItem.Text = "Create New Account";
-            this.createNewAccountToolStripMenuItem.Click += new System.EventHandler(this.createNewAccountToolStripMenuItem_Click);
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(1405, 63);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(51, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Bills From";
             // 
-            // moveDeleteAccountsToolStripMenuItem
+            // dateTimePickerBillFromDate
             // 
-            this.moveDeleteAccountsToolStripMenuItem.Name = "moveDeleteAccountsToolStripMenuItem";
-            this.moveDeleteAccountsToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
-            this.moveDeleteAccountsToolStripMenuItem.Text = "Move / Delete Accounts";
-            this.moveDeleteAccountsToolStripMenuItem.Click += new System.EventHandler(this.moveDeleteAccountsToolStripMenuItem_Click);
+            this.dateTimePickerBillFromDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimePickerBillFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerBillFromDate.Location = new System.Drawing.Point(1408, 79);
+            this.dateTimePickerBillFromDate.Name = "dateTimePickerBillFromDate";
+            this.dateTimePickerBillFromDate.Size = new System.Drawing.Size(88, 20);
+            this.dateTimePickerBillFromDate.TabIndex = 15;
+            this.dateTimePickerBillFromDate.ValueChanged += new System.EventHandler(this.dateTimePickerBillFromDate_ValueChanged);
+            // 
+            // dateTimePickerBillToDate
+            // 
+            this.dateTimePickerBillToDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimePickerBillToDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerBillToDate.Location = new System.Drawing.Point(1408, 132);
+            this.dateTimePickerBillToDate.Name = "dateTimePickerBillToDate";
+            this.dateTimePickerBillToDate.Size = new System.Drawing.Size(88, 20);
+            this.dateTimePickerBillToDate.TabIndex = 17;
+            this.dateTimePickerBillToDate.ValueChanged += new System.EventHandler(this.dateTimePickerBillToDate_ValueChanged);
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(1405, 116);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(41, 13);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Bills To";
             // 
             // Form1
             // 
@@ -611,13 +660,17 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private System.Windows.Forms.Button buttonUncheckAllBoxes;
         private System.Windows.Forms.Button buttonCheckAllAccounts;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView listViewBill;
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.WebBrowser webBrowser2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ListView listViewBudget;
         private System.Windows.Forms.ToolStripMenuItem createNewAccountToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem moveDeleteAccountsToolStripMenuItem;
+        private System.Windows.Forms.DateTimePicker dateTimePickerBillToDate;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DateTimePicker dateTimePickerBillFromDate;
+        private System.Windows.Forms.Label label6;
     }
 }
 

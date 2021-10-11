@@ -9,6 +9,16 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 {
     internal class ListViewRepoBills
     {
+
+
+        public ListViewRepoBills(ListView lview, List<string> BillHeaderList)
+        {
+            ListViewHeadersClass prepHeader = new ListViewHeadersClass();
+            prepHeader.PrepareListViewHeaders(lview, BillHeaderList);
+            lview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            lview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+
         internal static List<string> BillHeaderList = new List<string>() 
         { 
             "BK", 
@@ -17,6 +27,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             "Bill Description", 
             "Amount", 
             "Total",
+            "Remaining",
             "Bill Type", 
             "Account", 
             "Frequency", 
@@ -28,14 +39,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             "Sat", 
             "Sun" 
         };
-
-        public ListViewRepoBills(ListView lview)
-        {
-            ListViewHeadersClass prepHeader = new ListViewHeadersClass();
-            prepHeader.PrepareListViewHeaders(lview, BillHeaderList);
-            lview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-            lview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-        }
 
 
         internal void AddDataToListView(ListView lview)
@@ -52,6 +55,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 billHeaders.Add(Bills[key].BillDesc.ToString());
                 billHeaders.Add(Bills[key].Amount.ToString());
                 billHeaders.Add(Bills[key].Total.ToString());
+                billHeaders.Add(Bills[key].Remaining.ToString());
                 billHeaders.Add(Bills[key].BillType.ToString());
 
                 var acct = RepoBankAccount.Accounts[Bills[key].AccKey];
@@ -73,6 +77,156 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             }
             lview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             lview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+
+
+
+        internal static List<string> BillCycleHeaderList = new List<string>()
+        {
+            "Amount Due",
+            "Bill Date",
+            "Bill Description",
+            "Amount Left ",
+            "Account",
+        };
+
+        internal void AddDataToCycleListView(ListView lview, DateTime billFrom, DateTime billTo)
+        {
+            List<string[]> DataFormats = new List<string[]>();
+
+            var Bills = RepoBills.Bills;
+
+            lview.Items.Clear();
+            DateTime date = billFrom;
+
+            while (date < billTo)
+            {
+                foreach (int key in RepoBills.Bills.Keys)
+                {
+                    char freq = Bills[key].Frequency.FreqType;
+                    decimal remains = Bills[key].Remaining;
+
+                    if (freq == 't' && (date < billFrom || date > billTo))
+                    {
+                        continue;
+                    }
+                    else if(freq == 'p' && remains <= 0)
+                    {
+                        continue;
+                    }
+                    if (BillDateHasBeenFound(Bills[key], date))
+                    {
+                        List<string> billHeaders = new List<string>();
+
+                        billHeaders.Add(Bills[key].Amount.ToString());
+                        billHeaders.Add(date.ToString("MM/dd/yyyy"));
+                        billHeaders.Add(Bills[key].BillDesc.ToString());
+                        if (freq != 'p')
+                        {
+                            billHeaders.Add("-");
+                        }
+                        else
+                        {
+                            billHeaders.Add(remains.ToString());
+                        }
+
+                        var acct = RepoBankAccount.Accounts[Bills[key].AccKey];
+                        var acctType = RepoBankAccount.AccountTypes[acct.AcctTypeKey];
+                        billHeaders.Add($"{acct.BankName}, {acct.AcctLastFour}, {acctType.AcctType}");
+
+                        DataFormats.Add(billHeaders.ToArray());
+                        if(freq == 'p')
+                        {
+                            Bills[key].Remaining -= Bills[key].Amount;
+                        }
+                    }
+                }
+                date = date.AddDays(1);
+            }
+
+
+            foreach (string[] arr in DataFormats)
+            {
+                ListViewItem lvi = new ListViewItem(arr);
+                lview.Items.Add(lvi);
+            }
+
+            lview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            lview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+
+
+        /// <summary>
+        /// Find out if the date has been found.
+        /// </summary>
+        /// <returns></returns>
+        private bool BillDateHasBeenFound(ModelBill modelBill, DateTime date)
+        {
+            DateTime fromDate = modelBill.BillStartDate;
+
+            char c = modelBill.BillType;
+
+            char freq = modelBill.Frequency.FreqType;
+            bool M, T, W, TH, F, S, Su;
+            M = modelBill.Frequency.Monday;
+            T = modelBill.Frequency.Tuesday;
+            W = modelBill.Frequency.Wednesday;
+            TH = modelBill.Frequency.Thursday;
+            F = modelBill.Frequency.Friday;
+            S = modelBill.Frequency.Saturday;
+            Su = modelBill.Frequency.Sunday;
+
+
+            if (freq == 'm')
+            {
+                if (fromDate.Day == date.Day)
+                {
+                    return true;
+                }
+            }
+            else if (freq == 'w')
+            {
+                if (date.DayOfWeek == DayOfWeek.Monday && M)
+                {
+                    return true;
+                }
+                if (date.DayOfWeek == DayOfWeek.Tuesday && T)
+                {
+                    return true;
+                }
+                if (date.DayOfWeek == DayOfWeek.Wednesday && W)
+                {
+                    return true;
+                }
+                if (date.DayOfWeek == DayOfWeek.Thursday && TH)
+                {
+                    return true;
+                }
+                if (date.DayOfWeek == DayOfWeek.Friday && F)
+                {
+                    return true;
+                }
+                if (date.DayOfWeek == DayOfWeek.Saturday && S)
+                {
+                    return true;
+                }
+                if (date.DayOfWeek == DayOfWeek.Sunday && Su)
+                {
+                    return true;
+                }
+            }
+            else if( freq == 'd')
+            {
+                return true;
+            }
+            else if (freq == 'y')
+            {
+                if (fromDate.Day == date.Day && fromDate.Month == date.Month)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

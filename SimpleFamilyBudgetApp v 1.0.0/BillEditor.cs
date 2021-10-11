@@ -35,7 +35,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private void PrepareListViewData()
         {
             listViewExistingBills.Clear();
-            lvue = new ListViewRepoBills(listViewExistingBills);
+            lvue = new ListViewRepoBills(listViewExistingBills, ListViewRepoBills.BillHeaderList);
             lvue.AddDataToListView(listViewExistingBills);
         }
 
