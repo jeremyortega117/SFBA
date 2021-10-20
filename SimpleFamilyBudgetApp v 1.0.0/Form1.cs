@@ -40,7 +40,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             FillAccountsAndExpenseTypesChecked();
             RepoTransaction.PrepareTransDataWithFilters(Accounts, ExpenseTypes);
             PrepareListViews();
-            PrepareToolOptions(); 
+            PrepareToolOptions();
+            PrepareWebViews();
+        }
+
+        private void PrepareWebViews()
+        {
+            
         }
 
         private DateTime GetFirstOfMonth()
@@ -320,6 +326,16 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private void label4_Click(object sender, EventArgs e)
         {
             PrepareListViews();
+        }
+
+        private void excelxlsxToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void listViewBill_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

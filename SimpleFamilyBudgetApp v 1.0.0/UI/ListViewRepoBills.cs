@@ -83,8 +83,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         internal static List<string> BillCycleHeaderList = new List<string>()
         {
-            "Amount Due",
             "Bill Date",
+            "Amount Due",
             "Bill Description",
             "Amount Left ",
             "Account",
@@ -98,28 +98,42 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
             lview.Items.Clear();
             DateTime date = billFrom;
+            DateTime startDateOfBillPayments = DateTime.MinValue;
 
             while (date < billTo)
             {
                 foreach (int key in RepoBills.Bills.Keys)
                 {
-                    char freq = Bills[key].Frequency.FreqType;
-                    decimal remains = Bills[key].Remaining;
+                    char freq = Bills[key].BillType;
+
+                    if (startDateOfBillPayments == DateTime.MinValue && freq == 'p')
+                    {
+                        Bills[key].Remaining = Bills[key].Total;
+                        startDateOfBillPayments = Bills[key].BillStartDate;
+                        while (startDateOfBillPayments < date && Bills[key].Remaining > 0)
+                        {
+                            Bills[key].Remaining -= Bills[key].Amount;
+                            startDateOfBillPayments.AddDays(1);
+                        }
+                        if(Bills[key].Remaining <= 0)
+                        {
+                            continue;
+                        }
+                    }
 
                     if (freq == 't' && (date < billFrom || date > billTo))
                     {
                         continue;
                     }
-                    else if(freq == 'p' && remains <= 0)
+                    else if(freq == 'p' && Bills[key].Remaining <= 0)
                     {
                         continue;
                     }
                     if (BillDateHasBeenFound(Bills[key], date))
                     {
                         List<string> billHeaders = new List<string>();
-
-                        billHeaders.Add(Bills[key].Amount.ToString());
                         billHeaders.Add(date.ToString("MM/dd/yyyy"));
+                        billHeaders.Add(Bills[key].Amount.ToString());
                         billHeaders.Add(Bills[key].BillDesc.ToString());
                         if (freq != 'p')
                         {
@@ -127,7 +141,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                         }
                         else
                         {
-                            billHeaders.Add(remains.ToString());
+                            billHeaders.Add(Bills[key].Remaining.ToString());
                         }
 
                         var acct = RepoBankAccount.Accounts[Bills[key].AccKey];
@@ -143,7 +157,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 }
                 date = date.AddDays(1);
             }
-
 
             foreach (string[] arr in DataFormats)
             {

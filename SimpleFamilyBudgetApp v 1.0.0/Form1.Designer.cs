@@ -31,6 +31,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panelTopAccountSummary = new System.Windows.Forms.Panel();
+            this.dateTimePickerBillToDate = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
+            this.dateTimePickerBillFromDate = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.listViewBudget = new System.Windows.Forms.ListView();
             this.label4 = new System.Windows.Forms.Label();
@@ -75,10 +79,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.panelRightMainTop = new System.Windows.Forms.Panel();
             this.webBrowser2 = new System.Windows.Forms.WebBrowser();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dateTimePickerBillFromDate = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerBillToDate = new System.Windows.Forms.DateTimePicker();
-            this.label7 = new System.Windows.Forms.Label();
             this.panelTopAccountSummary.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panelLeftFilterBar.SuspendLayout();
@@ -111,6 +111,46 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.panelTopAccountSummary.Name = "panelTopAccountSummary";
             this.panelTopAccountSummary.Size = new System.Drawing.Size(1904, 160);
             this.panelTopAccountSummary.TabIndex = 0;
+            // 
+            // dateTimePickerBillToDate
+            // 
+            this.dateTimePickerBillToDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimePickerBillToDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerBillToDate.Location = new System.Drawing.Point(1408, 132);
+            this.dateTimePickerBillToDate.Name = "dateTimePickerBillToDate";
+            this.dateTimePickerBillToDate.Size = new System.Drawing.Size(88, 20);
+            this.dateTimePickerBillToDate.TabIndex = 17;
+            this.dateTimePickerBillToDate.ValueChanged += new System.EventHandler(this.dateTimePickerBillToDate_ValueChanged);
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(1405, 116);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(41, 13);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Bills To";
+            // 
+            // dateTimePickerBillFromDate
+            // 
+            this.dateTimePickerBillFromDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimePickerBillFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerBillFromDate.Location = new System.Drawing.Point(1408, 79);
+            this.dateTimePickerBillFromDate.Name = "dateTimePickerBillFromDate";
+            this.dateTimePickerBillFromDate.Size = new System.Drawing.Size(88, 20);
+            this.dateTimePickerBillFromDate.TabIndex = 15;
+            this.dateTimePickerBillFromDate.ValueChanged += new System.EventHandler(this.dateTimePickerBillFromDate_ValueChanged);
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(1405, 63);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(51, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Bills From";
             // 
             // label5
             // 
@@ -187,6 +227,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.excelxlsxToolStripMenuItem.Name = "excelxlsxToolStripMenuItem";
             this.excelxlsxToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.excelxlsxToolStripMenuItem.Text = "Excel(.xlsx)";
+            this.excelxlsxToolStripMenuItem.Click += new System.EventHandler(this.excelxlsxToolStripMenuItem_Click);
             // 
             // toolStripTextBox1
             // 
@@ -278,6 +319,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.listViewBill.Size = new System.Drawing.Size(365, 120);
             this.listViewBill.TabIndex = 10;
             this.listViewBill.UseCompatibleStateImageBehavior = false;
+            this.listViewBill.SelectedIndexChanged += new System.EventHandler(this.listViewBill_SelectedIndexChanged);
             // 
             // panelLeftFilterBar
             // 
@@ -546,46 +588,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.webBrowser2.Name = "webBrowser2";
             this.webBrowser2.Size = new System.Drawing.Size(835, 488);
             this.webBrowser2.TabIndex = 0;
-            // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1405, 63);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(51, 13);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Bills From";
-            // 
-            // dateTimePickerBillFromDate
-            // 
-            this.dateTimePickerBillFromDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePickerBillFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerBillFromDate.Location = new System.Drawing.Point(1408, 79);
-            this.dateTimePickerBillFromDate.Name = "dateTimePickerBillFromDate";
-            this.dateTimePickerBillFromDate.Size = new System.Drawing.Size(88, 20);
-            this.dateTimePickerBillFromDate.TabIndex = 15;
-            this.dateTimePickerBillFromDate.ValueChanged += new System.EventHandler(this.dateTimePickerBillFromDate_ValueChanged);
-            // 
-            // dateTimePickerBillToDate
-            // 
-            this.dateTimePickerBillToDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePickerBillToDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerBillToDate.Location = new System.Drawing.Point(1408, 132);
-            this.dateTimePickerBillToDate.Name = "dateTimePickerBillToDate";
-            this.dateTimePickerBillToDate.Size = new System.Drawing.Size(88, 20);
-            this.dateTimePickerBillToDate.TabIndex = 17;
-            this.dateTimePickerBillToDate.ValueChanged += new System.EventHandler(this.dateTimePickerBillToDate_ValueChanged);
-            // 
-            // label7
-            // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1405, 116);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(41, 13);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "Bills To";
             // 
             // Form1
             // 
