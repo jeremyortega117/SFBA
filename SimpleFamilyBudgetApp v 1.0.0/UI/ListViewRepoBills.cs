@@ -121,7 +121,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                         }
                     }
 
-                    if (freq == 't' && (date < billFrom || date > billTo))
+                    if ((freq == 't' && (date < billFrom || date > billTo)) || (freq == 'p' && (date < Bills[key].BillStartDate || date > Bills[key].BillEndDate)))
                     {
                         continue;
                     }
@@ -129,10 +129,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                     {
                         continue;
                     }
+
                     if (BillDateHasBeenFound(Bills[key], date))
                     {
                         List<string> billHeaders = new List<string>();
-                        billHeaders.Add(date.ToString("MM/dd/yyyy"));
+                        billHeaders.Add(date.ToString("yyyy/MM/dd"));
                         billHeaders.Add(Bills[key].Amount.ToString());
                         billHeaders.Add(Bills[key].BillDesc.ToString());
                         if (freq != 'p')
