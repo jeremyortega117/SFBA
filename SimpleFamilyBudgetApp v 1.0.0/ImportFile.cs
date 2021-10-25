@@ -23,5 +23,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
 
         }
+
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            //OpenFileDialog file = new OpenFileDialog();
+            //file.
+        }
     }
 }

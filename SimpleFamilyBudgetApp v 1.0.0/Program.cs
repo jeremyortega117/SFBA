@@ -18,7 +18,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             RepoDBClass.PrepareConnectionString();
-            Application.Run(new Form1());
+            Application.Run(new MainEditor());
         }
     }
 }

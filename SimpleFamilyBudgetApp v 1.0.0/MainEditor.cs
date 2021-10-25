@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,9 +11,10 @@ using System.Windows.Forms;
 
 namespace SimpleFamilyBudgetApp_v_1._0._0
 {
-    public partial class Form1 : Form
+    public partial class MainEditor : Form
     {
         internal static bool sideBarVisible = true;
+        internal static bool rightSideBarVisible = true;
 
         ListViewRepoTransactions lvr1;
         ListViewRepoTransactions lvr2;
@@ -23,10 +25,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         internal static DateTime BillFrom;
         internal static DateTime BillTo;
 
-        public Form1()
+        public MainEditor()
         {
             InitializeComponent();
             leftBarButtonHide();
+            RightBarHide();
             RepoUserEditor.PrepareUserEditorData();
             RepoBankAccount.PrepareAccountTypes();
             RepoBankAccount.PrepareAcctEditorData();
@@ -44,9 +47,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             PrepareWebViews();
         }
 
+        
+
         private void PrepareWebViews()
         {
-            
+            //string curDir = Directory.GetCurrentDirectory();
+            //webBrowser1.Url = new Uri(String.Format("{0}/WEB_BROWSER/PieChart.html", curDir));
+            //webBrowser2.Url = new Uri(String.Format("{0}/WEB_BROWSER/PieChart.html", curDir));
         }
 
         private DateTime GetFirstOfMonth()
@@ -132,17 +139,17 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void PrepareListViews()
         {
-            listViewOne.Clear();
-            listViewTwo.Clear();
-            listViewBill.Clear();
+            listViewMainOne.Clear();
+            //listViewSecondaryTwo.Clear();
+            //listViewBill.Clear();
 
-            lvr1 = new ListViewRepoTransactions(listViewOne);
-            lvr2 = new ListViewRepoTransactions(listViewTwo);
-            lvBill = new ListViewRepoBills(listViewBill, ListViewRepoBills.BillCycleHeaderList);
+            lvr1 = new ListViewRepoTransactions(listViewMainOne);
+            lvr2 = new ListViewRepoTransactions(listViewSecondaryOne);
+            //lvBill = new ListViewRepoBills(listViewBill, ListViewRepoBills.BillCycleHeaderList);
 
-            lvr1.AddDataToListView(listViewOne);
-            lvr2.AddDataToListView(listViewTwo);
-            lvBill.AddDataToCycleListView(listViewBill, BillFrom, BillTo);
+            lvr1.AddDataToListView(listViewMainOne);
+            lvr2.AddDataToListView(listViewSecondaryOne);
+            //lvBill.AddDataToCycleListView(listViewBill, BillFrom, BillTo);
         }
 
 
@@ -172,6 +179,29 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             }
         }
         #endregion
+
+        private void RightBarHide()
+        {
+            if (rightSideBarVisible)
+            {
+                rightSideBarVisible = false;
+                buttonRightCompare.Text = "<";
+                int newWidth = 100;
+                if (sideBarVisible)
+                {
+                    newWidth += 230;
+                }
+                splitContainer1.SplitterDistance = this.Width-newWidth;
+                panelMainOne.Width *= 2;
+            }
+            else
+            {
+                rightSideBarVisible = true;
+                buttonRightCompare.Text = ">";
+                splitContainer1.SplitterDistance = this.Width/2;
+                panelMainOne.Width /= 2;
+            }
+        }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -336,6 +366,16 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private void listViewBill_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonRightCompare_Click(object sender, EventArgs e)
+        {
+            RightBarHide();
         }
     }
 }

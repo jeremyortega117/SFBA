@@ -9,7 +9,6 @@ C:\Users\Jeremy\source\repos\SimpleFamilyBudgetApp\SimpleFamilyBudgetApp v 1.0.0
 C:\Users\Jeremy\source\repos\SimpleFamilyBudgetApp\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp v 1.0.0.exe
 C:\Users\Jeremy\source\repos\SimpleFamilyBudgetApp\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp v 1.0.0.pdb
 C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp v 1.0.0.csproj.AssemblyReference.cache
-C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp_v_1._0._0.Form1.resources
 C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp_v_1._0._0.Properties.Resources.resources
 C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp v 1.0.0.csproj.GenerateResource.cache
 C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp v 1.0.0.csproj.CoreCompileInputs.cache
@@ -25,3 +24,5 @@ C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleF
 C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp_v_1._0._0.FrequencyClass.resources
 C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp_v_1._0._0.ChangeOrDeleteAccount.resources
 C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp_v_1._0._0.ImportFile.resources
+C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\bin\Debug\WEB_BROWSER\PieChart.html
+C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp_v_1._0._0.MainEditor.resources
