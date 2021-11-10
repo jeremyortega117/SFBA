@@ -42,6 +42,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.dateTimePickerTransDate = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.buttonImportFile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listView1
@@ -162,11 +163,22 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // buttonImportFile
+            // 
+            this.buttonImportFile.Location = new System.Drawing.Point(487, 272);
+            this.buttonImportFile.Name = "buttonImportFile";
+            this.buttonImportFile.Size = new System.Drawing.Size(120, 23);
+            this.buttonImportFile.TabIndex = 13;
+            this.buttonImportFile.Text = "Import File";
+            this.buttonImportFile.UseVisualStyleBackColor = true;
+            this.buttonImportFile.Click += new System.EventHandler(this.buttonImportFile_Click);
+            // 
             // TransactionEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonImportFile);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dateTimePickerTransDate);
@@ -202,5 +214,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private System.Windows.Forms.DateTimePicker dateTimePickerTransDate;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonImportFile;
     }
 }

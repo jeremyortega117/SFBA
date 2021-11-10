@@ -360,7 +360,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void excelxlsxToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void listViewBill_SelectedIndexChanged(object sender, EventArgs e)
@@ -376,6 +376,33 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private void buttonRightCompare_Click(object sender, EventArgs e)
         {
             RightBarHide();
+        }
+
+        private void dateTimePicker4_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripMenuItemImportFile_Click(object sender, EventArgs e)
+        {
+            //ImportFile file = new ImportFile();
+            //file.ShowDialog();
+            //PrepareListViews();
         }
     }
 }

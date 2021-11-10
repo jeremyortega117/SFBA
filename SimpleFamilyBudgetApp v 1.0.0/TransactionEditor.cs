@@ -124,5 +124,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             CheckIfButtonEnabled();
         }
+
+        private void buttonImportFile_Click(object sender, EventArgs e)
+        {
+            ImportFile file = new ImportFile(comboBoxAcct.Text);
+
+            file.ShowDialog();
+        }
     }
 }

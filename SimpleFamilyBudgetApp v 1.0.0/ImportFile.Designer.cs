@@ -31,6 +31,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             this.textBoxFileLocation = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.buttonImport = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxFileLocation
@@ -50,11 +51,22 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // buttonImport
+            // 
+            this.buttonImport.Location = new System.Drawing.Point(197, 98);
+            this.buttonImport.Name = "buttonImport";
+            this.buttonImport.Size = new System.Drawing.Size(162, 34);
+            this.buttonImport.TabIndex = 6;
+            this.buttonImport.Text = "Import";
+            this.buttonImport.UseVisualStyleBackColor = true;
+            this.buttonImport.Click += new System.EventHandler(this.buttonImport_Click);
+            // 
             // ImportFile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(550, 120);
+            this.ClientSize = new System.Drawing.Size(550, 144);
+            this.Controls.Add(this.buttonImport);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBoxFileLocation);
             this.Name = "ImportFile";
@@ -67,5 +79,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         #endregion
         private System.Windows.Forms.TextBox textBoxFileLocation;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonImport;
     }
 }
