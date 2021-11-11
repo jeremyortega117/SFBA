@@ -19,7 +19,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         ListViewRepoTransactions lvr1;
         ListViewRepoTransactions lvr2;
         ListViewRepoBills lvBill;
-        List<string> Users;
+        Dictionary<int, string> Users;
         List<string> Accounts;
         List<string> ExpenseTypes;
 
@@ -128,21 +128,60 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void FillAccountsAndExpenseTypesChecked()
         {
-            Users = new List<string>();
+            bool usersChanged = false;
+            if (Users != null && CheckIfUsersHaveChanged())
+            {
+                usersChanged = true;
+            }
+            Users = new Dictionary<int, string>();
             Accounts = new List<string>();
             ExpenseTypes = new List<string>();
-            foreach(var checkedIndex in checkedListBox1.CheckedItems)
+            foreach (var checkedIndex in checkedListBoxUsers.CheckedItems)
             {
-                ExpenseTypes.Add(checkedIndex.ToString());
+                string name = checkedIndex.ToString();
+                int userKey = RepoUserEditor.RetrieveUserKeyFromName(name);
+                Users.Add(userKey, name);
+            }
+            if (usersChanged) {
+                checkedListBox2.Items.Clear();
+                DisplayAllAccounts(Users);
             }
             foreach (var checkedIndex in checkedListBox2.CheckedItems)
             {
-                Accounts.Add(checkedIndex.ToString());
+                if (usersChanged)
+                {
+                    string accountType = checkedIndex.ToString();
+                    int accKey = RepoTransaction.GetAcctKeyFromSelected(accountType);
+                    if (Users.Keys.Contains(RepoBankAccount.Accounts[accKey].UserKey))
+                        Accounts.Add(accountType);
+                }
+                else
+                {
+                    Accounts.Add(checkedIndex.ToString());
+                }
+            }
+            foreach (var checkedIndex in checkedListBox1.CheckedItems)
+            {
+                ExpenseTypes.Add(checkedIndex.ToString());
+            }
+        }
+
+        private bool CheckIfUsersHaveChanged()
+        {
+            if (checkedListBoxUsers.CheckedItems.Count != Users.Keys.Count)
+            {
+                return true;
             }
             foreach (var checkedIndex in checkedListBoxUsers.CheckedItems)
             {
-                Users.Add(checkedIndex.ToString());
+                string name = checkedIndex.ToString();
+                int userKey = RepoUserEditor.RetrieveUserKeyFromName(name);
+                if (!Users.ContainsKey(userKey))
+                {
+                    return true;
+                }
             }
+            return false;
         }
 
         private void PrepareListViews()
@@ -263,7 +302,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             foreach (var user in RepoUserEditor.users.Values)
             {
-                checkedListBoxUsers.Items.Add($"{user.FirstName} {user.MiddleInitial}. {user.LastName}", CheckState.Checked);
+                string userCombonation = $"{user.LastName}, {user.FirstName} {user.MiddleInitial} : {user.userName}.";
+                checkedListBoxUsers.Items.Add(userCombonation, CheckState.Checked);
             }
         }
 
@@ -272,6 +312,23 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             foreach(var types in RepoTransaction.TransTypes.Values)
             {
                 checkedListBox1.Items.Add(types.TransDesc, CheckState.Checked);
+            }
+        }
+
+        private void DisplayAllAccounts(Dictionary<int, string> users)
+        {
+            foreach (var acct in RepoBankAccount.Accounts.Values)
+            {
+                string acctType = RepoBankAccount.AccountTypes[acct.AcctTypeKey].AcctType;
+                string acctInfo = $"{acct.BankName}, {acct.AcctLastFour}, {acctType}";
+                if (users.ContainsKey(acct.UserKey))
+                {
+                    checkedListBox2.Items.Add(acctInfo, CheckState.Checked);
+                }
+                else
+                {
+                    checkedListBox2.Items.Add(acctInfo, CheckState.Unchecked);
+                }
             }
         }
 

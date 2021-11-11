@@ -148,6 +148,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 ExpenseTypeKeys.Add(GetTransTypeKeyFromSelected(expenseType));
             }
 
+            if(AcctKeys.Count == 0 || ExpenseTypeKeys.Count == 0)
+            {
+                Trans = new Dictionary<int, ModelTrans>();
+                return;
+            }
+
             StringBuilder Builder = new StringBuilder();
             Builder.AppendLine("SELECT * ");
             Builder.AppendLine("FROM TRANSACTIONS WITH(NOLOCK)");
