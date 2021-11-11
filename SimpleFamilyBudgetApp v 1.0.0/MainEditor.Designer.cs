@@ -43,105 +43,78 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.ToolStripMenuItembillType = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemtransaction = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemCreateBudget = new System.Windows.Forms.ToolStripMenuItem();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panelLeftFilterBar = new System.Windows.Forms.Panel();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
-            this.buttonUncheckAllBoxes = new System.Windows.Forms.Button();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.buttonCheckAllAccounts = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.buttonUncheckAllExpenses = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.buttonAllExpenses = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panelleftFilterCloseOpen = new System.Windows.Forms.Panel();
-            this.buttonLeftFilterHide = new System.Windows.Forms.Button();
-            this.panelMainDisplayFullBackground = new System.Windows.Forms.Panel();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.panelleftMainBottom = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.listViewBudgetMain = new System.Windows.Forms.ListView();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.splitter4 = new System.Windows.Forms.Splitter();
+            this.mainGroupBox = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.listViewBillsMain = new System.Windows.Forms.ListView();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
-            this.dateTimePickerBillFromDate = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerBillToDate = new System.Windows.Forms.DateTimePicker();
-            this.label13 = new System.Windows.Forms.Label();
-            this.splitter3 = new System.Windows.Forms.Splitter();
-            this.panelMainOne = new System.Windows.Forms.Panel();
-            this.listViewMainOne = new System.Windows.Forms.ListView();
-            this.splitter1 = new System.Windows.Forms.Splitter();
-            this.panelLeftMainTop = new System.Windows.Forms.Panel();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.splitter2 = new System.Windows.Forms.Splitter();
-            this.panelRIghtMainBottom = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.listViewBudgetSecondary = new System.Windows.Forms.ListView();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.splitter6 = new System.Windows.Forms.Splitter();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel13 = new System.Windows.Forms.Panel();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.listViewBillsSecondary = new System.Windows.Forms.ListView();
-            this.splitter5 = new System.Windows.Forms.Splitter();
-            this.panelSecondaryOne = new System.Windows.Forms.Panel();
-            this.listViewSecondaryOne = new System.Windows.Forms.ListView();
-            this.panelRightMainTop = new System.Windows.Forms.Panel();
-            this.tabControl2 = new System.Windows.Forms.TabControl();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.buttonRightCompare = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.panelLeftFilterBar = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonUncheckAllExpenses = new System.Windows.Forms.Button();
+            this.buttonAllExpenses = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.buttonCheckAllAccounts = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.buttonUncheckAllBoxes = new System.Windows.Forms.Button();
+            this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.checkedListBoxUsers = new System.Windows.Forms.CheckedListBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
+            this.radioExpenses = new System.Windows.Forms.RadioButton();
+            this.radioBudgets = new System.Windows.Forms.RadioButton();
+            this.radioBills = new System.Windows.Forms.RadioButton();
+            this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
+            this.buttonBackOneMonth = new System.Windows.Forms.Button();
+            this.buttonForwardOneMonth = new System.Windows.Forms.Button();
+            this.ForwardOneYear = new System.Windows.Forms.Button();
+            this.buttonBackOneYear = new System.Windows.Forms.Button();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
             this.panelTopAccountSummary.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            this.panelLeftFilterBar.SuspendLayout();
-            this.panel11.SuspendLayout();
-            this.panelleftFilterCloseOpen.SuspendLayout();
-            this.panelMainDisplayFullBackground.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            this.panelleftMainBottom.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel5.SuspendLayout();
+            this.mainGroupBox.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel9.SuspendLayout();
-            this.panel10.SuspendLayout();
-            this.panelMainOne.SuspendLayout();
-            this.panelLeftMainTop.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.panel12.SuspendLayout();
-            this.panelRIghtMainBottom.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel8.SuspendLayout();
-            this.panel7.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel13.SuspendLayout();
-            this.panelSecondaryOne.SuspendLayout();
-            this.panelRightMainTop.SuspendLayout();
-            this.tabControl2.SuspendLayout();
+            this.panelLeftFilterBar.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTopAccountSummary
@@ -151,7 +124,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.panelTopAccountSummary.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTopAccountSummary.Location = new System.Drawing.Point(0, 0);
             this.panelTopAccountSummary.Name = "panelTopAccountSummary";
-            this.panelTopAccountSummary.Size = new System.Drawing.Size(1904, 29);
+            this.panelTopAccountSummary.Size = new System.Drawing.Size(909, 29);
             this.panelTopAccountSummary.TabIndex = 0;
             // 
             // toolStrip1
@@ -160,9 +133,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.toolStripDropDownButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1904, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(909, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
             // toolStripDropDownButton1
             // 
@@ -180,14 +154,14 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // toolStripMenuItemImportFile
             // 
             this.toolStripMenuItemImportFile.Name = "toolStripMenuItemImportFile";
-            this.toolStripMenuItemImportFile.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemImportFile.Size = new System.Drawing.Size(149, 22);
             this.toolStripMenuItemImportFile.Text = "Import File";
             this.toolStripMenuItemImportFile.Click += new System.EventHandler(this.toolStripMenuItemImportFile_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(146, 6);
             // 
             // toolStripMenuItemAddEdit
             // 
@@ -197,7 +171,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.ToolStripMenuItembillType,
             this.ToolStripMenuItemtransaction});
             this.toolStripMenuItemAddEdit.Name = "toolStripMenuItemAddEdit";
-            this.toolStripMenuItemAddEdit.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemAddEdit.Size = new System.Drawing.Size(149, 22);
             this.toolStripMenuItemAddEdit.Text = "Add / Edit";
             this.toolStripMenuItemAddEdit.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
@@ -249,117 +223,321 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // ToolStripMenuItemCreateBudget
             // 
             this.ToolStripMenuItemCreateBudget.Name = "ToolStripMenuItemCreateBudget";
-            this.ToolStripMenuItemCreateBudget.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItemCreateBudget.Size = new System.Drawing.Size(149, 22);
             this.ToolStripMenuItemCreateBudget.Text = "Create Budget";
+            // 
+            // mainGroupBox
+            // 
+            this.mainGroupBox.Controls.Add(this.panel3);
+            this.mainGroupBox.Controls.Add(this.panel2);
+            this.mainGroupBox.Controls.Add(this.panel1);
+            this.mainGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainGroupBox.Location = new System.Drawing.Point(0, 29);
+            this.mainGroupBox.Name = "mainGroupBox";
+            this.mainGroupBox.Size = new System.Drawing.Size(909, 826);
+            this.mainGroupBox.TabIndex = 2;
+            this.mainGroupBox.TabStop = false;
+            this.mainGroupBox.Text = "Main";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.label37);
+            this.panel1.Controls.Add(this.label38);
+            this.panel1.Controls.Add(this.label29);
+            this.panel1.Controls.Add(this.label34);
+            this.panel1.Controls.Add(this.label35);
+            this.panel1.Controls.Add(this.label36);
+            this.panel1.Controls.Add(this.label32);
+            this.panel1.Controls.Add(this.label33);
+            this.panel1.Controls.Add(this.label31);
+            this.panel1.Controls.Add(this.label30);
+            this.panel1.Controls.Add(this.label28);
+            this.panel1.Controls.Add(this.label24);
+            this.panel1.Controls.Add(this.label22);
+            this.panel1.Controls.Add(this.label23);
+            this.panel1.Controls.Add(this.label18);
+            this.panel1.Controls.Add(this.label19);
+            this.panel1.Controls.Add(this.label20);
+            this.panel1.Controls.Add(this.label21);
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.label15);
+            this.panel1.Controls.Add(this.label16);
+            this.panel1.Controls.Add(this.label17);
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.label12);
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(3, 16);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(903, 131);
+            this.panel1.TabIndex = 0;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.panel5);
+            this.panel3.Controls.Add(this.panel4);
+            this.panel3.Controls.Add(this.panelLeftFilterBar);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(3, 147);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(903, 676);
+            this.panel3.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(4, 8);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(84, 17);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Total Saved";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(6, 3);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(94, 8);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 22);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Budget";
+            this.label5.Size = new System.Drawing.Size(44, 17);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "$0.00";
             // 
-            // label4
+            // label6
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(6, 3);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 22);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Bills";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(801, 10);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(34, 13);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "$0.00";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(688, 10);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(106, 13);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "This Month Bill Total:";
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(801, 33);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(34, 13);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "$0.00";
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(686, 33);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(108, 13);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "Next Month Bill Total:";
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(532, 32);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(34, 13);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "$0.00";
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(394, 32);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(129, 13);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "Next Month Budget Total:";
+            // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(532, 8);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(34, 13);
+            this.label12.TabIndex = 7;
+            this.label12.Text = "$0.00";
+            // 
+            // label13
+            // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(396, 8);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(127, 13);
+            this.label13.TabIndex = 6;
+            this.label13.Text = "This Month Budget Total:";
+            // 
+            // label14
+            // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(532, 88);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(36, 13);
+            this.label14.TabIndex = 13;
+            this.label14.Text = "0.00%";
+            this.label14.Click += new System.EventHandler(this.label14_Click);
+            // 
+            // label15
+            // 
+            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(370, 92);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(153, 13);
+            this.label15.TabIndex = 12;
+            this.label15.Text = "This Month Budget Remaining:";
+            this.label15.Click += new System.EventHandler(this.label15_Click);
+            // 
+            // label16
+            // 
+            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(532, 52);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(36, 13);
+            this.label16.TabIndex = 11;
+            this.label16.Text = "0.00%";
+            this.label16.Click += new System.EventHandler(this.label16_Click);
+            // 
+            // label17
+            // 
+            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(395, 56);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(128, 13);
+            this.label17.TabIndex = 10;
+            this.label17.Text = "This Month Budget Used:";
+            this.label17.Click += new System.EventHandler(this.label17_Click);
+            // 
+            // label18
+            // 
+            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(801, 79);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(34, 13);
+            this.label18.TabIndex = 17;
+            this.label18.Text = "$0.00";
+            // 
+            // label19
+            // 
+            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(662, 79);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(132, 13);
+            this.label19.TabIndex = 16;
+            this.label19.Text = "This Month Bill Remaining:";
+            // 
+            // label20
+            // 
+            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(801, 56);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(34, 13);
+            this.label20.TabIndex = 15;
+            this.label20.Text = "$0.00";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(686, 56);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(108, 13);
+            this.label21.TabIndex = 14;
+            this.label21.Text = "This Month Bills Paid:";
+            // 
+            // label22
+            // 
+            this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(532, 104);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(34, 13);
+            this.label22.TabIndex = 19;
+            this.label22.Text = "$0.00";
+            // 
+            // label23
+            // 
+            this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(532, 68);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(34, 13);
+            this.label23.TabIndex = 18;
+            this.label23.Text = "$0.00";
             // 
             // panelLeftFilterBar
             // 
             this.panelLeftFilterBar.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panelLeftFilterBar.Controls.Add(this.panel11);
+            this.panelLeftFilterBar.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelLeftFilterBar.Controls.Add(this.radioBills);
+            this.panelLeftFilterBar.Controls.Add(this.radioBudgets);
+            this.panelLeftFilterBar.Controls.Add(this.radioExpenses);
+            this.panelLeftFilterBar.Controls.Add(this.checkedListBoxUsers);
+            this.panelLeftFilterBar.Controls.Add(this.button2);
+            this.panelLeftFilterBar.Controls.Add(this.button3);
+            this.panelLeftFilterBar.Controls.Add(this.label25);
+            this.panelLeftFilterBar.Controls.Add(this.checkedListBox2);
+            this.panelLeftFilterBar.Controls.Add(this.buttonUncheckAllBoxes);
+            this.panelLeftFilterBar.Controls.Add(this.checkedListBox1);
+            this.panelLeftFilterBar.Controls.Add(this.label3);
+            this.panelLeftFilterBar.Controls.Add(this.buttonCheckAllAccounts);
+            this.panelLeftFilterBar.Controls.Add(this.label2);
+            this.panelLeftFilterBar.Controls.Add(this.button1);
+            this.panelLeftFilterBar.Controls.Add(this.buttonAllExpenses);
+            this.panelLeftFilterBar.Controls.Add(this.buttonUncheckAllExpenses);
+            this.panelLeftFilterBar.Controls.Add(this.label1);
             this.panelLeftFilterBar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelLeftFilterBar.Location = new System.Drawing.Point(0, 29);
+            this.panelLeftFilterBar.Location = new System.Drawing.Point(0, 0);
             this.panelLeftFilterBar.Name = "panelLeftFilterBar";
-            this.panelLeftFilterBar.Size = new System.Drawing.Size(211, 1012);
+            this.panelLeftFilterBar.Size = new System.Drawing.Size(213, 676);
             this.panelLeftFilterBar.TabIndex = 1;
+            this.panelLeftFilterBar.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLeftFilterBar_Paint);
             // 
-            // panel11
+            // label1
             // 
-            this.panel11.Controls.Add(this.checkedListBox2);
-            this.panel11.Controls.Add(this.buttonUncheckAllBoxes);
-            this.panel11.Controls.Add(this.checkedListBox1);
-            this.panel11.Controls.Add(this.buttonCheckAllAccounts);
-            this.panel11.Controls.Add(this.button1);
-            this.panel11.Controls.Add(this.buttonUncheckAllExpenses);
-            this.panel11.Controls.Add(this.label1);
-            this.panel11.Controls.Add(this.buttonAllExpenses);
-            this.panel11.Controls.Add(this.label2);
-            this.panel11.Controls.Add(this.label3);
-            this.panel11.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel11.Location = new System.Drawing.Point(0, 500);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(211, 512);
-            this.panel11.TabIndex = 10;
-            // 
-            // checkedListBox2
-            // 
-            this.checkedListBox2.FormattingEnabled = true;
-            this.checkedListBox2.Location = new System.Drawing.Point(12, 288);
-            this.checkedListBox2.Name = "checkedListBox2";
-            this.checkedListBox2.Size = new System.Drawing.Size(186, 94);
-            this.checkedListBox2.TabIndex = 4;
-            this.checkedListBox2.SelectedIndexChanged += new System.EventHandler(this.checkedListBox2_SelectedIndexChanged);
-            // 
-            // buttonUncheckAllBoxes
-            // 
-            this.buttonUncheckAllBoxes.Location = new System.Drawing.Point(12, 258);
-            this.buttonUncheckAllBoxes.Name = "buttonUncheckAllBoxes";
-            this.buttonUncheckAllBoxes.Size = new System.Drawing.Size(31, 27);
-            this.buttonUncheckAllBoxes.TabIndex = 9;
-            this.buttonUncheckAllBoxes.Text = "[ ]";
-            this.buttonUncheckAllBoxes.UseVisualStyleBackColor = true;
-            this.buttonUncheckAllBoxes.Click += new System.EventHandler(this.buttonUncheckAllBoxes_Click);
-            // 
-            // checkedListBox1
-            // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(36, 98);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(139, 124);
-            this.checkedListBox1.TabIndex = 0;
-            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
-            // 
-            // buttonCheckAllAccounts
-            // 
-            this.buttonCheckAllAccounts.Location = new System.Drawing.Point(167, 258);
-            this.buttonCheckAllAccounts.Name = "buttonCheckAllAccounts";
-            this.buttonCheckAllAccounts.Size = new System.Drawing.Size(31, 27);
-            this.buttonCheckAllAccounts.TabIndex = 8;
-            this.buttonCheckAllAccounts.Text = "[x]";
-            this.buttonCheckAllAccounts.UseVisualStyleBackColor = true;
-            this.buttonCheckAllAccounts.Click += new System.EventHandler(this.buttonCheckAllAccounts_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.button1.Location = new System.Drawing.Point(36, 429);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(139, 41);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Update Selection";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(51, 521);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(105, 17);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Expense Types";
             // 
             // buttonUncheckAllExpenses
             // 
-            this.buttonUncheckAllExpenses.Location = new System.Drawing.Point(36, 75);
+            this.buttonUncheckAllExpenses.Location = new System.Drawing.Point(12, 518);
             this.buttonUncheckAllExpenses.Name = "buttonUncheckAllExpenses";
             this.buttonUncheckAllExpenses.Size = new System.Drawing.Size(29, 21);
             this.buttonUncheckAllExpenses.TabIndex = 7;
@@ -367,20 +545,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.buttonUncheckAllExpenses.UseVisualStyleBackColor = true;
             this.buttonUncheckAllExpenses.Click += new System.EventHandler(this.buttonUncheckAllExpenses_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(71, 78);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 17);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Expenses";
-            // 
             // buttonAllExpenses
             // 
-            this.buttonAllExpenses.Location = new System.Drawing.Point(146, 75);
+            this.buttonAllExpenses.Location = new System.Drawing.Point(165, 517);
             this.buttonAllExpenses.Name = "buttonAllExpenses";
             this.buttonAllExpenses.Size = new System.Drawing.Size(29, 23);
             this.buttonAllExpenses.TabIndex = 6;
@@ -388,618 +555,388 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.buttonAllExpenses.UseVisualStyleBackColor = true;
             this.buttonAllExpenses.Click += new System.EventHandler(this.buttonAllExpenses_Click);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.button1.Location = new System.Drawing.Point(12, 214);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(181, 41);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Update Selection";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(78, 28);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(72, 3);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 22);
+            this.label2.Size = new System.Drawing.Size(66, 27);
             this.label2.TabIndex = 3;
             this.label2.Text = "Filters";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // buttonCheckAllAccounts
+            // 
+            this.buttonCheckAllAccounts.Location = new System.Drawing.Point(164, 390);
+            this.buttonCheckAllAccounts.Name = "buttonCheckAllAccounts";
+            this.buttonCheckAllAccounts.Size = new System.Drawing.Size(31, 23);
+            this.buttonCheckAllAccounts.TabIndex = 8;
+            this.buttonCheckAllAccounts.Text = "[x]";
+            this.buttonCheckAllAccounts.UseVisualStyleBackColor = true;
+            this.buttonCheckAllAccounts.Click += new System.EventHandler(this.buttonCheckAllAccounts_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(72, 268);
+            this.label3.Location = new System.Drawing.Point(69, 393);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 17);
             this.label3.TabIndex = 5;
             this.label3.Text = "Accounts";
             // 
-            // panelleftFilterCloseOpen
+            // checkedListBox1
             // 
-            this.panelleftFilterCloseOpen.Controls.Add(this.buttonLeftFilterHide);
-            this.panelleftFilterCloseOpen.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelleftFilterCloseOpen.Location = new System.Drawing.Point(211, 29);
-            this.panelleftFilterCloseOpen.Name = "panelleftFilterCloseOpen";
-            this.panelleftFilterCloseOpen.Size = new System.Drawing.Size(40, 1012);
-            this.panelleftFilterCloseOpen.TabIndex = 2;
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(12, 541);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(182, 124);
+            this.checkedListBox1.TabIndex = 0;
+            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
-            // buttonLeftFilterHide
+            // buttonUncheckAllBoxes
             // 
-            this.buttonLeftFilterHide.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonLeftFilterHide.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonLeftFilterHide.Location = new System.Drawing.Point(0, 0);
-            this.buttonLeftFilterHide.Name = "buttonLeftFilterHide";
-            this.buttonLeftFilterHide.Size = new System.Drawing.Size(40, 1012);
-            this.buttonLeftFilterHide.TabIndex = 0;
-            this.buttonLeftFilterHide.Text = "<";
-            this.buttonLeftFilterHide.UseVisualStyleBackColor = true;
-            this.buttonLeftFilterHide.Click += new System.EventHandler(this.buttonLeftFilterHide_Click);
+            this.buttonUncheckAllBoxes.Location = new System.Drawing.Point(9, 390);
+            this.buttonUncheckAllBoxes.Name = "buttonUncheckAllBoxes";
+            this.buttonUncheckAllBoxes.Size = new System.Drawing.Size(31, 23);
+            this.buttonUncheckAllBoxes.TabIndex = 9;
+            this.buttonUncheckAllBoxes.Text = "[ ]";
+            this.buttonUncheckAllBoxes.UseVisualStyleBackColor = true;
+            this.buttonUncheckAllBoxes.Click += new System.EventHandler(this.buttonUncheckAllBoxes_Click);
             // 
-            // panelMainDisplayFullBackground
+            // checkedListBox2
             // 
-            this.panelMainDisplayFullBackground.Controls.Add(this.splitContainer1);
-            this.panelMainDisplayFullBackground.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelMainDisplayFullBackground.Location = new System.Drawing.Point(251, 29);
-            this.panelMainDisplayFullBackground.Name = "panelMainDisplayFullBackground";
-            this.panelMainDisplayFullBackground.Size = new System.Drawing.Size(1653, 1012);
-            this.panelMainDisplayFullBackground.TabIndex = 3;
+            this.checkedListBox2.FormattingEnabled = true;
+            this.checkedListBox2.Location = new System.Drawing.Point(9, 413);
+            this.checkedListBox2.Name = "checkedListBox2";
+            this.checkedListBox2.Size = new System.Drawing.Size(186, 94);
+            this.checkedListBox2.TabIndex = 4;
+            this.checkedListBox2.SelectedIndexChanged += new System.EventHandler(this.checkedListBox2_SelectedIndexChanged);
             // 
-            // splitContainer1
+            // label25
             // 
-            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.MinimumSize = new System.Drawing.Size(30, 0);
-            this.splitContainer1.Name = "splitContainer1";
+            this.label25.AutoSize = true;
+            this.label25.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(77, 288);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(45, 17);
+            this.label25.TabIndex = 11;
+            this.label25.Text = "Users";
             // 
-            // splitContainer1.Panel1
+            // button3
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.panelleftMainBottom);
-            this.splitContainer1.Panel1.Controls.Add(this.splitter1);
-            this.splitContainer1.Panel1.Controls.Add(this.panelLeftMainTop);
-            this.splitContainer1.Panel1.Margin = new System.Windows.Forms.Padding(100, 0, 0, 0);
+            this.button3.Location = new System.Drawing.Point(9, 285);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(29, 21);
+            this.button3.TabIndex = 13;
+            this.button3.Text = "[ ]";
+            this.button3.UseVisualStyleBackColor = true;
             // 
-            // splitContainer1.Panel2
+            // button2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.panel12);
-            this.splitContainer1.Panel2.Controls.Add(this.buttonRightCompare);
-            this.splitContainer1.Size = new System.Drawing.Size(1653, 1012);
-            this.splitContainer1.SplitterDistance = 843;
-            this.splitContainer1.SplitterWidth = 5;
-            this.splitContainer1.TabIndex = 0;
+            this.button2.Location = new System.Drawing.Point(162, 285);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(29, 23);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "[x]";
+            this.button2.UseVisualStyleBackColor = true;
             // 
-            // panelleftMainBottom
+            // checkedListBoxUsers
             // 
-            this.panelleftMainBottom.Controls.Add(this.panel2);
-            this.panelleftMainBottom.Controls.Add(this.splitter4);
-            this.panelleftMainBottom.Controls.Add(this.panel1);
-            this.panelleftMainBottom.Controls.Add(this.splitter3);
-            this.panelleftMainBottom.Controls.Add(this.panelMainOne);
-            this.panelleftMainBottom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelleftMainBottom.Location = new System.Drawing.Point(0, 498);
-            this.panelleftMainBottom.Name = "panelleftMainBottom";
-            this.panelleftMainBottom.Size = new System.Drawing.Size(839, 510);
-            this.panelleftMainBottom.TabIndex = 2;
+            this.checkedListBoxUsers.FormattingEnabled = true;
+            this.checkedListBoxUsers.Location = new System.Drawing.Point(9, 308);
+            this.checkedListBoxUsers.Name = "checkedListBoxUsers";
+            this.checkedListBoxUsers.Size = new System.Drawing.Size(186, 64);
+            this.checkedListBoxUsers.TabIndex = 10;
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.panel6);
-            this.panel2.Controls.Add(this.panel5);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(413, 284);
+            this.panel2.Location = new System.Drawing.Point(3, 147);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(426, 226);
-            this.panel2.TabIndex = 4;
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.listViewBudgetMain);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(0, 28);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(426, 198);
-            this.panel6.TabIndex = 15;
-            // 
-            // listViewBudgetMain
-            // 
-            this.listViewBudgetMain.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.listViewBudgetMain.HideSelection = false;
-            this.listViewBudgetMain.Location = new System.Drawing.Point(0, 71);
-            this.listViewBudgetMain.Name = "listViewBudgetMain";
-            this.listViewBudgetMain.Size = new System.Drawing.Size(426, 127);
-            this.listViewBudgetMain.TabIndex = 0;
-            this.listViewBudgetMain.UseCompatibleStateImageBehavior = false;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.label5);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(426, 28);
-            this.panel5.TabIndex = 14;
-            // 
-            // splitter4
-            // 
-            this.splitter4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.splitter4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitter4.Location = new System.Drawing.Point(413, 274);
-            this.splitter4.Name = "splitter4";
-            this.splitter4.Size = new System.Drawing.Size(426, 10);
-            this.splitter4.TabIndex = 3;
-            this.splitter4.TabStop = false;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.panel9);
-            this.panel1.Controls.Add(this.panel10);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(413, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(426, 274);
-            this.panel1.TabIndex = 2;
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.listViewBillsMain);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(0, 32);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(426, 242);
-            this.panel9.TabIndex = 14;
-            // 
-            // listViewBillsMain
-            // 
-            this.listViewBillsMain.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.listViewBillsMain.HideSelection = false;
-            this.listViewBillsMain.Location = new System.Drawing.Point(0, 66);
-            this.listViewBillsMain.Name = "listViewBillsMain";
-            this.listViewBillsMain.Size = new System.Drawing.Size(426, 176);
-            this.listViewBillsMain.TabIndex = 0;
-            this.listViewBillsMain.UseCompatibleStateImageBehavior = false;
-            // 
-            // panel10
-            // 
-            this.panel10.Controls.Add(this.label12);
-            this.panel10.Controls.Add(this.label4);
-            this.panel10.Controls.Add(this.dateTimePickerBillFromDate);
-            this.panel10.Controls.Add(this.dateTimePickerBillToDate);
-            this.panel10.Controls.Add(this.label13);
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel10.Location = new System.Drawing.Point(0, 0);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(426, 32);
-            this.panel10.TabIndex = 13;
-            // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(64, 9);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(51, 13);
-            this.label12.TabIndex = 22;
-            this.label12.Text = "Bills From";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
-            // 
-            // dateTimePickerBillFromDate
-            // 
-            this.dateTimePickerBillFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerBillFromDate.Location = new System.Drawing.Point(121, 5);
-            this.dateTimePickerBillFromDate.Name = "dateTimePickerBillFromDate";
-            this.dateTimePickerBillFromDate.Size = new System.Drawing.Size(88, 20);
-            this.dateTimePickerBillFromDate.TabIndex = 23;
-            this.dateTimePickerBillFromDate.ValueChanged += new System.EventHandler(this.dateTimePicker3_ValueChanged);
-            // 
-            // dateTimePickerBillToDate
-            // 
-            this.dateTimePickerBillToDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerBillToDate.Location = new System.Drawing.Point(277, 5);
-            this.dateTimePickerBillToDate.Name = "dateTimePickerBillToDate";
-            this.dateTimePickerBillToDate.Size = new System.Drawing.Size(88, 20);
-            this.dateTimePickerBillToDate.TabIndex = 25;
-            this.dateTimePickerBillToDate.ValueChanged += new System.EventHandler(this.dateTimePicker4_ValueChanged);
-            // 
-            // label13
-            // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(230, 9);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(41, 13);
-            this.label13.TabIndex = 24;
-            this.label13.Text = "Bills To";
-            this.label13.Click += new System.EventHandler(this.label13_Click);
-            // 
-            // splitter3
-            // 
-            this.splitter3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.splitter3.Location = new System.Drawing.Point(403, 0);
-            this.splitter3.Name = "splitter3";
-            this.splitter3.Size = new System.Drawing.Size(10, 510);
-            this.splitter3.TabIndex = 1;
-            this.splitter3.TabStop = false;
-            // 
-            // panelMainOne
-            // 
-            this.panelMainOne.Controls.Add(this.listViewMainOne);
-            this.panelMainOne.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelMainOne.Location = new System.Drawing.Point(0, 0);
-            this.panelMainOne.Name = "panelMainOne";
-            this.panelMainOne.Size = new System.Drawing.Size(403, 510);
-            this.panelMainOne.TabIndex = 0;
-            // 
-            // listViewMainOne
-            // 
-            this.listViewMainOne.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listViewMainOne.HideSelection = false;
-            this.listViewMainOne.Location = new System.Drawing.Point(0, 0);
-            this.listViewMainOne.Name = "listViewMainOne";
-            this.listViewMainOne.Size = new System.Drawing.Size(403, 510);
-            this.listViewMainOne.TabIndex = 0;
-            this.listViewMainOne.UseCompatibleStateImageBehavior = false;
-            // 
-            // splitter1
-            // 
-            this.splitter1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.splitter1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitter1.Location = new System.Drawing.Point(0, 488);
-            this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(839, 10);
-            this.splitter1.TabIndex = 1;
-            this.splitter1.TabStop = false;
-            // 
-            // panelLeftMainTop
-            // 
-            this.panelLeftMainTop.Controls.Add(this.tabControl1);
-            this.panelLeftMainTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelLeftMainTop.Location = new System.Drawing.Point(0, 0);
-            this.panelLeftMainTop.Name = "panelLeftMainTop";
-            this.panelLeftMainTop.Size = new System.Drawing.Size(839, 488);
-            this.panelLeftMainTop.TabIndex = 0;
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage7);
-            this.tabControl1.Location = new System.Drawing.Point(0, 35);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(839, 453);
-            this.tabControl1.TabIndex = 0;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(831, 427);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(831, 427);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(831, 427);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "tabPage3";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // tabPage7
-            // 
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(831, 427);
-            this.tabPage7.TabIndex = 3;
-            this.tabPage7.Text = "tabPage7";
-            this.tabPage7.UseVisualStyleBackColor = true;
-            // 
-            // panel12
-            // 
-            this.panel12.Controls.Add(this.splitter2);
-            this.panel12.Controls.Add(this.panelRIghtMainBottom);
-            this.panel12.Controls.Add(this.panelRightMainTop);
-            this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel12.Location = new System.Drawing.Point(42, 0);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(759, 1008);
-            this.panel12.TabIndex = 4;
-            // 
-            // splitter2
-            // 
-            this.splitter2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.splitter2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitter2.Location = new System.Drawing.Point(0, 490);
-            this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(759, 11);
-            this.splitter2.TabIndex = 3;
-            this.splitter2.TabStop = false;
-            // 
-            // panelRIghtMainBottom
-            // 
-            this.panelRIghtMainBottom.Controls.Add(this.panel4);
-            this.panelRIghtMainBottom.Controls.Add(this.splitter6);
-            this.panelRIghtMainBottom.Controls.Add(this.panel3);
-            this.panelRIghtMainBottom.Controls.Add(this.splitter5);
-            this.panelRIghtMainBottom.Controls.Add(this.panelSecondaryOne);
-            this.panelRIghtMainBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelRIghtMainBottom.Location = new System.Drawing.Point(0, 501);
-            this.panelRIghtMainBottom.Name = "panelRIghtMainBottom";
-            this.panelRIghtMainBottom.Size = new System.Drawing.Size(759, 507);
-            this.panelRIghtMainBottom.TabIndex = 2;
+            this.panel2.Size = new System.Drawing.Size(903, 323);
+            this.panel2.TabIndex = 1;
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.panel8);
-            this.panel4.Controls.Add(this.panel7);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(332, 275);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(427, 232);
-            this.panel4.TabIndex = 4;
-            // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.listViewBudgetSecondary);
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(0, 31);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(427, 201);
-            this.panel8.TabIndex = 16;
-            // 
-            // listViewBudgetSecondary
-            // 
-            this.listViewBudgetSecondary.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.listViewBudgetSecondary.HideSelection = false;
-            this.listViewBudgetSecondary.Location = new System.Drawing.Point(0, 66);
-            this.listViewBudgetSecondary.Name = "listViewBudgetSecondary";
-            this.listViewBudgetSecondary.Size = new System.Drawing.Size(427, 135);
-            this.listViewBudgetSecondary.TabIndex = 0;
-            this.listViewBudgetSecondary.UseCompatibleStateImageBehavior = false;
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.label9);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel7.Location = new System.Drawing.Point(0, 0);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(427, 31);
-            this.panel7.TabIndex = 15;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(3, 6);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(63, 22);
-            this.label9.TabIndex = 14;
-            this.label9.Text = "Budget";
-            // 
-            // splitter6
-            // 
-            this.splitter6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.splitter6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitter6.Location = new System.Drawing.Point(332, 265);
-            this.splitter6.Name = "splitter6";
-            this.splitter6.Size = new System.Drawing.Size(427, 10);
-            this.splitter6.TabIndex = 3;
-            this.splitter6.TabStop = false;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.panel13);
-            this.panel3.Controls.Add(this.listViewBillsSecondary);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(332, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(427, 265);
-            this.panel3.TabIndex = 2;
-            // 
-            // panel13
-            // 
-            this.panel13.Controls.Add(this.dateTimePicker2);
-            this.panel13.Controls.Add(this.label10);
-            this.panel13.Controls.Add(this.label11);
-            this.panel13.Controls.Add(this.label8);
-            this.panel13.Controls.Add(this.dateTimePicker1);
-            this.panel13.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel13.Location = new System.Drawing.Point(0, 0);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(427, 29);
-            this.panel13.TabIndex = 22;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(341, 6);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(88, 20);
-            this.dateTimePicker2.TabIndex = 21;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(109, 12);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(51, 13);
-            this.label10.TabIndex = 18;
-            this.label10.Text = "Bills From";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(294, 12);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(41, 13);
-            this.label11.TabIndex = 20;
-            this.label11.Text = "Bills To";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(6, 4);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(39, 22);
-            this.label8.TabIndex = 12;
-            this.label8.Text = "Bills";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(166, 6);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(88, 20);
-            this.dateTimePicker1.TabIndex = 19;
-            // 
-            // listViewBillsSecondary
-            // 
-            this.listViewBillsSecondary.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.listViewBillsSecondary.HideSelection = false;
-            this.listViewBillsSecondary.Location = new System.Drawing.Point(0, 95);
-            this.listViewBillsSecondary.Name = "listViewBillsSecondary";
-            this.listViewBillsSecondary.Size = new System.Drawing.Size(427, 170);
-            this.listViewBillsSecondary.TabIndex = 0;
-            this.listViewBillsSecondary.UseCompatibleStateImageBehavior = false;
-            // 
-            // splitter5
-            // 
-            this.splitter5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.splitter5.Location = new System.Drawing.Point(320, 0);
-            this.splitter5.Name = "splitter5";
-            this.splitter5.Size = new System.Drawing.Size(12, 507);
-            this.splitter5.TabIndex = 1;
-            this.splitter5.TabStop = false;
-            // 
-            // panelSecondaryOne
-            // 
-            this.panelSecondaryOne.Controls.Add(this.listViewSecondaryOne);
-            this.panelSecondaryOne.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelSecondaryOne.Location = new System.Drawing.Point(0, 0);
-            this.panelSecondaryOne.Name = "panelSecondaryOne";
-            this.panelSecondaryOne.Size = new System.Drawing.Size(320, 507);
-            this.panelSecondaryOne.TabIndex = 0;
-            // 
-            // listViewSecondaryOne
-            // 
-            this.listViewSecondaryOne.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listViewSecondaryOne.HideSelection = false;
-            this.listViewSecondaryOne.Location = new System.Drawing.Point(0, 0);
-            this.listViewSecondaryOne.Name = "listViewSecondaryOne";
-            this.listViewSecondaryOne.Size = new System.Drawing.Size(320, 507);
-            this.listViewSecondaryOne.TabIndex = 0;
-            this.listViewSecondaryOne.UseCompatibleStateImageBehavior = false;
-            // 
-            // panelRightMainTop
-            // 
-            this.panelRightMainTop.Controls.Add(this.tabControl2);
-            this.panelRightMainTop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelRightMainTop.Location = new System.Drawing.Point(0, 0);
-            this.panelRightMainTop.Name = "panelRightMainTop";
-            this.panelRightMainTop.Size = new System.Drawing.Size(759, 1008);
-            this.panelRightMainTop.TabIndex = 0;
-            // 
-            // tabControl2
-            // 
-            this.tabControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl2.Controls.Add(this.tabPage4);
-            this.tabControl2.Controls.Add(this.tabPage5);
-            this.tabControl2.Controls.Add(this.tabPage6);
-            this.tabControl2.Controls.Add(this.tabPage8);
-            this.tabControl2.Location = new System.Drawing.Point(6, 35);
-            this.tabControl2.Name = "tabControl2";
-            this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(743, 453);
-            this.tabControl2.TabIndex = 0;
+            this.panel4.Controls.Add(this.label27);
+            this.panel4.Controls.Add(this.label26);
+            this.panel4.Controls.Add(this.buttonBackOneYear);
+            this.panel4.Controls.Add(this.ForwardOneYear);
+            this.panel4.Controls.Add(this.buttonForwardOneMonth);
+            this.panel4.Controls.Add(this.buttonBackOneMonth);
+            this.panel4.Controls.Add(this.dateTimePickerTo);
+            this.panel4.Controls.Add(this.dateTimePickerFrom);
+            this.panel4.Controls.Add(this.listView1);
+            this.panel4.Location = new System.Drawing.Point(219, 298);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(681, 375);
+            this.panel4.TabIndex = 2;
             // 
-            // tabPage4
+            // panel5
             // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(735, 427);
-            this.tabPage4.TabIndex = 0;
-            this.tabPage4.Text = "tabPage4";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel5.Location = new System.Drawing.Point(219, 6);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(681, 286);
+            this.panel5.TabIndex = 0;
             // 
-            // tabPage5
+            // listView1
             // 
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(735, 427);
-            this.tabPage5.TabIndex = 1;
-            this.tabPage5.Text = "tabPage5";
-            this.tabPage5.UseVisualStyleBackColor = true;
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(61, 41);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(575, 328);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
-            // tabPage6
+            // dateTimePickerFrom
             // 
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(735, 427);
-            this.tabPage6.TabIndex = 2;
-            this.tabPage6.Text = "tabPage6";
-            this.tabPage6.UseVisualStyleBackColor = true;
+            this.dateTimePickerFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerFrom.Location = new System.Drawing.Point(384, 15);
+            this.dateTimePickerFrom.Name = "dateTimePickerFrom";
+            this.dateTimePickerFrom.Size = new System.Drawing.Size(103, 20);
+            this.dateTimePickerFrom.TabIndex = 1;
             // 
-            // tabPage8
+            // radioExpenses
             // 
-            this.tabPage8.Location = new System.Drawing.Point(4, 22);
-            this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(735, 427);
-            this.tabPage8.TabIndex = 3;
-            this.tabPage8.Text = "tabPage8";
-            this.tabPage8.UseVisualStyleBackColor = true;
+            this.radioExpenses.AutoSize = true;
+            this.radioExpenses.Location = new System.Drawing.Point(9, 56);
+            this.radioExpenses.Name = "radioExpenses";
+            this.radioExpenses.Size = new System.Drawing.Size(71, 17);
+            this.radioExpenses.TabIndex = 14;
+            this.radioExpenses.TabStop = true;
+            this.radioExpenses.Text = "Expenses";
+            this.radioExpenses.UseVisualStyleBackColor = true;
             // 
-            // buttonRightCompare
+            // radioBudgets
             // 
-            this.buttonRightCompare.Dock = System.Windows.Forms.DockStyle.Left;
-            this.buttonRightCompare.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonRightCompare.Location = new System.Drawing.Point(0, 0);
-            this.buttonRightCompare.Name = "buttonRightCompare";
-            this.buttonRightCompare.Size = new System.Drawing.Size(42, 1008);
-            this.buttonRightCompare.TabIndex = 3;
-            this.buttonRightCompare.Text = "<";
-            this.buttonRightCompare.UseVisualStyleBackColor = true;
-            this.buttonRightCompare.Click += new System.EventHandler(this.buttonRightCompare_Click);
+            this.radioBudgets.AutoSize = true;
+            this.radioBudgets.Location = new System.Drawing.Point(9, 79);
+            this.radioBudgets.Name = "radioBudgets";
+            this.radioBudgets.Size = new System.Drawing.Size(64, 17);
+            this.radioBudgets.TabIndex = 15;
+            this.radioBudgets.TabStop = true;
+            this.radioBudgets.Text = "Budgets";
+            this.radioBudgets.UseVisualStyleBackColor = true;
+            // 
+            // radioBills
+            // 
+            this.radioBills.AutoSize = true;
+            this.radioBills.Location = new System.Drawing.Point(9, 102);
+            this.radioBills.Name = "radioBills";
+            this.radioBills.Size = new System.Drawing.Size(43, 17);
+            this.radioBills.TabIndex = 16;
+            this.radioBills.TabStop = true;
+            this.radioBills.Text = "Bills";
+            this.radioBills.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePickerTo
+            // 
+            this.dateTimePickerTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerTo.Location = new System.Drawing.Point(532, 15);
+            this.dateTimePickerTo.Name = "dateTimePickerTo";
+            this.dateTimePickerTo.Size = new System.Drawing.Size(104, 20);
+            this.dateTimePickerTo.TabIndex = 2;
+            // 
+            // buttonBackOneMonth
+            // 
+            this.buttonBackOneMonth.Location = new System.Drawing.Point(133, 12);
+            this.buttonBackOneMonth.Name = "buttonBackOneMonth";
+            this.buttonBackOneMonth.Size = new System.Drawing.Size(64, 23);
+            this.buttonBackOneMonth.TabIndex = 3;
+            this.buttonBackOneMonth.Text = "Month -";
+            this.buttonBackOneMonth.UseVisualStyleBackColor = true;
+            // 
+            // buttonForwardOneMonth
+            // 
+            this.buttonForwardOneMonth.Location = new System.Drawing.Point(203, 12);
+            this.buttonForwardOneMonth.Name = "buttonForwardOneMonth";
+            this.buttonForwardOneMonth.Size = new System.Drawing.Size(64, 23);
+            this.buttonForwardOneMonth.TabIndex = 4;
+            this.buttonForwardOneMonth.Text = "Month+";
+            this.buttonForwardOneMonth.UseVisualStyleBackColor = true;
+            // 
+            // ForwardOneYear
+            // 
+            this.ForwardOneYear.Location = new System.Drawing.Point(273, 12);
+            this.ForwardOneYear.Name = "ForwardOneYear";
+            this.ForwardOneYear.Size = new System.Drawing.Size(64, 23);
+            this.ForwardOneYear.TabIndex = 5;
+            this.ForwardOneYear.Text = "year+";
+            this.ForwardOneYear.UseVisualStyleBackColor = true;
+            // 
+            // buttonBackOneYear
+            // 
+            this.buttonBackOneYear.Location = new System.Drawing.Point(63, 12);
+            this.buttonBackOneYear.Name = "buttonBackOneYear";
+            this.buttonBackOneYear.Size = new System.Drawing.Size(64, 23);
+            this.buttonBackOneYear.TabIndex = 6;
+            this.buttonBackOneYear.Text = "year -";
+            this.buttonBackOneYear.UseVisualStyleBackColor = true;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(345, 19);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(33, 13);
+            this.label26.TabIndex = 7;
+            this.label26.Text = "From:";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(503, 19);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(23, 13);
+            this.label27.TabIndex = 8;
+            this.label27.Text = "To:";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(7, 47);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(88, 13);
+            this.label24.TabIndex = 20;
+            this.label24.Text = "Monthly Income: ";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(176, 68);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(34, 13);
+            this.label28.TabIndex = 21;
+            this.label28.Text = "$0.00";
+            this.label28.Click += new System.EventHandler(this.label28_Click);
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(7, 90);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(80, 13);
+            this.label30.TabIndex = 22;
+            this.label30.Text = "Yearly Income: ";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(143, 68);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(27, 13);
+            this.label31.TabIndex = 24;
+            this.label31.Text = "Net:";
+            this.label31.Click += new System.EventHandler(this.label31_Click);
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(36, 68);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(37, 13);
+            this.label32.TabIndex = 26;
+            this.label32.Text = "Gross:";
+            this.label32.Click += new System.EventHandler(this.label32_Click);
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(77, 68);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(34, 13);
+            this.label33.TabIndex = 25;
+            this.label33.Text = "$0.00";
+            this.label33.Click += new System.EventHandler(this.label33_Click);
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(36, 110);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(37, 13);
+            this.label29.TabIndex = 30;
+            this.label29.Text = "Gross:";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(77, 110);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(34, 13);
+            this.label34.TabIndex = 29;
+            this.label34.Text = "$0.00";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(143, 110);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(27, 13);
+            this.label35.TabIndex = 28;
+            this.label35.Text = "Net:";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(176, 110);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(34, 13);
+            this.label36.TabIndex = 27;
+            this.label36.Text = "$0.00";
+            // 
+            // label37
+            // 
+            this.label37.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.Location = new System.Drawing.Point(280, 8);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(44, 17);
+            this.label37.TabIndex = 32;
+            this.label37.Text = "$0.00";
+            this.label37.Click += new System.EventHandler(this.label37_Click);
+            // 
+            // label38
+            // 
+            this.label38.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.Location = new System.Drawing.Point(196, 8);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(78, 17);
+            this.label38.TabIndex = 31;
+            this.label38.Text = "Total Debt:";
             // 
             // MainEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1904, 1041);
-            this.Controls.Add(this.panelMainDisplayFullBackground);
-            this.Controls.Add(this.panelleftFilterCloseOpen);
-            this.Controls.Add(this.panelLeftFilterBar);
+            this.ClientSize = new System.Drawing.Size(909, 855);
+            this.Controls.Add(this.mainGroupBox);
             this.Controls.Add(this.panelTopAccountSummary);
             this.MinimumSize = new System.Drawing.Size(925, 300);
             this.Name = "MainEditor";
@@ -1009,39 +946,14 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.panelTopAccountSummary.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.panelLeftFilterBar.ResumeLayout(false);
-            this.panel11.ResumeLayout(false);
-            this.panel11.PerformLayout();
-            this.panelleftFilterCloseOpen.ResumeLayout(false);
-            this.panelMainDisplayFullBackground.ResumeLayout(false);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            this.panelleftMainBottom.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
+            this.mainGroupBox.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel9.ResumeLayout(false);
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
-            this.panelMainOne.ResumeLayout(false);
-            this.panelLeftMainTop.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
-            this.panel12.ResumeLayout(false);
-            this.panelRIghtMainBottom.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel8.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
+            this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
-            this.panel13.ResumeLayout(false);
-            this.panel13.PerformLayout();
-            this.panelSecondaryOne.ResumeLayout(false);
-            this.panelRightMainTop.ResumeLayout(false);
-            this.tabControl2.ResumeLayout(false);
+            this.panelLeftFilterBar.ResumeLayout(false);
+            this.panelLeftFilterBar.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1049,17 +961,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         #endregion
 
         private System.Windows.Forms.Panel panelTopAccountSummary;
-        private System.Windows.Forms.Panel panelLeftFilterBar;
-        private System.Windows.Forms.Panel panelleftFilterCloseOpen;
-        private System.Windows.Forms.Button buttonLeftFilterHide;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.Panel panelMainDisplayFullBackground;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Panel panelleftMainBottom;
-        private System.Windows.Forms.Splitter splitter1;
-        private System.Windows.Forms.Panel panelLeftMainTop;
-        private System.Windows.Forms.Panel panelRIghtMainBottom;
-        private System.Windows.Forms.Panel panelRightMainTop;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemImportFile;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
@@ -1069,67 +971,73 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItembillType;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemtransaction;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemCreateBudget;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckedListBox checkedListBox2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button buttonUncheckAllExpenses;
-        private System.Windows.Forms.Button buttonAllExpenses;
-        private System.Windows.Forms.Button buttonUncheckAllBoxes;
-        private System.Windows.Forms.Button buttonCheckAllAccounts;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ToolStripMenuItem createNewAccountToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem moveDeleteAccountsToolStripMenuItem;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabControl tabControl2;
-        private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.TabPage tabPage6;
-        private System.Windows.Forms.Splitter splitter3;
-        private System.Windows.Forms.Panel panelMainOne;
-        private System.Windows.Forms.ListView listViewMainOne;
-        private System.Windows.Forms.Splitter splitter5;
-        private System.Windows.Forms.Panel panelSecondaryOne;
-        private System.Windows.Forms.ListView listViewSecondaryOne;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ListView listViewBudgetMain;
-        private System.Windows.Forms.Splitter splitter4;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TabPage tabPage7;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.ListView listViewBudgetSecondary;
-        private System.Windows.Forms.Splitter splitter6;
+        private System.Windows.Forms.GroupBox mainGroupBox;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ListView listViewBillsSecondary;
-        private System.Windows.Forms.TabPage tabPage8;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.ListView listViewBillsMain;
-        private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.Panel panel12;
-        private System.Windows.Forms.Splitter splitter2;
-        private System.Windows.Forms.Button buttonRightCompare;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.DateTimePicker dateTimePickerBillFromDate;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.DateTimePicker dateTimePickerBillToDate;
-        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Panel panelLeftFilterBar;
+        private System.Windows.Forms.CheckedListBox checkedListBoxUsers;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.CheckedListBox checkedListBox2;
+        private System.Windows.Forms.Button buttonUncheckAllBoxes;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button buttonCheckAllAccounts;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonAllExpenses;
+        private System.Windows.Forms.Button buttonUncheckAllExpenses;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Button buttonBackOneYear;
+        private System.Windows.Forms.Button ForwardOneYear;
+        private System.Windows.Forms.Button buttonForwardOneMonth;
+        private System.Windows.Forms.Button buttonBackOneMonth;
+        private System.Windows.Forms.DateTimePicker dateTimePickerTo;
+        private System.Windows.Forms.DateTimePicker dateTimePickerFrom;
+        private System.Windows.Forms.RadioButton radioBills;
+        private System.Windows.Forms.RadioButton radioBudgets;
+        private System.Windows.Forms.RadioButton radioExpenses;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label36;
     }
 }
 

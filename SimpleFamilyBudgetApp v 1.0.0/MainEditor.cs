@@ -19,6 +19,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         ListViewRepoTransactions lvr1;
         ListViewRepoTransactions lvr2;
         ListViewRepoBills lvBill;
+        List<string> Users;
         List<string> Accounts;
         List<string> ExpenseTypes;
 
@@ -29,15 +30,16 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             InitializeComponent();
             leftBarButtonHide();
-            RightBarHide();
+            //RightBarHide();
             RepoUserEditor.PrepareUserEditorData();
             RepoBankAccount.PrepareAccountTypes();
             RepoBankAccount.PrepareAcctEditorData();
             RepoTransaction.PrepareTransTypes();
             RepoFrequency.PrepareFrequencyData();
             RepoBills.PrepareBillEditorData();
-            BillFrom = dateTimePickerBillFromDate.Value = GetFirstOfMonth();
-            BillTo = dateTimePickerBillToDate.Value = GetEndOfMonth();
+            BillFrom = dateTimePickerFrom.Value = GetFirstOfMonth();
+            BillTo = dateTimePickerTo.Value = GetEndOfMonth();
+            DisplayAllUsersCheckTypes();
             DisplayAllExpenseCheckTypes();
             DisplayAllAccounts();
             FillAccountsAndExpenseTypesChecked();
@@ -47,7 +49,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             PrepareWebViews();
         }
 
-        
 
         private void PrepareWebViews()
         {
@@ -65,28 +66,30 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private DateTime GetEndOfMonth()
         {
-            int daysInMonth;
-            int month = DateTime.Now.Month;
-            int year = DateTime.Now.Year;
-            DateTime tempdate = DateTime.Now;
-            if (tempdate.Day > 9)
-            {
-                if (month == 12)
-                {
-                    year++;
-                    month = 1;
-                }
-                else
-                {
-                    month++;
-                }
-                daysInMonth = DateTime.DaysInMonth(year, month);
-            }
-            else
-            {
-                daysInMonth = DateTime.DaysInMonth(year, month);
-            }
-            return new DateTime(year, month, daysInMonth);
+            DateTime date = DateTime.Now;
+            return new DateTime(date.Year, date.Month, DateTime.DaysInMonth(date.Year, date.Month));
+            //int daysInMonth;
+            //int month = DateTime.Now.Month;
+            //int year = DateTime.Now.Year;
+            //DateTime tempdate = DateTime.Now;
+            //if (tempdate.Day > 9)
+            //{
+            //    if (month == 12)
+            //    {
+            //        year++;
+            //        month = 1;
+            //    }
+            //    else
+            //    {
+            //        month++;
+            //    }
+            //    daysInMonth = DateTime.DaysInMonth(year, month);
+            //}
+            //else
+            //{
+            //    daysInMonth = DateTime.DaysInMonth(year, month);
+            //}
+            //return new DateTime(year, month, daysInMonth);
         }
 
 
@@ -125,6 +128,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void FillAccountsAndExpenseTypesChecked()
         {
+            Users = new List<string>();
             Accounts = new List<string>();
             ExpenseTypes = new List<string>();
             foreach(var checkedIndex in checkedListBox1.CheckedItems)
@@ -135,20 +139,23 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             {
                 Accounts.Add(checkedIndex.ToString());
             }
+            foreach (var checkedIndex in checkedListBoxUsers.CheckedItems)
+            {
+                Users.Add(checkedIndex.ToString());
+            }
         }
 
         private void PrepareListViews()
         {
-            listViewMainOne.Clear();
             //listViewSecondaryTwo.Clear();
             //listViewBill.Clear();
 
-            lvr1 = new ListViewRepoTransactions(listViewMainOne);
-            lvr2 = new ListViewRepoTransactions(listViewSecondaryOne);
+            //lvr1 = new ListViewRepoTransactions(listViewMainOne);
+            //lvr2 = new ListViewRepoTransactions(listViewSecondaryOne);
             //lvBill = new ListViewRepoBills(listViewBill, ListViewRepoBills.BillCycleHeaderList);
 
-            lvr1.AddDataToListView(listViewMainOne);
-            lvr2.AddDataToListView(listViewSecondaryOne);
+            //lvr1.AddDataToListView(listViewMainOne);
+            //lvr2.AddDataToListView(listViewSecondaryOne);
             //lvBill.AddDataToCycleListView(listViewBill, BillFrom, BillTo);
         }
 
@@ -165,43 +172,43 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         /// </summary>
         private void leftBarButtonHide()
         {
-            if (sideBarVisible)
-            {
-                panelLeftFilterBar.Width = 0;
-                sideBarVisible = false;
-                buttonLeftFilterHide.Text = ">";
-            }
-            else
-            {
-                panelLeftFilterBar.Width = 211;
-                sideBarVisible = true;
-                buttonLeftFilterHide.Text = "<";
-            }
+            //if (sideBarVisible)
+            //{
+            //    panelLeftFilterBar.Width = 0;
+            //    sideBarVisible = false;
+            //    buttonLeftFilterHide.Text = ">";
+            //}
+            //else
+            //{
+            //    panelLeftFilterBar.Width = 211;
+            //    sideBarVisible = true;
+            //    buttonLeftFilterHide.Text = "<";
+            //}
         }
         #endregion
 
-        private void RightBarHide()
-        {
-            if (rightSideBarVisible)
-            {
-                rightSideBarVisible = false;
-                buttonRightCompare.Text = "<";
-                int newWidth = 100;
-                if (sideBarVisible)
-                {
-                    newWidth += 230;
-                }
-                splitContainer1.SplitterDistance = this.Width-newWidth;
-                panelMainOne.Width *= 2;
-            }
-            else
-            {
-                rightSideBarVisible = true;
-                buttonRightCompare.Text = ">";
-                splitContainer1.SplitterDistance = this.Width/2;
-                panelMainOne.Width /= 2;
-            }
-        }
+        //private void RightBarHide()
+        //{
+        //    if (rightSideBarVisible)
+        //    {
+        //        rightSideBarVisible = false;
+        //        buttonRightCompare.Text = "<";
+        //        int newWidth = 100;
+        //        if (sideBarVisible)
+        //        {
+        //            newWidth += 230;
+        //        }
+        //        splitContainer1.SplitterDistance = this.Width-newWidth;
+        //        panelMainOne.Width *= 2;
+        //    }
+        //    else
+        //    {
+        //        rightSideBarVisible = true;
+        //        buttonRightCompare.Text = ">";
+        //        splitContainer1.SplitterDistance = this.Width/2;
+        //        panelMainOne.Width /= 2;
+        //    }
+        //}
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -250,6 +257,14 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void DisplayAllUsersCheckTypes()
+        {
+            foreach (var user in RepoUserEditor.users.Values)
+            {
+                checkedListBoxUsers.Items.Add($"{user.FirstName} {user.MiddleInitial}. {user.LastName}", CheckState.Checked);
+            }
         }
 
         private void DisplayAllExpenseCheckTypes()
@@ -345,12 +360,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void dateTimePickerBillFromDate_ValueChanged(object sender, EventArgs e)
         {
-            BillFrom = dateTimePickerBillFromDate.Value;
+            //BillFrom = dateTimePickerBillFromDate.Value;
         }
 
         private void dateTimePickerBillToDate_ValueChanged(object sender, EventArgs e)
         {
-            BillTo = dateTimePickerBillToDate.Value;
+            //BillTo = dateTimePickerBillToDate.Value;
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -375,7 +390,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void buttonRightCompare_Click(object sender, EventArgs e)
         {
-            RightBarHide();
+            //RightBarHide();
         }
 
         private void dateTimePicker4_ValueChanged(object sender, EventArgs e)
@@ -403,6 +418,81 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             //ImportFile file = new ImportFile();
             //file.ShowDialog();
             //PrepareListViews();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel7_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void panelLeftFilterBar_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label17_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label32_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label33_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label31_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label28_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label37_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
