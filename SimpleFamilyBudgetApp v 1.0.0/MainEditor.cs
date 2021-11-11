@@ -391,6 +391,22 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             }
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < checkedListBoxUsers.Items.Count; i++)
+            {
+                checkedListBoxUsers.SetItemChecked(i, false);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < checkedListBoxUsers.Items.Count; i++)
+            {
+                checkedListBoxUsers.SetItemChecked(i, true);
+            }
+        }
+
         private void billTypeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BillEditor Bill = new BillEditor();
@@ -551,5 +567,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
 
         }
+
     }
 }
