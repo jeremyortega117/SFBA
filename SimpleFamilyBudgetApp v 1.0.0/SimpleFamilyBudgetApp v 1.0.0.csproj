@@ -115,6 +115,7 @@
     </Compile>
     <Compile Include="MODEL\ModelUserEditor.cs" />
     <Compile Include="REPO\RepoUserEditor.cs" />
+    <Compile Include="WEB_BROWSER\HTMLLogic.cs" />
     <EmbeddedResource Include="BankAccount.resx">
       <DependentUpon>BankAccount.cs</DependentUpon>
     </EmbeddedResource>

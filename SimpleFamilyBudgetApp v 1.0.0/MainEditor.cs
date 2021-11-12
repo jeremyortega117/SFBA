@@ -123,13 +123,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
             // If a user, an account exist you can start adding transactions.
             ToolStripMenuItemtransaction.Enabled = true;
-            toolStripMenuItemImportFile.Enabled = true;
             ToolStripMenuItemCreateBudget.Enabled = true;
         }
 
         private void DisableAllTools()
         {
-            toolStripMenuItemImportFile.Enabled = false;
             ToolStripMenuItembankAcct.Enabled = false;
             ToolStripMenuItemCreateBudget.Enabled = false;
             ToolStripMenuItembillType.Enabled = false;
@@ -197,7 +195,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private void PrepareListViews()
         {
 
-            lvr1 = new ListViewRepoTransactions(listView1);
+            lvr1 = new ListViewRepoTransactions(listView1, chart1);
             //lvr2 = new ListViewRepoTransactions(listViewSecondaryOne);
             //lvBill = new ListViewRepoBills(listViewBill, ListViewRepoBills.BillCycleHeaderList);
 

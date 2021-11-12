@@ -30,6 +30,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainEditor));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panelTopAccountSummary = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
@@ -100,13 +103,16 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.label7 = new System.Windows.Forms.Label();
             this.labelTotalSaved = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panelTopAccountSummary.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.mainGroupBox.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panelLeftFilterBar.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTopAccountSummary
@@ -239,6 +245,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel5.Controls.Add(this.chart1);
             this.panel5.Location = new System.Drawing.Point(219, 6);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(681, 286);
@@ -849,6 +856,22 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.label4.TabIndex = 0;
             this.label4.Text = "Total Saved";
             // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(3, 3);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(346, 276);
+            this.chart1.TabIndex = 0;
+            this.chart1.Text = "chart1";
+            // 
             // MainEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -866,12 +889,14 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.toolStrip1.PerformLayout();
             this.mainGroupBox.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panelLeftFilterBar.ResumeLayout(false);
             this.panelLeftFilterBar.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -948,6 +973,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label labelTotalDebt;
         private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }
 
