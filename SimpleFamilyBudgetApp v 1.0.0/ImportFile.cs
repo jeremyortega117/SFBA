@@ -96,12 +96,17 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                         List<ModelTransType> transTypes = new List<ModelTransType>();
                         ModelTransType transType = new ModelTransType();
                         transType.TransDesc = line[3];
+                        transType.TransSign = '-';
                         transTypes.Add(transType);
                         RepoTransaction.EditTransType(transTypes, 'A');
                         RepoTransaction.PrepareTransTypes();
                     }
                     tran.TransTypeKey = RepoTransaction.GetTransTypeKeyFromSelected(line[3]);
                     tran.Amount = Convert.ToDouble(line[4]);
+                    if (RepoTransaction.TransTypes[tran.TransTypeKey].TransSign != '+')
+                    {
+                        tran.Amount *= -1;
+                    }
                     tran.AcctKey = RepoTransaction.GetAcctKeyFromSelected(account);
                     trans.Add(tran);
                 }

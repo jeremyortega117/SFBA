@@ -20,5 +20,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
     {
         public int TransTypeKey { get; set; }
         public string TransDesc { get; set; }
+        public char TransSign { get; set; }
     }
 }

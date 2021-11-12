@@ -11,6 +11,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
     class RepoTransaction
     {
         internal static Dictionary<int, ModelTrans> Trans;
+        //internal static List<ModelTrans> TransInOrder;
         internal static Dictionary<int, ModelTransType> TransTypes;
 
 
@@ -34,6 +35,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                         ModelTransType transType = new ModelTransType();
                         transType.TransTypeKey = Convert.ToInt32(Reader["TRANS_TYPE_KEY"]);
                         transType.TransDesc = Reader["TRANS_DESC"].ToString();
+                        transType.TransSign = Convert.ToChar(Reader["TRANS_SIGN"]);
                         TransTypes.Add(transType.TransTypeKey, transType);
                     }
                 }
@@ -54,14 +56,16 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             foreach (ModelTransType transType in TransTypes)
             {
-                string SQL = $"EXECUTE proc_TRANS_TYPE_EDITOR @TRANS_TYPE_KEY, @TRANS_TYPE, @EDIT_TYPE";
+                string SQL = $"EXECUTE proc_TRANS_TYPE_EDITOR @TRANS_TYPE_KEY, @TRANS_TYPE, @TRANS_SIGN, @EDIT_TYPE";
                 SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);
                 List<SqlParameter> parameters = new List<SqlParameter>();
                 SqlParameter TransTypeKey = new SqlParameter("@TRANS_TYPE_KEY", transType.TransTypeKey);
                 SqlParameter TransType = new SqlParameter("@TRANS_TYPE", transType.TransDesc);
+                SqlParameter TransSign = new SqlParameter("@TRANS_SIGN", transType.TransSign);
                 SqlParameter editTypeParam = new SqlParameter("@EDIT_TYPE", editType);
                 parameters.Add(TransTypeKey);
                 parameters.Add(TransType);
+                parameters.Add(TransSign);
                 parameters.Add(editTypeParam);
                 Command.Parameters.AddRange(parameters.ToArray());
                 try
@@ -77,9 +81,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         }
 
 
-
-
-
         /// <summary>
         /// Grab data from database.
         /// </summary>
@@ -92,6 +93,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             {
                 Reader = Command.ExecuteReader();
                 Trans = new Dictionary<int, ModelTrans>();
+
                 if (Reader != null)
                 {
                     while (Reader.Read())
@@ -104,6 +106,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                         trans.TransTypeKey = Convert.ToInt32(Reader["TRANS_TYPE_KEY"]);
                         trans.AcctKey = Convert.ToInt32(Reader["ACC_KEY"]);
                         Trans.Add(trans.TransKey, trans);
+                        //TransInOrder.Add(trans);
                     }
                 }
             }
@@ -170,6 +173,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             {
                 Reader = Command.ExecuteReader();
                 Trans = new Dictionary<int, ModelTrans>();
+                //TransInOrder = new List<ModelTrans>();
                 if (Reader != null)
                 {
                     while (Reader.Read())
@@ -182,6 +186,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                         trans.TransTypeKey = Convert.ToInt32(Reader["TRANS_TYPE_KEY"]);
                         trans.AcctKey = Convert.ToInt32(Reader["ACC_KEY"]);
                         Trans.Add(trans.TransKey, trans);
+                        //TransInOrder.Add(trans);
                     }
                 }
             }
@@ -232,6 +237,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             foreach (ModelTrans trans in Trans)
             {
+                if (trans.TransTypeKey == 10)
+                {
+
+                }
+
                 string SQL = $"EXECUTE proc_TRANS_EDITOR @TRANS_KEY, @TRANS_TYPE_KEY, @ACC_KEY, @AMOUNT, @TRANS_DESC, @TRANS_DATE, @EDIT_TYPE";
                 SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);
                 List<SqlParameter> parameters = new List<SqlParameter>();

@@ -25,6 +25,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             comboBoxAcct.Text = "";
             textBoxAmount.Text = "";
             textBoxDescription.Text = "";
+            checkBoxIncome.Checked = false;
             dateTimePickerTransDate.Value = DateTime.Now;
             RepoBankAccount.PrepareAccountTypes();
             RepoBankAccount.PrepareAcctEditorData();
@@ -64,6 +65,14 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 List<ModelTransType> transTypes = new List<ModelTransType>();
                 ModelTransType transType = new ModelTransType();
                 transType.TransDesc = comboBoxTransType.Text;
+                if (checkBoxIncome.Checked)
+                {
+                    transType.TransSign = '+';
+                }
+                else
+                {
+                    transType.TransSign = '-';
+                }
                 transTypes.Add(transType);
                 RepoTransaction.EditTransType(transTypes, 'A');
                 ResetUI();
@@ -80,10 +89,14 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             listView1.Clear();
             List<ModelTrans> transTypes = new List<ModelTrans>();
             ModelTrans transType = new ModelTrans();
+            transType.TransTypeKey = RepoTransaction.GetTransTypeKeyFromSelected(comboBoxTransType.Text);
+            char sign = RepoTransaction.TransTypes[transType.TransTypeKey].TransSign;
             transType.Amount = Convert.ToDouble(textBoxAmount.Text);
+            if (sign != '+') {
+                transType.Amount *= -1;
+            }
             transType.TransDate = dateTimePickerTransDate.Value;
             transType.AcctKey = RepoTransaction.GetAcctKeyFromSelected(comboBoxAcct.Text);
-            transType.TransTypeKey = RepoTransaction.GetTransTypeKeyFromSelected(comboBoxTransType.Text);
             transType.TransDesc = textBoxDescription.Text;
             transTypes.Add(transType);
             RepoTransaction.EditTrans(transTypes, 'A');
@@ -128,8 +141,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private void buttonImportFile_Click(object sender, EventArgs e)
         {
             ImportFile file = new ImportFile(comboBoxAcct.Text);
-
             file.ShowDialog();
+            Close();
         }
     }
 }

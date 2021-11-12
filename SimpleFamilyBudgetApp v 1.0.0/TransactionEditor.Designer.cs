@@ -43,6 +43,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.buttonImportFile = new System.Windows.Forms.Button();
+            this.checkBoxIncome = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // listView1
@@ -173,11 +174,22 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.buttonImportFile.UseVisualStyleBackColor = true;
             this.buttonImportFile.Click += new System.EventHandler(this.buttonImportFile_Click);
             // 
+            // checkBoxIncome
+            // 
+            this.checkBoxIncome.AutoSize = true;
+            this.checkBoxIncome.Location = new System.Drawing.Point(613, 249);
+            this.checkBoxIncome.Name = "checkBoxIncome";
+            this.checkBoxIncome.Size = new System.Drawing.Size(61, 17);
+            this.checkBoxIncome.TabIndex = 14;
+            this.checkBoxIncome.Text = "Income";
+            this.checkBoxIncome.UseVisualStyleBackColor = true;
+            // 
             // TransactionEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.checkBoxIncome);
             this.Controls.Add(this.buttonImportFile);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
@@ -215,5 +227,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button buttonImportFile;
+        private System.Windows.Forms.CheckBox checkBoxIncome;
     }
 }

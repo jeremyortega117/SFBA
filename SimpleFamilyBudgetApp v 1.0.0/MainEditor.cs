@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -44,11 +45,42 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             DisplayAllAccounts();
             FillAccountsAndExpenseTypesChecked();
             RepoTransaction.PrepareTransDataWithFilters(Accounts, ExpenseTypes);
+            PrepareLabels();
             PrepareListViews();
             PrepareToolOptions();
             PrepareWebViews();
         }
 
+        private void PrepareLabels()
+        {
+            double total = 0;
+            foreach (string account in Accounts)
+            {
+                if (Accounts.Contains(account))
+                {
+                    int AcctKey = RepoTransaction.GetAcctKeyFromSelected(account);
+                    total += RepoBankAccount.Accounts[AcctKey].Balance;
+                }
+            }
+            labelTotalSaved.Text = total.ToString("C", CultureInfo.CurrentCulture);
+
+            total = 0;
+            DateTime dateNow = DateTime.Now;
+            foreach(int transKeys in RepoTransaction.Trans.Keys)
+            {
+                ModelTrans trans = RepoTransaction.Trans[transKeys];
+                DateTime dateFrom = new DateTime(dateNow.Year, dateNow.AddMonths(-1).Month, 1);
+                DateTime dateTo = new DateTime(dateNow.Year, dateNow.Month, 1);
+                if (trans.TransDate >= dateFrom && trans.TransDate < dateTo) 
+                {
+                    if (trans.Amount > 0)
+                    {
+                        total += trans.Amount;
+                    }
+                }
+            }
+            labelMonthlyNet.Text = total.ToString("C", CultureInfo.CurrentCulture);
+        }
 
         private void PrepareWebViews()
         {
@@ -68,28 +100,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             DateTime date = DateTime.Now;
             return new DateTime(date.Year, date.Month, DateTime.DaysInMonth(date.Year, date.Month));
-            //int daysInMonth;
-            //int month = DateTime.Now.Month;
-            //int year = DateTime.Now.Year;
-            //DateTime tempdate = DateTime.Now;
-            //if (tempdate.Day > 9)
-            //{
-            //    if (month == 12)
-            //    {
-            //        year++;
-            //        month = 1;
-            //    }
-            //    else
-            //    {
-            //        month++;
-            //    }
-            //    daysInMonth = DateTime.DaysInMonth(year, month);
-            //}
-            //else
-            //{
-            //    daysInMonth = DateTime.DaysInMonth(year, month);
-            //}
-            //return new DateTime(year, month, daysInMonth);
         }
 
 
@@ -186,14 +196,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void PrepareListViews()
         {
-            //listViewSecondaryTwo.Clear();
-            //listViewBill.Clear();
 
-            //lvr1 = new ListViewRepoTransactions(listViewMainOne);
+            lvr1 = new ListViewRepoTransactions(listView1);
             //lvr2 = new ListViewRepoTransactions(listViewSecondaryOne);
             //lvBill = new ListViewRepoBills(listViewBill, ListViewRepoBills.BillCycleHeaderList);
 
-            //lvr1.AddDataToListView(listViewMainOne);
+            lvr1.AddDataToListView(listView1, dateTimePickerFrom.Value, dateTimePickerTo.Value);
             //lvr2.AddDataToListView(listViewSecondaryOne);
             //lvBill.AddDataToCycleListView(listViewBill, BillFrom, BillTo);
         }
@@ -354,8 +362,14 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
+            refreshAfterFilter();
+        }
+
+        private void refreshAfterFilter()
+        {
             FillAccountsAndExpenseTypesChecked();
             RepoTransaction.PrepareTransDataWithFilters(Accounts, ExpenseTypes);
+            PrepareLabels();
             PrepareListViews();
         }
 
@@ -568,5 +582,41 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         }
 
+        private void buttonBackOneMonth_Click(object sender, EventArgs e)
+        {
+            dateTimePickerTo.Value = dateTimePickerTo.Value.AddMonths(-1);
+            dateTimePickerTo.Value = new DateTime(dateTimePickerTo.Value.Year, dateTimePickerTo.Value.Month, DateTime.DaysInMonth(dateTimePickerTo.Value.Year, dateTimePickerTo.Value.Month));
+            dateTimePickerFrom.Value = dateTimePickerFrom.Value.AddMonths(-1);
+            refreshAfterFilter();
+        }
+
+        private void buttonBackOneYear_Click(object sender, EventArgs e)
+        {
+            dateTimePickerTo.Value = dateTimePickerTo.Value.AddYears(-1);
+            dateTimePickerTo.Value = new DateTime(dateTimePickerTo.Value.Year, dateTimePickerTo.Value.Month, DateTime.DaysInMonth(dateTimePickerTo.Value.Year, dateTimePickerTo.Value.Month));
+            dateTimePickerFrom.Value = dateTimePickerFrom.Value.AddYears(-1);
+            refreshAfterFilter();
+        }
+
+        private void buttonForwardOneMonth_Click(object sender, EventArgs e)
+        {
+            dateTimePickerTo.Value = dateTimePickerTo.Value.AddMonths(1);
+            dateTimePickerTo.Value = new DateTime(dateTimePickerTo.Value.Year, dateTimePickerTo.Value.Month, DateTime.DaysInMonth(dateTimePickerTo.Value.Year, dateTimePickerTo.Value.Month));
+            dateTimePickerFrom.Value = dateTimePickerFrom.Value.AddMonths(1);
+            refreshAfterFilter();
+        }
+
+        private void ForwardOneYear_Click(object sender, EventArgs e)
+        {
+            dateTimePickerTo.Value = dateTimePickerTo.Value.AddYears(1);
+            dateTimePickerFrom.Value = dateTimePickerFrom.Value.AddYears(1);
+            dateTimePickerTo.Value = new DateTime(dateTimePickerTo.Value.Year, dateTimePickerTo.Value.Month, DateTime.DaysInMonth(dateTimePickerTo.Value.Year, dateTimePickerTo.Value.Month));
+            refreshAfterFilter();
+        }
+
+        private void toolStripDropDownButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
