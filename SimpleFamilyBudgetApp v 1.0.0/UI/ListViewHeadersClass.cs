@@ -11,6 +11,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
     {
         internal void PrepareListViewHeaders(ListView lvo, List<string> headerList)
         {
+            lvo.Columns.Clear();
             lvo.Items.Clear();
             lvo.GridLines = true;
             lvo.AllowColumnReorder = true;

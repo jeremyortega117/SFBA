@@ -4,15 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace SimpleFamilyBudgetApp_v_1._0._0
 {
     internal class ListViewRepoBills
     {
 
+        internal static Dictionary<string, decimal> BillsSummary;
+        internal static Chart chart;
+        internal static int paycheckCount = 0;
 
         public ListViewRepoBills(ListView lview, List<string> BillHeaderList)
         {
+            ListViewHeadersClass prepHeader = new ListViewHeadersClass();
+            prepHeader.PrepareListViewHeaders(lview, BillHeaderList);
+            lview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            lview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+
+        public ListViewRepoBills(ListView lview, List<string> BillHeaderList, Chart Chart)
+        {
+            chart = Chart;
             ListViewHeadersClass prepHeader = new ListViewHeadersClass();
             prepHeader.PrepareListViewHeaders(lview, BillHeaderList);
             lview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
@@ -98,29 +111,45 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
             lview.Items.Clear();
             DateTime date = billFrom;
+
+            bool[] boolArr = new bool[RepoBills.Bills.Count];
+
+
             DateTime startDateOfBillPayments = DateTime.MinValue;
+
+            BillsSummary = new Dictionary<string, decimal>();
+            paycheckCount = 0;
 
             while (date < billTo)
             {
+                if(date.Day == 1 || date.Day == 15)
+                {
+                    paycheckCount++;
+                }
+
+                int billKeyIndex = 0;
                 foreach (int key in RepoBills.Bills.Keys)
                 {
                     char freq = Bills[key].BillType;
-
-                    if (startDateOfBillPayments == DateTime.MinValue && freq == 'p')
+                    if (!boolArr[billKeyIndex] && freq == 'p')
                     {
+                        boolArr[billKeyIndex] = true;
                         Bills[key].Remaining = Bills[key].Total;
                         startDateOfBillPayments = Bills[key].BillStartDate;
                         while (startDateOfBillPayments < date && Bills[key].Remaining > 0)
                         {
-                            Bills[key].Remaining -= Bills[key].Amount;
-                            startDateOfBillPayments.AddDays(1);
+                            if (BillDateHasBeenFound(Bills[key], startDateOfBillPayments))
+                            {
+                                Bills[key].Remaining -= Bills[key].Amount;
+                            }
+                            startDateOfBillPayments = startDateOfBillPayments.AddDays(1);
                         }
-                        if(Bills[key].Remaining <= 0)
+                        if (Bills[key].Remaining <= 0)
                         {
                             continue;
                         }
                     }
-
+                    billKeyIndex++;
                     if ((freq == 't' && (date < billFrom || date > billTo)) || (freq == 'p' && (date < Bills[key].BillStartDate || date > Bills[key].BillEndDate)))
                     {
                         continue;
@@ -132,10 +161,21 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
                     if (BillDateHasBeenFound(Bills[key], date))
                     {
+                        string desc = Bills[key].BillDesc.ToString();
+                        decimal amount = Bills[key].Amount;
+                        if (!BillsSummary.ContainsKey(desc))
+                        {
+                            BillsSummary.Add(desc, amount);
+                        }
+                        else
+                        {
+                            BillsSummary[desc] += amount;
+                        }
+
                         List<string> billHeaders = new List<string>();
                         billHeaders.Add(date.ToString("yyyy/MM/dd"));
-                        billHeaders.Add(Bills[key].Amount.ToString());
-                        billHeaders.Add(Bills[key].BillDesc.ToString());
+                        billHeaders.Add(amount.ToString());
+                        billHeaders.Add(desc);
                         if (freq != 'p')
                         {
                             billHeaders.Add("-");
@@ -165,8 +205,28 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 lview.Items.Add(lvi);
             }
 
+            BuildPieChart();
+
             lview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             lview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+
+
+
+        private void BuildPieChart()
+        {
+            List<string> names = new List<string>();
+
+            foreach (var trans in BillsSummary)
+            {
+                names.Add(trans.Key + " " + string.Format("{0:C}", trans.Value));
+            }
+
+            chart.Series[0].ChartType = SeriesChartType.Pie;
+            chart.Series[0].Points.DataBindXY(names, BillsSummary.Values);
+            chart.Legends[0].Enabled = true;
+            chart.ChartAreas[0].Area3DStyle.Enable3D = true;
+
         }
 
 

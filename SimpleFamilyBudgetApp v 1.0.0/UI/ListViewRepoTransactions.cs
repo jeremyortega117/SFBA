@@ -10,6 +10,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         internal static List<string> transactionHeaders = new List<string> { "Date", "Bank", "Acct", "Amount", "Type", "Sign", "Description" };
         internal static Dictionary<int, List<string>> TransactionsByTransKey;
+        internal static double totalSpent = 0;
+        internal static double totalIncome = 0;
 
         internal static Chart chart;
 
@@ -35,7 +37,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         internal void AddDataToListView(ListView lview)
         {
             TransactionsByTransKey = new Dictionary<int, List<string>>();
-
+            totalSpent = totalIncome = 0;
             lview.Items.Clear();
             var trans = RepoTransaction.Trans;
             foreach (int key in trans.Keys)
@@ -55,6 +57,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 if (transType.TransSign == '-')
                 {
                     TransactionsByTransKey.Add(trans[key].TransKey, transaction);
+                    totalSpent += trans[key].Amount;
+                }
+                else if (transType.TransSign == '+')
+                {
+                    totalIncome += trans[key].Amount;
                 }
                 ListViewItem lvi = new ListViewItem(transaction.ToArray());
                 lview.Items.Add(lvi);
@@ -69,7 +76,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         internal void AddDataToListView(ListView lview, DateTime fromDate, DateTime toDate)
         {
             TransactionsByTransKey = new Dictionary<int, List<string>>();
-
+            totalSpent = totalIncome = 0;
             lview.Items.Clear();
             var trans = RepoTransaction.Trans;
 
@@ -93,6 +100,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                     if (transType.TransSign == '-')
                     {
                         TransactionsByTransKey.Add(trans[key].TransKey, transaction);
+                        totalSpent += trans[key].Amount;
+                    }
+                    else if(transType.TransSign == '+')
+                    {
+                        totalIncome += trans[key].Amount;
                     }
                     ListViewItem lvi = new ListViewItem(transaction.ToArray());
                     lview.Items.Add(lvi);
@@ -109,8 +121,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             Dictionary<string, double> nameAndVal = new Dictionary<string, double>();
 
-            //List<string> names = new List<string>();
-            //List<double> values = new List<double>();
+            List<string> names = new List<string>();
 
             foreach (int transKey in TransactionsByTransKey.Keys)
             {
@@ -125,12 +136,15 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 {
                     nameAndVal[name] += value;
                 }
-                //names.Add(TransactionsByTransKey[transKey][4].ToString());
-                //values.Add(Convert.ToDouble(TransactionsByTransKey[transKey][3].Replace("(", "").Replace(")", "").Replace("$", "")));
+            }
+
+            foreach (var trans in nameAndVal)
+            {
+                names.Add(trans.Key + " " + string.Format("{0:C}", trans.Value));
             }
 
             chart.Series[0].ChartType = SeriesChartType.Pie;
-            chart.Series[0].Points.DataBindXY(nameAndVal.Keys, nameAndVal.Values);
+            chart.Series[0].Points.DataBindXY(names, nameAndVal.Values);
             chart.Legends[0].Enabled = true;
             chart.ChartAreas[0].Area3DStyle.Enable3D = true;
 

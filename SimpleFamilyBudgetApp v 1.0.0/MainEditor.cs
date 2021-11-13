@@ -18,7 +18,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         internal static bool rightSideBarVisible = true;
 
         ListViewRepoTransactions lvr1;
-        ListViewRepoTransactions lvr2;
+        //ListViewRepoTransactions lvr2;
         ListViewRepoBills lvBill;
         Dictionary<int, string> Users;
         List<string> Accounts;
@@ -30,8 +30,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         public MainEditor()
         {
             InitializeComponent();
-            leftBarButtonHide();
-            //RightBarHide();
             RepoUserEditor.PrepareUserEditorData();
             RepoBankAccount.PrepareAccountTypes();
             RepoBankAccount.PrepareAcctEditorData();
@@ -46,7 +44,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             FillAccountsAndExpenseTypesChecked();
             RepoTransaction.PrepareTransDataWithFilters(Accounts, ExpenseTypes);
             PrepareLabels();
-            PrepareListViews();
+            radioExpenses.Checked = true;
+            //PrepareListViews();
             PrepareToolOptions();
             PrepareWebViews();
         }
@@ -194,66 +193,27 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void PrepareListViews()
         {
-
-            lvr1 = new ListViewRepoTransactions(listView1, chart1);
-            //lvr2 = new ListViewRepoTransactions(listViewSecondaryOne);
-            //lvBill = new ListViewRepoBills(listViewBill, ListViewRepoBills.BillCycleHeaderList);
-
-            lvr1.AddDataToListView(listView1, dateTimePickerFrom.Value, dateTimePickerTo.Value);
-            //lvr2.AddDataToListView(listViewSecondaryOne);
-            //lvBill.AddDataToCycleListView(listViewBill, BillFrom, BillTo);
-        }
-
-
-
-        #region Side Bar Button
-        private void buttonLeftFilterHide_Click(object sender, EventArgs e)
-        {
-            leftBarButtonHide();
-        }
-
-        /// <summary>
-        /// Show/Hide customizable filters.
-        /// </summary>
-        private void leftBarButtonHide()
-        {
-            //if (sideBarVisible)
+            if (radioExpenses.Checked)
+            {
+                
+                lvr1 = new ListViewRepoTransactions(listView1, chart1);
+                lvr1.AddDataToListView(listView1, dateTimePickerFrom.Value, dateTimePickerTo.Value);
+            }
+            else if (radioBills.Checked)
+            {
+                lvBill = new ListViewRepoBills(listView1, ListViewRepoBills.BillCycleHeaderList, chart1);
+                lvBill.AddDataToCycleListView(listView1, BillFrom, BillTo);
+            }
+            //else if (radioBudgets.Checked)
             //{
-            //    panelLeftFilterBar.Width = 0;
-            //    sideBarVisible = false;
-            //    buttonLeftFilterHide.Text = ">";
-            //}
-            //else
-            //{
-            //    panelLeftFilterBar.Width = 211;
-            //    sideBarVisible = true;
-            //    buttonLeftFilterHide.Text = "<";
+            //    lvr2 = new ListViewRepoTransactions(listView1);
+            //    lvr2.AddDataToListView(listView1);
             //}
         }
-        #endregion
 
-        //private void RightBarHide()
-        //{
-        //    if (rightSideBarVisible)
-        //    {
-        //        rightSideBarVisible = false;
-        //        buttonRightCompare.Text = "<";
-        //        int newWidth = 100;
-        //        if (sideBarVisible)
-        //        {
-        //            newWidth += 230;
-        //        }
-        //        splitContainer1.SplitterDistance = this.Width-newWidth;
-        //        panelMainOne.Width *= 2;
-        //    }
-        //    else
-        //    {
-        //        rightSideBarVisible = true;
-        //        buttonRightCompare.Text = ">";
-        //        splitContainer1.SplitterDistance = this.Width/2;
-        //        panelMainOne.Width /= 2;
-        //    }
-        //}
+
+
+
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -365,10 +325,21 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void refreshAfterFilter()
         {
+            BillFrom = dateTimePickerFrom.Value;
+            BillTo = dateTimePickerTo.Value;
             FillAccountsAndExpenseTypesChecked();
             RepoTransaction.PrepareTransDataWithFilters(Accounts, ExpenseTypes);
             PrepareLabels();
             PrepareListViews();
+            if (radioExpenses.Checked) {
+                labelTotalIncome.Text = string.Format("{0:C}", ListViewRepoTransactions.totalIncome);
+                labelTotalSpent.Text = string.Format("{0:C}", ListViewRepoTransactions.totalSpent);
+                labelTotalBal.Text = string.Format("{0:C}", ListViewRepoTransactions.totalIncome + ListViewRepoTransactions.totalSpent);
+            }
+            else if (radioBills.Checked)
+            {
+                labelTotalIncome.Text = string.Format("{0:C}", ListViewRepoBills.paycheckCount * Convert.ToDecimal(labelMonthlyNet.Text.Replace("$", "")));
+            }
         }
 
         private void buttonAllExpenses_Click(object sender, EventArgs e)
@@ -613,6 +584,26 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         }
 
         private void toolStripDropDownButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioExpenses_CheckedChanged(object sender, EventArgs e)
+        {
+            PrepareListViews();
+        }
+
+        private void radioBudgets_CheckedChanged(object sender, EventArgs e)
+        {
+            PrepareListViews();
+        }
+
+        private void radioBills_CheckedChanged(object sender, EventArgs e)
+        {
+            PrepareListViews();
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
         {
 
         }
