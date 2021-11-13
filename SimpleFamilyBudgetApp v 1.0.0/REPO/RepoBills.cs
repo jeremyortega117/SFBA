@@ -77,7 +77,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR: Grabbing user data. " + ex.Message);
+                MessageBox.Show("ERROR: Grabbing all bill data. " + ex.Message);
             }
             Command.Dispose();
             Reader.Close();
@@ -167,7 +167,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR: Grabbing user data. " + ex.Message);
+                MessageBox.Show("ERROR: Grabbing bill data within time frame. " + ex.Message);
             }
             Command.Dispose();
             Reader.Close();

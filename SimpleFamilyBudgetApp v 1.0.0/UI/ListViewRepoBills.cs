@@ -14,6 +14,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         internal static Dictionary<string, decimal> BillsSummary;
         internal static Chart chart;
         internal static int paycheckCount = 0;
+        internal static decimal Total = 0;
 
         public ListViewRepoBills(ListView lview, List<string> BillHeaderList)
         {
@@ -108,6 +109,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             List<string[]> DataFormats = new List<string[]>();
 
             var Bills = RepoBills.Bills;
+            Total = 0;
 
             lview.Items.Clear();
             DateTime date = billFrom;
@@ -163,6 +165,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                     {
                         string desc = Bills[key].BillDesc.ToString();
                         decimal amount = Bills[key].Amount;
+                        Total += amount;
                         if (!BillsSummary.ContainsKey(desc))
                         {
                             BillsSummary.Add(desc, amount);

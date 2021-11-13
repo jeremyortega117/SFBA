@@ -27,7 +27,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 Reader = Command.ExecuteReader();
                 if (Reader != null)
                 {
-                    if (Reader.Read())
+                    while (Reader.Read())
                     {
                         ModelFrequency freq = new ModelFrequency();
                         freq.FreqKey = Convert.ToInt32(Reader["FREQ_KEY"]);

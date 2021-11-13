@@ -248,7 +248,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // panel5
             // 
-            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel5.Controls.Add(this.labelTotalBal);
@@ -265,6 +266,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // labelTotalBal
             // 
+            this.labelTotalBal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelTotalBal.AutoSize = true;
             this.labelTotalBal.Location = new System.Drawing.Point(465, 77);
             this.labelTotalBal.Name = "labelTotalBal";
@@ -274,6 +276,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // label29
             // 
+            this.label29.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label29.AutoSize = true;
             this.label29.Location = new System.Drawing.Point(384, 77);
             this.label29.Name = "label29";
@@ -283,6 +286,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // labelTotalIncome
             // 
+            this.labelTotalIncome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelTotalIncome.AutoSize = true;
             this.labelTotalIncome.Location = new System.Drawing.Point(465, 22);
             this.labelTotalIncome.Name = "labelTotalIncome";
@@ -292,6 +296,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // label30
             // 
+            this.label30.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label30.AutoSize = true;
             this.label30.Location = new System.Drawing.Point(387, 22);
             this.label30.Name = "label30";
@@ -301,6 +306,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // labelTotalSpent
             // 
+            this.labelTotalSpent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelTotalSpent.AutoSize = true;
             this.labelTotalSpent.Location = new System.Drawing.Point(465, 50);
             this.labelTotalSpent.Name = "labelTotalSpent";
@@ -310,6 +316,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(394, 50);
             this.label5.Name = "label5";
@@ -319,6 +326,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // chart1
             // 
+            this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
@@ -336,8 +346,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // panel4
             // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.Controls.Add(this.label27);
             this.panel4.Controls.Add(this.label26);
@@ -375,7 +384,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // buttonBackOneYear
             // 
-            this.buttonBackOneYear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.buttonBackOneYear.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.buttonBackOneYear.Location = new System.Drawing.Point(99, 9);
             this.buttonBackOneYear.Name = "buttonBackOneYear";
             this.buttonBackOneYear.Size = new System.Drawing.Size(64, 23);
@@ -386,7 +395,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // ForwardOneYear
             // 
-            this.ForwardOneYear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.ForwardOneYear.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ForwardOneYear.Location = new System.Drawing.Point(309, 9);
             this.ForwardOneYear.Name = "ForwardOneYear";
             this.ForwardOneYear.Size = new System.Drawing.Size(64, 23);
@@ -397,7 +406,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // buttonForwardOneMonth
             // 
-            this.buttonForwardOneMonth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.buttonForwardOneMonth.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.buttonForwardOneMonth.Location = new System.Drawing.Point(239, 9);
             this.buttonForwardOneMonth.Name = "buttonForwardOneMonth";
             this.buttonForwardOneMonth.Size = new System.Drawing.Size(64, 23);
@@ -408,7 +417,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // buttonBackOneMonth
             // 
-            this.buttonBackOneMonth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.buttonBackOneMonth.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.buttonBackOneMonth.Location = new System.Drawing.Point(169, 9);
             this.buttonBackOneMonth.Name = "buttonBackOneMonth";
             this.buttonBackOneMonth.Size = new System.Drawing.Size(64, 23);
@@ -698,7 +707,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.labelTotalDebt.AutoSize = true;
             this.labelTotalDebt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTotalDebt.Location = new System.Drawing.Point(351, 8);
+            this.labelTotalDebt.Location = new System.Drawing.Point(303, 6);
             this.labelTotalDebt.Name = "labelTotalDebt";
             this.labelTotalDebt.Size = new System.Drawing.Size(44, 17);
             this.labelTotalDebt.TabIndex = 32;
@@ -709,7 +718,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.label38.AutoSize = true;
             this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.Location = new System.Drawing.Point(267, 8);
+            this.label38.Location = new System.Drawing.Point(219, 6);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(78, 17);
             this.label38.TabIndex = 31;

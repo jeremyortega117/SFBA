@@ -338,7 +338,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             }
             else if (radioBills.Checked)
             {
-                labelTotalIncome.Text = string.Format("{0:C}", ListViewRepoBills.paycheckCount * Convert.ToDecimal(labelMonthlyNet.Text.Replace("$", "")));
+                decimal income = ListViewRepoBills.paycheckCount * Convert.ToDecimal(labelMonthlyNet.Text.Replace("$", "")) / 2;
+                decimal spent = ListViewRepoBills.Total;
+                decimal bal = income - spent;
+
+                labelTotalIncome.Text = string.Format("{0:C}", income);
+                labelTotalSpent.Text = string.Format("{0:C}", spent);
+                labelTotalBal.Text = string.Format("{0:C}", bal);
             }
         }
 
