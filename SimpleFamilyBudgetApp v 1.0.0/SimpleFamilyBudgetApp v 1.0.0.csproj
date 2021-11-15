@@ -61,6 +61,12 @@
     <Compile Include="BillEditor.Designer.cs">
       <DependentUpon>BillEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="BudgetEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BudgetEditor.Designer.cs">
+      <DependentUpon>BudgetEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="ChangeOrDeleteAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BillEditor.resx">
       <DependentUpon>BillEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BudgetEditor.resx">
+      <DependentUpon>BudgetEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChangeOrDeleteAccount.resx">
       <DependentUpon>ChangeOrDeleteAccount.cs</DependentUpon>

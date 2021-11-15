@@ -613,5 +613,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
 
         }
+
+        private void ToolStripMenuItemCreateBudget_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

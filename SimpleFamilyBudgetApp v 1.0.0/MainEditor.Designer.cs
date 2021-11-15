@@ -90,24 +90,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.label31 = new System.Windows.Forms.Label();
             this.labelMonthlyNet = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.labelTotalSaved = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panelTopAccountSummary.SuspendLayout();
@@ -158,7 +140,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(146, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
             // 
             // toolStripMenuItemAddEdit
             // 
@@ -168,7 +150,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.ToolStripMenuItembillType,
             this.ToolStripMenuItemtransaction});
             this.toolStripMenuItemAddEdit.Name = "toolStripMenuItemAddEdit";
-            this.toolStripMenuItemAddEdit.Size = new System.Drawing.Size(149, 22);
+            this.toolStripMenuItemAddEdit.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItemAddEdit.Text = "Add / Edit";
             this.toolStripMenuItemAddEdit.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
@@ -220,8 +202,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // ToolStripMenuItemCreateBudget
             // 
             this.ToolStripMenuItemCreateBudget.Name = "ToolStripMenuItemCreateBudget";
-            this.ToolStripMenuItemCreateBudget.Size = new System.Drawing.Size(149, 22);
+            this.ToolStripMenuItemCreateBudget.Size = new System.Drawing.Size(180, 22);
             this.ToolStripMenuItemCreateBudget.Text = "Create Budget";
+            this.ToolStripMenuItemCreateBudget.Click += new System.EventHandler(this.ToolStripMenuItemCreateBudget_Click);
             // 
             // mainGroupBox
             // 
@@ -485,7 +468,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // radioBills
             // 
             this.radioBills.AutoSize = true;
-            this.radioBills.Location = new System.Drawing.Point(9, 102);
+            this.radioBills.Location = new System.Drawing.Point(9, 81);
             this.radioBills.Name = "radioBills";
             this.radioBills.Size = new System.Drawing.Size(43, 17);
             this.radioBills.TabIndex = 16;
@@ -497,7 +480,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // radioBudgets
             // 
             this.radioBudgets.AutoSize = true;
-            this.radioBudgets.Location = new System.Drawing.Point(9, 79);
+            this.radioBudgets.Location = new System.Drawing.Point(9, 104);
             this.radioBudgets.Name = "radioBudgets";
             this.radioBudgets.Size = new System.Drawing.Size(64, 17);
             this.radioBudgets.TabIndex = 15;
@@ -677,24 +660,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.panel1.Controls.Add(this.label31);
             this.panel1.Controls.Add(this.labelMonthlyNet);
             this.panel1.Controls.Add(this.label24);
-            this.panel1.Controls.Add(this.label22);
-            this.panel1.Controls.Add(this.label23);
-            this.panel1.Controls.Add(this.label18);
-            this.panel1.Controls.Add(this.label19);
-            this.panel1.Controls.Add(this.label20);
-            this.panel1.Controls.Add(this.label21);
-            this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.label15);
-            this.panel1.Controls.Add(this.label16);
-            this.panel1.Controls.Add(this.label17);
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.label12);
-            this.panel1.Controls.Add(this.label13);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.labelTotalSaved);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -752,191 +717,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.label24.Size = new System.Drawing.Size(111, 13);
             this.label24.TabIndex = 20;
             this.label24.Text = "Last Monthly Income: ";
-            // 
-            // label22
-            // 
-            this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(603, 104);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(34, 13);
-            this.label22.TabIndex = 19;
-            this.label22.Text = "$0.00";
-            // 
-            // label23
-            // 
-            this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(603, 68);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(34, 13);
-            this.label23.TabIndex = 18;
-            this.label23.Text = "$0.00";
-            // 
-            // label18
-            // 
-            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(872, 79);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(34, 13);
-            this.label18.TabIndex = 17;
-            this.label18.Text = "$0.00";
-            // 
-            // label19
-            // 
-            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(733, 79);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(132, 13);
-            this.label19.TabIndex = 16;
-            this.label19.Text = "This Month Bill Remaining:";
-            // 
-            // label20
-            // 
-            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(872, 56);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(34, 13);
-            this.label20.TabIndex = 15;
-            this.label20.Text = "$0.00";
-            // 
-            // label21
-            // 
-            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(756, 56);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(108, 13);
-            this.label21.TabIndex = 14;
-            this.label21.Text = "This Month Bills Paid:";
-            // 
-            // label14
-            // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(603, 88);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(36, 13);
-            this.label14.TabIndex = 13;
-            this.label14.Text = "0.00%";
-            this.label14.Click += new System.EventHandler(this.label14_Click);
-            // 
-            // label15
-            // 
-            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(441, 92);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(153, 13);
-            this.label15.TabIndex = 12;
-            this.label15.Text = "This Month Budget Remaining:";
-            this.label15.Click += new System.EventHandler(this.label15_Click);
-            // 
-            // label16
-            // 
-            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(603, 52);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(36, 13);
-            this.label16.TabIndex = 11;
-            this.label16.Text = "0.00%";
-            this.label16.Click += new System.EventHandler(this.label16_Click);
-            // 
-            // label17
-            // 
-            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(466, 56);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(128, 13);
-            this.label17.TabIndex = 10;
-            this.label17.Text = "This Month Budget Used:";
-            this.label17.Click += new System.EventHandler(this.label17_Click);
-            // 
-            // label10
-            // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(603, 32);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(34, 13);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "$0.00";
-            // 
-            // label11
-            // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(465, 32);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(129, 13);
-            this.label11.TabIndex = 8;
-            this.label11.Text = "Next Month Budget Total:";
-            // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(603, 8);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(34, 13);
-            this.label12.TabIndex = 7;
-            this.label12.Text = "$0.00";
-            // 
-            // label13
-            // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(467, 8);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(127, 13);
-            this.label13.TabIndex = 6;
-            this.label13.Text = "This Month Budget Total:";
-            // 
-            // label8
-            // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(872, 33);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(34, 13);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "$0.00";
-            // 
-            // label9
-            // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(757, 33);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(108, 13);
-            this.label9.TabIndex = 4;
-            this.label9.Text = "Next Month Bill Total:";
-            // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(872, 10);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(34, 13);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "$0.00";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
-            // 
-            // label7
-            // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(759, 10);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(106, 13);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "This Month Bill Total:";
             // 
             // labelTotalSaved
             // 
@@ -1005,24 +785,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private System.Windows.Forms.GroupBox mainGroupBox;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label labelTotalSaved;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.ListView listView1;
@@ -1042,8 +806,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private System.Windows.Forms.Button buttonUncheckAllExpenses;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Button buttonBackOneYear;

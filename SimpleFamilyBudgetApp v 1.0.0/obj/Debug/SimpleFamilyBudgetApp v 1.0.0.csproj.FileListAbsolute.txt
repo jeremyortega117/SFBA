@@ -26,3 +26,4 @@ C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleF
 C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp_v_1._0._0.ImportFile.resources
 C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\bin\Debug\WEB_BROWSER\PieChart.html
 C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp_v_1._0._0.MainEditor.resources
+C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp_v_1._0._0.BudgetEditor.resources

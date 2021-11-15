@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -45,7 +46,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
                 List<string> transaction = new List<string>();
 
-                transaction.Add(trans[key].TransDate.ToString());
+                transaction.Add(trans[key].TransDate.ToString("MM/dd/yyyy"));
                 var bank = RepoBankAccount.Accounts[trans[key].AcctKey];
                 transaction.Add(bank.BankName);
                 transaction.Add(bank.AcctLastFour.ToString());
@@ -54,16 +55,18 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 transaction.Add(transType.TransDesc);
                 transaction.Add(transType.TransSign.ToString());
                 transaction.Add(trans[key].TransDesc);
+                ListViewItem lvi = new ListViewItem(transaction.ToArray());
                 if (transType.TransSign == '-')
                 {
                     TransactionsByTransKey.Add(trans[key].TransKey, transaction);
                     totalSpent += trans[key].Amount;
+                    lvi.BackColor = Color.FromArgb(200, 100, 100);
                 }
                 else if (transType.TransSign == '+')
                 {
                     totalIncome += trans[key].Amount;
+                    lvi.BackColor = Color.FromArgb(100, 200, 100);
                 }
-                ListViewItem lvi = new ListViewItem(transaction.ToArray());
                 lview.Items.Add(lvi);
             }
 
@@ -88,7 +91,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 {
                     List<string> transaction = new List<string>();
 
-                    transaction.Add(toCheck.ToString());
+                    transaction.Add(toCheck.ToString("MM/dd/yyyy"));
                     var bank = RepoBankAccount.Accounts[trans[key].AcctKey];
                     transaction.Add(bank.BankName);
                     transaction.Add(bank.AcctLastFour.ToString());
@@ -97,16 +100,18 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                     transaction.Add(transType.TransDesc);
                     transaction.Add(transType.TransSign.ToString());
                     transaction.Add(trans[key].TransDesc);
+                    ListViewItem lvi = new ListViewItem(transaction.ToArray());
                     if (transType.TransSign == '-')
                     {
                         TransactionsByTransKey.Add(trans[key].TransKey, transaction);
                         totalSpent += trans[key].Amount;
+                        lvi.BackColor = Color.FromArgb(200, 100, 100);
                     }
                     else if(transType.TransSign == '+')
                     {
                         totalIncome += trans[key].Amount;
+                        lvi.BackColor = Color.FromArgb(100, 200, 100);
                     }
-                    ListViewItem lvi = new ListViewItem(transaction.ToArray());
                     lview.Items.Add(lvi);
                 }
             }
