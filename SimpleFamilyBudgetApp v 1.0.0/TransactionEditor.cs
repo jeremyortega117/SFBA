@@ -12,11 +12,14 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 {
     public partial class TransactionEditor : Form
     {
+
+        internal static int key = -1;
+
         public TransactionEditor()
         {
             InitializeComponent();
             ResetUI();
-            button1.Enabled = false;
+            buttonSubmitExpense.Enabled = false;
         }
 
         private void ResetUI()
@@ -27,6 +30,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             textBoxDescription.Text = "";
             checkBoxIncome.Checked = false;
             dateTimePickerTransDate.Value = DateTime.Now;
+            buttonDelete.Enabled = false;
+            buttonUpdate.Enabled = false;
             RepoBankAccount.PrepareAccountTypes();
             RepoBankAccount.PrepareAcctEditorData();
             RepoTransaction.PrepareTransTypes();
@@ -91,7 +96,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             ModelTrans transType = new ModelTrans();
             transType.TransTypeKey = RepoTransaction.GetTransTypeKeyFromSelected(comboBoxTransType.Text);
             char sign = RepoTransaction.TransTypes[transType.TransTypeKey].TransSign;
-            transType.Amount = Convert.ToDouble(textBoxAmount.Text);
+            transType.Amount = Convert.ToDouble(textBoxAmount.Text.Replace("$", "").Replace("(", "").Replace(")", ""));
             if (sign != '+') {
                 transType.Amount *= -1;
             }
@@ -105,7 +110,24 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void comboBoxTransType_SelectedIndexChanged(object sender, EventArgs e)
         {
-                CheckIfButtonEnabled();
+            int transTypeKey = RepoTransaction.GetTransTypeKeyFromSelected(comboBoxTransType.Text);
+            if (transTypeKey != -1)
+            {
+                if (RepoTransaction.TransTypes[transTypeKey].TransSign == '+')
+                {
+                    checkBoxIncome.Checked = true;
+                }
+                else
+                {
+                    checkBoxIncome.Checked = false;
+                }
+                checkBoxIncome.Enabled = false;
+            }
+            else
+            {
+                checkBoxIncome.Enabled = true;
+            }
+            CheckIfButtonEnabled();
         }
 
         private void CheckIfButtonEnabled()
@@ -115,11 +137,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 && comboBoxAcct.Text.Trim() != ""
                 && comboBoxTransType.Text.Trim() != "")
             {
-                button1.Enabled = true;
+                buttonSubmitExpense.Enabled = true;
             }
             else
             {
-                button1.Enabled = false;
+                buttonSubmitExpense.Enabled = false;
             }
         }
 
@@ -148,6 +170,109 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(listView1.SelectedItems.Count > 1)
+            {
+                buttonSubmitExpense.Enabled = false;
+                buttonUpdate.Enabled = false;
+                buttonDelete.Enabled = true;
+                labelKey.Text = "";
+                ClearText();
+            }
+            else if(listView1.SelectedItems.Count == 1)
+            {
+                buttonSubmitExpense.Enabled = true;
+                buttonUpdate.Enabled = true;
+                buttonDelete.Enabled = true;
+                FillDataInEditor();
+            }
+            else if (listView1.SelectedItems.Count == 0)
+            {
+                buttonSubmitExpense.Enabled = true;
+                buttonUpdate.Enabled = false;
+                buttonDelete.Enabled = false;
+                labelKey.Text = "";
+            }
+        }
+
+        private void FillDataInEditor()
+        {
+            // Transaction Type
+            int transKey = Convert.ToInt32(listView1.SelectedItems[0].SubItems[1].Text);
+            labelKey.Text = transKey.ToString();
+            ModelTransType type = RepoTransaction.TransTypes[RepoTransaction.Trans[transKey].TransTypeKey];
+            string transType = type.TransDesc;
+            comboBoxTransType.Text = transType;
+
+            // Acct
+            int AcctNum = Convert.ToInt32(listView1.SelectedItems[0].SubItems[8].Text);
+            comboBoxAcct.Text = RepoBankAccount.RetrieveAcctSummaryFromAcctKey(AcctNum);
+
+            // Balance
+            textBoxAmount.Text = listView1.SelectedItems[0].SubItems[4].Text;
+
+            // Description
+            textBoxDescription.Text = listView1.SelectedItems[0].SubItems[7].Text;
+
+            // Date Time
+            DateTime date = Convert.ToDateTime(listView1.SelectedItems[0].SubItems[0].Text);
+            dateTimePickerTransDate.Value = date;
+
+            if(type.TransSign == '+')
+            {
+                checkBoxIncome.Checked = true;
+            }
+            else
+            {
+                checkBoxIncome.Checked = false;
+            }
+
+            //MessageBox.Show(transType);
+        }
+
+        private void TransactionEditor_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonUnselectAll_Click(object sender, EventArgs e)
+        {
+            listView1.SelectedItems.Clear();
+            buttonDelete.Enabled = false;
+            buttonUpdate.Enabled = false;
+            ClearText();
+        }
+
+        private void ClearText()
+        {
+            comboBoxTransType.Text = "";
+            comboBoxAcct.Text = "";
+            textBoxAmount.Text = "";
+            textBoxDescription.Text = "";
+            checkBoxIncome.Checked = false;
+            dateTimePickerTransDate.Value = DateTime.Now;
+        }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            List<ModelTrans> trans = new List<ModelTrans>();
+            for (int count = 0; count < listView1.SelectedItems.Count; count++)
+            {
+                int key = Convert.ToInt32(listView1.SelectedItems[count].SubItems[1].Text);
+                ModelTrans tran = RepoTransaction.Trans[Convert.ToInt32(key)];
+                trans.Add(tran);
+            }
+
+            RepoTransaction.EditTrans(trans, 'D');
+            ResetUI();
         }
     }
 }

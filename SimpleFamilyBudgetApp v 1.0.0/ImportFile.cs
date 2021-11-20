@@ -19,6 +19,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             InitializeComponent();
             buttonImport.Enabled = false;
             account = text;
+            checkBoxIgnoreDups.Checked = true;
         }
 
 
@@ -79,6 +80,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             //Read the contents of the file into a stream
             var fileStream = openFileDialog.OpenFile();
 
+            if (checkBoxIgnoreDups.Checked)
+            {
+                RepoTransaction.IgnoreDups = true;
+            }
+
             using (StreamReader reader = new StreamReader(fileStream))
             {
                 reader.ReadLine();
@@ -115,6 +121,18 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                     trans.Add(tran);
                 }
                 RepoTransaction.EditTrans(trans, 'A');
+            }
+        }
+
+        private void checkBoxIgnoreDups_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxIgnoreDups.Checked)
+            {
+                RepoTransaction.IgnoreDups = true;
+            }
+            else
+            {
+                RepoTransaction.IgnoreDups = false;
             }
         }
     }

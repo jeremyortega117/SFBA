@@ -32,6 +32,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.textBoxFileLocation = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.buttonImport = new System.Windows.Forms.Button();
+            this.checkBoxIgnoreDups = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // textBoxFileLocation
@@ -61,11 +62,23 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.buttonImport.UseVisualStyleBackColor = true;
             this.buttonImport.Click += new System.EventHandler(this.buttonImport_Click);
             // 
+            // checkBoxIgnoreDups
+            // 
+            this.checkBoxIgnoreDups.AutoSize = true;
+            this.checkBoxIgnoreDups.Location = new System.Drawing.Point(376, 77);
+            this.checkBoxIgnoreDups.Name = "checkBoxIgnoreDups";
+            this.checkBoxIgnoreDups.Size = new System.Drawing.Size(140, 17);
+            this.checkBoxIgnoreDups.TabIndex = 7;
+            this.checkBoxIgnoreDups.Text = "Ignore Duplicates In File";
+            this.checkBoxIgnoreDups.UseVisualStyleBackColor = true;
+            this.checkBoxIgnoreDups.CheckedChanged += new System.EventHandler(this.checkBoxIgnoreDups_CheckedChanged);
+            // 
             // ImportFile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(550, 144);
+            this.Controls.Add(this.checkBoxIgnoreDups);
             this.Controls.Add(this.buttonImport);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBoxFileLocation);
@@ -80,5 +93,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private System.Windows.Forms.TextBox textBoxFileLocation;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button buttonImport;
+        private System.Windows.Forms.CheckBox checkBoxIgnoreDups;
     }
 }

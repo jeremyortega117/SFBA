@@ -82,6 +82,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         }
 
 
+        internal static string RetrieveAcctSummaryFromAcctKey(int AcctNum)
+        {
+            ModelBankAccount acc = Accounts[AcctNum];
+            ModelAccountType accType = AccountTypes[acc.AcctTypeKey];
+            return $"{acc.BankName}, {acc.AcctLastFour}, {accType.AcctType}";
+        }
 
 
 

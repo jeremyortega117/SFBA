@@ -190,6 +190,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.Controls.Add(this.listViewUserEditor);
             this.Name = "User_Editor";
             this.Text = "User_Editor";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CloseBehavior);
+            this.Load += new System.EventHandler(this.User_Editor_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -181,5 +181,15 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             RepoUserEditor.EditUser(users, 'D');
             RefreshData();
         }
+
+        private void User_Editor_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CloseBehavior(object sender, FormClosedEventArgs e)
+        {
+
+        }
     }
 }

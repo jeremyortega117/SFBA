@@ -41,9 +41,14 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.textBoxDescription = new System.Windows.Forms.TextBox();
             this.dateTimePickerTransDate = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonSubmitExpense = new System.Windows.Forms.Button();
             this.buttonImportFile = new System.Windows.Forms.Button();
             this.checkBoxIncome = new System.Windows.Forms.CheckBox();
+            this.buttonUpdate = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
+            this.buttonUnselectAll = new System.Windows.Forms.Button();
+            this.labelTransKey = new System.Windows.Forms.Label();
+            this.labelKey = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listView1
@@ -57,6 +62,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.listView1.Size = new System.Drawing.Size(800, 229);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // comboBoxTransType
             // 
@@ -67,6 +73,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.comboBoxTransType.Size = new System.Drawing.Size(194, 21);
             this.comboBoxTransType.TabIndex = 1;
             this.comboBoxTransType.SelectedIndexChanged += new System.EventHandler(this.comboBoxTransType_SelectedIndexChanged);
+            this.comboBoxTransType.TextUpdate += new System.EventHandler(this.comboBoxTransType_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -166,17 +173,17 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.label4.TabIndex = 11;
             this.label4.Text = "Purchase Date:";
             // 
-            // button1
+            // buttonSubmitExpense
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(287, 390);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(194, 47);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Submit Expense";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonSubmitExpense.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.buttonSubmitExpense.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSubmitExpense.Location = new System.Drawing.Point(287, 390);
+            this.buttonSubmitExpense.Name = "buttonSubmitExpense";
+            this.buttonSubmitExpense.Size = new System.Drawing.Size(194, 47);
+            this.buttonSubmitExpense.TabIndex = 12;
+            this.buttonSubmitExpense.Text = "Submit Expense";
+            this.buttonSubmitExpense.UseVisualStyleBackColor = true;
+            this.buttonSubmitExpense.Click += new System.EventHandler(this.button1_Click);
             // 
             // buttonImportFile
             // 
@@ -200,14 +207,71 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.checkBoxIncome.Text = "Income";
             this.checkBoxIncome.UseVisualStyleBackColor = true;
             // 
+            // buttonUpdate
+            // 
+            this.buttonUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonUpdate.Location = new System.Drawing.Point(12, 305);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(75, 23);
+            this.buttonUpdate.TabIndex = 15;
+            this.buttonUpdate.Text = "Update";
+            this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonDelete.Location = new System.Drawing.Point(12, 341);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(75, 23);
+            this.buttonDelete.TabIndex = 16;
+            this.buttonDelete.Text = "Delete";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
+            // buttonUnselectAll
+            // 
+            this.buttonUnselectAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonUnselectAll.Location = new System.Drawing.Point(12, 257);
+            this.buttonUnselectAll.Name = "buttonUnselectAll";
+            this.buttonUnselectAll.Size = new System.Drawing.Size(85, 23);
+            this.buttonUnselectAll.TabIndex = 17;
+            this.buttonUnselectAll.Text = "Unselect All";
+            this.buttonUnselectAll.UseVisualStyleBackColor = true;
+            this.buttonUnselectAll.Click += new System.EventHandler(this.buttonUnselectAll_Click);
+            // 
+            // labelTransKey
+            // 
+            this.labelTransKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelTransKey.AutoSize = true;
+            this.labelTransKey.Location = new System.Drawing.Point(12, 241);
+            this.labelTransKey.Name = "labelTransKey";
+            this.labelTransKey.Size = new System.Drawing.Size(28, 13);
+            this.labelTransKey.TabIndex = 18;
+            this.labelTransKey.Text = "Key:";
+            // 
+            // labelKey
+            // 
+            this.labelKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelKey.AutoSize = true;
+            this.labelKey.Location = new System.Drawing.Point(46, 241);
+            this.labelKey.Name = "labelKey";
+            this.labelKey.Size = new System.Drawing.Size(0, 13);
+            this.labelKey.TabIndex = 19;
+            // 
             // TransactionEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 461);
+            this.Controls.Add(this.labelKey);
+            this.Controls.Add(this.labelTransKey);
+            this.Controls.Add(this.buttonUnselectAll);
+            this.Controls.Add(this.buttonDelete);
+            this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.checkBoxIncome);
             this.Controls.Add(this.buttonImportFile);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonSubmitExpense);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dateTimePickerTransDate);
             this.Controls.Add(this.textBoxDescription);
@@ -224,6 +288,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.MinimumSize = new System.Drawing.Size(816, 500);
             this.Name = "TransactionEditor";
             this.Text = "TransactionEditor";
+            this.Load += new System.EventHandler(this.TransactionEditor_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,8 +308,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private System.Windows.Forms.TextBox textBoxDescription;
         private System.Windows.Forms.DateTimePicker dateTimePickerTransDate;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonSubmitExpense;
         private System.Windows.Forms.Button buttonImportFile;
         private System.Windows.Forms.CheckBox checkBoxIncome;
+        private System.Windows.Forms.Button buttonUpdate;
+        private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.Button buttonUnselectAll;
+        private System.Windows.Forms.Label labelTransKey;
+        private System.Windows.Forms.Label labelKey;
     }
 }

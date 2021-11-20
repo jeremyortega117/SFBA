@@ -9,7 +9,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
     internal class ListViewRepoTransactions
     {
 
-        internal static List<string> transactionHeaders = new List<string> { "Date", "Bank", "Acct", "Amount", "Type", "Sign", "Description" };
+        internal static List<string> transactionHeaders = new List<string> {"Date", "Bank", "Acct", "Amount", "Type", "Sign", "Description" };
+        internal static List<string> transactionHeadersActual = new List<string> { "Date", "Trans ID", "Bank", "Acct", "Amount", "Type", "Sign", "Description", "Acct Num" };
         internal static Dictionary<int, List<string>> TransactionsByTransKey;
         internal static double totalSpent = 0;
         internal static double totalIncome = 0;
@@ -20,7 +21,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             lvo.Columns.Clear();
             ListViewHeadersClass prepHeader = new ListViewHeadersClass();
-            prepHeader.PrepareListViewHeaders(lvo, transactionHeaders);
+            prepHeader.PrepareListViewHeaders(lvo, transactionHeadersActual);
             lvo.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             lvo.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
@@ -30,7 +31,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             chart = Chart;
             lvo.Columns.Clear();
             ListViewHeadersClass prepHeader = new ListViewHeadersClass();
-            prepHeader.PrepareListViewHeaders(lvo, transactionHeaders);
+            prepHeader.PrepareListViewHeaders(lvo, transactionHeadersActual);
             lvo.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             lvo.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
@@ -45,8 +46,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             {
 
                 List<string> transaction = new List<string>();
-
                 transaction.Add(trans[key].TransDate.ToString("yyyy/MM/dd"));
+                transaction.Add(trans[key].TransKey.ToString());
                 var bank = RepoBankAccount.Accounts[trans[key].AcctKey];
                 transaction.Add(bank.BankName);
                 transaction.Add(bank.AcctLastFour.ToString());
@@ -55,6 +56,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 transaction.Add(transType.TransDesc);
                 transaction.Add(transType.TransSign.ToString());
                 transaction.Add(trans[key].TransDesc);
+                transaction.Add(trans[key].AcctKey.ToString());
                 ListViewItem lvi = new ListViewItem(transaction.ToArray());
                 if (transType.TransSign == '-')
                 {
@@ -90,8 +92,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 if (toCheck > fromDate && toCheck < toDate)
                 {
                     List<string> transaction = new List<string>();
-
                     transaction.Add(toCheck.ToString("yyyy/MM/dd"));
+                    transaction.Add(trans[key].TransKey.ToString());
                     var bank = RepoBankAccount.Accounts[trans[key].AcctKey];
                     transaction.Add(bank.BankName);
                     transaction.Add(bank.AcctLastFour.ToString());
@@ -100,6 +102,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                     transaction.Add(transType.TransDesc);
                     transaction.Add(transType.TransSign.ToString());
                     transaction.Add(trans[key].TransDesc);
+                    transaction.Add(trans[key].AcctKey.ToString());
                     ListViewItem lvi = new ListViewItem(transaction.ToArray());
                     if (transType.TransSign == '-')
                     {
@@ -130,8 +133,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
             foreach (int transKey in TransactionsByTransKey.Keys)
             {
-                string name = TransactionsByTransKey[transKey][4].ToString();
-                double value = Convert.ToDouble(TransactionsByTransKey[transKey][3].Replace("(", "").Replace(")", "").Replace("$", ""));
+                string name = TransactionsByTransKey[transKey][5].ToString();
+                double value = Convert.ToDouble(TransactionsByTransKey[transKey][4].Replace("(", "").Replace(")", "").Replace("$", ""));
 
                 if (!nameAndVal.ContainsKey(name))
                 {

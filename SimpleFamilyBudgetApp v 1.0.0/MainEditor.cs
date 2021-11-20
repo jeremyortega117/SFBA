@@ -30,6 +30,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         public MainEditor()
         {
             InitializeComponent();
+            PrepareAllData();
+        }
+
+        private void PrepareAllData()
+        {
             RepoUserEditor.PrepareUserEditorData();
             RepoBankAccount.PrepareAccountTypes();
             RepoBankAccount.PrepareAcctEditorData();
@@ -151,13 +156,16 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             Users = new Dictionary<int, string>();
             Accounts = new List<string>();
             ExpenseTypes = new List<string>();
+
             foreach (var checkedIndex in checkedListBoxUsers.CheckedItems)
             {
                 string name = checkedIndex.ToString();
                 int userKey = RepoUserEditor.RetrieveUserKeyFromName(name);
-                Users.Add(userKey, name);
+                if(!Users.ContainsKey(userKey))
+                    Users.Add(userKey, name);
             }
-            if (usersChanged) {
+            if (usersChanged)
+            {
                 checkedListBox2.Items.Clear();
                 DisplayAllAccounts(Users);
             }
@@ -242,8 +250,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             User_Editor editor = new User_Editor();
             editor.ShowDialog();
-            PrepareListViews();
-            PrepareToolOptions();
+            PrepareAllData();
+            //PrepareListViews();
+            //PrepareToolOptions();
         }
 
         private void form_close(object sender, FormClosingEventArgs e)
@@ -255,15 +264,17 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             BankAccount bankAccount = new BankAccount();
             bankAccount.ShowDialog();
-            PrepareListViews();
-            PrepareToolOptions();
+            PrepareAllData();
+            //PrepareListViews();
+            //PrepareToolOptions();
         }
 
         private void transactionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TransactionEditor transEditor = new TransactionEditor();
             transEditor.ShowDialog();
-            PrepareListViews();
+            PrepareAllData();
+            //PrepareListViews();
         }
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -273,6 +284,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void DisplayAllUsersCheckTypes()
         {
+            checkedListBoxUsers.Items.Clear();
             foreach (var user in RepoUserEditor.users.Values)
             {
                 string userCombonation = $"{user.LastName}, {user.FirstName} {user.MiddleInitial} : {user.userName}.";
@@ -282,7 +294,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void DisplayAllExpenseCheckTypes()
         {
-            foreach(var types in RepoTransaction.TransTypes.Values)
+            checkedListBox1.Items.Clear();
+            foreach (var types in RepoTransaction.TransTypes.Values)
             {
                 checkedListBox1.Items.Add(types.TransDesc, CheckState.Checked);
             }
@@ -290,6 +303,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void DisplayAllAccounts(Dictionary<int, string> users)
         {
+            checkedListBox2.Items.Clear();
             foreach (var acct in RepoBankAccount.Accounts.Values)
             {
                 string acctType = RepoBankAccount.AccountTypes[acct.AcctTypeKey].AcctType;
@@ -604,20 +618,17 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private void radioExpenses_CheckedChanged(object sender, EventArgs e)
         {
             refreshAfterFilter();
-            PrepareListViews();
 
         }
 
         private void radioBudgets_CheckedChanged(object sender, EventArgs e)
         {
             refreshAfterFilter();
-            PrepareListViews();
         }
 
         private void radioBills_CheckedChanged(object sender, EventArgs e)
         {
             refreshAfterFilter();
-            PrepareListViews();
         }
 
         private void chart1_Click(object sender, EventArgs e)

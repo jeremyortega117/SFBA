@@ -12,7 +12,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
     {
         internal static Dictionary<int, ModelTrans> Trans;
         internal static Dictionary<int, ModelTransType> TransTypes;
-
+        internal static Dictionary<DateTime, List<ModelTrans>> compareTransByDate;
+        internal static bool IgnoreDups = false;
 
         /// <summary>
         /// Retrieve account types previously created available.
@@ -92,7 +93,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             {
                 Reader = Command.ExecuteReader();
                 Trans = new Dictionary<int, ModelTrans>();
-
+                compareTransByDate = new Dictionary<DateTime, List<ModelTrans>>();
                 if (Reader != null)
                 {
                     while (Reader.Read())
@@ -104,8 +105,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                         trans.Amount = Convert.ToDouble(Reader["AMOUNT"]);
                         trans.TransTypeKey = Convert.ToInt32(Reader["TRANS_TYPE_KEY"]);
                         trans.AcctKey = Convert.ToInt32(Reader["ACC_KEY"]);
+                        if (!compareTransByDate.ContainsKey(trans.TransDate))
+                        {
+                            compareTransByDate.Add(trans.TransDate, new List<ModelTrans>());
+                        }
+                        compareTransByDate[trans.TransDate].Add(trans);
                         Trans.Add(trans.TransKey, trans);
-                        //TransInOrder.Add(trans);
                     }
                 }
             }
@@ -232,9 +237,51 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         /// <param name="users"></param>
         internal static void EditTrans(List<ModelTrans> Trans, char editType)
         {
+            bool continueRegardlessDups = false;
             foreach (ModelTrans trans in Trans)
             {
+                bool skip = false;
+                if (compareTransByDate.ContainsKey(trans.TransDate) && !continueRegardlessDups && editType == 'A')
+                {
+                    foreach (ModelTrans mod in compareTransByDate[trans.TransDate])
+                    {
+                        if(mod.TransDesc == trans.TransDesc &&
+                            mod.AcctKey == trans.AcctKey &&
+                            mod.Amount == trans.Amount &&
+                            mod.TransTypeKey == trans.TransTypeKey)
+                        {
+                            if (IgnoreDups)
+                            {
+                                skip = true;
+                                break;
+                            }
 
+                            DialogResult dialogResult = MessageBox.Show($"Do you want to keep duplicate record? : ({mod.TransDate.ToString("MM/dd/yyyy")} '{TransTypes[mod.TransTypeKey].TransDesc}' on account '{RepoBankAccount.RetrieveAcctSummaryFromAcctKey(mod.AcctKey)}' for amount {string.Format("C:0",mod.Amount)})", "Duplicate", MessageBoxButtons.YesNo);
+
+                            if (dialogResult == DialogResult.No && Trans.Count > 1)
+                            {
+                                DialogResult dialogResult2 = MessageBox.Show($"\"yes\" continue to check for duplicates : \"no\" don't notify any remaining duplicates : \"cancel\" stop importing file.", "Stop Importing File", MessageBoxButtons.YesNoCancel);
+                                if (dialogResult2 == DialogResult.Abort)
+                                {
+                                    return;
+                                }
+                                else if(dialogResult2 == DialogResult.No)
+                                {
+                                    continueRegardlessDups = true;
+                                    break;
+                                }
+                                else if (dialogResult2 == DialogResult.Yes)
+                                {
+                                    continue;
+                                }
+                            }
+                        }
+                    }
+                    if (skip)
+                    {
+                        continue;
+                    }
+                }
                 string SQL = $"EXECUTE proc_TRANS_EDITOR @TRANS_KEY, @TRANS_TYPE_KEY, @ACC_KEY, @AMOUNT, @TRANS_DESC, @TRANS_DATE, @EDIT_TYPE";
                 SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);
                 List<SqlParameter> parameters = new List<SqlParameter>();
