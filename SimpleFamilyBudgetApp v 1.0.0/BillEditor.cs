@@ -23,13 +23,15 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         public BillEditor()
         {
             InitializeComponent();
-            PrepComboBox();
             JustDisableEverything();
             ignore = true;
             radioButtonMonthly.Checked = true;
             checkBoxMonday.Checked = true;
             ignore = false;
+            radioButtonNewDescription.Checked = true;
+            comboBoxDescription.Enabled = false;
             PrepareListViewData();
+            PrepComboBox();
         }
 
         private void PrepareListViewData()
@@ -45,17 +47,33 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             BillTypes.Add('c', C);
             BillTypes.Add('t', T);
             BillTypes.Add('p', P);
+
+            comboBoxBillType.Items.Clear();
             foreach (var billType in BillTypes)
             {
                 comboBoxBillType.Items.Add(billType.Value);
             }
 
-            foreach(int Key in RepoBankAccount.Accounts.Keys)
+            comboBoxAccount.Items.Clear();
+            foreach (int Key in RepoBankAccount.Accounts.Keys)
             {
                 var account = RepoBankAccount.Accounts[Key];
                 string acc = $"{account.BankName}, {account.AcctLastFour}, {RepoBankAccount.AccountTypes[account.AcctTypeKey].AcctType}";
                 comboBoxAccount.Items.Add(acc);
             }
+
+            comboBoxDescription.Items.Clear();
+            HashSet<string> BillDescriptions = new HashSet<string>();
+            foreach (int billKey in RepoBills.Bills.Keys)
+            {
+                string desc = RepoBills.Bills[billKey].BillDesc.Trim();
+                if (!BillDescriptions.Contains(desc))
+                {
+                    comboBoxDescription.Items.Add(desc);
+                    BillDescriptions.Add(desc);
+                }
+            }
+
         }
 
         private void JustDisableEverything()
@@ -389,7 +407,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 if (comboBoxAccount.Text.Trim() != ""
                     && textBoxAmount.Text.Trim() != ""
                     && FrequencyFound()
-                    && textBoxDescription.Text.Trim() != ""
+                    && textBoxDescriptionFilled()
                     )
                 {
                     buttonInsertNewBill.Enabled = true;
@@ -402,7 +420,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                     && textBoxAmount.Text.Trim() != ""
                     && FrequencyFound()
                     && datesWork()
-                    && textBoxDescription.Text.Trim() != ""
+                    && textBoxDescriptionFilled()
                     )
                 {
                     buttonInsertNewBill.Enabled = true;
@@ -416,7 +434,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                     && textBoxPayOffTotal.Text.Trim() != ""
                     && FrequencyFound()
                     && datesWork()
-                    && textBoxDescription.Text.Trim() != ""
+                    && textBoxDescriptionFilled()
                     )
                 {
                     buttonInsertNewBill.Enabled = true;
@@ -424,6 +442,19 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 }
             }
             buttonInsertNewBill.Enabled = false;
+        }
+
+        private bool textBoxDescriptionFilled()
+        {
+            if (radioButtonNewDescription.Checked && textBoxDescription.Text.Trim() != "")
+            {
+                return true;
+            }
+            if(radioButtonUseExistingDescription.Checked && comboBoxDescription.Text.Trim() != "")
+            {
+                return true;
+            }
+            return false;
         }
 
         private bool datesWork()
@@ -472,6 +503,30 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             }
         }
 
+        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            CheckIfEnableCreate();
+        }
+
+        private void BillEditor_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButtonNewDescription_CheckedChanged(object sender, EventArgs e)
+        {
+            textBoxDescription.Enabled = true;
+            comboBoxDescription.Enabled = false;
+            CheckIfEnableCreate();
+        }
+
+        private void radioButtonUseExistingDescription_CheckedChanged(object sender, EventArgs e)
+        {
+            textBoxDescription.Enabled = false;
+            comboBoxDescription.Enabled = true;
+            CheckIfEnableCreate();
+        }
+
 
         /// <summary>
         /// Add Bill.
@@ -488,7 +543,14 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             Bill.Total = billTotal;
             Bill.BillStartDate = dateTimePickerFromDate.Value;
             Bill.BillEndDate = dateTimePickerToDate.Value;
-            Bill.BillDesc = textBoxDescription.Text;
+            if (radioButtonNewDescription.Checked)
+            {
+                Bill.BillDesc = textBoxDescription.Text.Trim();
+            }
+            else if (radioButtonUseExistingDescription.Checked)
+            {
+                Bill.BillDesc = comboBoxDescription.Text.Trim();
+            }
             Bill.BillType = getCharFromString(comboBoxBillType.Text);
             Bills.Add(Bill);
 

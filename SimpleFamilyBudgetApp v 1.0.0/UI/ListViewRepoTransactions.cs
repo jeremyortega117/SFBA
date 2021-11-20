@@ -46,7 +46,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
                 List<string> transaction = new List<string>();
 
-                transaction.Add(trans[key].TransDate.ToString("MM/dd/yyyy"));
+                transaction.Add(trans[key].TransDate.ToString("yyyy/MM/dd"));
                 var bank = RepoBankAccount.Accounts[trans[key].AcctKey];
                 transaction.Add(bank.BankName);
                 transaction.Add(bank.AcctLastFour.ToString());
@@ -91,7 +91,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 {
                     List<string> transaction = new List<string>();
 
-                    transaction.Add(toCheck.ToString("MM/dd/yyyy"));
+                    transaction.Add(toCheck.ToString("yyyy/MM/dd"));
                     var bank = RepoBankAccount.Accounts[trans[key].AcctKey];
                     transaction.Add(bank.BankName);
                     transaction.Add(bank.AcctLastFour.ToString());

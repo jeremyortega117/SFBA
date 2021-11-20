@@ -11,7 +11,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
     class RepoTransaction
     {
         internal static Dictionary<int, ModelTrans> Trans;
-        //internal static List<ModelTrans> TransInOrder;
         internal static Dictionary<int, ModelTransType> TransTypes;
 
 
@@ -173,7 +172,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             {
                 Reader = Command.ExecuteReader();
                 Trans = new Dictionary<int, ModelTrans>();
-                //TransInOrder = new List<ModelTrans>();
                 if (Reader != null)
                 {
                     while (Reader.Read())
@@ -186,7 +184,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                         trans.TransTypeKey = Convert.ToInt32(Reader["TRANS_TYPE_KEY"]);
                         trans.AcctKey = Convert.ToInt32(Reader["ACC_KEY"]);
                         Trans.Add(trans.TransKey, trans);
-                        //TransInOrder.Add(trans);
                     }
                 }
             }
@@ -237,10 +234,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             foreach (ModelTrans trans in Trans)
             {
-                if (trans.TransTypeKey == 10)
-                {
-
-                }
 
                 string SQL = $"EXECUTE proc_TRANS_EDITOR @TRANS_KEY, @TRANS_TYPE_KEY, @ACC_KEY, @AMOUNT, @TRANS_DESC, @TRANS_DATE, @EDIT_TYPE";
                 SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);

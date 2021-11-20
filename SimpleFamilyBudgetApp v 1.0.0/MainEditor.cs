@@ -45,23 +45,31 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             RepoTransaction.PrepareTransDataWithFilters(Accounts, ExpenseTypes);
             PrepareLabels();
             radioExpenses.Checked = true;
-            //PrepareListViews();
             PrepareToolOptions();
             PrepareWebViews();
+            refreshAfterFilter();
         }
 
         private void PrepareLabels()
         {
             double total = 0;
+            Dictionary<int, string> keyAndName = new Dictionary<int, string>();
             foreach (string account in Accounts)
             {
                 if (Accounts.Contains(account))
                 {
                     int AcctKey = RepoTransaction.GetAcctKeyFromSelected(account);
                     total += RepoBankAccount.Accounts[AcctKey].Balance;
+                    int userKey = RepoBankAccount.Accounts[AcctKey].UserKey;
+                    string fName = RepoUserEditor.users[userKey].FirstName;
+                    if (!keyAndName.ContainsKey(userKey)) {
+                        keyAndName.Add(userKey, fName);
+                    }
                 }
             }
+            labelNamesOnAccts.Text = string.Join(", ", keyAndName.Values);
             labelTotalSaved.Text = total.ToString("C", CultureInfo.CurrentCulture);
+            Text = "SimpleFamilyBudgetApp_v_1._0._0 - " + labelNamesOnAccts.Text;
 
             total = 0;
             DateTime dateNow = DateTime.Now;
@@ -195,7 +203,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             if (radioExpenses.Checked)
             {
-                
                 lvr1 = new ListViewRepoTransactions(listView1, chart1);
                 lvr1.AddDataToListView(listView1, dateTimePickerFrom.Value, dateTimePickerTo.Value);
             }
@@ -596,16 +603,20 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void radioExpenses_CheckedChanged(object sender, EventArgs e)
         {
+            refreshAfterFilter();
             PrepareListViews();
+
         }
 
         private void radioBudgets_CheckedChanged(object sender, EventArgs e)
         {
+            refreshAfterFilter();
             PrepareListViews();
         }
 
         private void radioBills_CheckedChanged(object sender, EventArgs e)
         {
+            refreshAfterFilter();
             PrepareListViews();
         }
 

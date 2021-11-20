@@ -56,22 +56,31 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.textBoxPayOffTotal = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.comboBoxDescription = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.radioButtonUseExistingDescription = new System.Windows.Forms.RadioButton();
+            this.radioButtonNewDescription = new System.Windows.Forms.RadioButton();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // listViewExistingBills
             // 
-            this.listViewExistingBills.Dock = System.Windows.Forms.DockStyle.Top;
+            this.listViewExistingBills.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewExistingBills.HideSelection = false;
             this.listViewExistingBills.Location = new System.Drawing.Point(0, 0);
             this.listViewExistingBills.Name = "listViewExistingBills";
-            this.listViewExistingBills.Size = new System.Drawing.Size(601, 161);
+            this.listViewExistingBills.Size = new System.Drawing.Size(601, 144);
             this.listViewExistingBills.TabIndex = 0;
             this.listViewExistingBills.UseCompatibleStateImageBehavior = false;
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(172, 391);
+            this.label1.Location = new System.Drawing.Point(45, 379);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 13);
             this.label1.TabIndex = 27;
@@ -80,7 +89,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // textBoxDescription
             // 
-            this.textBoxDescription.Location = new System.Drawing.Point(238, 387);
+            this.textBoxDescription.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.textBoxDescription.Location = new System.Drawing.Point(393, 375);
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.Size = new System.Drawing.Size(160, 20);
             this.textBoxDescription.TabIndex = 26;
@@ -88,8 +98,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // checkBoxSunday
             // 
+            this.checkBoxSunday.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.checkBoxSunday.AutoSize = true;
-            this.checkBoxSunday.Location = new System.Drawing.Point(426, 298);
+            this.checkBoxSunday.Location = new System.Drawing.Point(416, 281);
             this.checkBoxSunday.Name = "checkBoxSunday";
             this.checkBoxSunday.Size = new System.Drawing.Size(62, 17);
             this.checkBoxSunday.TabIndex = 25;
@@ -99,8 +110,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // checkBoxSaturday
             // 
+            this.checkBoxSaturday.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.checkBoxSaturday.AutoSize = true;
-            this.checkBoxSaturday.Location = new System.Drawing.Point(345, 321);
+            this.checkBoxSaturday.Location = new System.Drawing.Point(335, 304);
             this.checkBoxSaturday.Name = "checkBoxSaturday";
             this.checkBoxSaturday.Size = new System.Drawing.Size(68, 17);
             this.checkBoxSaturday.TabIndex = 24;
@@ -110,8 +122,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // checkBoxFriday
             // 
+            this.checkBoxFriday.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.checkBoxFriday.AutoSize = true;
-            this.checkBoxFriday.Location = new System.Drawing.Point(345, 298);
+            this.checkBoxFriday.Location = new System.Drawing.Point(335, 281);
             this.checkBoxFriday.Name = "checkBoxFriday";
             this.checkBoxFriday.Size = new System.Drawing.Size(54, 17);
             this.checkBoxFriday.TabIndex = 23;
@@ -121,8 +134,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // checkBoxThursday
             // 
+            this.checkBoxThursday.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.checkBoxThursday.AutoSize = true;
-            this.checkBoxThursday.Location = new System.Drawing.Point(238, 321);
+            this.checkBoxThursday.Location = new System.Drawing.Point(228, 304);
             this.checkBoxThursday.Name = "checkBoxThursday";
             this.checkBoxThursday.Size = new System.Drawing.Size(70, 17);
             this.checkBoxThursday.TabIndex = 22;
@@ -132,8 +146,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // checkBoxWednesday
             // 
+            this.checkBoxWednesday.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.checkBoxWednesday.AutoSize = true;
-            this.checkBoxWednesday.Location = new System.Drawing.Point(238, 298);
+            this.checkBoxWednesday.Location = new System.Drawing.Point(228, 281);
             this.checkBoxWednesday.Name = "checkBoxWednesday";
             this.checkBoxWednesday.Size = new System.Drawing.Size(83, 17);
             this.checkBoxWednesday.TabIndex = 21;
@@ -143,8 +158,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // checkBoxTuesday
             // 
+            this.checkBoxTuesday.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.checkBoxTuesday.AutoSize = true;
-            this.checkBoxTuesday.Location = new System.Drawing.Point(138, 321);
+            this.checkBoxTuesday.Location = new System.Drawing.Point(128, 304);
             this.checkBoxTuesday.Name = "checkBoxTuesday";
             this.checkBoxTuesday.Size = new System.Drawing.Size(67, 17);
             this.checkBoxTuesday.TabIndex = 20;
@@ -154,8 +170,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // checkBoxMonday
             // 
+            this.checkBoxMonday.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.checkBoxMonday.AutoSize = true;
-            this.checkBoxMonday.Location = new System.Drawing.Point(138, 298);
+            this.checkBoxMonday.Location = new System.Drawing.Point(128, 281);
             this.checkBoxMonday.Name = "checkBoxMonday";
             this.checkBoxMonday.Size = new System.Drawing.Size(64, 17);
             this.checkBoxMonday.TabIndex = 19;
@@ -165,8 +182,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // radioButtonYearly
             // 
+            this.radioButtonYearly.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.radioButtonYearly.AutoSize = true;
-            this.radioButtonYearly.Location = new System.Drawing.Point(386, 263);
+            this.radioButtonYearly.Location = new System.Drawing.Point(376, 246);
             this.radioButtonYearly.Name = "radioButtonYearly";
             this.radioButtonYearly.Size = new System.Drawing.Size(54, 17);
             this.radioButtonYearly.TabIndex = 18;
@@ -177,8 +195,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // radioButtonMonthly
             // 
+            this.radioButtonMonthly.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.radioButtonMonthly.AutoSize = true;
-            this.radioButtonMonthly.Location = new System.Drawing.Point(318, 263);
+            this.radioButtonMonthly.Location = new System.Drawing.Point(308, 246);
             this.radioButtonMonthly.Name = "radioButtonMonthly";
             this.radioButtonMonthly.Size = new System.Drawing.Size(62, 17);
             this.radioButtonMonthly.TabIndex = 17;
@@ -189,8 +208,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // radioButtonWeekly
             // 
+            this.radioButtonWeekly.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.radioButtonWeekly.AutoSize = true;
-            this.radioButtonWeekly.Location = new System.Drawing.Point(251, 263);
+            this.radioButtonWeekly.Location = new System.Drawing.Point(241, 246);
             this.radioButtonWeekly.Name = "radioButtonWeekly";
             this.radioButtonWeekly.Size = new System.Drawing.Size(61, 17);
             this.radioButtonWeekly.TabIndex = 16;
@@ -201,8 +221,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // radioButtonDaily
             // 
+            this.radioButtonDaily.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.radioButtonDaily.AutoSize = true;
-            this.radioButtonDaily.Location = new System.Drawing.Point(197, 263);
+            this.radioButtonDaily.Location = new System.Drawing.Point(187, 246);
             this.radioButtonDaily.Name = "radioButtonDaily";
             this.radioButtonDaily.Size = new System.Drawing.Size(48, 17);
             this.radioButtonDaily.TabIndex = 15;
@@ -213,8 +234,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // dateTimePickerFromDate
             // 
+            this.dateTimePickerFromDate.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.dateTimePickerFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerFromDate.Location = new System.Drawing.Point(209, 355);
+            this.dateTimePickerFromDate.Location = new System.Drawing.Point(176, 336);
             this.dateTimePickerFromDate.Name = "dateTimePickerFromDate";
             this.dateTimePickerFromDate.Size = new System.Drawing.Size(99, 20);
             this.dateTimePickerFromDate.TabIndex = 29;
@@ -222,8 +244,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(132, 359);
+            this.label2.Location = new System.Drawing.Point(99, 340);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 13);
             this.label2.TabIndex = 30;
@@ -231,8 +254,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(315, 359);
+            this.label3.Location = new System.Drawing.Point(305, 342);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 13);
             this.label3.TabIndex = 32;
@@ -240,16 +264,18 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // dateTimePickerToDate
             // 
+            this.dateTimePickerToDate.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.dateTimePickerToDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerToDate.Location = new System.Drawing.Point(389, 355);
+            this.dateTimePickerToDate.Location = new System.Drawing.Point(393, 338);
             this.dateTimePickerToDate.Name = "dateTimePickerToDate";
             this.dateTimePickerToDate.Size = new System.Drawing.Size(99, 20);
             this.dateTimePickerToDate.TabIndex = 31;
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(69, 190);
+            this.label4.Location = new System.Drawing.Point(54, 173);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 13);
             this.label4.TabIndex = 33;
@@ -257,19 +283,21 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // comboBoxBillType
             // 
+            this.comboBoxBillType.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.comboBoxBillType.FormattingEnabled = true;
-            this.comboBoxBillType.Location = new System.Drawing.Point(123, 187);
+            this.comboBoxBillType.Location = new System.Drawing.Point(107, 170);
             this.comboBoxBillType.Name = "comboBoxBillType";
-            this.comboBoxBillType.Size = new System.Drawing.Size(162, 21);
+            this.comboBoxBillType.Size = new System.Drawing.Size(168, 21);
             this.comboBoxBillType.TabIndex = 34;
             this.comboBoxBillType.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // buttonInsertNewBill
             // 
+            this.buttonInsertNewBill.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.buttonInsertNewBill.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonInsertNewBill.Location = new System.Drawing.Point(238, 423);
+            this.buttonInsertNewBill.Location = new System.Drawing.Point(148, 456);
             this.buttonInsertNewBill.Name = "buttonInsertNewBill";
-            this.buttonInsertNewBill.Size = new System.Drawing.Size(160, 43);
+            this.buttonInsertNewBill.Size = new System.Drawing.Size(330, 43);
             this.buttonInsertNewBill.TabIndex = 37;
             this.buttonInsertNewBill.Text = "Insert Bill";
             this.buttonInsertNewBill.UseVisualStyleBackColor = true;
@@ -277,17 +305,19 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // comboBoxAccount
             // 
+            this.comboBoxAccount.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.comboBoxAccount.FormattingEnabled = true;
-            this.comboBoxAccount.Location = new System.Drawing.Point(405, 187);
+            this.comboBoxAccount.Location = new System.Drawing.Point(393, 170);
             this.comboBoxAccount.Name = "comboBoxAccount";
-            this.comboBoxAccount.Size = new System.Drawing.Size(158, 21);
+            this.comboBoxAccount.Size = new System.Drawing.Size(160, 21);
             this.comboBoxAccount.TabIndex = 38;
             this.comboBoxAccount.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(351, 190);
+            this.label6.Location = new System.Drawing.Point(341, 173);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 13);
             this.label6.TabIndex = 39;
@@ -295,7 +325,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // textBoxAmount
             // 
-            this.textBoxAmount.Location = new System.Drawing.Point(158, 222);
+            this.textBoxAmount.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.textBoxAmount.Location = new System.Drawing.Point(148, 205);
             this.textBoxAmount.Name = "textBoxAmount";
             this.textBoxAmount.Size = new System.Drawing.Size(127, 20);
             this.textBoxAmount.TabIndex = 36;
@@ -303,7 +334,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // textBoxPayOffTotal
             // 
-            this.textBoxPayOffTotal.Location = new System.Drawing.Point(403, 222);
+            this.textBoxPayOffTotal.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.textBoxPayOffTotal.Location = new System.Drawing.Point(393, 205);
             this.textBoxPayOffTotal.Name = "textBoxPayOffTotal";
             this.textBoxPayOffTotal.Size = new System.Drawing.Size(160, 20);
             this.textBoxPayOffTotal.TabIndex = 40;
@@ -311,8 +343,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(41, 225);
+            this.label5.Location = new System.Drawing.Point(31, 208);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(111, 13);
             this.label5.TabIndex = 41;
@@ -320,18 +353,76 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // label7
             // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(299, 225);
+            this.label7.Location = new System.Drawing.Point(289, 208);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(99, 13);
             this.label7.TabIndex = 42;
             this.label7.Text = "Total Payment Cost";
             // 
+            // comboBoxDescription
+            // 
+            this.comboBoxDescription.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.comboBoxDescription.FormattingEnabled = true;
+            this.comboBoxDescription.Location = new System.Drawing.Point(107, 375);
+            this.comboBoxDescription.Name = "comboBoxDescription";
+            this.comboBoxDescription.Size = new System.Drawing.Size(168, 21);
+            this.comboBoxDescription.TabIndex = 43;
+            this.comboBoxDescription.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_1);
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(324, 378);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(63, 13);
+            this.label8.TabIndex = 45;
+            this.label8.Text = "New Descr.";
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.panel1.Controls.Add(this.radioButtonNewDescription);
+            this.panel1.Controls.Add(this.radioButtonUseExistingDescription);
+            this.panel1.Location = new System.Drawing.Point(102, 402);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(451, 38);
+            this.panel1.TabIndex = 46;
+            // 
+            // radioButtonUseExistingDescription
+            // 
+            this.radioButtonUseExistingDescription.AutoSize = true;
+            this.radioButtonUseExistingDescription.Location = new System.Drawing.Point(5, 3);
+            this.radioButtonUseExistingDescription.Name = "radioButtonUseExistingDescription";
+            this.radioButtonUseExistingDescription.Size = new System.Drawing.Size(156, 17);
+            this.radioButtonUseExistingDescription.TabIndex = 0;
+            this.radioButtonUseExistingDescription.TabStop = true;
+            this.radioButtonUseExistingDescription.Text = "Choose Existing Description";
+            this.radioButtonUseExistingDescription.UseVisualStyleBackColor = true;
+            this.radioButtonUseExistingDescription.CheckedChanged += new System.EventHandler(this.radioButtonUseExistingDescription_CheckedChanged);
+            // 
+            // radioButtonNewDescription
+            // 
+            this.radioButtonNewDescription.AutoSize = true;
+            this.radioButtonNewDescription.Location = new System.Drawing.Point(291, 3);
+            this.radioButtonNewDescription.Name = "radioButtonNewDescription";
+            this.radioButtonNewDescription.Size = new System.Drawing.Size(103, 17);
+            this.radioButtonNewDescription.TabIndex = 1;
+            this.radioButtonNewDescription.TabStop = true;
+            this.radioButtonNewDescription.Text = "New Description";
+            this.radioButtonNewDescription.UseVisualStyleBackColor = true;
+            this.radioButtonNewDescription.CheckedChanged += new System.EventHandler(this.radioButtonNewDescription_CheckedChanged);
+            // 
             // BillEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(601, 488);
+            this.ClientSize = new System.Drawing.Size(601, 511);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.comboBoxDescription);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBoxPayOffTotal);
@@ -359,8 +450,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.Controls.Add(this.radioButtonWeekly);
             this.Controls.Add(this.radioButtonDaily);
             this.Controls.Add(this.listViewExistingBills);
+            this.MaximumSize = new System.Drawing.Size(617, 700);
+            this.MinimumSize = new System.Drawing.Size(617, 550);
             this.Name = "BillEditor";
             this.Text = "BillEditor";
+            this.Load += new System.EventHandler(this.BillEditor_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -395,5 +491,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private System.Windows.Forms.TextBox textBoxPayOffTotal;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox comboBoxDescription;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.RadioButton radioButtonNewDescription;
+        private System.Windows.Forms.RadioButton radioButtonUseExistingDescription;
     }
 }

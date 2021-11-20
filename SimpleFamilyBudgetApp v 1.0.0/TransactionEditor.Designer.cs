@@ -48,18 +48,21 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // listView1
             // 
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(800, 218);
+            this.listView1.Size = new System.Drawing.Size(800, 229);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // comboBoxTransType
             // 
+            this.comboBoxTransType.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.comboBoxTransType.FormattingEnabled = true;
-            this.comboBoxTransType.Location = new System.Drawing.Point(287, 247);
+            this.comboBoxTransType.Location = new System.Drawing.Point(287, 258);
             this.comboBoxTransType.Name = "comboBoxTransType";
             this.comboBoxTransType.Size = new System.Drawing.Size(194, 21);
             this.comboBoxTransType.TabIndex = 1;
@@ -67,8 +70,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(203, 251);
+            this.label1.Location = new System.Drawing.Point(203, 262);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 13);
             this.label1.TabIndex = 2;
@@ -76,7 +80,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // buttonAddTransType
             // 
-            this.buttonAddTransType.Location = new System.Drawing.Point(487, 246);
+            this.buttonAddTransType.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.buttonAddTransType.Location = new System.Drawing.Point(487, 257);
             this.buttonAddTransType.Name = "buttonAddTransType";
             this.buttonAddTransType.Size = new System.Drawing.Size(120, 23);
             this.buttonAddTransType.TabIndex = 3;
@@ -86,8 +91,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // labelAcctHolder
             // 
+            this.labelAcctHolder.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.labelAcctHolder.AutoSize = true;
-            this.labelAcctHolder.Location = new System.Drawing.Point(214, 277);
+            this.labelAcctHolder.Location = new System.Drawing.Point(214, 288);
             this.labelAcctHolder.Name = "labelAcctHolder";
             this.labelAcctHolder.Size = new System.Drawing.Size(67, 13);
             this.labelAcctHolder.TabIndex = 4;
@@ -95,8 +101,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // comboBoxAcct
             // 
+            this.comboBoxAcct.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.comboBoxAcct.FormattingEnabled = true;
-            this.comboBoxAcct.Location = new System.Drawing.Point(287, 274);
+            this.comboBoxAcct.Location = new System.Drawing.Point(287, 285);
             this.comboBoxAcct.Name = "comboBoxAcct";
             this.comboBoxAcct.Size = new System.Drawing.Size(194, 21);
             this.comboBoxAcct.TabIndex = 5;
@@ -104,8 +111,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(235, 304);
+            this.label2.Location = new System.Drawing.Point(235, 315);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 6;
@@ -113,7 +121,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // textBoxAmount
             // 
-            this.textBoxAmount.Location = new System.Drawing.Point(287, 301);
+            this.textBoxAmount.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.textBoxAmount.Location = new System.Drawing.Point(287, 312);
             this.textBoxAmount.Name = "textBoxAmount";
             this.textBoxAmount.Size = new System.Drawing.Size(100, 20);
             this.textBoxAmount.TabIndex = 7;
@@ -121,8 +130,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(218, 330);
+            this.label3.Location = new System.Drawing.Point(218, 341);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 8;
@@ -130,7 +140,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // textBoxDescription
             // 
-            this.textBoxDescription.Location = new System.Drawing.Point(287, 327);
+            this.textBoxDescription.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.textBoxDescription.Location = new System.Drawing.Point(287, 338);
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.Size = new System.Drawing.Size(194, 20);
             this.textBoxDescription.TabIndex = 9;
@@ -138,16 +149,18 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // dateTimePickerTransDate
             // 
+            this.dateTimePickerTransDate.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.dateTimePickerTransDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerTransDate.Location = new System.Drawing.Point(287, 353);
+            this.dateTimePickerTransDate.Location = new System.Drawing.Point(287, 364);
             this.dateTimePickerTransDate.Name = "dateTimePickerTransDate";
             this.dateTimePickerTransDate.Size = new System.Drawing.Size(100, 20);
             this.dateTimePickerTransDate.TabIndex = 10;
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(200, 357);
+            this.label4.Location = new System.Drawing.Point(200, 368);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(81, 13);
             this.label4.TabIndex = 11;
@@ -155,8 +168,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(287, 379);
+            this.button1.Location = new System.Drawing.Point(287, 390);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(194, 47);
             this.button1.TabIndex = 12;
@@ -166,7 +180,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // buttonImportFile
             // 
-            this.buttonImportFile.Location = new System.Drawing.Point(487, 272);
+            this.buttonImportFile.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.buttonImportFile.Location = new System.Drawing.Point(487, 283);
             this.buttonImportFile.Name = "buttonImportFile";
             this.buttonImportFile.Size = new System.Drawing.Size(120, 23);
             this.buttonImportFile.TabIndex = 13;
@@ -176,8 +191,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // checkBoxIncome
             // 
+            this.checkBoxIncome.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.checkBoxIncome.AutoSize = true;
-            this.checkBoxIncome.Location = new System.Drawing.Point(613, 249);
+            this.checkBoxIncome.Location = new System.Drawing.Point(613, 260);
             this.checkBoxIncome.Name = "checkBoxIncome";
             this.checkBoxIncome.Size = new System.Drawing.Size(61, 17);
             this.checkBoxIncome.TabIndex = 14;
@@ -188,7 +204,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 461);
             this.Controls.Add(this.checkBoxIncome);
             this.Controls.Add(this.buttonImportFile);
             this.Controls.Add(this.button1);
@@ -204,6 +220,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxTransType);
             this.Controls.Add(this.listView1);
+            this.MaximumSize = new System.Drawing.Size(816, 1000);
+            this.MinimumSize = new System.Drawing.Size(816, 500);
             this.Name = "TransactionEditor";
             this.Text = "TransactionEditor";
             this.ResumeLayout(false);
