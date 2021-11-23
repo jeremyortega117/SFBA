@@ -40,7 +40,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             using (openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.InitialDirectory = "c:\\";
-                openFileDialog.Filter = "txt files (*.txt)|*.txt|Excel files (*.xlsx)|*.xlsx|Csv files (*.csv)|*.csv";
+                //openFileDialog.Filter = "txt files (*.txt)|*.txt|Excel files (*.xlsx)|*.xlsx|Csv files (*.csv)|*.csv";
+                openFileDialog.Filter = "Csv files (*.csv)|*.csv";
                 openFileDialog.FilterIndex = 2;
                 openFileDialog.RestoreDirectory = true;
 
@@ -52,18 +53,18 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
                     string ext = Path.GetExtension(openFileDialog.FileName);
 
-                    switch (ext)
-                    {
-                        case ".xlsx":
-                            MessageBox.Show("Importing Excel File");
-                            break;
-                        case ".txt":
-                            MessageBox.Show("Importing Text File");
-                            break;
-                        case ".csv":
-                            MessageBox.Show("Importing csv File");
-                            break;
-                    }
+                    //switch (ext)
+                    //{
+                    //    case ".xlsx":
+                    //        MessageBox.Show("Importing Excel File");
+                    //        break;
+                    //    case ".txt":
+                    //        MessageBox.Show("Importing Text File");
+                    //        break;
+                    //    case ".csv":
+                    //        MessageBox.Show("Importing csv File");
+                    //        break;
+                    //}
                     buttonImport.Enabled = true;
                 }
                 else
@@ -122,6 +123,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 }
                 RepoTransaction.EditTrans(trans, 'A');
             }
+            Close();
         }
 
         private void checkBoxIgnoreDups_CheckedChanged(object sender, EventArgs e)

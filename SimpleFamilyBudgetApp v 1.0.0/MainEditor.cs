@@ -46,12 +46,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             DisplayAllUsersCheckTypes();
             DisplayAllExpenseCheckTypes();
             DisplayAllAccounts();
-            FillAccountsAndExpenseTypesChecked();
-            RepoTransaction.PrepareTransDataWithFilters(Accounts, ExpenseTypes);
-            PrepareLabels();
+            //FillAccountsAndExpenseTypesChecked();
+            //RepoTransaction.PrepareTransDataWithFilters(Accounts, ExpenseTypes);
+            //PrepareLabels();
             radioExpenses.Checked = true;
             PrepareToolOptions();
-            PrepareWebViews();
+            //PrepareWebViews();
             refreshAfterFilter();
         }
 
@@ -61,15 +61,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             Dictionary<int, string> keyAndName = new Dictionary<int, string>();
             foreach (string account in Accounts)
             {
-                if (Accounts.Contains(account))
+                int AcctKey = RepoTransaction.GetAcctKeyFromSelected(account);
+                int userKey = RepoBankAccount.Accounts[AcctKey].UserKey;
+                total += RepoBankAccount.Accounts[AcctKey].Balance;
+                if (!keyAndName.ContainsKey(userKey))
                 {
-                    int AcctKey = RepoTransaction.GetAcctKeyFromSelected(account);
-                    total += RepoBankAccount.Accounts[AcctKey].Balance;
-                    int userKey = RepoBankAccount.Accounts[AcctKey].UserKey;
                     string fName = RepoUserEditor.users[userKey].FirstName;
-                    if (!keyAndName.ContainsKey(userKey)) {
-                        keyAndName.Add(userKey, fName);
-                    }
+                    keyAndName.Add(userKey, fName);
                 }
             }
             labelNamesOnAccts.Text = string.Join(", ", keyAndName.Values);
@@ -274,6 +272,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             TransactionEditor transEditor = new TransactionEditor();
             transEditor.ShowDialog();
             PrepareAllData();
+            //refreshAfterFilter();
             //PrepareListViews();
         }
 
@@ -321,6 +320,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void DisplayAllAccounts()
         {
+            checkedListBox2.Items.Clear();
             foreach (var acct in RepoBankAccount.Accounts.Values)
             {
                 string acctType = RepoBankAccount.AccountTypes[acct.AcctTypeKey].AcctType;
@@ -348,8 +348,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             BillFrom = dateTimePickerFrom.Value;
             BillTo = dateTimePickerTo.Value;
-            FillAccountsAndExpenseTypesChecked();
+            FillAccountsAndExpenseTypesChecked(); // Fills objects with filtered data
+
             RepoTransaction.PrepareTransDataWithFilters(Accounts, ExpenseTypes);
+
             PrepareLabels();
             PrepareListViews();
             if (radioExpenses.Checked) {

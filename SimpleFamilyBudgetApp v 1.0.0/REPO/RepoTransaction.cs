@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         internal static Dictionary<int, ModelTransType> TransTypes;
         internal static Dictionary<DateTime, List<ModelTrans>> compareTransByDate;
         internal static bool IgnoreDups = false;
+        internal static char editBal = 'Y';
 
         /// <summary>
         /// Retrieve account types previously created available.
@@ -122,12 +124,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             Reader.Close();
         }
 
-        internal static void RemoveAllTransactionsAssociatedWithUserKey(int userKey)
+        internal static void RemoveAllTransactionsAssociatedWithUserKey(int AcctKey)
         {
-            string SQL = "DELETE FROM TRANSACTION WHERE USER_KEY = @USER_KEY";
+            string SQL = "DELETE FROM TRANSACTIONS WHERE ACC_KEY = @ACCT_KEY";
             SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);
             List<SqlParameter> parameters = new List<SqlParameter>();
-            SqlParameter UserKey = new SqlParameter("@USER_KEY", userKey);
+            SqlParameter UserKey = new SqlParameter("@ACCT_KEY", AcctKey);
             parameters.Add(UserKey);
             Command.Parameters.AddRange(parameters.ToArray());
             try
@@ -136,7 +138,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"ERROR: Deleting transactions tied to user: '{RepoUserEditor.users[userKey].userName}'. " + ex.Message);
+                MessageBox.Show($"ERROR: Deleting transactions tied to Account: '{RepoBankAccount.Accounts[AcctKey].AcctKey}'. " + ex.Message);
             }
             Command.Dispose();
         }
@@ -148,11 +150,19 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
             foreach (string acct in Accts)
             {
-                AcctKeys.Add(GetAcctKeyFromSelected(acct));
+                int Key = GetAcctKeyFromSelected(acct);
+                if (!AcctKeys.Contains(Key))
+                {
+                    AcctKeys.Add(Key);
+                }
             }
             foreach (string expenseType in ExpenseTypes)
             {
-                ExpenseTypeKeys.Add(GetTransTypeKeyFromSelected(expenseType));
+                int Key = GetTransTypeKeyFromSelected(expenseType);
+                if (!ExpenseTypeKeys.Contains(Key))
+                {
+                    ExpenseTypeKeys.Add(Key);
+                }
             }
 
             if(AcctKeys.Count == 0 || ExpenseTypeKeys.Count == 0)
@@ -282,24 +292,18 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                         continue;
                     }
                 }
-                string SQL = $"EXECUTE proc_TRANS_EDITOR @TRANS_KEY, @TRANS_TYPE_KEY, @ACC_KEY, @AMOUNT, @TRANS_DESC, @TRANS_DATE, @EDIT_TYPE";
+
+
+                string SQL = $"EXECUTE proc_TRANS_EDITOR @TRANS_KEY, @TRANS_TYPE_KEY, @ACC_KEY, @AMOUNT, @TRANS_DESC, @TRANS_DATE, @EDIT_TYPE, @EDIT_BAL";
                 SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);
-                List<SqlParameter> parameters = new List<SqlParameter>();
-                SqlParameter TransKey = new SqlParameter("@TRANS_KEY", trans.TransKey);
-                SqlParameter TransTypeKey = new SqlParameter("@TRANS_TYPE_KEY", trans.TransTypeKey);
-                SqlParameter Acctkey = new SqlParameter("@ACC_KEY", trans.AcctKey);
-                SqlParameter Amount = new SqlParameter("@AMOUNT", trans.Amount);
-                SqlParameter TransDesc = new SqlParameter("@TRANS_DESC", trans.TransDesc);
-                SqlParameter TransDate = new SqlParameter("@TRANS_DATE", trans.TransDate);
-                SqlParameter editTypeParam = new SqlParameter("@EDIT_TYPE", editType);
-                parameters.Add(TransKey);
-                parameters.Add(TransTypeKey);
-                parameters.Add(Acctkey);
-                parameters.Add(Amount);
-                parameters.Add(TransDesc);
-                parameters.Add(TransDate);
-                parameters.Add(editTypeParam);
-                Command.Parameters.AddRange(parameters.ToArray());
+                Command.Parameters.Add("@TRANS_KEY", SqlDbType.Int).Value = trans.TransKey;
+                Command.Parameters.Add("@TRANS_TYPE_KEY", SqlDbType.Int).Value = trans.TransTypeKey;
+                Command.Parameters.Add("@ACC_KEY", SqlDbType.Int).Value = trans.AcctKey;
+                Command.Parameters.Add("@AMOUNT", SqlDbType.Money).Value = trans.Amount;
+                Command.Parameters.Add("@TRANS_DESC", SqlDbType.Char).Value = trans.TransDesc;
+                Command.Parameters.Add("@TRANS_DATE", SqlDbType.DateTime).Value = trans.TransDate;
+                Command.Parameters.Add("@EDIT_TYPE", SqlDbType.Char).Value = editType;
+                Command.Parameters.Add("@EDIT_BAL", SqlDbType.Char).Value = editBal;
                 try
                 {
                     Command.ExecuteNonQuery();

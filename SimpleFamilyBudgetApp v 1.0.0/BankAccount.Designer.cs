@@ -45,7 +45,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.buttonSubmitNewAccount = new System.Windows.Forms.Button();
             this.comboBoxUser = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBoxBankName = new System.Windows.Forms.TextBox();
+            this.comboBoxBankName = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // listView1
@@ -188,19 +188,21 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.label7.TabIndex = 16;
             this.label7.Text = "User: ";
             // 
-            // textBoxBankName
+            // comboBoxBankName
             // 
-            this.textBoxBankName.Location = new System.Drawing.Point(219, 196);
-            this.textBoxBankName.Name = "textBoxBankName";
-            this.textBoxBankName.Size = new System.Drawing.Size(190, 20);
-            this.textBoxBankName.TabIndex = 18;
+            this.comboBoxBankName.FormattingEnabled = true;
+            this.comboBoxBankName.Location = new System.Drawing.Point(219, 198);
+            this.comboBoxBankName.Name = "comboBoxBankName";
+            this.comboBoxBankName.Size = new System.Drawing.Size(190, 21);
+            this.comboBoxBankName.TabIndex = 18;
+            this.comboBoxBankName.SelectedIndexChanged += new System.EventHandler(this.comboBoxBankName_SelectedIndexChanged);
             // 
             // BankAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 450);
-            this.Controls.Add(this.textBoxBankName);
+            this.Controls.Add(this.comboBoxBankName);
             this.Controls.Add(this.comboBoxUser);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.buttonSubmitNewAccount);
@@ -242,6 +244,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private System.Windows.Forms.Button buttonSubmitNewAccount;
         private System.Windows.Forms.ComboBox comboBoxUser;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBoxBankName;
+        private System.Windows.Forms.ComboBox comboBoxBankName;
     }
 }

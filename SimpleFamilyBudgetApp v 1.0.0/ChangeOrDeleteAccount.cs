@@ -12,7 +12,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 {
     public partial class ChangeOrDeleteAccount : Form
     {
-        internal static List<string> Accounts;
+        //internal static List<string> Accounts;
         public ChangeOrDeleteAccount()
         {
             InitializeComponent();
@@ -101,7 +101,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                     DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete all records associated with this Bank Account?", "Delete All Account Records?", MessageBoxButtons.YesNo);
                     if(dialogResult == DialogResult.Yes)
                     {
-                        RepoTransaction.RemoveAllTransactionsAssociatedWithUserKey(userKey);
+                        RepoTransaction.RemoveAllTransactionsAssociatedWithUserKey(accountKey);
                     }
                     else
                     {

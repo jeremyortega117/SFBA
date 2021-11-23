@@ -30,6 +30,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             ignore = false;
             radioButtonNewDescription.Checked = true;
             comboBoxDescription.Enabled = false;
+            radioButtonDailyInt.Enabled = false;
+            radioButtonMonthlyInt.Checked = true;
+            radioButtonMonthlyInt.Enabled = false;
+            textBoxPercent.Text = "";
+            textBoxPercent.Enabled = false;
             PrepareListViewData();
             PrepComboBox();
         }
@@ -102,6 +107,19 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if(comboBoxBillType.Text == "Pay To Own")
+            {
+                radioButtonDailyInt.Enabled = true;
+                radioButtonMonthlyInt.Enabled = true;
+                textBoxPercent.Enabled = true;
+            }
+            else
+            {
+                radioButtonDailyInt.Enabled = false;
+                radioButtonMonthlyInt.Enabled = false;
+                textBoxPercent.Enabled = false;
+            }
+
             string billType = comboBoxBillType.Text.Trim();
             if (billType != "")
             {
@@ -133,8 +151,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             if (textBoxAmount.Text.Trim() != "")
             {
                 string billType = comboBoxBillType.Text.Trim();
-                decimal amount = 0;
-                if(Decimal.TryParse(textBoxAmount.Text, out amount))
+                decimal amount;
+                if(decimal.TryParse(textBoxAmount.Text, out amount))
                 {
                     billAmount = amount;
                     billChar = getCharFromString(billType);
@@ -176,8 +194,93 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             if(billTotal > billAmount && billAmount > 0)
             {
-                int interval = Convert.ToInt32(Math.Floor(billTotal / billAmount));
-                decimal remainder = billTotal % billAmount;
+                int interval = 0;
+                decimal remainder = 0;
+                decimal totalIntPotential = 0;
+                if (comboBoxBillType.Text == "Pay To Own" && textBoxPercent.Text.Trim() != "")
+                {
+                    if (radioButtonMonthlyInt.Checked)
+                    {
+                        decimal principle, interest, intRate = Convert.ToDecimal(textBoxPercent.Text.Trim()) / 100 / 12;
+                        interest = billTotal * intRate;
+                        principle = billAmount - interest;
+                        decimal RemainingBalance = billTotal - principle;
+                        if (principle <= 0)
+                        {
+                            labelTotalIntPaid.Text = "";
+                            labelNextIntPercAmt.Text = "";
+                            labellabelNextPrincPayAmt.Text = "";
+                            return;
+                        }
+                        totalIntPotential += interest;
+                        labellabelNextPrincPayAmt.Text = string.Format("{0:C}", principle);
+                        labelNextIntPercAmt.Text = string.Format("{0:C}", interest); 
+                        while (RemainingBalance >= 0)
+                        {
+                            interest = RemainingBalance * intRate;
+                            principle = billAmount - interest;
+                            RemainingBalance -= principle;
+                            totalIntPotential += interest;
+                            interval++;
+                        }
+                        labelTotalIntPaid.Text = string.Format("{0:C}", totalIntPotential);
+                    }
+                    #region temp
+                    //else
+                    //{
+                    //    decimal principle, interest, intRate = Convert.ToDecimal(textBoxPercent.Text.Trim()) / 100 / 365;
+                    //    interest = billTotal * intRate;
+                    //    principle = billAmount/ Convert.ToDecimal(30.25) - interest;
+                    //    decimal RemainingBalance = billTotal - (interest + principle);
+                    //    if (principle <= 0)
+                    //    {
+                    //        labelTotalIntPaid.Text = "";
+                    //        labelNextIntPercAmt.Text = "";
+                    //        labellabelNextPrincPayAmt.Text = "";
+                    //        return;
+                    //    }
+                    //    totalIntPotential += interest;
+                    //    bool firstThirty = true;
+                    //    decimal runningInt = 0;
+                    //    decimal runningPrinc = 0;
+                    //    while (RemainingBalance >= 0)
+                    //    {
+                    //        interest = Convert.ToDecimal((RemainingBalance * intRate)/Convert.ToDecimal(30.25));
+                    //        principle = (billAmount/Convert.ToDecimal(30.25)) - (interest);
+                    //        RemainingBalance -= (interest + principle);
+                    //        totalIntPotential += interest;
+                    //        if (interval % 30 == 0)
+                    //        {
+                    //            if (firstThirty && interval != 0)
+                    //            {
+                    //                decimal interestAmt = (runningInt + interest) * Convert.ToDecimal(30.25);
+                    //                labellabelNextPrincPayAmt.Text = string.Format("{0:C}", billAmount - interestAmt);
+                    //                labelNextIntPercAmt.Text = string.Format("{0:C}", interestAmt);
+                    //                firstThirty = false;
+                    //            }
+                    //            interval++;
+                    //        }
+                    //        else if (firstThirty)
+                    //        {
+                    //            runningInt += interest;
+                    //            runningPrinc += principle;
+                    //        }
+                    //    }
+                    //    totalIntPotential *= 30;
+                    //    labelTotalIntPaid.Text = string.Format("{0:C}", totalIntPotential);
+                    //}
+                    #endregion
+                    decimal newTotal = billTotal + totalIntPotential;
+                    TotalPlusInterest.Text = string.Format("{0:C}", newTotal);
+                    remainder = newTotal / billAmount;
+                }
+                else
+                {
+                    interval = Convert.ToInt32(Math.Floor(billTotal / billAmount));
+                    remainder = billTotal % billAmount;
+                    labelTotalIntPaid.Text = "";
+                    TotalPlusInterest.Text = "";
+                }
                 if (remainder != 0)
                 {
                     interval++;
@@ -339,10 +442,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void EnableRadioFrequencyButtons()
         {
-            radioButtonDaily.Enabled = true;
-            radioButtonMonthly.Enabled = true;
+
             radioButtonWeekly.Enabled = true;
             radioButtonYearly.Enabled = true;
+            radioButtonDaily.Enabled = true;
+            radioButtonMonthly.Enabled = true;
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -527,6 +631,33 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             CheckIfEnableCreate();
         }
 
+        private void radioButtonMonthlyInt_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonMonthlyInt.Checked && textBoxAmount.Text.Trim() != "")
+            {
+                //decimal temp = Convert.ToDecimal(textBoxAmount.Text) * 30;
+                //textBoxAmount.Text = temp.ToString("0.00");
+                //radioButtonMonthly.Checked = true;
+                PredictDates();
+            }
+        }
+
+        private void radioButtonDailyInt_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonDailyInt.Checked && textBoxAmount.Text.Trim() != "")
+            {
+                //decimal temp = Convert.ToDecimal(textBoxAmount.Text) / 30;
+                //textBoxAmount.Text = temp.ToString("0.00");
+                //radioButtonDaily.Checked = true;
+                PredictDates();
+            }
+        }
+
+        private void textBoxPercent_TextChanged(object sender, EventArgs e)
+        {
+            PredictDates();
+        }
+
 
         /// <summary>
         /// Add Bill.
@@ -542,8 +673,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             Bill.Amount = billAmount;
             Bill.Total = billTotal;
             Bill.BillStartDate = dateTimePickerFromDate.Value;
+            Bill.Interest = Convert.ToDecimal(textBoxPercent.Text);
             Bill.BillEndDate = dateTimePickerToDate.Value;
-            if (radioButtonNewDescription.Checked)
+            if (radioButtonNewDescription.Checked && textBoxDescription.Text.Trim() != "")
             {
                 Bill.BillDesc = textBoxDescription.Text.Trim();
             }
@@ -555,13 +687,24 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             Bills.Add(Bill);
 
             RepoBills.EditBill(Bills, 'A');
+            clearText();
             JustDisableEverything();
+            RepoBills.PrepareBillEditorData();
             PrepareListViewData();
         }
 
-
-
-
+        private void clearText()
+        {
+            comboBoxAccount.Text = "";
+            comboBoxBillType.Text = "";
+            comboBoxDescription.Text = "";
+            textBoxAmount.Text = "";
+            textBoxDescription.Text = "";
+            textBoxPayOffTotal.Text = "";
+            textBoxPercent.Text = "";
+            dateTimePickerFromDate.Value = DateTime.Now;
+            dateTimePickerFromDate.Value = DateTime.Now;
+        }
 
         private ModelFrequency getCharFromRadioButtonFreq(ModelFrequency freq)
         {

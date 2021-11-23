@@ -41,6 +41,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             "Bill Description", 
             "Amount", 
             "Total",
+            "Interest",
             "Remaining",
             "Bill Type", 
             "Account", 
@@ -69,6 +70,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 billHeaders.Add(Bills[key].BillDesc.ToString());
                 billHeaders.Add(Bills[key].Amount.ToString());
                 billHeaders.Add(Bills[key].Total.ToString());
+                billHeaders.Add(Bills[key].Interest.ToString());
                 billHeaders.Add(Bills[key].Remaining.ToString());
                 billHeaders.Add(Bills[key].BillType.ToString());
 
@@ -101,6 +103,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             "Amount Due",
             "Bill Description",
             "Amount Left ",
+            "Principle",
+            "Interest",
             "Account",
         };
 
@@ -108,95 +112,62 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             List<string[]> DataFormats = new List<string[]>();
 
-            var Bills = RepoBills.Bills;
-            Total = 0;
-
             lview.Items.Clear();
             DateTime date = billFrom;
 
-            bool[] boolArr = new bool[RepoBills.Bills.Count];
-
-
-            DateTime startDateOfBillPayments = DateTime.MinValue;
-
             BillsSummary = new Dictionary<string, decimal>();
-            paycheckCount = 0;
+            Total = 0;
+
+            Dictionary<int, ModelBill> TempBillsTable = DuplicateBillValuesTemporarilyToWorkWith();
+
+            if(TempBillsTable.Count <= 0)
+            {
+                return;
+            }
+
+            TimeSkipToBillStartDates(TempBillsTable);
 
             while (date < billTo)
             {
-                if(date.Day == 1 || date.Day == 15)
-                {
-                    paycheckCount++;
-                }
 
-                int billKeyIndex = 0;
-                foreach (int key in RepoBills.Bills.Keys)
+                UpdateTypicalIncomePayExpectations(date);
+
+                foreach (int key in TempBillsTable.Keys)
                 {
-                    char freq = Bills[key].BillType;
-                    if (!boolArr[billKeyIndex] && freq == 'p')
-                    {
-                        boolArr[billKeyIndex] = true;
-                        Bills[key].Remaining = Bills[key].Total;
-                        startDateOfBillPayments = Bills[key].BillStartDate;
-                        while (startDateOfBillPayments < date && Bills[key].Remaining > 0)
-                        {
-                            if (BillDateHasBeenFound(Bills[key], startDateOfBillPayments))
-                            {
-                                Bills[key].Remaining -= Bills[key].Amount;
-                            }
-                            startDateOfBillPayments = startDateOfBillPayments.AddDays(1);
-                        }
-                        if (Bills[key].Remaining <= 0)
-                        {
-                            continue;
-                        }
-                    }
-                    billKeyIndex++;
-                    if ((freq == 't' && (date < billFrom || date > billTo)) || (freq == 'p' && (date < Bills[key].BillStartDate || date > Bills[key].BillEndDate)))
-                    {
-                        continue;
-                    }
-                    else if(freq == 'p' && Bills[key].Remaining <= 0)
+                    ModelBill Bill = TempBillsTable[key];
+
+                    char billType = Bill.BillType;
+                    if (TimeFrameDoesNotIncludeBill(billType, Bill, billFrom, billTo, date))
                     {
                         continue;
                     }
 
-                    if (BillDateHasBeenFound(Bills[key], date))
+                    if (BillDateHasBeenFound(Bill, date))
                     {
-                        string desc = Bills[key].BillDesc.ToString();
-                        decimal amount = Bills[key].Amount;
-                        Total += amount;
-                        if (!BillsSummary.ContainsKey(desc))
-                        {
-                            BillsSummary.Add(desc, amount);
-                        }
-                        else
-                        {
-                            BillsSummary[desc] += amount;
-                        }
 
-                        List<string> billHeaders = new List<string>();
-                        billHeaders.Add(date.ToString("yyyy/MM/dd"));
-                        billHeaders.Add(amount.ToString());
-                        billHeaders.Add(desc);
-                        if (freq != 'p')
-                        {
-                            billHeaders.Add("-");
-                        }
-                        else
-                        {
-                            billHeaders.Add(Bills[key].Remaining.ToString());
-                        }
+                        decimal interest = 0, principle = 0;
 
-                        var acct = RepoBankAccount.Accounts[Bills[key].AccKey];
-                        var acctType = RepoBankAccount.AccountTypes[acct.AcctTypeKey];
-                        billHeaders.Add($"{acct.BankName}, {acct.AcctLastFour}, {acctType.AcctType}");
+                        char freq = Bill.Frequency.FreqType;
+                        int interestDivisor = GetInterestDivisor(freq);
 
+
+                        if(Bill.Interest != 0)
+                            interest = GetInterestOnBill(Bill, interestDivisor);
+
+
+                        principle = Bill.Amount - interest;
+
+
+                        string desc = Bill.BillDesc.ToString();
+                        UpdateBillTotalForPieChart(desc, Bill.Amount);
+
+
+                        List<string> billHeaders = PrepareBillHeaderForMainBillListView(date, Bill, desc, billType, principle, interest);
                         DataFormats.Add(billHeaders.ToArray());
-                        if(freq == 'p')
-                        {
-                            Bills[key].Remaining -= Bills[key].Amount;
-                        }
+
+
+                        Bill.Total -= principle;
+                        Total += principle;
                     }
                 }
                 date = date.AddDays(1);
@@ -214,7 +185,125 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             lview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
+        private void TimeSkipToBillStartDates(Dictionary<int, ModelBill> tempBillsTable)
+        {
+            throw new ArgumentException();
+            // TODO: FOREACH ACCOUNT CHECK IF BILL LAST DAY IS LESS THAN START DATE OF BILL VIEW FIRST DAY
+            //                             OR IF BILL FIRST DAY AFTER END DATE OF BILL VIEW LAST DAY
+            //       IF SO : CONTINUE TO NEXT BILL
 
+            // OTHERWISE:
+            //      IF BILL START DATE IS BEFORE BILL VIEW START DATE
+            //      THEN USE ALGORITHM TO CALULATE WHAT NEW INTEREST / PRINCIPLE / TOTAL WOULD BE UP TO BILLVIEW START DATE
+        }
+
+        private void UpdateTypicalIncomePayExpectations(DateTime date)
+        {
+            if(date.Day == 1 || date.Day == 15)
+            {
+                paycheckCount++;
+            }
+        }
+
+        private List<string> PrepareBillHeaderForMainBillListView(DateTime date, ModelBill Bill, string desc, char billType, decimal principle, decimal interest)
+        {
+            List<string> billHeaders = new List<string>();
+            billHeaders.Add(date.ToString("yyyy/MM/dd"));
+            billHeaders.Add(string.Format("{0:C}", Bill.Amount));
+            billHeaders.Add(desc);
+            if (billType != 'p')
+            {
+                billHeaders.Add("-");
+            }
+            else
+            {
+                billHeaders.Add(string.Format("{0:C}", Bill.Total));
+            }
+            billHeaders.Add(string.Format("{0:C}", principle));
+            billHeaders.Add(string.Format("{0:C}", interest));
+            var acct = RepoBankAccount.Accounts[Bill.AccKey];
+            var acctType = RepoBankAccount.AccountTypes[acct.AcctTypeKey];
+            billHeaders.Add($"{acct.BankName}, {acct.AcctLastFour}, {acctType.AcctType}");
+            return billHeaders;
+        }
+
+        private void UpdateBillTotalForPieChart(string desc, decimal amount)
+        {
+
+            if (!BillsSummary.ContainsKey(desc))
+            {
+                BillsSummary.Add(desc, amount);
+            }
+            else
+            {
+                BillsSummary[desc] += amount;
+            }
+        }
+
+        private decimal GetInterestOnBill(ModelBill Bill, int interestDivisor)
+        {
+            decimal intRate = 0;
+            intRate = Convert.ToDecimal(Bill.Interest) / 100;
+            intRate /= interestDivisor;
+            return Bill.Total * intRate;
+
+        }
+
+        private int GetInterestDivisor(char freq)
+        {
+            int interestDivisor = 0;
+            if (freq == 'm') // Monthly
+            {
+                interestDivisor = 12;
+            }
+            else if (freq == 'd') // daily
+            {
+                interestDivisor = 365;
+            }
+            else if (freq == 'y') // yearly
+            {
+                interestDivisor = 1;
+            }
+            return interestDivisor;
+        }
+
+        private Dictionary<int, ModelBill> DuplicateBillValuesTemporarilyToWorkWith()
+        {
+             Dictionary<int, ModelBill> temp = new Dictionary<int, ModelBill>();
+            foreach (int key in RepoBills.Bills.Keys)
+            {
+                if (!temp.ContainsKey(key))
+                {
+                    temp.Add(key, new ModelBill());
+                }
+                ModelBill tempBill = new ModelBill();
+                var bill = RepoBills.Bills[key];
+                tempBill.Total = bill.Total;
+                tempBill.Amount = bill.Amount;
+                tempBill.AccKey = bill.AccKey;
+                tempBill.FreqKey = bill.FreqKey;
+                tempBill.BillKey = bill.BillKey;
+                tempBill.Interest = bill.Interest;
+                tempBill.BillType = bill.BillType;
+                tempBill.BillDesc = bill.BillDesc;
+                tempBill.Remaining = bill.Remaining;
+                tempBill.Frequency = bill.Frequency;
+                tempBill.BillEndDate = bill.BillEndDate;
+                tempBill.BillStartDate = bill.BillStartDate;
+                temp[key] = tempBill;
+            }
+            return temp;
+        }
+
+        private bool TimeFrameDoesNotIncludeBill(char freq, ModelBill Bill, DateTime billFrom, DateTime billTo, DateTime date)
+        {
+            // Outside scope of 'Timeframe' or outside scope of 'Pay To Own'
+            if((freq == 't' && (date < billFrom || date > billTo)) 
+                || (freq == 'p' && (date < Bill.BillStartDate || date > Bill.BillEndDate))){
+                return true;
+            }
+            return false;
+        }
 
         private void BuildPieChart()
         {

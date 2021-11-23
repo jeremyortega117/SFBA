@@ -49,6 +49,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.buttonUnselectAll = new System.Windows.Forms.Button();
             this.labelTransKey = new System.Windows.Forms.Label();
             this.labelKey = new System.Windows.Forms.Label();
+            this.checkBoxUpdateBalance = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // listView1
@@ -115,6 +116,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.comboBoxAcct.Size = new System.Drawing.Size(194, 21);
             this.comboBoxAcct.TabIndex = 5;
             this.comboBoxAcct.SelectedIndexChanged += new System.EventHandler(this.comboBoxUser_SelectedIndexChanged);
+            this.comboBoxAcct.TextUpdate += new System.EventHandler(this.comboBoxUser_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -259,11 +261,23 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.labelKey.Size = new System.Drawing.Size(0, 13);
             this.labelKey.TabIndex = 19;
             // 
+            // checkBoxUpdateBalance
+            // 
+            this.checkBoxUpdateBalance.AutoSize = true;
+            this.checkBoxUpdateBalance.Location = new System.Drawing.Point(613, 287);
+            this.checkBoxUpdateBalance.Name = "checkBoxUpdateBalance";
+            this.checkBoxUpdateBalance.Size = new System.Drawing.Size(103, 17);
+            this.checkBoxUpdateBalance.TabIndex = 20;
+            this.checkBoxUpdateBalance.Text = "Update Balance";
+            this.checkBoxUpdateBalance.UseVisualStyleBackColor = true;
+            this.checkBoxUpdateBalance.CheckedChanged += new System.EventHandler(this.checkBoxUpdateBalance_CheckedChanged);
+            // 
             // TransactionEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 461);
+            this.Controls.Add(this.checkBoxUpdateBalance);
             this.Controls.Add(this.labelKey);
             this.Controls.Add(this.labelTransKey);
             this.Controls.Add(this.buttonUnselectAll);
@@ -316,5 +330,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private System.Windows.Forms.Button buttonUnselectAll;
         private System.Windows.Forms.Label labelTransKey;
         private System.Windows.Forms.Label labelKey;
+        private System.Windows.Forms.CheckBox checkBoxUpdateBalance;
     }
 }

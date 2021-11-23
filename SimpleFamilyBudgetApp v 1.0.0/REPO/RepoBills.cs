@@ -43,6 +43,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             Builder.AppendLine("	B.BILL_TYPE, ");
             Builder.AppendLine("	B.ACC_KEY, ");
             Builder.AppendLine("	B.AMOUNT,");
+            Builder.AppendLine("	B.INTEREST,");
             Builder.AppendLine("	B.REMAINING,");
             Builder.AppendLine("	ISNULL(B.TOTAL, 0) as [TOTAL]");
             Builder.AppendLine("FROM ");
@@ -70,6 +71,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                         bill.Amount = Convert.ToDecimal(Reader["AMOUNT"]);
                         bill.Total = Convert.ToDecimal(Reader["TOTAL"]);
                         bill.Remaining = Convert.ToDecimal(Reader["REMAINING"]);
+                        bill.Interest = Convert.ToDecimal(Reader["INTEREST"]);
                         bill.Frequency = RepoFrequency.Freqs[bill.FreqKey];
                         Bills.Add(bill.BillKey, bill);
                     }
@@ -125,6 +127,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             Builder.AppendLine("	B.BILL_DESC, ");
             Builder.AppendLine("	B.BILL_TYPE, ");
             Builder.AppendLine("	B.ACC_KEY, ");
+            Builder.AppendLine("	B.INTEREST,");
             Builder.AppendLine("	B.AMOUNT,");
             Builder.AppendLine("	ISNULL(B.TOTAL, 0) as [TOTAL]");
             Builder.AppendLine("	ISNULL(B.REMAINING, 0) as [REMAINING]");
@@ -159,6 +162,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                         bill.AccKey = Convert.ToInt32(Reader["ACC_KEY"]);
                         bill.Amount = Convert.ToDecimal(Reader["AMOUNT"]);
                         bill.Total = Convert.ToDecimal(Reader["TOTAL"]);
+                        bill.Interest = Convert.ToDecimal(Reader["INTEREST"]);
                         bill.Remaining = Convert.ToDecimal(Reader["REMAINING"]);
                         bill.Frequency = RepoFrequency.Freqs[bill.FreqKey];
                         Bills.Add(bill.BillKey, bill);
@@ -197,6 +201,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 Builder.AppendLine("	,@BILL_TYPE ");
                 Builder.AppendLine("	,@AMOUNT ");
                 Builder.AppendLine("	,@TOTAL ");
+                Builder.AppendLine("	,@INTEREST ");
                 Builder.AppendLine("    ,@REMAINING");
                 Builder.AppendLine("	,@ACC_KEY ");
                 Builder.AppendLine("	,@FREQ_KEY");
@@ -211,6 +216,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 SqlParameter billDesc = new SqlParameter("@BILL_DESC", Bill.BillDesc);
                 SqlParameter billType = new SqlParameter("@BILL_TYPE", Bill.BillType);
                 SqlParameter Amount = new SqlParameter("@AMOUNT", Bill.Amount);
+                SqlParameter Interest = new SqlParameter("@INTEREST", Bill.Interest);
                 SqlParameter Total = new SqlParameter("@TOTAL", Bill.Total);
                 SqlParameter Remaining = new SqlParameter("@REMAINING", Bill.Remaining);
                 SqlParameter AccKey = new SqlParameter("@ACC_KEY", Bill.AccKey);
@@ -224,6 +230,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 parameters.Add(billType);
                 parameters.Add(Amount);
                 parameters.Add(Total);
+                parameters.Add(Interest);
                 parameters.Add(Remaining);
                 parameters.Add(AccKey);
                 parameters.Add(freq);

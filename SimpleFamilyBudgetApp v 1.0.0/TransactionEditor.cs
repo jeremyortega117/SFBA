@@ -14,12 +14,14 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
     {
 
         internal static int key = -1;
+        internal static HashSet<string> acctStrCheck;
 
         public TransactionEditor()
         {
             InitializeComponent();
             ResetUI();
             buttonSubmitExpense.Enabled = false;
+            buttonImportFile.Enabled = false;
         }
 
         private void ResetUI()
@@ -32,6 +34,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             dateTimePickerTransDate.Value = DateTime.Now;
             buttonDelete.Enabled = false;
             buttonUpdate.Enabled = false;
+            checkBoxUpdateBalance.Checked = true;
             RepoBankAccount.PrepareAccountTypes();
             RepoBankAccount.PrepareAcctEditorData();
             RepoTransaction.PrepareTransTypes();
@@ -50,10 +53,16 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             }
 
             comboBoxAcct.Items.Clear();
+            acctStrCheck = new HashSet<string>();
             foreach (var BankInfo in RepoBankAccount.Accounts.Values)
             {
                 var acctType = RepoBankAccount.AccountTypes[BankInfo.AcctTypeKey];
-                comboBoxAcct.Items.Add($"{BankInfo.BankName}, {BankInfo.AcctLastFour}, {acctType.AcctType}");
+                string strChk = $"{BankInfo.BankName}, {BankInfo.AcctLastFour}, {acctType.AcctType}";
+                comboBoxAcct.Items.Add(strChk);
+                if (!acctStrCheck.Contains(strChk))
+                {
+                    acctStrCheck.Add(strChk);
+                }
             }
         }
 
@@ -148,6 +157,14 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private void comboBoxUser_SelectedIndexChanged(object sender, EventArgs e)
         {
             CheckIfButtonEnabled();
+            if(acctStrCheck.Contains(comboBoxAcct.Text))
+            {
+                buttonImportFile.Enabled = true;
+            }
+            else
+            {
+                buttonImportFile.Enabled = false;
+            }
         }
 
         private void textBoxAmount_TextChanged(object sender, EventArgs e)
@@ -258,7 +275,14 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-
+            int transKey = Convert.ToInt32(listView1.SelectedItems[0].SubItems[1].Text);
+            List<ModelTrans> trans = new List<ModelTrans>();
+            ModelTrans tran = RepoTransaction.Trans[transKey];
+            tran.Amount = Convert.ToDouble(textBoxAmount.Text.Replace("$", "").Replace("(", "").Replace(")", ""));
+            trans.Add(tran);
+            RepoTransaction.EditTrans(trans, 'U');
+            listView1.Clear();
+            ResetUI();
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
@@ -273,6 +297,18 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
             RepoTransaction.EditTrans(trans, 'D');
             ResetUI();
+        }
+
+        private void checkBoxUpdateBalance_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxUpdateBalance.Checked)
+            {
+                RepoTransaction.editBal = 'Y';
+            }
+            else
+            {
+                RepoTransaction.editBal = 'N';
+            }
         }
     }
 }

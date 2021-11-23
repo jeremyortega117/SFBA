@@ -34,7 +34,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void ClearData()
         {
-            textBoxBankName.Text = "";
+            comboBoxBankName.Text = "";
             comboBoxAccountType.Text = "";
             textBoxAcctLastFour.Text = "";
             textBoxBalance.Text = "";
@@ -53,6 +53,17 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             foreach (ModelAccountType AccountType in RepoBankAccount.AccountTypes.Values)
             {
                 comboBoxAccountType.Items.Add($"{AccountType.AcctType}");
+            }
+            comboBoxBankName.Items.Clear();
+            HashSet<string> BankNames = new HashSet<string>();
+            foreach (ModelBankAccount Accounts in RepoBankAccount.Accounts.Values)
+            {
+                string BankName = Accounts.BankName;
+                if (!BankNames.Contains(BankName))
+                {
+                    comboBoxBankName.Items.Add($"{BankName}");
+                    BankNames.Add(BankName);
+                }
             }
         }
 
@@ -77,7 +88,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void buttonSubmitNewAccount_Click(object sender, EventArgs e)
         {
-            if (textBoxBankName.Text != ""
+            if (comboBoxBankName.Text != ""
                 && comboBoxAccountType.Text != ""
                 && textBoxAcctLastFour.Text != ""
                 && comboBoxUser.Text != ""
@@ -87,7 +98,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 listView1.Clear();
                 List<ModelBankAccount> BankAccounts = new List<ModelBankAccount>();
                 ModelBankAccount BankAccount = new ModelBankAccount();
-                BankAccount.BankName = textBoxBankName.Text;
+                BankAccount.BankName = comboBoxBankName.Text;
                 BankAccount.AcctTypeKey = RepoBankAccount.RetrieveAcctTypeKeyFromName(comboBoxAccountType.Text);
                 BankAccount.AcctLastFour = textBoxAcctLastFour.Text;
                 BankAccount.Balance = Convert.ToDouble(textBoxBalance.Text);
@@ -106,6 +117,16 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         }
 
         private void comboBoxAccountType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxBankName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonAddBankName_Click_1(object sender, EventArgs e)
         {
 
         }
