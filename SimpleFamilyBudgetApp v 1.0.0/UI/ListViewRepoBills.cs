@@ -129,6 +129,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
             TimeSkipToBillStartDates(TempBillsTable, date, billTo);
 
+            paycheckCount = 0;
+
             while (date < billTo)
             {
 
@@ -163,7 +165,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                         DataFormats.Add(billHeaders.ToArray());
 
                         Bill.Total -= principle;
-                        Total += principle;
+                        Total += Bill.Amount;
                     }
                 }
                 date = date.AddDays(1);
