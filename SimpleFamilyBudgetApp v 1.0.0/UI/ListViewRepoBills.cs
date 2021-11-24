@@ -102,9 +102,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             "Bill Date",
             "Amount Due",
             "Bill Description",
+            "Orig. Amount",
             "Amount Left ",
             "Principle",
             "Interest",
+            "Total Interest",
             "Account",
         };
 
@@ -125,7 +127,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 return;
             }
 
-            TimeSkipToBillStartDates(TempBillsTable);
+            TimeSkipToBillStartDates(TempBillsTable, date, billTo);
 
             while (date < billTo)
             {
@@ -147,24 +149,18 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
                         decimal interest = 0, principle = 0;
 
-                        char freq = Bill.Frequency.FreqType;
-                        int interestDivisor = GetInterestDivisor(freq);
-
-
                         if(Bill.Interest != 0)
-                            interest = GetInterestOnBill(Bill, interestDivisor);
+                            interest = Bill.Total * Bill.Interest / 100 / 12;
 
+                        Bill.TotalInterest += interest;
 
                         principle = Bill.Amount - interest;
-
 
                         string desc = Bill.BillDesc.ToString();
                         UpdateBillTotalForPieChart(desc, Bill.Amount);
 
-
                         List<string> billHeaders = PrepareBillHeaderForMainBillListView(date, Bill, desc, billType, principle, interest);
                         DataFormats.Add(billHeaders.ToArray());
-
 
                         Bill.Total -= principle;
                         Total += principle;
@@ -185,16 +181,30 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             lview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
-        private void TimeSkipToBillStartDates(Dictionary<int, ModelBill> tempBillsTable)
+        private void TimeSkipToBillStartDates(Dictionary<int, ModelBill> tempBillsTable, DateTime date, DateTime billTo)
         {
-            throw new ArgumentException();
-            // TODO: FOREACH ACCOUNT CHECK IF BILL LAST DAY IS LESS THAN START DATE OF BILL VIEW FIRST DAY
-            //                             OR IF BILL FIRST DAY AFTER END DATE OF BILL VIEW LAST DAY
-            //       IF SO : CONTINUE TO NEXT BILL
+            foreach (int billKey in tempBillsTable.Keys)
+            {
+                ModelBill bill = tempBillsTable[billKey];
+                if(bill.BillEndDate < date || bill.BillStartDate > billTo)
+                {
+                    continue;
+                }
 
-            // OTHERWISE:
-            //      IF BILL START DATE IS BEFORE BILL VIEW START DATE
-            //      THEN USE ALGORITHM TO CALULATE WHAT NEW INTEREST / PRINCIPLE / TOTAL WOULD BE UP TO BILLVIEW START DATE
+                decimal principle;
+                while (bill.BillStartDate < date && bill.Total > 0)
+                {
+                    if (BillDateHasBeenFound(bill, date)) 
+                    {
+                        decimal interest = bill.Total * bill.Interest / 100 / 12;
+                        principle = bill.Amount - interest;
+                        bill.Total -= principle;
+                        bill.TotalInterest += interest;
+                    }
+                    bill.BillStartDate = bill.BillStartDate.AddDays(1);
+                }
+
+            }
         }
 
         private void UpdateTypicalIncomePayExpectations(DateTime date)
@@ -211,6 +221,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             billHeaders.Add(date.ToString("yyyy/MM/dd"));
             billHeaders.Add(string.Format("{0:C}", Bill.Amount));
             billHeaders.Add(desc);
+            billHeaders.Add(string.Format("{0:C}", RepoBills.Bills[Bill.BillKey].Total));
             if (billType != 'p')
             {
                 billHeaders.Add("-");
@@ -221,6 +232,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             }
             billHeaders.Add(string.Format("{0:C}", principle));
             billHeaders.Add(string.Format("{0:C}", interest));
+            billHeaders.Add(string.Format("{0:C}", Bill.TotalInterest));
             var acct = RepoBankAccount.Accounts[Bill.AccKey];
             var acctType = RepoBankAccount.AccountTypes[acct.AcctTypeKey];
             billHeaders.Add($"{acct.BankName}, {acct.AcctLastFour}, {acctType.AcctType}");
@@ -240,11 +252,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             }
         }
 
-        private decimal GetInterestOnBill(ModelBill Bill, int interestDivisor)
+        private decimal GetInterestOnBill(ModelBill Bill)
         {
-            decimal intRate = 0;
-            intRate = Convert.ToDecimal(Bill.Interest) / 100;
-            intRate /= interestDivisor;
+            decimal intRate = Bill.Total * Bill.Interest / 100 / 12;
             return Bill.Total * intRate;
 
         }
@@ -298,8 +308,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private bool TimeFrameDoesNotIncludeBill(char freq, ModelBill Bill, DateTime billFrom, DateTime billTo, DateTime date)
         {
             // Outside scope of 'Timeframe' or outside scope of 'Pay To Own'
-            if((freq == 't' && (date < billFrom || date > billTo)) 
-                || (freq == 'p' && (date < Bill.BillStartDate || date > Bill.BillEndDate))){
+            if((Bill.BillStartDate > billTo || Bill.BillEndDate < date) && Bill.BillType != 'c'){
                 return true;
             }
             return false;

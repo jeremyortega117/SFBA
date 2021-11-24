@@ -671,9 +671,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             Bill.Frequency = getCharFromRadioButtonFreq(new ModelFrequency());
             Bill.AccKey = RepoTransaction.GetAcctKeyFromSelected(comboBoxAccount.Text);
             Bill.Amount = billAmount;
-            Bill.Total = billTotal;
+            Bill.Total = billTotal != 0 ? billTotal : billAmount;
             Bill.BillStartDate = dateTimePickerFromDate.Value;
-            Bill.Interest = Convert.ToDecimal(textBoxPercent.Text);
+            Bill.Interest = textBoxPercent.Text.Trim() != "" ? Convert.ToDecimal(textBoxPercent.Text) : 0;
             Bill.BillEndDate = dateTimePickerToDate.Value;
             if (radioButtonNewDescription.Checked && textBoxDescription.Text.Trim() != "")
             {

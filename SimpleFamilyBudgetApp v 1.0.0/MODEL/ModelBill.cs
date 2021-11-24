@@ -19,6 +19,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         public decimal Total { get; set; }
         public decimal Remaining { get; set; }
         public decimal Interest { get; set; }
+        public decimal TotalInterest { get; set; }
 
         public ModelFrequency Frequency = new ModelFrequency();
     }

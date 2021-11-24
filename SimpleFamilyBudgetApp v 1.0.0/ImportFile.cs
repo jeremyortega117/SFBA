@@ -73,7 +73,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 }
             }
             textBoxFileLocation.Text = filePath;
-            //MessageBox.Show(fileContent, "File Content at path: " + filePath, MessageBoxButtons.OK);
         }
 
         private void buttonImport_Click(object sender, EventArgs e)
@@ -107,7 +106,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                         if (tran.Amount > 0)
                         {
                             transType.TransSign = '+';
-
                         }
                         else
                         {
