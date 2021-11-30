@@ -11,11 +11,108 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 {
     class RepoTransaction
     {
+        internal static HashSet<string> MapTransNew;
+        internal static HashSet<string> MapTransOrig;
+        internal static Dictionary<int, ModelMapExpenseTypes> MapTransTypesByKey;
+        internal static Dictionary<string, string> MapTransTypes;
         internal static Dictionary<int, ModelTrans> Trans;
         internal static Dictionary<int, ModelTransType> TransTypes;
         internal static Dictionary<DateTime, List<ModelTrans>> compareTransByDate;
         internal static bool IgnoreDups = false;
         internal static char editBal = 'Y';
+
+
+
+        /// <summary>
+        /// Retrieve account types previously created available.
+        /// </summary>
+        #region Retrieve Account Types
+        internal static void PrepareTransMap()
+        {
+            string SQL = "SELECT * FROM MAP_EXPENSE_TYPES WITH(NOLOCK) ORDER BY ORIG_VAL";
+            MapTransOrig = new HashSet<string>();
+            MapTransNew = new HashSet<string>();
+            MapTransTypes = new Dictionary<string, string>();
+            MapTransTypesByKey = new Dictionary<int, ModelMapExpenseTypes>();
+            SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);
+            SqlDataReader Reader = null;
+            try
+            {
+                Reader = Command.ExecuteReader();
+                if (Reader != null)
+                {
+                    while (Reader.Read())
+                    {
+                        ModelMapExpenseTypes mapTo = new ModelMapExpenseTypes();
+                        mapTo.MapId = Convert.ToInt32(Reader["MAP_ID"]);
+                        mapTo.OrigVal = Reader["ORIG_VAL"].ToString();
+                        mapTo.NewVal = Reader["NEW_VALUE"].ToString();
+
+                        if (!MapTransTypesByKey.ContainsKey(mapTo.MapId))
+                        {
+                            MapTransTypesByKey.Add(mapTo.MapId, mapTo);
+                        }
+
+                        if (!MapTransTypes.ContainsKey(mapTo.OrigVal) && mapTo.OrigVal != "")
+                        {
+                            MapTransTypes.Add(mapTo.OrigVal, mapTo.NewVal);
+                        }
+
+                        if (!MapTransOrig.Contains(mapTo.OrigVal) && mapTo.OrigVal != "")
+                        {
+                            MapTransOrig.Add(mapTo.OrigVal);
+                        }
+
+                        if (!MapTransNew.Contains(mapTo.NewVal))
+                        {
+                            MapTransNew.Add(mapTo.NewVal);
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR: retrieving Trans Type Information. " + ex.Message);
+            }
+            Command.Dispose();
+            Reader.Close();
+        }
+        #endregion
+
+        /// <summary>
+        /// Add New Account Type
+        /// </summary>
+        internal static void EditTransMap(List<ModelMapExpenseTypes> Maps, char editType)
+        {
+            foreach (ModelMapExpenseTypes map in Maps)
+            {
+                string SQL = $"EXECUTE proc_MAP_EXPENSE_TYPES @MAP_ID, @ORIG_VAL, @NEW_VALUE, @EDIT_TYPE";
+                SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);
+                List<SqlParameter> parameters = new List<SqlParameter>();
+                SqlParameter MapId = new SqlParameter("@MAP_ID", map.MapId);
+                SqlParameter origVal = new SqlParameter("@ORIG_VAL", map.OrigVal);
+                SqlParameter NewVal = new SqlParameter("@NEW_VALUE", map.NewVal);
+                SqlParameter editTypeParam = new SqlParameter("@EDIT_TYPE", editType);
+                parameters.Add(MapId);
+                parameters.Add(origVal);
+                parameters.Add(NewVal);
+                parameters.Add(editTypeParam);
+                Command.Parameters.AddRange(parameters.ToArray());
+                try
+                {
+                    Command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"ERROR: Adding/Editing Mapping ExpenseType Type: '{map.OrigVal}' to '{map.NewVal}'. " + ex.Message);
+                }
+                Command.Dispose();
+            }
+
+        }
+
+
 
         /// <summary>
         /// Retrieve account types previously created available.

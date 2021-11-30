@@ -61,11 +61,17 @@
     <Compile Include="BillEditor.Designer.cs">
       <DependentUpon>BillEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="BudgetEditor.cs">
+    <Compile Include="ExpenseMap.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BudgetEditor.Designer.cs">
-      <DependentUpon>BudgetEditor.cs</DependentUpon>
+    <Compile Include="ExpenseMap.Designer.cs">
+      <DependentUpon>ExpenseMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BudgetWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BudgetWindow.Designer.cs">
+      <DependentUpon>BudgetWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="ChangeOrDeleteAccount.cs">
       <SubType>Form</SubType>
@@ -128,8 +134,11 @@
     <EmbeddedResource Include="BillEditor.resx">
       <DependentUpon>BillEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BudgetEditor.resx">
-      <DependentUpon>BudgetEditor.cs</DependentUpon>
+    <EmbeddedResource Include="ExpenseMap.resx">
+      <DependentUpon>ExpenseMap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BudgetWindow.resx">
+      <DependentUpon>BudgetWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChangeOrDeleteAccount.resx">
       <DependentUpon>ChangeOrDeleteAccount.cs</DependentUpon>

@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace SimpleFamilyBudgetApp_v_1._0._0
 {
-    public partial class BudgetEditor : Form
+    public partial class BudgetWindow : Form
     {
-        public BudgetEditor()
+        public BudgetWindow()
         {
             InitializeComponent();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

@@ -22,4 +22,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         public string TransDesc { get; set; }
         public char TransSign { get; set; }
     }
+
+    internal class ModelMapExpenseTypes
+    {
+        public int MapId { get; set; }
+        public string OrigVal { get; set; }
+        public string NewVal { get; set; }
+    }
 }

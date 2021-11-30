@@ -39,6 +39,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             RepoBankAccount.PrepareAccountTypes();
             RepoBankAccount.PrepareAcctEditorData();
             RepoTransaction.PrepareTransTypes();
+            RepoTransaction.PrepareTransMap();
             RepoFrequency.PrepareFrequencyData();
             RepoBills.PrepareBillEditorData();
             BillFrom = dateTimePickerFrom.Value = GetFirstOfMonth();
@@ -46,12 +47,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             DisplayAllUsersCheckTypes();
             DisplayAllExpenseCheckTypes();
             DisplayAllAccounts();
-            //FillAccountsAndExpenseTypesChecked();
-            //RepoTransaction.PrepareTransDataWithFilters(Accounts, ExpenseTypes);
-            //PrepareLabels();
             radioExpenses.Checked = true;
             PrepareToolOptions();
-            //PrepareWebViews();
             refreshAfterFilter();
         }
 
@@ -641,6 +638,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private void ToolStripMenuItemCreateBudget_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void mapExpenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExpenseMap map = new ExpenseMap();
+            map.ShowDialog();
+            refreshAfterFilter();
         }
     }
 }
