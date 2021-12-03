@@ -23,77 +23,40 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void PrepareMappingData()
         {
+            DataGridViewTextBoxColumn tbCol = new DataGridViewTextBoxColumn();
+            DataGridViewComboBoxColumn cbCol = new DataGridViewComboBoxColumn();
+            dataGridView1.Columns.AddRange(tbCol, cbCol);
 
-            DataTable dt = new DataTable();
-            dt.Columns.Add("OriginalType", typeof(String));
-            dt.Columns.Add("NewType", typeof(String));
-
-            //DataTable dt2 = new DataTable();
-            //dt2.Columns.Add("Money", typeof(String));
-            //dt2.Columns.Add("Meaning", typeof(String));
-
-
-            List<string> beforeCheckRightSide = new List<string>();
+            int row = 0;
             foreach (var temp in RepoTransaction.TransTypes.Values)
             {
-                if (!beforeCheckRightSide.Contains(temp.TransDesc))
-                {
-                    beforeCheckRightSide.Add(temp.TransDesc);
-                }
-            }
+                AddAnotherRow(row);
 
-            int count = 0;
-            foreach (var temp in RepoTransaction.TransTypes.Values) {
-                //dt.Rows.Add(new object[] { temp.TransDesc, count });
-                if (!RepoTransaction.MapTransTypes.ContainsKey(temp.TransDesc)) 
-                {
-                    dt.Rows.Add(new object[] { temp.TransDesc, temp.TransDesc });
-                }
+                string keyToCheck = RepoTransaction.MapTransOrig.ElementAt(row);
+                string NewValue = "";
+
+                if (RepoTransaction.MapTransTypes.ContainsKey(keyToCheck)) 
+                    NewValue = RepoTransaction.MapTransTypes[keyToCheck];
                 else
-                {
-                    dt.Rows.Add(new object[] { temp.TransDesc, RepoTransaction.MapTransTypes[temp.TransDesc] });
-                }
-                count++;
+                    NewValue = keyToCheck;
+
+                dataGridView1.Rows[row].Cells[1].Value = NewValue;
+                dataGridView1.Rows[row].Cells[0].Value = keyToCheck;
+                row++;
             }
+            tbCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            cbCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
 
-            DataGridViewTextBoxColumn OrigTypes = new DataGridViewTextBoxColumn();
-            OrigTypes.HeaderText = "OriginalType";
-            OrigTypes.DataPropertyName = "OriginalType";
 
-
-            DataGridViewComboBoxColumn FiguredTypes = new DataGridViewComboBoxColumn();
-            FiguredTypes.DataSource = beforeCheckRightSide;
-            //FiguredTypes.HeaderText = "Money";
-            //FiguredTypes.DataPropertyName = "Money";
-            //FiguredTypes.DisplayMember = "Meaning";
-            //FiguredTypes.ValueMember = "Money";
-
-            dataGridView1.Columns.Add(OrigTypes);
-            dataGridView1.Columns.Add(FiguredTypes);
-            dataGridView1.DataSource = dt;
-
-            for (int i = 0; i < dataGridView1.Columns.Count; i++)
-            {
-                dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            }
-
-            //for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            //{
-            //    if (dataGridView1.Rows[i].Cells[0].Value != null)
-            //    {
-            //        string origvl = dataGridView1.Rows[i].Cells[0].Value.ToString().Trim();
-            //        DataGridViewComboBoxCell cbcell = (DataGridViewComboBoxCell)dataGridView1.Rows[i].Cells[1];
-            //        string newVal = cbcell.EditedFormattedValue.ToString().Trim();
-
-            //        if (RepoTransaction.MapTransTypes.ContainsKey(origvl))
-            //        {
-            //            if (RepoTransaction.MapTransTypes[origvl] != newVal)
-            //            {
-            //                cbcell. = RepoTransaction.MapTransTypes[origvl];
-            //            }
-            //        }
-            //    }
-            //}
+        private void AddAnotherRow(int row)
+        {
+            dataGridView1.Rows.Add();
+            ComboBox expenseTypes = new ComboBox();
+            expenseTypes.Items.AddRange(RepoTransaction.MapTransOrig.ToArray());
+            DataGridViewComboBoxCell dgvcbc = new DataGridViewComboBoxCell();
+            dataGridView1[1, row] = dgvcbc;
+            dgvcbc.DataSource = expenseTypes.Items;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -123,6 +86,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 }
                 button2.Enabled = false;
             }
+            PrepareMappingData();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -173,6 +137,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 RepoTransaction.EditTransMap(mapsToUpdate, 'U');
             }
             RepoTransaction.PrepareTransMap();
+            PrepareMappingData();
         }
     }
 }
