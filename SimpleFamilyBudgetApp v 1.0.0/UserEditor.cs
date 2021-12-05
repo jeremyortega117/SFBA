@@ -191,5 +191,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
 
         }
+
+        private void textBoxMI_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

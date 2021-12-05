@@ -37,16 +37,19 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // textBoxFileLocation
             // 
-            this.textBoxFileLocation.Location = new System.Drawing.Point(135, 51);
+            this.textBoxFileLocation.Enabled = false;
+            this.textBoxFileLocation.Location = new System.Drawing.Point(180, 63);
+            this.textBoxFileLocation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxFileLocation.Name = "textBoxFileLocation";
-            this.textBoxFileLocation.Size = new System.Drawing.Size(381, 20);
+            this.textBoxFileLocation.Size = new System.Drawing.Size(507, 22);
             this.textBoxFileLocation.TabIndex = 4;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(29, 49);
+            this.button1.Location = new System.Drawing.Point(39, 60);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 23);
+            this.button1.Size = new System.Drawing.Size(133, 28);
             this.button1.TabIndex = 5;
             this.button1.Text = "Search";
             this.button1.UseVisualStyleBackColor = true;
@@ -54,9 +57,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // buttonImport
             // 
-            this.buttonImport.Location = new System.Drawing.Point(197, 98);
+            this.buttonImport.Location = new System.Drawing.Point(263, 121);
+            this.buttonImport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonImport.Name = "buttonImport";
-            this.buttonImport.Size = new System.Drawing.Size(162, 34);
+            this.buttonImport.Size = new System.Drawing.Size(216, 42);
             this.buttonImport.TabIndex = 6;
             this.buttonImport.Text = "Import";
             this.buttonImport.UseVisualStyleBackColor = true;
@@ -65,9 +69,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // checkBoxIgnoreDups
             // 
             this.checkBoxIgnoreDups.AutoSize = true;
-            this.checkBoxIgnoreDups.Location = new System.Drawing.Point(376, 77);
+            this.checkBoxIgnoreDups.Location = new System.Drawing.Point(501, 95);
+            this.checkBoxIgnoreDups.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxIgnoreDups.Name = "checkBoxIgnoreDups";
-            this.checkBoxIgnoreDups.Size = new System.Drawing.Size(140, 17);
+            this.checkBoxIgnoreDups.Size = new System.Drawing.Size(172, 20);
             this.checkBoxIgnoreDups.TabIndex = 7;
             this.checkBoxIgnoreDups.Text = "Ignore Duplicates In File";
             this.checkBoxIgnoreDups.UseVisualStyleBackColor = true;
@@ -75,13 +80,14 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // ImportFile
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(550, 144);
+            this.ClientSize = new System.Drawing.Size(733, 177);
             this.Controls.Add(this.checkBoxIgnoreDups);
             this.Controls.Add(this.buttonImport);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBoxFileLocation);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ImportFile";
             this.Text = "Import File";
             this.ResumeLayout(false);

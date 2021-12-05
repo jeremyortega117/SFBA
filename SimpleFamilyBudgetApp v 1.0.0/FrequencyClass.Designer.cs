@@ -52,17 +52,19 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.listViewFrequency.Dock = System.Windows.Forms.DockStyle.Top;
             this.listViewFrequency.HideSelection = false;
             this.listViewFrequency.Location = new System.Drawing.Point(0, 0);
+            this.listViewFrequency.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listViewFrequency.Name = "listViewFrequency";
-            this.listViewFrequency.Size = new System.Drawing.Size(617, 161);
+            this.listViewFrequency.Size = new System.Drawing.Size(823, 197);
             this.listViewFrequency.TabIndex = 0;
             this.listViewFrequency.UseCompatibleStateImageBehavior = false;
             // 
             // radioButtonDaily
             // 
             this.radioButtonDaily.AutoSize = true;
-            this.radioButtonDaily.Location = new System.Drawing.Point(191, 200);
+            this.radioButtonDaily.Location = new System.Drawing.Point(255, 246);
+            this.radioButtonDaily.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonDaily.Name = "radioButtonDaily";
-            this.radioButtonDaily.Size = new System.Drawing.Size(48, 17);
+            this.radioButtonDaily.Size = new System.Drawing.Size(59, 20);
             this.radioButtonDaily.TabIndex = 1;
             this.radioButtonDaily.TabStop = true;
             this.radioButtonDaily.Text = "Daily";
@@ -71,9 +73,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // radioButtonWeekly
             // 
             this.radioButtonWeekly.AutoSize = true;
-            this.radioButtonWeekly.Location = new System.Drawing.Point(245, 200);
+            this.radioButtonWeekly.Location = new System.Drawing.Point(327, 246);
+            this.radioButtonWeekly.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonWeekly.Name = "radioButtonWeekly";
-            this.radioButtonWeekly.Size = new System.Drawing.Size(61, 17);
+            this.radioButtonWeekly.Size = new System.Drawing.Size(74, 20);
             this.radioButtonWeekly.TabIndex = 2;
             this.radioButtonWeekly.TabStop = true;
             this.radioButtonWeekly.Text = "Weekly";
@@ -82,9 +85,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // radioButtonMonthly
             // 
             this.radioButtonMonthly.AutoSize = true;
-            this.radioButtonMonthly.Location = new System.Drawing.Point(312, 200);
+            this.radioButtonMonthly.Location = new System.Drawing.Point(416, 246);
+            this.radioButtonMonthly.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonMonthly.Name = "radioButtonMonthly";
-            this.radioButtonMonthly.Size = new System.Drawing.Size(62, 17);
+            this.radioButtonMonthly.Size = new System.Drawing.Size(74, 20);
             this.radioButtonMonthly.TabIndex = 3;
             this.radioButtonMonthly.TabStop = true;
             this.radioButtonMonthly.Text = "Monthly";
@@ -93,9 +97,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // radioButtonYearly
             // 
             this.radioButtonYearly.AutoSize = true;
-            this.radioButtonYearly.Location = new System.Drawing.Point(380, 200);
+            this.radioButtonYearly.Location = new System.Drawing.Point(507, 246);
+            this.radioButtonYearly.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonYearly.Name = "radioButtonYearly";
-            this.radioButtonYearly.Size = new System.Drawing.Size(54, 17);
+            this.radioButtonYearly.Size = new System.Drawing.Size(67, 20);
             this.radioButtonYearly.TabIndex = 4;
             this.radioButtonYearly.TabStop = true;
             this.radioButtonYearly.Text = "Yearly";
@@ -104,9 +109,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // checkBoxMonday
             // 
             this.checkBoxMonday.AutoSize = true;
-            this.checkBoxMonday.Location = new System.Drawing.Point(145, 237);
+            this.checkBoxMonday.Location = new System.Drawing.Point(193, 292);
+            this.checkBoxMonday.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxMonday.Name = "checkBoxMonday";
-            this.checkBoxMonday.Size = new System.Drawing.Size(64, 17);
+            this.checkBoxMonday.Size = new System.Drawing.Size(78, 20);
             this.checkBoxMonday.TabIndex = 5;
             this.checkBoxMonday.Text = "Monday";
             this.checkBoxMonday.UseVisualStyleBackColor = true;
@@ -114,9 +120,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // checkBoxTuesday
             // 
             this.checkBoxTuesday.AutoSize = true;
-            this.checkBoxTuesday.Location = new System.Drawing.Point(145, 260);
+            this.checkBoxTuesday.Location = new System.Drawing.Point(193, 320);
+            this.checkBoxTuesday.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxTuesday.Name = "checkBoxTuesday";
-            this.checkBoxTuesday.Size = new System.Drawing.Size(67, 17);
+            this.checkBoxTuesday.Size = new System.Drawing.Size(83, 20);
             this.checkBoxTuesday.TabIndex = 6;
             this.checkBoxTuesday.Text = "Tuesday";
             this.checkBoxTuesday.UseVisualStyleBackColor = true;
@@ -124,9 +131,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // checkBoxWednesday
             // 
             this.checkBoxWednesday.AutoSize = true;
-            this.checkBoxWednesday.Location = new System.Drawing.Point(245, 237);
+            this.checkBoxWednesday.Location = new System.Drawing.Point(327, 292);
+            this.checkBoxWednesday.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxWednesday.Name = "checkBoxWednesday";
-            this.checkBoxWednesday.Size = new System.Drawing.Size(83, 17);
+            this.checkBoxWednesday.Size = new System.Drawing.Size(103, 20);
             this.checkBoxWednesday.TabIndex = 7;
             this.checkBoxWednesday.Text = "Wednesday";
             this.checkBoxWednesday.UseVisualStyleBackColor = true;
@@ -134,9 +142,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // checkBoxThursday
             // 
             this.checkBoxThursday.AutoSize = true;
-            this.checkBoxThursday.Location = new System.Drawing.Point(245, 260);
+            this.checkBoxThursday.Location = new System.Drawing.Point(327, 320);
+            this.checkBoxThursday.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxThursday.Name = "checkBoxThursday";
-            this.checkBoxThursday.Size = new System.Drawing.Size(70, 17);
+            this.checkBoxThursday.Size = new System.Drawing.Size(86, 20);
             this.checkBoxThursday.TabIndex = 8;
             this.checkBoxThursday.Text = "Thursday";
             this.checkBoxThursday.UseVisualStyleBackColor = true;
@@ -144,9 +153,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // checkBoxFriday
             // 
             this.checkBoxFriday.AutoSize = true;
-            this.checkBoxFriday.Location = new System.Drawing.Point(352, 237);
+            this.checkBoxFriday.Location = new System.Drawing.Point(469, 292);
+            this.checkBoxFriday.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxFriday.Name = "checkBoxFriday";
-            this.checkBoxFriday.Size = new System.Drawing.Size(54, 17);
+            this.checkBoxFriday.Size = new System.Drawing.Size(67, 20);
             this.checkBoxFriday.TabIndex = 9;
             this.checkBoxFriday.Text = "Friday";
             this.checkBoxFriday.UseVisualStyleBackColor = true;
@@ -154,9 +164,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // checkBoxSaturday
             // 
             this.checkBoxSaturday.AutoSize = true;
-            this.checkBoxSaturday.Location = new System.Drawing.Point(352, 260);
+            this.checkBoxSaturday.Location = new System.Drawing.Point(469, 320);
+            this.checkBoxSaturday.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxSaturday.Name = "checkBoxSaturday";
-            this.checkBoxSaturday.Size = new System.Drawing.Size(68, 17);
+            this.checkBoxSaturday.Size = new System.Drawing.Size(83, 20);
             this.checkBoxSaturday.TabIndex = 10;
             this.checkBoxSaturday.Text = "Saturday";
             this.checkBoxSaturday.UseVisualStyleBackColor = true;
@@ -164,43 +175,48 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // checkBoxSunday
             // 
             this.checkBoxSunday.AutoSize = true;
-            this.checkBoxSunday.Location = new System.Drawing.Point(433, 237);
+            this.checkBoxSunday.Location = new System.Drawing.Point(577, 292);
+            this.checkBoxSunday.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxSunday.Name = "checkBoxSunday";
-            this.checkBoxSunday.Size = new System.Drawing.Size(62, 17);
+            this.checkBoxSunday.Size = new System.Drawing.Size(75, 20);
             this.checkBoxSunday.TabIndex = 11;
             this.checkBoxSunday.Text = "Sunday";
             this.checkBoxSunday.UseVisualStyleBackColor = true;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(227, 300);
+            this.textBox1.Location = new System.Drawing.Point(303, 369);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.MaxLength = 100;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(232, 20);
+            this.textBox1.Size = new System.Drawing.Size(308, 22);
             this.textBox1.TabIndex = 12;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(161, 303);
+            this.label1.Location = new System.Drawing.Point(215, 373);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 13);
+            this.label1.Size = new System.Drawing.Size(75, 16);
             this.label1.TabIndex = 13;
             this.label1.Text = "Description";
             // 
             // buttonSubmitFrequency
             // 
-            this.buttonSubmitFrequency.Location = new System.Drawing.Point(227, 326);
+            this.buttonSubmitFrequency.Location = new System.Drawing.Point(303, 401);
+            this.buttonSubmitFrequency.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonSubmitFrequency.Name = "buttonSubmitFrequency";
-            this.buttonSubmitFrequency.Size = new System.Drawing.Size(179, 34);
+            this.buttonSubmitFrequency.Size = new System.Drawing.Size(239, 42);
             this.buttonSubmitFrequency.TabIndex = 14;
             this.buttonSubmitFrequency.Text = "Submit Frequency";
             this.buttonSubmitFrequency.UseVisualStyleBackColor = true;
             // 
             // FrequencyClass
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(617, 397);
+            this.ClientSize = new System.Drawing.Size(823, 489);
             this.Controls.Add(this.buttonSubmitFrequency);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
@@ -216,6 +232,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.Controls.Add(this.radioButtonWeekly);
             this.Controls.Add(this.radioButtonDaily);
             this.Controls.Add(this.listViewFrequency);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrequencyClass";
             this.Text = "FrequencyClass";
             this.ResumeLayout(false);

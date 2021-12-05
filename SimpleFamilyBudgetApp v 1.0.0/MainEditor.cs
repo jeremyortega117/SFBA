@@ -30,6 +30,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         public MainEditor()
         {
             InitializeComponent();
+            checkedListBoxUsers.CheckOnClick = true;
+            checkedListBox1.CheckOnClick = true;
+            checkedListBox2.CheckOnClick = true;
             PrepareAllData();
         }
 
@@ -302,14 +305,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private void DisplayAllExpenseCheckTypes()
         {
             checkedListBox1.Items.Clear();
-            HashSet<string> alreadyadded = new HashSet<string>();
+            List<string> alreadyadded = new List<string>();
             if (RepoTransaction.MapTransTypes.Count > 0)
             {
                 foreach (var types in RepoTransaction.MapTransTypes)
                 {
                     if (!alreadyadded.Contains(types.Value))
                     {
-                        checkedListBox1.Items.Add(types.Value, CheckState.Checked);
                         alreadyadded.Add(types.Value);
                     }
                 }
@@ -320,10 +322,14 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 {
                     if (!alreadyadded.Contains(types.TransDesc))
                     {
-                        checkedListBox1.Items.Add(types.TransDesc, CheckState.Checked);
                         alreadyadded.Add(types.TransDesc);
                     }
                 }
+            }
+            alreadyadded.Sort();
+            foreach (string expenseCheck in alreadyadded)
+            {
+                checkedListBox1.Items.Add(expenseCheck, CheckState.Checked);
             }
         }
 

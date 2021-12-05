@@ -145,5 +145,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             RepoTransaction.PrepareTransMap();
             PrepareMappingData();
         }
+
+        private void ExpenseMap_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

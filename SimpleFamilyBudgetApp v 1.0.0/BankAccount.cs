@@ -130,5 +130,15 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
 
         }
+
+        private void textBoxAcctLastFour_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxBalance_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
