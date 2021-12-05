@@ -23,37 +23,51 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void PrepareMappingData()
         {
+            dataGridView1.Rows.Clear();
+            dataGridView1.Columns.Clear();
+
             DataGridViewTextBoxColumn tbCol = new DataGridViewTextBoxColumn();
             DataGridViewComboBoxColumn cbCol = new DataGridViewComboBoxColumn();
+            tbCol.HeaderText = "Original Type";
+            cbCol.HeaderText = "New Type";
             dataGridView1.Columns.AddRange(tbCol, cbCol);
 
             int row = 0;
+            HashSet<string> added = new HashSet<string>();
             foreach (var temp in RepoTransaction.TransTypes.Values)
             {
+                added.Add(temp.TransDesc);
                 AddAnotherRow(row);
-
-                string keyToCheck = RepoTransaction.MapTransOrig.ElementAt(row);
                 string NewValue = "";
-
-                if (RepoTransaction.MapTransTypes.ContainsKey(keyToCheck)) 
-                    NewValue = RepoTransaction.MapTransTypes[keyToCheck];
-                else
-                    NewValue = keyToCheck;
-
+                NewValue = GetRemappedExpenseType(temp.TransDesc);
                 dataGridView1.Rows[row].Cells[1].Value = NewValue;
-                dataGridView1.Rows[row].Cells[0].Value = keyToCheck;
+                dataGridView1.Rows[row].Cells[0].Value = temp.TransDesc;
                 row++;
             }
+
             tbCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             cbCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            dataGridView1.AllowUserToResizeColumns = false;
+            dataGridView1.AllowUserToResizeRows = false;
+            dataGridView1.AllowUserToAddRows = false;
         }
 
+        private string GetRemappedExpenseType(string keyToCheck)
+        {
+            if (RepoTransaction.MapTransTypes.ContainsKey(keyToCheck))
+                return RepoTransaction.MapTransTypes[keyToCheck];
+            else
+                return keyToCheck;
+        }
 
         private void AddAnotherRow(int row)
         {
             dataGridView1.Rows.Add();
             ComboBox expenseTypes = new ComboBox();
-            expenseTypes.Items.AddRange(RepoTransaction.MapTransOrig.ToArray());
+            List<string> str = RepoTransaction.GetAllAvailableTypes();
+            str.Sort();
+            expenseTypes.Items.AddRange(str.ToArray());
             DataGridViewComboBoxCell dgvcbc = new DataGridViewComboBoxCell();
             dataGridView1[1, row] = dgvcbc;
             dgvcbc.DataSource = expenseTypes.Items;
@@ -62,12 +76,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private void button2_Click(object sender, EventArgs e)
         {
             List<ModelMapExpenseTypes> maps = new List<ModelMapExpenseTypes>();
-
             ModelMapExpenseTypes map = new ModelMapExpenseTypes();
             map.OrigVal = "";
             map.NewVal = textBox1.Text;
             maps.Add(map);
             RepoTransaction.EditTransMap(maps, 'A');
+            RepoTransaction.PrepareTransMap();
+            PrepareMappingData();
         }
 
         private void EnableButton(object sender, EventArgs e)
@@ -86,7 +101,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 }
                 button2.Enabled = false;
             }
-            PrepareMappingData();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -95,37 +109,27 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             List<ModelMapExpenseTypes> newmaps = new List<ModelMapExpenseTypes>();
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
-                if (dataGridView1.Rows[i].Cells[0].Value != null)
-                {
-                    string origvl = dataGridView1.Rows[i].Cells[0].Value.ToString().Trim();
-                    DataGridViewComboBoxCell cbcell = (DataGridViewComboBoxCell)dataGridView1.Rows[i].Cells[1];
-                    string newVal = cbcell.EditedFormattedValue.ToString().Trim();
+                string origvl = dataGridView1.Rows[i].Cells[0].Value.ToString().Trim();
+                DataGridViewComboBoxCell cbcell = (DataGridViewComboBoxCell)dataGridView1.Rows[i].Cells[1];
+                string newVal = cbcell.EditedFormattedValue.ToString().Trim();
 
-                    if (RepoTransaction.MapTransTypes.ContainsKey(origvl))
-                    {
-                        if (RepoTransaction.MapTransTypes[origvl] != newVal)
-                        {
-                            ModelMapExpenseTypes map = new ModelMapExpenseTypes();
-                            foreach (int key in RepoTransaction.MapTransTypesByKey.Keys)
-                            {
-                                if (RepoTransaction.MapTransTypesByKey[key].OrigVal == origvl)
-                                {
-                                    map.MapId = key;
-                                    break;
-                                }
-                            }
-                            map.OrigVal = origvl;
-                            map.NewVal = newVal;
-                            mapsToUpdate.Add(map);
-                        }
-                    }
-                    if (!RepoTransaction.MapTransNew.Contains(newVal))
+                if (RepoTransaction.MapTransTypes.ContainsKey(origvl))
+                {
+                    if (RepoTransaction.MapTransTypes[origvl] != newVal)
                     {
                         ModelMapExpenseTypes map = new ModelMapExpenseTypes();
+                        map.MapId = RepoTransaction.GetExpenseTypeKey(origvl);
                         map.OrigVal = origvl;
                         map.NewVal = newVal;
-                        newmaps.Add(map);
+                        mapsToUpdate.Add(map);
                     }
+                }
+                else
+                {
+                    ModelMapExpenseTypes map = new ModelMapExpenseTypes();
+                    map.OrigVal = origvl;
+                    map.NewVal = newVal;
+                    newmaps.Add(map);
                 }
             }
             if (newmaps.Count > 0)
@@ -136,6 +140,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             {
                 RepoTransaction.EditTransMap(mapsToUpdate, 'U');
             }
+            labelUpdate.Text = $"Updated {mapsToUpdate.Count} Maps.  Added {newmaps.Count} Maps.";
+            labelUpdate.Visible = true;
             RepoTransaction.PrepareTransMap();
             PrepareMappingData();
         }

@@ -180,7 +180,23 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             }
             foreach (var checkedIndex in checkedListBox1.CheckedItems)
             {
-                ExpenseTypes.Add(checkedIndex.ToString());
+                string check = checkedIndex.ToString();
+                if (RepoTransaction.MapTransTypes.ContainsValue(check))
+                {
+                    foreach (var trans in RepoTransaction.MapTransTypes) 
+                    {
+                        if (!ExpenseTypes.Contains(trans.Key))
+                        {
+                            ExpenseTypes.Add(trans.Key);
+                        }
+                    }
+                }
+                else { 
+                    if (!ExpenseTypes.Contains(check))
+                    {
+                        ExpenseTypes.Add(check);
+                    }
+                }
             }
         }
 
@@ -291,9 +307,28 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private void DisplayAllExpenseCheckTypes()
         {
             checkedListBox1.Items.Clear();
-            foreach (var types in RepoTransaction.TransTypes.Values)
+            HashSet<string> alreadyadded = new HashSet<string>();
+            if (RepoTransaction.MapTransTypes.Count > 0)
             {
-                checkedListBox1.Items.Add(types.TransDesc, CheckState.Checked);
+                foreach (var types in RepoTransaction.MapTransTypes)
+                {
+                    if (!alreadyadded.Contains(types.Value))
+                    {
+                        checkedListBox1.Items.Add(types.Value, CheckState.Checked);
+                        alreadyadded.Add(types.Value);
+                    }
+                }
+            }
+            else
+            {
+                foreach (var types in RepoTransaction.TransTypes.Values)
+                {
+                    if (!alreadyadded.Contains(types.TransDesc))
+                    {
+                        checkedListBox1.Items.Add(types.TransDesc, CheckState.Checked);
+                        alreadyadded.Add(types.TransDesc);
+                    }
+                }
             }
         }
 
@@ -644,7 +679,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             ExpenseMap map = new ExpenseMap();
             map.ShowDialog();
-            refreshAfterFilter();
+            PrepareAllData();
         }
     }
 }

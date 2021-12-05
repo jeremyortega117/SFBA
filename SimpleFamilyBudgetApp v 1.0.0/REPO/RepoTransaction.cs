@@ -78,6 +78,23 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             Command.Dispose();
             Reader.Close();
         }
+
+        internal static List<string> GetAllAvailableTypes()
+        {
+            List<string> str = new List<string>();
+            foreach (int temp in TransTypes.Keys)
+            {
+                str.Add(TransTypes[temp].TransDesc);
+            }
+            foreach (string newStr in MapTransNew)
+            {
+                if (!str.Contains(newStr))
+                {
+                    str.Add(newStr);
+                }
+            }
+            return str;
+        }
         #endregion
 
         /// <summary>
@@ -110,6 +127,18 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 Command.Dispose();
             }
 
+        }
+
+        internal static int GetExpenseTypeKey(string origvl)
+        {
+            foreach (int key in MapTransTypesByKey.Keys)
+            {
+                if (MapTransTypesByKey[key].OrigVal == origvl)
+                {
+                    return key;
+                }
+            }
+            return int.MinValue;
         }
 
 

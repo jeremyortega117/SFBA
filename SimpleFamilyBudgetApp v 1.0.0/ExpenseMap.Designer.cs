@@ -34,6 +34,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.labelUpdate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,11 +91,22 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.label1.TabIndex = 4;
             this.label1.Text = "Type Already Exists.";
             // 
+            // labelUpdate
+            // 
+            this.labelUpdate.AutoSize = true;
+            this.labelUpdate.Location = new System.Drawing.Point(9, 427);
+            this.labelUpdate.Name = "labelUpdate";
+            this.labelUpdate.Size = new System.Drawing.Size(143, 13);
+            this.labelUpdate.TabIndex = 5;
+            this.labelUpdate.Text = "Updated_#_Expense_Types";
+            this.labelUpdate.Visible = false;
+            // 
             // ExpenseMap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(412, 486);
+            this.Controls.Add(this.labelUpdate);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox1);
@@ -115,5 +127,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelUpdate;
     }
 }

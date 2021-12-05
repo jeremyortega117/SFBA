@@ -9,8 +9,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
     internal class ListViewRepoTransactions
     {
 
-        internal static List<string> transactionHeaders = new List<string> {"Date", "Bank", "Acct", "Amount", "Type", "Sign", "Description" };
-        internal static List<string> transactionHeadersActual = new List<string> { "Date", "Trans ID", "Bank", "Acct", "Amount", "Type", "Sign", "Description", "Acct Num" };
+        internal static List<string> transactionHeaders = new List<string> {"Date", "Bank", "Acct", "Amount", "File Type", "Home Type", "Sign", "Description" };
+        internal static List<string> transactionHeadersActual = new List<string> { "Date", "Trans ID", "Bank", "Acct", "Amount", "File Type", "Home Type", "Sign", "Description", "Acct Num" };
         internal static Dictionary<int, List<string>> TransactionsByTransKey;
         internal static double totalSpent = 0;
         internal static double totalIncome = 0;
@@ -54,6 +54,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 transaction.Add(string.Format("{0:C}", trans[key].Amount));
                 var transType = RepoTransaction.TransTypes[trans[key].TransTypeKey];
                 transaction.Add(transType.TransDesc);
+                string HomeType = RepoTransaction.MapTransTypes.ContainsKey(transType.TransDesc) ? RepoTransaction.MapTransTypes[transType.TransDesc] : transType.TransDesc;
+                transaction.Add(HomeType);
                 transaction.Add(transType.TransSign.ToString());
                 transaction.Add(trans[key].TransDesc);
                 transaction.Add(trans[key].AcctKey.ToString());
@@ -100,6 +102,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                     transaction.Add(string.Format("{0:C}", trans[key].Amount));
                     var transType = RepoTransaction.TransTypes[trans[key].TransTypeKey];
                     transaction.Add(transType.TransDesc);
+                    string HomeType = RepoTransaction.MapTransTypes.ContainsKey(transType.TransDesc) ? RepoTransaction.MapTransTypes[transType.TransDesc] : transType.TransDesc;
+                    transaction.Add(HomeType);
                     transaction.Add(transType.TransSign.ToString());
                     transaction.Add(trans[key].TransDesc);
                     transaction.Add(trans[key].AcctKey.ToString());
@@ -133,12 +137,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
             foreach (int transKey in TransactionsByTransKey.Keys)
             {
-                string name = TransactionsByTransKey[transKey][5].ToString();
+                string name = TransactionsByTransKey[transKey][6].ToString();
+                string HomeType = RepoTransaction.MapTransTypes.ContainsKey(name) ? RepoTransaction.MapTransTypes[name] : name;
                 double value = Convert.ToDouble(TransactionsByTransKey[transKey][4].Replace("(", "").Replace(")", "").Replace("$", ""));
 
-                if (!nameAndVal.ContainsKey(name))
+                if (!nameAndVal.ContainsKey(HomeType))
                 {
-                    nameAndVal.Add(name, value);
+                    nameAndVal.Add(HomeType, value);
                 }
                 else
                 {
