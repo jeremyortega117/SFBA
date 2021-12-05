@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>budget.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -181,6 +184,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="budget.ico" />
     <Content Include="WEB_BROWSER\PieChart.css" />
     <Content Include="WEB_BROWSER\PieChart.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
