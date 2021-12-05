@@ -181,17 +181,18 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             foreach (var checkedIndex in checkedListBox1.CheckedItems)
             {
                 string check = checkedIndex.ToString();
-                if (RepoTransaction.MapTransTypes.ContainsValue(check))
+                if (RepoTransaction.MapTransNew.Contains(check))
                 {
                     foreach (var trans in RepoTransaction.MapTransTypes) 
                     {
-                        if (!ExpenseTypes.Contains(trans.Key))
+                        if (!ExpenseTypes.Contains(trans.Key) && trans.Value == check)
                         {
                             ExpenseTypes.Add(trans.Key);
                         }
                     }
                 }
-                else { 
+                else if (!RepoTransaction.MapTransTypes.ContainsKey(check))
+                {
                     if (!ExpenseTypes.Contains(check))
                     {
                         ExpenseTypes.Add(check);
@@ -262,8 +263,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             User_Editor editor = new User_Editor();
             editor.ShowDialog();
             PrepareAllData();
-            //PrepareListViews();
-            //PrepareToolOptions();
         }
 
         private void form_close(object sender, FormClosingEventArgs e)
@@ -276,8 +275,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             BankAccount bankAccount = new BankAccount();
             bankAccount.ShowDialog();
             PrepareAllData();
-            //PrepareListViews();
-            //PrepareToolOptions();
         }
 
         private void transactionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -285,8 +282,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             TransactionEditor transEditor = new TransactionEditor();
             transEditor.ShowDialog();
             PrepareAllData();
-            //refreshAfterFilter();
-            //PrepareListViews();
         }
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -680,6 +675,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             ExpenseMap map = new ExpenseMap();
             map.ShowDialog();
             PrepareAllData();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

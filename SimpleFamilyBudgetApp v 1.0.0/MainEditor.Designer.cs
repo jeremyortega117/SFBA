@@ -44,6 +44,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.moveDeleteAccountsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItembillType = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemtransaction = new System.Windows.Forms.ToolStripMenuItem();
+            this.mapExpenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemCreateBudget = new System.Windows.Forms.ToolStripMenuItem();
             this.mainGroupBox = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -93,7 +94,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.label24 = new System.Windows.Forms.Label();
             this.labelTotalSaved = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.mapExpenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelTopAccountSummary.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.mainGroupBox.SuspendLayout();
@@ -160,7 +160,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // ToolStripMenuItemuser
             // 
             this.ToolStripMenuItemuser.Name = "ToolStripMenuItemuser";
-            this.ToolStripMenuItemuser.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItemuser.Size = new System.Drawing.Size(144, 22);
             this.ToolStripMenuItemuser.Text = "User";
             this.ToolStripMenuItemuser.Click += new System.EventHandler(this.userToolStripMenuItem_Click);
             // 
@@ -170,7 +170,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.createNewAccountToolStripMenuItem,
             this.moveDeleteAccountsToolStripMenuItem});
             this.ToolStripMenuItembankAcct.Name = "ToolStripMenuItembankAcct";
-            this.ToolStripMenuItembankAcct.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItembankAcct.Size = new System.Drawing.Size(144, 22);
             this.ToolStripMenuItembankAcct.Text = "Bank Acct";
             this.ToolStripMenuItembankAcct.Click += new System.EventHandler(this.bankAcctToolStripMenuItem_Click);
             // 
@@ -191,16 +191,23 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // ToolStripMenuItembillType
             // 
             this.ToolStripMenuItembillType.Name = "ToolStripMenuItembillType";
-            this.ToolStripMenuItembillType.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItembillType.Size = new System.Drawing.Size(144, 22);
             this.ToolStripMenuItembillType.Text = "Bill";
             this.ToolStripMenuItembillType.Click += new System.EventHandler(this.billTypeToolStripMenuItem_Click);
             // 
             // ToolStripMenuItemtransaction
             // 
             this.ToolStripMenuItemtransaction.Name = "ToolStripMenuItemtransaction";
-            this.ToolStripMenuItemtransaction.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItemtransaction.Size = new System.Drawing.Size(144, 22);
             this.ToolStripMenuItemtransaction.Text = "Transaction";
             this.ToolStripMenuItemtransaction.Click += new System.EventHandler(this.transactionToolStripMenuItem_Click);
+            // 
+            // mapExpenseToolStripMenuItem
+            // 
+            this.mapExpenseToolStripMenuItem.Name = "mapExpenseToolStripMenuItem";
+            this.mapExpenseToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.mapExpenseToolStripMenuItem.Text = "Map Expense";
+            this.mapExpenseToolStripMenuItem.Click += new System.EventHandler(this.mapExpenseToolStripMenuItem_Click);
             // 
             // ToolStripMenuItemCreateBudget
             // 
@@ -646,6 +653,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.label1.Size = new System.Drawing.Size(105, 17);
             this.label1.TabIndex = 2;
             this.label1.Text = "Expense Types";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // panel2
             // 
@@ -752,13 +760,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.label4.Size = new System.Drawing.Size(84, 17);
             this.label4.TabIndex = 0;
             this.label4.Text = "Total Saved";
-            // 
-            // mapExpenseToolStripMenuItem
-            // 
-            this.mapExpenseToolStripMenuItem.Name = "mapExpenseToolStripMenuItem";
-            this.mapExpenseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.mapExpenseToolStripMenuItem.Text = "Map Expense";
-            this.mapExpenseToolStripMenuItem.Click += new System.EventHandler(this.mapExpenseToolStripMenuItem_Click);
             // 
             // MainEditor
             // 
