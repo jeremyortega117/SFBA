@@ -28,9 +28,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
             DataGridViewTextBoxColumn tbCol = new DataGridViewTextBoxColumn();
             DataGridViewComboBoxColumn cbCol = new DataGridViewComboBoxColumn();
+            DataGridViewButtonColumn bcCol = new DataGridViewButtonColumn();
             tbCol.HeaderText = "Original Type";
             cbCol.HeaderText = "New Type";
-            dataGridView1.Columns.AddRange(tbCol, cbCol);
+            bcCol.HeaderText = "Color Picker";
+            bcCol.Name = "Color Picker";
+            dataGridView1.Columns.AddRange(tbCol, cbCol,bcCol);
 
             int row = 0;
             HashSet<string> added = new HashSet<string>();
@@ -71,6 +74,37 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             DataGridViewComboBoxCell dgvcbc = new DataGridViewComboBoxCell();
             dataGridView1[1, row] = dgvcbc;
             dgvcbc.DataSource = expenseTypes.Items;
+
+            Button colorButton = new Button();
+            colorButton.BackColor = Color.Aqua;
+            DataGridViewButtonCell bCell = new DataGridViewButtonCell();
+            dataGridView1[2, row] = bCell;
+            dataGridView1.CellClick += new DataGridViewCellEventHandler(dataGridView1_CellClick);
+
+            RepoTransaction.choseColor = false;
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Ignore clicks that are not on button cells. 
+            if (e.RowIndex < 0 || e.ColumnIndex !=
+                dataGridView1.Columns["Color Picker"].Index) return;
+
+            if (!RepoTransaction.choseColor)
+            {
+                RepoTransaction.choseColor = true;
+                // Retrieve the task ID.
+                string column = dataGridView1[1, e.RowIndex].Value.ToString();
+
+
+                MessageBox.Show(String.Format(
+                    "Task {0} is unassigned.", column), "Status Request");
+            }
+        }
+
+        private void ColorPicker(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void button2_Click(object sender, EventArgs e)

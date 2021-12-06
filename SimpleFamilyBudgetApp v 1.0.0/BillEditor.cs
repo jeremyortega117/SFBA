@@ -689,6 +689,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             RepoBills.EditBill(Bills, 'A');
             clearText();
             JustDisableEverything();
+            RepoFrequency.PrepareFrequencyData();
             RepoBills.PrepareBillEditorData();
             PrepareListViewData();
         }

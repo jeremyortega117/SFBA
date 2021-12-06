@@ -30,9 +30,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainEditor));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panelTopAccountSummary = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
@@ -234,9 +234,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.panelLeftFilterBar);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 147);
+            this.panel3.Location = new System.Drawing.Point(3, 117);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(974, 666);
+            this.panel3.Size = new System.Drawing.Size(974, 696);
             this.panel3.TabIndex = 3;
             // 
             // panel5
@@ -252,16 +252,16 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.panel5.Controls.Add(this.labelTotalSpent);
             this.panel5.Controls.Add(this.label5);
             this.panel5.Controls.Add(this.chart1);
-            this.panel5.Location = new System.Drawing.Point(219, 6);
+            this.panel5.Location = new System.Drawing.Point(209, 6);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(752, 276);
+            this.panel5.Size = new System.Drawing.Size(762, 306);
             this.panel5.TabIndex = 0;
             // 
             // labelTotalBal
             // 
             this.labelTotalBal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelTotalBal.AutoSize = true;
-            this.labelTotalBal.Location = new System.Drawing.Point(465, 77);
+            this.labelTotalBal.Location = new System.Drawing.Point(475, 77);
             this.labelTotalBal.Name = "labelTotalBal";
             this.labelTotalBal.Size = new System.Drawing.Size(34, 13);
             this.labelTotalBal.TabIndex = 6;
@@ -271,7 +271,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.label29.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(384, 77);
+            this.label29.Location = new System.Drawing.Point(394, 77);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(76, 13);
             this.label29.TabIndex = 5;
@@ -281,7 +281,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.labelTotalIncome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelTotalIncome.AutoSize = true;
-            this.labelTotalIncome.Location = new System.Drawing.Point(465, 22);
+            this.labelTotalIncome.Location = new System.Drawing.Point(475, 22);
             this.labelTotalIncome.Name = "labelTotalIncome";
             this.labelTotalIncome.Size = new System.Drawing.Size(34, 13);
             this.labelTotalIncome.TabIndex = 4;
@@ -291,7 +291,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.label30.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(387, 22);
+            this.label30.Location = new System.Drawing.Point(397, 22);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(72, 13);
             this.label30.TabIndex = 3;
@@ -301,7 +301,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.labelTotalSpent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelTotalSpent.AutoSize = true;
-            this.labelTotalSpent.Location = new System.Drawing.Point(465, 50);
+            this.labelTotalSpent.Location = new System.Drawing.Point(475, 50);
             this.labelTotalSpent.Name = "labelTotalSpent";
             this.labelTotalSpent.Size = new System.Drawing.Size(34, 13);
             this.labelTotalSpent.TabIndex = 2;
@@ -311,7 +311,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(394, 50);
+            this.label5.Location = new System.Drawing.Point(404, 50);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 13);
             this.label5.TabIndex = 1;
@@ -322,17 +322,17 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(3, 3);
             this.chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart1.Series.Add(series3);
-            this.chart1.Size = new System.Drawing.Size(373, 266);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(383, 296);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             this.chart1.Click += new System.EventHandler(this.chart1_Click);
@@ -350,16 +350,16 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.panel4.Controls.Add(this.dateTimePickerTo);
             this.panel4.Controls.Add(this.dateTimePickerFrom);
             this.panel4.Controls.Add(this.listView1);
-            this.panel4.Location = new System.Drawing.Point(219, 288);
+            this.panel4.Location = new System.Drawing.Point(209, 318);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(752, 375);
+            this.panel4.Size = new System.Drawing.Size(762, 375);
             this.panel4.TabIndex = 2;
             // 
             // label27
             // 
             this.label27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(539, 16);
+            this.label27.Location = new System.Drawing.Point(544, 16);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(23, 13);
             this.label27.TabIndex = 8;
@@ -369,7 +369,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.label26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(381, 16);
+            this.label26.Location = new System.Drawing.Point(386, 16);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(33, 13);
             this.label26.TabIndex = 7;
@@ -378,7 +378,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // buttonBackOneYear
             // 
             this.buttonBackOneYear.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.buttonBackOneYear.Location = new System.Drawing.Point(99, 9);
+            this.buttonBackOneYear.Location = new System.Drawing.Point(104, 9);
             this.buttonBackOneYear.Name = "buttonBackOneYear";
             this.buttonBackOneYear.Size = new System.Drawing.Size(64, 23);
             this.buttonBackOneYear.TabIndex = 6;
@@ -389,7 +389,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // ForwardOneYear
             // 
             this.ForwardOneYear.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.ForwardOneYear.Location = new System.Drawing.Point(309, 9);
+            this.ForwardOneYear.Location = new System.Drawing.Point(314, 9);
             this.ForwardOneYear.Name = "ForwardOneYear";
             this.ForwardOneYear.Size = new System.Drawing.Size(64, 23);
             this.ForwardOneYear.TabIndex = 5;
@@ -400,7 +400,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // buttonForwardOneMonth
             // 
             this.buttonForwardOneMonth.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.buttonForwardOneMonth.Location = new System.Drawing.Point(239, 9);
+            this.buttonForwardOneMonth.Location = new System.Drawing.Point(244, 9);
             this.buttonForwardOneMonth.Name = "buttonForwardOneMonth";
             this.buttonForwardOneMonth.Size = new System.Drawing.Size(64, 23);
             this.buttonForwardOneMonth.TabIndex = 4;
@@ -411,7 +411,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // buttonBackOneMonth
             // 
             this.buttonBackOneMonth.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.buttonBackOneMonth.Location = new System.Drawing.Point(169, 9);
+            this.buttonBackOneMonth.Location = new System.Drawing.Point(174, 9);
             this.buttonBackOneMonth.Name = "buttonBackOneMonth";
             this.buttonBackOneMonth.Size = new System.Drawing.Size(64, 23);
             this.buttonBackOneMonth.TabIndex = 3;
@@ -423,7 +423,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.dateTimePickerTo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.dateTimePickerTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerTo.Location = new System.Drawing.Point(568, 12);
+            this.dateTimePickerTo.Location = new System.Drawing.Point(573, 12);
             this.dateTimePickerTo.Name = "dateTimePickerTo";
             this.dateTimePickerTo.Size = new System.Drawing.Size(104, 20);
             this.dateTimePickerTo.TabIndex = 2;
@@ -432,7 +432,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.dateTimePickerFrom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.dateTimePickerFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerFrom.Location = new System.Drawing.Point(420, 12);
+            this.dateTimePickerFrom.Location = new System.Drawing.Point(425, 12);
             this.dateTimePickerFrom.Name = "dateTimePickerFrom";
             this.dateTimePickerFrom.Size = new System.Drawing.Size(103, 20);
             this.dateTimePickerFrom.TabIndex = 1;
@@ -441,7 +441,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(53, 41);
+            this.listView1.Location = new System.Drawing.Point(58, 41);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(648, 328);
             this.listView1.TabIndex = 0;
@@ -471,14 +471,14 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.panelLeftFilterBar.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeftFilterBar.Location = new System.Drawing.Point(0, 0);
             this.panelLeftFilterBar.Name = "panelLeftFilterBar";
-            this.panelLeftFilterBar.Size = new System.Drawing.Size(213, 666);
+            this.panelLeftFilterBar.Size = new System.Drawing.Size(203, 696);
             this.panelLeftFilterBar.TabIndex = 1;
             this.panelLeftFilterBar.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLeftFilterBar_Paint);
             // 
             // radioBills
             // 
             this.radioBills.AutoSize = true;
-            this.radioBills.Location = new System.Drawing.Point(9, 81);
+            this.radioBills.Location = new System.Drawing.Point(7, 60);
             this.radioBills.Name = "radioBills";
             this.radioBills.Size = new System.Drawing.Size(43, 17);
             this.radioBills.TabIndex = 16;
@@ -490,7 +490,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // radioBudgets
             // 
             this.radioBudgets.AutoSize = true;
-            this.radioBudgets.Location = new System.Drawing.Point(9, 104);
+            this.radioBudgets.Location = new System.Drawing.Point(7, 83);
             this.radioBudgets.Name = "radioBudgets";
             this.radioBudgets.Size = new System.Drawing.Size(64, 17);
             this.radioBudgets.TabIndex = 15;
@@ -502,7 +502,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // radioExpenses
             // 
             this.radioExpenses.AutoSize = true;
-            this.radioExpenses.Location = new System.Drawing.Point(9, 56);
+            this.radioExpenses.Location = new System.Drawing.Point(7, 35);
             this.radioExpenses.Name = "radioExpenses";
             this.radioExpenses.Size = new System.Drawing.Size(71, 17);
             this.radioExpenses.TabIndex = 14;
@@ -514,14 +514,14 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // checkedListBoxUsers
             // 
             this.checkedListBoxUsers.FormattingEnabled = true;
-            this.checkedListBoxUsers.Location = new System.Drawing.Point(9, 240);
+            this.checkedListBoxUsers.Location = new System.Drawing.Point(7, 184);
             this.checkedListBoxUsers.Name = "checkedListBoxUsers";
             this.checkedListBoxUsers.Size = new System.Drawing.Size(186, 64);
             this.checkedListBoxUsers.TabIndex = 10;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(162, 217);
+            this.button2.Location = new System.Drawing.Point(160, 161);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(29, 23);
             this.button2.TabIndex = 12;
@@ -531,7 +531,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(9, 217);
+            this.button3.Location = new System.Drawing.Point(7, 161);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(29, 21);
             this.button3.TabIndex = 13;
@@ -544,7 +544,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.label25.AutoSize = true;
             this.label25.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(77, 220);
+            this.label25.Location = new System.Drawing.Point(75, 164);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(45, 17);
             this.label25.TabIndex = 11;
@@ -553,7 +553,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // checkedListBox2
             // 
             this.checkedListBox2.FormattingEnabled = true;
-            this.checkedListBox2.Location = new System.Drawing.Point(9, 345);
+            this.checkedListBox2.Location = new System.Drawing.Point(6, 277);
             this.checkedListBox2.Name = "checkedListBox2";
             this.checkedListBox2.Size = new System.Drawing.Size(186, 94);
             this.checkedListBox2.TabIndex = 4;
@@ -561,7 +561,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // buttonUncheckAllBoxes
             // 
-            this.buttonUncheckAllBoxes.Location = new System.Drawing.Point(9, 322);
+            this.buttonUncheckAllBoxes.Location = new System.Drawing.Point(6, 254);
             this.buttonUncheckAllBoxes.Name = "buttonUncheckAllBoxes";
             this.buttonUncheckAllBoxes.Size = new System.Drawing.Size(31, 23);
             this.buttonUncheckAllBoxes.TabIndex = 9;
@@ -572,7 +572,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // checkedListBox1
             // 
             this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(12, 485);
+            this.checkedListBox1.Location = new System.Drawing.Point(7, 402);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(182, 124);
             this.checkedListBox1.TabIndex = 0;
@@ -583,7 +583,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(69, 325);
+            this.label3.Location = new System.Drawing.Point(66, 257);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 17);
             this.label3.TabIndex = 5;
@@ -591,7 +591,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // buttonCheckAllAccounts
             // 
-            this.buttonCheckAllAccounts.Location = new System.Drawing.Point(164, 322);
+            this.buttonCheckAllAccounts.Location = new System.Drawing.Point(161, 254);
             this.buttonCheckAllAccounts.Name = "buttonCheckAllAccounts";
             this.buttonCheckAllAccounts.Size = new System.Drawing.Size(31, 23);
             this.buttonCheckAllAccounts.TabIndex = 8;
@@ -615,7 +615,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.button1.Location = new System.Drawing.Point(12, 146);
+            this.button1.Location = new System.Drawing.Point(10, 111);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(181, 41);
             this.button1.TabIndex = 1;
@@ -625,7 +625,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // buttonAllExpenses
             // 
-            this.buttonAllExpenses.Location = new System.Drawing.Point(165, 461);
+            this.buttonAllExpenses.Location = new System.Drawing.Point(160, 378);
             this.buttonAllExpenses.Name = "buttonAllExpenses";
             this.buttonAllExpenses.Size = new System.Drawing.Size(29, 23);
             this.buttonAllExpenses.TabIndex = 6;
@@ -635,7 +635,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // buttonUncheckAllExpenses
             // 
-            this.buttonUncheckAllExpenses.Location = new System.Drawing.Point(12, 462);
+            this.buttonUncheckAllExpenses.Location = new System.Drawing.Point(7, 379);
             this.buttonUncheckAllExpenses.Name = "buttonUncheckAllExpenses";
             this.buttonUncheckAllExpenses.Size = new System.Drawing.Size(29, 21);
             this.buttonUncheckAllExpenses.TabIndex = 7;
@@ -648,7 +648,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(51, 465);
+            this.label1.Location = new System.Drawing.Point(46, 382);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(105, 17);
             this.label1.TabIndex = 2;
@@ -677,7 +677,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(3, 16);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(974, 131);
+            this.panel1.Size = new System.Drawing.Size(974, 101);
             this.panel1.TabIndex = 0;
             // 
             // labelNamesOnAccts

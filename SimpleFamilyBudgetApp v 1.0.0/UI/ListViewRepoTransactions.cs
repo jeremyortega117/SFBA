@@ -44,7 +44,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             var trans = RepoTransaction.Trans;
             foreach (int key in trans.Keys)
             {
-
                 List<string> transaction = new List<string>();
                 transaction.Add(trans[key].TransDate.ToString("yyyy/MM/dd"));
                 transaction.Add(trans[key].TransKey.ToString());

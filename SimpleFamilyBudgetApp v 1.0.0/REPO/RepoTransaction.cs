@@ -20,6 +20,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         internal static Dictionary<DateTime, List<ModelTrans>> compareTransByDate;
         internal static bool IgnoreDups = false;
         internal static char editBal = 'Y';
+        internal static bool choseColor = false;
 
 
 
@@ -282,6 +283,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                     AcctKeys.Add(Key);
                 }
             }
+
             foreach (string expenseType in ExpenseTypes)
             {
                 int Key = GetTransTypeKeyFromSelected(expenseType);
