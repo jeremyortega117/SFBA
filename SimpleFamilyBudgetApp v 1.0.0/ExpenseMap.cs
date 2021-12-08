@@ -35,16 +35,26 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             bcCol.Name = "Color Picker";
             dataGridView1.Columns.AddRange(tbCol, cbCol,bcCol);
 
+
+
+            Dictionary<string, string> colorForFiguredTransTypes = new Dictionary<string, string>();
             int row = 0;
             HashSet<string> added = new HashSet<string>();
             foreach (var temp in RepoTransaction.TransTypes.Values)
             {
-                added.Add(temp.TransDesc);
-                AddAnotherRow(row);
+                int mapID;
+                string color;
                 string NewValue = "";
                 NewValue = GetRemappedExpenseType(temp.TransDesc);
+                mapID = RepoTransaction.GetExpenseTypeKey(temp.TransDesc);
+                color = RepoTransaction.MapTransTypesByKey[mapID].ColorValue;
+                added.Add(temp.TransDesc);
+                AddAnotherRow(row);
                 dataGridView1.Rows[row].Cells[1].Value = NewValue;
                 dataGridView1.Rows[row].Cells[0].Value = temp.TransDesc;
+                dataGridView1.Rows[row].Cells[2].Value = color;
+
+
                 row++;
             }
 
@@ -79,26 +89,20 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             colorButton.BackColor = Color.Aqua;
             DataGridViewButtonCell bCell = new DataGridViewButtonCell();
             dataGridView1[2, row] = bCell;
-            dataGridView1.CellClick += new DataGridViewCellEventHandler(dataGridView1_CellClick);
 
             RepoTransaction.choseColor = false;
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Ignore clicks that are not on button cells. 
-            if (e.RowIndex < 0 || e.ColumnIndex !=
-                dataGridView1.Columns["Color Picker"].Index) return;
-
-            if (!RepoTransaction.choseColor)
+            //null checking for  the column
+            if (dataGridView1.CurrentRow.Cells["Color Picker"] != null)
             {
-                RepoTransaction.choseColor = true;
-                // Retrieve the task ID.
-                string column = dataGridView1[1, e.RowIndex].Value.ToString();
-
-
-                MessageBox.Show(String.Format(
-                    "Task {0} is unassigned.", column), "Status Request");
+                ColorDialog colorDlg = new ColorDialog(); //create colordialog instance
+                colorDlg.AllowFullOpen = true;
+                colorDlg.AnyColor = true;
+                colorDlg.ShowDialog(); //display dialog
+                dataGridView1.CurrentRow.Cells["Color Picker"].Value = colorDlg.Color.Name; //keep the selected value
             }
         }
 
@@ -113,6 +117,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             ModelMapExpenseTypes map = new ModelMapExpenseTypes();
             map.OrigVal = "";
             map.NewVal = textBox1.Text;
+            map.ColorValue = "BLUE";
             maps.Add(map);
             RepoTransaction.EditTransMap(maps, 'A');
             RepoTransaction.PrepareTransMap();
@@ -141,20 +146,38 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             List<ModelMapExpenseTypes> mapsToUpdate = new List<ModelMapExpenseTypes>();
             List<ModelMapExpenseTypes> newmaps = new List<ModelMapExpenseTypes>();
+
+            Dictionary<string, string> colorForFiguredTransTypes = new Dictionary<string, string>();
+
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
                 string origvl = dataGridView1.Rows[i].Cells[0].Value.ToString().Trim();
                 DataGridViewComboBoxCell cbcell = (DataGridViewComboBoxCell)dataGridView1.Rows[i].Cells[1];
                 string newVal = cbcell.EditedFormattedValue.ToString().Trim();
+                string colorVal;
+                int mapID = RepoTransaction.GetExpenseTypeKey(origvl);
+
+                if (!colorForFiguredTransTypes.ContainsKey(newVal))
+                {
+                    colorVal = dataGridView1.Rows[i].Cells[2].EditedFormattedValue.ToString().Trim();
+                    colorForFiguredTransTypes.Add(newVal,colorVal);
+                }
+                else
+                {
+                    colorVal = colorForFiguredTransTypes[newVal];
+                    dataGridView1.Rows[i].Cells[2].Value = colorVal;
+                }
 
                 if (RepoTransaction.MapTransTypes.ContainsKey(origvl))
                 {
-                    if (RepoTransaction.MapTransTypes[origvl] != newVal)
+                    if (RepoTransaction.MapTransTypes[origvl] != newVal 
+                        || RepoTransaction.MapTransTypesByKey[mapID].ColorValue != colorVal)
                     {
                         ModelMapExpenseTypes map = new ModelMapExpenseTypes();
-                        map.MapId = RepoTransaction.GetExpenseTypeKey(origvl);
+                        map.MapId = mapID;
                         map.OrigVal = origvl;
                         map.NewVal = newVal;
+                        map.ColorValue = colorVal;
                         mapsToUpdate.Add(map);
                     }
                 }
@@ -163,6 +186,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                     ModelMapExpenseTypes map = new ModelMapExpenseTypes();
                     map.OrigVal = origvl;
                     map.NewVal = newVal;
+                    map.ColorValue = colorVal;
                     newmaps.Add(map);
                 }
             }
@@ -183,6 +207,19 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private void ExpenseMap_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //null checking for  the column
+            if (dataGridView1.CurrentRow.Cells["Color Picker"] != null)
+            {
+                ColorDialog colorDlg = new ColorDialog(); //create colordialog instance
+                colorDlg.AllowFullOpen = true;
+                colorDlg.AnyColor = true;
+                colorDlg.ShowDialog(); //display dialog
+                dataGridView1.CurrentRow.Cells["Color Picker"].Value = colorDlg.Color.Name; //keep the selected value
+            }
         }
     }
 }

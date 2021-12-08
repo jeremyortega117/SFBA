@@ -156,7 +156,26 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             }
 
             chart.Series[0].ChartType = SeriesChartType.Pie;
+            int i = 0;
             chart.Series[0].Points.DataBindXY(names, nameAndVal.Values);
+            foreach (string name in nameAndVal.Keys)
+            {
+                string colorName = RepoTransaction.MapTransTypesToColors[name];
+                Color col;
+                if (name.StartsWith("#"))
+                    col = ColorTranslator.FromHtml(colorName);
+                else
+                {
+                    col = Color.FromName(colorName);
+                }
+
+                if (colorName == "")
+                {
+                    col = Color.FromName("White");
+                }
+
+                chart.Series[0].Points[i++].Color = col;
+            }
             chart.Legends[0].Enabled = true;
             chart.ChartAreas[0].Area3DStyle.Enable3D = true;
 

@@ -15,6 +15,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         internal static HashSet<string> MapTransOrig;
         internal static Dictionary<int, ModelMapExpenseTypes> MapTransTypesByKey;
         internal static Dictionary<string, string> MapTransTypes;
+        internal static Dictionary<string, string> MapTransTypesToColors;
         internal static Dictionary<int, ModelTrans> Trans;
         internal static Dictionary<int, ModelTransType> TransTypes;
         internal static Dictionary<DateTime, List<ModelTrans>> compareTransByDate;
@@ -35,6 +36,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             MapTransNew = new HashSet<string>();
             MapTransTypes = new Dictionary<string, string>();
             MapTransTypesByKey = new Dictionary<int, ModelMapExpenseTypes>();
+            MapTransTypesToColors = new Dictionary<string, string>();
             SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);
             SqlDataReader Reader = null;
             try
@@ -48,6 +50,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                         mapTo.MapId = Convert.ToInt32(Reader["MAP_ID"]);
                         mapTo.OrigVal = Reader["ORIG_VAL"].ToString();
                         mapTo.NewVal = Reader["NEW_VALUE"].ToString();
+                        mapTo.ColorValue = Reader["COLOR_VALUE"].Equals(DBNull.Value) ? "WHITE" : Reader["COLOR_VALUE"].ToString();
 
                         if (!MapTransTypesByKey.ContainsKey(mapTo.MapId))
                         {
@@ -67,6 +70,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                         if (!MapTransNew.Contains(mapTo.NewVal))
                         {
                             MapTransNew.Add(mapTo.NewVal);
+                        }
+
+                        if (!MapTransTypesToColors.ContainsKey(mapTo.NewVal))
+                        {
+                            MapTransTypesToColors.Add(mapTo.NewVal, mapTo.ColorValue);
                         }
 
                     }
@@ -105,16 +113,18 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             foreach (ModelMapExpenseTypes map in Maps)
             {
-                string SQL = $"EXECUTE proc_MAP_EXPENSE_TYPES @MAP_ID, @ORIG_VAL, @NEW_VALUE, @EDIT_TYPE";
+                string SQL = $"EXECUTE proc_MAP_EXPENSE_TYPES @MAP_ID, @ORIG_VAL, @NEW_VALUE, @COLOR, @EDIT_TYPE";
                 SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);
                 List<SqlParameter> parameters = new List<SqlParameter>();
                 SqlParameter MapId = new SqlParameter("@MAP_ID", map.MapId);
                 SqlParameter origVal = new SqlParameter("@ORIG_VAL", map.OrigVal);
                 SqlParameter NewVal = new SqlParameter("@NEW_VALUE", map.NewVal);
+                SqlParameter color = new SqlParameter("@COLOR", map.ColorValue);
                 SqlParameter editTypeParam = new SqlParameter("@EDIT_TYPE", editType);
                 parameters.Add(MapId);
                 parameters.Add(origVal);
                 parameters.Add(NewVal);
+                parameters.Add(color);
                 parameters.Add(editTypeParam);
                 Command.Parameters.AddRange(parameters.ToArray());
                 try
