@@ -28,5 +28,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         public int MapId { get; set; }
         public string OrigVal { get; set; }
         public string NewVal { get; set; }
+        public string ColorValue { get; set; }
     }
 }
