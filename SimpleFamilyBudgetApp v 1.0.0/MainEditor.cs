@@ -381,13 +381,17 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             BillFrom = dateTimePickerFrom.Value;
             BillTo = dateTimePickerTo.Value;
-            FillAccountsAndExpenseTypesChecked(); // Fills objects with filtered data
 
-            RepoTransaction.PrepareTransDataWithFilters(Accounts, ExpenseTypes);
+            if (radioExpenses.Checked)
+            {
+                FillAccountsAndExpenseTypesChecked(); // Fills objects with filtered data
+                RepoTransaction.PrepareTransDataWithFilters(Accounts, ExpenseTypes);
+            }
 
             PrepareLabels();
             PrepareListViews();
-            if (radioExpenses.Checked) {
+            if (radioExpenses.Checked) 
+            {
                 labelTotalIncome.Text = string.Format("{0:C}", ListViewRepoTransactions.totalIncome);
                 labelTotalSpent.Text = string.Format("{0:C}", ListViewRepoTransactions.totalSpent);
                 labelTotalBal.Text = string.Format("{0:C}", ListViewRepoTransactions.totalIncome + ListViewRepoTransactions.totalSpent);

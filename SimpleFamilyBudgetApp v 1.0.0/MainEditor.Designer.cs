@@ -30,9 +30,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainEditor));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panelTopAccountSummary = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
@@ -261,7 +261,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.labelTotalBal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelTotalBal.AutoSize = true;
-            this.labelTotalBal.Location = new System.Drawing.Point(475, 77);
+            this.labelTotalBal.Location = new System.Drawing.Point(632, 119);
             this.labelTotalBal.Name = "labelTotalBal";
             this.labelTotalBal.Size = new System.Drawing.Size(34, 13);
             this.labelTotalBal.TabIndex = 6;
@@ -271,7 +271,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.label29.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(394, 77);
+            this.label29.Location = new System.Drawing.Point(632, 105);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(76, 13);
             this.label29.TabIndex = 5;
@@ -281,7 +281,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.labelTotalIncome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelTotalIncome.AutoSize = true;
-            this.labelTotalIncome.Location = new System.Drawing.Point(475, 22);
+            this.labelTotalIncome.Location = new System.Drawing.Point(632, 19);
             this.labelTotalIncome.Name = "labelTotalIncome";
             this.labelTotalIncome.Size = new System.Drawing.Size(34, 13);
             this.labelTotalIncome.TabIndex = 4;
@@ -291,7 +291,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.label30.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(397, 22);
+            this.label30.Location = new System.Drawing.Point(632, 6);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(72, 13);
             this.label30.TabIndex = 3;
@@ -301,7 +301,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.labelTotalSpent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelTotalSpent.AutoSize = true;
-            this.labelTotalSpent.Location = new System.Drawing.Point(475, 50);
+            this.labelTotalSpent.Location = new System.Drawing.Point(632, 67);
             this.labelTotalSpent.Name = "labelTotalSpent";
             this.labelTotalSpent.Size = new System.Drawing.Size(34, 13);
             this.labelTotalSpent.TabIndex = 2;
@@ -311,7 +311,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(404, 50);
+            this.label5.Location = new System.Drawing.Point(632, 54);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 13);
             this.label5.TabIndex = 1;
@@ -322,17 +322,17 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea5.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chart1.Legends.Add(legend5);
             this.chart1.Location = new System.Drawing.Point(3, 3);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(383, 296);
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.chart1.Series.Add(series5);
+            this.chart1.Size = new System.Drawing.Size(620, 296);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             this.chart1.Click += new System.EventHandler(this.chart1_Click);
@@ -768,7 +768,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.ClientSize = new System.Drawing.Size(980, 845);
             this.Controls.Add(this.mainGroupBox);
             this.Controls.Add(this.panelTopAccountSummary);
-            this.MinimumSize = new System.Drawing.Size(925, 300);
+            this.MinimumSize = new System.Drawing.Size(925, 720);
             this.Name = "MainEditor";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.form_close);

@@ -161,14 +161,14 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             chart.Series[0].Points.DataBindXY(names, nameAndVal.Values);
             foreach (string name in nameAndVal.Keys)
             {
-                string colorName;
-                if (RepoTransaction.MapTransTypesToColors.ContainsKey(name))
-                    colorName = RepoTransaction.MapTransTypesToColors[name];
-                else
-                {
-                    colorName = "White";
-                }
+                string colorName = "White";
                 Color col;
+                if (RepoTransaction.MapTransTypesToColors.ContainsKey(name) )
+                {
+                    string tempColor = RepoTransaction.MapTransTypesToColors[name].Trim();
+                    if(tempColor != "")
+                        colorName = tempColor;
+                }
                 col = Color.FromName(colorName);
                 if (!col.IsKnownColor)
                     col = ColorTranslator.FromHtml($"#{colorName}");
