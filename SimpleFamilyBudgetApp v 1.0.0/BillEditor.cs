@@ -694,6 +694,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             PrepareListViewData();
         }
 
+        private void listViewExistingBills_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void clearText()
         {
             comboBoxAccount.Text = "";

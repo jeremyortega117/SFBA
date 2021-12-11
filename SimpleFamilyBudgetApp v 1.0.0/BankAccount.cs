@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,7 +18,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             InitializeComponent();
             RefreshData();
-           
         }
 
         private void RefreshData()
@@ -29,6 +29,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             ClearData();
             ListViewRepoBankAccount lvrba = new ListViewRepoBankAccount(listView1);
             lvrba.AddDataToListView(listView1);
+            CheckIfEnableInsertButton();
         }
 
 
@@ -83,6 +84,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 RepoBankAccount.EditAccountType(AccountTypes, 'A');
                 RepoBankAccount.PrepareAccountTypes();
                 PrepareComboBoxes();
+                CheckIfEnableInsertButton();
             }
         }
 
@@ -101,7 +103,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 BankAccount.BankName = comboBoxBankName.Text;
                 BankAccount.AcctTypeKey = RepoBankAccount.RetrieveAcctTypeKeyFromName(comboBoxAccountType.Text);
                 BankAccount.AcctLastFour = textBoxAcctLastFour.Text;
-                BankAccount.Balance = Convert.ToDouble(textBoxBalance.Text);
+                BankAccount.Balance = Convert.ToDouble(textBoxBalance.Text.Replace("$","").Replace(",","").Trim());
                 BankAccount.UserKey = Convert.ToInt32(RepoUserEditor.RetrieveUserKeyFromName(comboBoxUser.Text));
                 BankAccount.InterestFreq = Convert.ToInt32(comboBoxInterestFreq.Text);
                 BankAccount.InterestPercent = Convert.ToDouble(textBoxInterestRate.Text);
@@ -113,17 +115,38 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void comboBoxUser_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            CheckIfEnableInsertButton();
         }
 
         private void comboBoxAccountType_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            CheckIfEnableInsertButton();
         }
 
         private void comboBoxBankName_SelectedIndexChanged(object sender, EventArgs e)
         {
+            CheckIfEnableInsertButton();
+        }
 
+        private void CheckIfEnableInsertButton()
+        {
+            string strAmt = textBoxBalance.Text.Trim();
+            Regex reg = new Regex(@"^[$]?[+-]?[0-9]{1,3}(?:[0-9]*(?:[.,][0-9]{2})?|(?:,[0-9]{3})*(?:\.[0-9]{2})?|(?:\.[0-9]{3})*(?:,[0-9]{2})?)$");
+            if (comboBoxUser.Text.Trim().Length > 0 && 
+                comboBoxBankName.Text.Trim().Length > 0 &&
+                textBoxAcctLastFour.Text.Trim().Length > 0 &&
+                comboBoxAccountType.Text.Trim().Length > 0 &&
+                strAmt.Length > 0 &&
+                (RepoBankAccount.RetrieveAcctTypeKeyFromName(comboBoxAccountType.Text.Trim()) != -1)
+                && reg.IsMatch(strAmt))
+            {
+                buttonSubmitNewAccount.Enabled = true;
+            }
+            else
+            {
+                buttonSubmitNewAccount.Enabled = false;
+            }
+            EnableAcctTypeButton();
         }
 
         private void buttonAddBankName_Click_1(object sender, EventArgs e)
@@ -133,31 +156,74 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void textBoxAcctLastFour_TextChanged(object sender, EventArgs e)
         {
-
+            CheckIfEnableInsertButton();
         }
 
         private void textBoxBalance_TextChanged(object sender, EventArgs e)
         {
-
+            CheckIfEnableInsertButton();
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string username = listView1.SelectedItems[0].SubItems[1].Text.Trim();
-            string bankname = listView1.SelectedItems[0].SubItems[2].Text.Trim();
-            string lastfour = listView1.SelectedItems[0].SubItems[3].Text.Trim();
-            string accttype = listView1.SelectedItems[0].SubItems[4].Text.Trim();
-            string amount = listView1.SelectedItems[0].SubItems[5].Text.Trim();
-            string InterestFreq = listView1.SelectedItems[0].SubItems[6].Text.Trim();
-            string Interestrate = listView1.SelectedItems[0].SubItems[7].Text.Trim();
-
-            RepoTransaction.GetAcctKeyFromSelected();
-            RepoBankAccount.RetrieveAcctTypeKeyFromName();
-
-            username = username.Trim();
-            bankname = bankname.Trim();
-            lastfour = 
-            //comboBoxBankName.Text = listView1.SelectedItems[0].SubItems[1].Text;
+            if (listView1.SelectedItems.Count > 0)
+            {
+                comboBoxUser.Text = listView1.SelectedItems[0].SubItems[0].Text.Trim();
+                comboBoxBankName.Text = listView1.SelectedItems[0].SubItems[1].Text.Trim();
+                textBoxAcctLastFour.Text = listView1.SelectedItems[0].SubItems[2].Text.Trim();
+                comboBoxAccountType.Text = listView1.SelectedItems[0].SubItems[3].Text.Trim();
+                textBoxBalance.Text = listView1.SelectedItems[0].SubItems[4].Text.Trim();
+                comboBoxInterestFreq.Text = listView1.SelectedItems[0].SubItems[5].Text.Trim();
+                textBoxInterestRate.Text = listView1.SelectedItems[0].SubItems[6].Text.Trim();
+            }
+            else if (listView1.SelectedItems.Count == 0)
+            {
+                ClearData();
+            }
+            CheckIfEnableInsertButton();
         }
+
+        private void comboBoxInterestFreq_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CheckIfEnableInsertButton();
+        }
+
+        private void textBoxInterestRate_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CheckIfEnableInsertButton(object sender, EventArgs e)
+        {
+            CheckIfEnableInsertButton();
+        }
+
+        private void EnableAcctTypeButton()
+        {
+            string temp = comboBoxAccountType.Text.Trim();
+            if (RepoBankAccount.RetrieveAcctTypeKeyFromName(temp) != -1 || temp == "")
+            {
+                buttonAddAccountType.Enabled = false;
+            }
+            else
+            {
+                buttonAddAccountType.Enabled = true;
+            }
+        }
+
+        private void KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void userCombo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        //private void checkBo(object sender, EventArgs e)
+        //{
+
+        //}
     }
 }

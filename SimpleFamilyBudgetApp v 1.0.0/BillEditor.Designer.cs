@@ -64,6 +64,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.textBoxPercent = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.TotalPlusInterest = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.labelTotalIntPaid = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.labelNextIntPercAmt = new System.Windows.Forms.Label();
@@ -72,8 +74,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.label10 = new System.Windows.Forms.Label();
             this.radioButtonDailyInt = new System.Windows.Forms.RadioButton();
             this.radioButtonMonthlyInt = new System.Windows.Forms.RadioButton();
-            this.label13 = new System.Windows.Forms.Label();
-            this.TotalPlusInterest = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -89,6 +89,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.listViewExistingBills.Size = new System.Drawing.Size(601, 324);
             this.listViewExistingBills.TabIndex = 0;
             this.listViewExistingBills.UseCompatibleStateImageBehavior = false;
+            this.listViewExistingBills.SelectedIndexChanged += new System.EventHandler(this.listViewExistingBills_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -466,6 +467,24 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.panel2.Size = new System.Drawing.Size(577, 88);
             this.panel2.TabIndex = 49;
             // 
+            // TotalPlusInterest
+            // 
+            this.TotalPlusInterest.AutoSize = true;
+            this.TotalPlusInterest.Location = new System.Drawing.Point(499, 58);
+            this.TotalPlusInterest.Name = "TotalPlusInterest";
+            this.TotalPlusInterest.Size = new System.Drawing.Size(13, 13);
+            this.TotalPlusInterest.TabIndex = 60;
+            this.TotalPlusInterest.Text = "$";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(456, 58);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(37, 13);
+            this.label13.TabIndex = 59;
+            this.label13.Text = "Total: ";
+            // 
             // labelTotalIntPaid
             // 
             this.labelTotalIntPaid.AutoSize = true;
@@ -543,24 +562,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.radioButtonMonthlyInt.Text = "Monthly";
             this.radioButtonMonthlyInt.UseVisualStyleBackColor = true;
             this.radioButtonMonthlyInt.CheckedChanged += new System.EventHandler(this.radioButtonMonthlyInt_CheckedChanged);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(456, 58);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(37, 13);
-            this.label13.TabIndex = 59;
-            this.label13.Text = "Total: ";
-            // 
-            // TotalPlusInterest
-            // 
-            this.TotalPlusInterest.AutoSize = true;
-            this.TotalPlusInterest.Location = new System.Drawing.Point(499, 58);
-            this.TotalPlusInterest.Name = "TotalPlusInterest";
-            this.TotalPlusInterest.Size = new System.Drawing.Size(13, 13);
-            this.TotalPlusInterest.TabIndex = 60;
-            this.TotalPlusInterest.Text = "$";
             // 
             // BillEditor
             // 
