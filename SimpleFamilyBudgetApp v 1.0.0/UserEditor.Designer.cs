@@ -47,10 +47,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // listViewUserEditor
             // 
+            this.listViewUserEditor.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.listViewUserEditor.Dock = System.Windows.Forms.DockStyle.Top;
             this.listViewUserEditor.HideSelection = false;
             this.listViewUserEditor.Location = new System.Drawing.Point(0, 0);
-            this.listViewUserEditor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listViewUserEditor.Margin = new System.Windows.Forms.Padding(4);
             this.listViewUserEditor.Name = "listViewUserEditor";
             this.listViewUserEditor.Size = new System.Drawing.Size(579, 264);
             this.listViewUserEditor.TabIndex = 0;
@@ -60,7 +61,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(199, 470);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(201, 54);
             this.button1.TabIndex = 1;
@@ -71,7 +72,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(199, 593);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(201, 54);
             this.button2.TabIndex = 2;
@@ -82,7 +83,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(199, 532);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(201, 54);
             this.button3.TabIndex = 3;
@@ -92,8 +93,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // textBoxFirstName
             // 
+            this.textBoxFirstName.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.textBoxFirstName.Location = new System.Drawing.Point(199, 297);
-            this.textBoxFirstName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxFirstName.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxFirstName.MaxLength = 30;
             this.textBoxFirstName.Name = "textBoxFirstName";
             this.textBoxFirstName.Size = new System.Drawing.Size(200, 22);
@@ -122,8 +124,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // textBoxLastName
             // 
+            this.textBoxLastName.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.textBoxLastName.Location = new System.Drawing.Point(199, 329);
-            this.textBoxLastName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxLastName.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxLastName.MaxLength = 30;
             this.textBoxLastName.Name = "textBoxLastName";
             this.textBoxLastName.Size = new System.Drawing.Size(200, 22);
@@ -142,8 +145,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // textBoxMI
             // 
+            this.textBoxMI.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.textBoxMI.Location = new System.Drawing.Point(199, 364);
-            this.textBoxMI.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxMI.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxMI.MaxLength = 1;
             this.textBoxMI.Name = "textBoxMI";
             this.textBoxMI.Size = new System.Drawing.Size(200, 22);
@@ -162,8 +166,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // textBoxUsername
             // 
+            this.textBoxUsername.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.textBoxUsername.Location = new System.Drawing.Point(199, 398);
-            this.textBoxUsername.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxUsername.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxUsername.MaxLength = 30;
             this.textBoxUsername.Name = "textBoxUsername";
             this.textBoxUsername.Size = new System.Drawing.Size(200, 22);
@@ -182,8 +187,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // textBoxUserPass
             // 
+            this.textBoxUserPass.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.textBoxUserPass.Location = new System.Drawing.Point(199, 428);
-            this.textBoxUserPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxUserPass.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxUserPass.MaxLength = 30;
             this.textBoxUserPass.Name = "textBoxUserPass";
             this.textBoxUserPass.Size = new System.Drawing.Size(200, 22);
@@ -193,6 +199,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(579, 686);
             this.Controls.Add(this.textBoxUserPass);
             this.Controls.Add(this.label5);
@@ -208,7 +215,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listViewUserEditor);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "User_Editor";
             this.Text = "User_Editor";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CloseBehavior);

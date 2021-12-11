@@ -131,14 +131,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private void CheckIfEnableInsertButton()
         {
             string strAmt = textBoxBalance.Text.Trim();
-            Regex reg = new Regex(@"^[$]?[+-]?[0-9]{1,3}(?:[0-9]*(?:[.,][0-9]{2})?|(?:,[0-9]{3})*(?:\.[0-9]{2})?|(?:\.[0-9]{3})*(?:,[0-9]{2})?)$");
             if (comboBoxUser.Text.Trim().Length > 0 && 
                 comboBoxBankName.Text.Trim().Length > 0 &&
                 textBoxAcctLastFour.Text.Trim().Length > 0 &&
                 comboBoxAccountType.Text.Trim().Length > 0 &&
                 strAmt.Length > 0 &&
                 (RepoBankAccount.RetrieveAcctTypeKeyFromName(comboBoxAccountType.Text.Trim()) != -1)
-                && reg.IsMatch(strAmt))
+                && ConfigClass.RegexMoney.IsMatch(strAmt))
             {
                 buttonSubmitNewAccount.Enabled = true;
             }
