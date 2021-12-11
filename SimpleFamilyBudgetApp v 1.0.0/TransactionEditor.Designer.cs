@@ -57,10 +57,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(0, 0);
+            this.listView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(800, 229);
+            this.listView1.Size = new System.Drawing.Size(1065, 281);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
@@ -68,11 +70,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // comboBoxTransType
             // 
             this.comboBoxTransType.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.comboBoxTransType.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.comboBoxTransType.FormattingEnabled = true;
-            this.comboBoxTransType.Location = new System.Drawing.Point(287, 258);
+            this.comboBoxTransType.Location = new System.Drawing.Point(383, 318);
+            this.comboBoxTransType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxTransType.MaxLength = 30;
             this.comboBoxTransType.Name = "comboBoxTransType";
-            this.comboBoxTransType.Size = new System.Drawing.Size(194, 21);
+            this.comboBoxTransType.Size = new System.Drawing.Size(257, 24);
             this.comboBoxTransType.TabIndex = 1;
             this.comboBoxTransType.SelectedIndexChanged += new System.EventHandler(this.comboBoxTransType_SelectedIndexChanged);
             this.comboBoxTransType.TextUpdate += new System.EventHandler(this.comboBoxTransType_SelectedIndexChanged);
@@ -81,18 +85,20 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(203, 262);
+            this.label1.Location = new System.Drawing.Point(271, 322);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 13);
+            this.label1.Size = new System.Drawing.Size(98, 16);
             this.label1.TabIndex = 2;
             this.label1.Text = "Expense Type:";
             // 
             // buttonAddTransType
             // 
             this.buttonAddTransType.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.buttonAddTransType.Location = new System.Drawing.Point(487, 257);
+            this.buttonAddTransType.Location = new System.Drawing.Point(649, 316);
+            this.buttonAddTransType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonAddTransType.Name = "buttonAddTransType";
-            this.buttonAddTransType.Size = new System.Drawing.Size(120, 23);
+            this.buttonAddTransType.Size = new System.Drawing.Size(160, 28);
             this.buttonAddTransType.TabIndex = 3;
             this.buttonAddTransType.Text = "Add Expense Type";
             this.buttonAddTransType.UseVisualStyleBackColor = true;
@@ -102,19 +108,22 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.labelAcctHolder.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.labelAcctHolder.AutoSize = true;
-            this.labelAcctHolder.Location = new System.Drawing.Point(214, 288);
+            this.labelAcctHolder.Location = new System.Drawing.Point(285, 354);
+            this.labelAcctHolder.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelAcctHolder.Name = "labelAcctHolder";
-            this.labelAcctHolder.Size = new System.Drawing.Size(67, 13);
+            this.labelAcctHolder.Size = new System.Drawing.Size(78, 16);
             this.labelAcctHolder.TabIndex = 4;
             this.labelAcctHolder.Text = "On Account:";
             // 
             // comboBoxAcct
             // 
             this.comboBoxAcct.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.comboBoxAcct.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.comboBoxAcct.FormattingEnabled = true;
-            this.comboBoxAcct.Location = new System.Drawing.Point(287, 285);
+            this.comboBoxAcct.Location = new System.Drawing.Point(383, 351);
+            this.comboBoxAcct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxAcct.Name = "comboBoxAcct";
-            this.comboBoxAcct.Size = new System.Drawing.Size(194, 21);
+            this.comboBoxAcct.Size = new System.Drawing.Size(257, 24);
             this.comboBoxAcct.TabIndex = 5;
             this.comboBoxAcct.SelectedIndexChanged += new System.EventHandler(this.comboBoxUser_SelectedIndexChanged);
             this.comboBoxAcct.TextUpdate += new System.EventHandler(this.comboBoxUser_SelectedIndexChanged);
@@ -123,19 +132,22 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(235, 315);
+            this.label2.Location = new System.Drawing.Point(313, 388);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 13);
+            this.label2.Size = new System.Drawing.Size(55, 16);
             this.label2.TabIndex = 6;
             this.label2.Text = "Amount:";
             // 
             // textBoxAmount
             // 
             this.textBoxAmount.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.textBoxAmount.Location = new System.Drawing.Point(287, 312);
+            this.textBoxAmount.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.textBoxAmount.Location = new System.Drawing.Point(383, 384);
+            this.textBoxAmount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxAmount.MaxLength = 30;
             this.textBoxAmount.Name = "textBoxAmount";
-            this.textBoxAmount.Size = new System.Drawing.Size(100, 20);
+            this.textBoxAmount.Size = new System.Drawing.Size(132, 22);
             this.textBoxAmount.TabIndex = 7;
             this.textBoxAmount.TextChanged += new System.EventHandler(this.textBoxAmount_TextChanged);
             // 
@@ -143,19 +155,22 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(218, 341);
+            this.label3.Location = new System.Drawing.Point(291, 420);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 13);
+            this.label3.Size = new System.Drawing.Size(78, 16);
             this.label3.TabIndex = 8;
             this.label3.Text = "Description:";
             // 
             // textBoxDescription
             // 
             this.textBoxDescription.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.textBoxDescription.Location = new System.Drawing.Point(287, 338);
+            this.textBoxDescription.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.textBoxDescription.Location = new System.Drawing.Point(383, 416);
+            this.textBoxDescription.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxDescription.MaxLength = 100;
             this.textBoxDescription.Name = "textBoxDescription";
-            this.textBoxDescription.Size = new System.Drawing.Size(194, 20);
+            this.textBoxDescription.Size = new System.Drawing.Size(257, 22);
             this.textBoxDescription.TabIndex = 9;
             this.textBoxDescription.TextChanged += new System.EventHandler(this.textBoxDescription_TextChanged);
             // 
@@ -163,18 +178,20 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.dateTimePickerTransDate.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.dateTimePickerTransDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerTransDate.Location = new System.Drawing.Point(287, 364);
+            this.dateTimePickerTransDate.Location = new System.Drawing.Point(383, 448);
+            this.dateTimePickerTransDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dateTimePickerTransDate.Name = "dateTimePickerTransDate";
-            this.dateTimePickerTransDate.Size = new System.Drawing.Size(100, 20);
+            this.dateTimePickerTransDate.Size = new System.Drawing.Size(132, 22);
             this.dateTimePickerTransDate.TabIndex = 10;
             // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(200, 368);
+            this.label4.Location = new System.Drawing.Point(267, 453);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(81, 13);
+            this.label4.Size = new System.Drawing.Size(99, 16);
             this.label4.TabIndex = 11;
             this.label4.Text = "Purchase Date:";
             // 
@@ -182,9 +199,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.buttonSubmitExpense.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.buttonSubmitExpense.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSubmitExpense.Location = new System.Drawing.Point(287, 390);
+            this.buttonSubmitExpense.Location = new System.Drawing.Point(383, 480);
+            this.buttonSubmitExpense.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonSubmitExpense.Name = "buttonSubmitExpense";
-            this.buttonSubmitExpense.Size = new System.Drawing.Size(194, 47);
+            this.buttonSubmitExpense.Size = new System.Drawing.Size(259, 58);
             this.buttonSubmitExpense.TabIndex = 12;
             this.buttonSubmitExpense.Text = "Submit Expense";
             this.buttonSubmitExpense.UseVisualStyleBackColor = true;
@@ -193,9 +211,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // buttonImportFile
             // 
             this.buttonImportFile.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.buttonImportFile.Location = new System.Drawing.Point(487, 283);
+            this.buttonImportFile.Location = new System.Drawing.Point(649, 348);
+            this.buttonImportFile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonImportFile.Name = "buttonImportFile";
-            this.buttonImportFile.Size = new System.Drawing.Size(120, 23);
+            this.buttonImportFile.Size = new System.Drawing.Size(160, 28);
             this.buttonImportFile.TabIndex = 13;
             this.buttonImportFile.Text = "Import File";
             this.buttonImportFile.UseVisualStyleBackColor = true;
@@ -205,9 +224,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.checkBoxIncome.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.checkBoxIncome.AutoSize = true;
-            this.checkBoxIncome.Location = new System.Drawing.Point(613, 260);
+            this.checkBoxIncome.Location = new System.Drawing.Point(817, 321);
+            this.checkBoxIncome.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxIncome.Name = "checkBoxIncome";
-            this.checkBoxIncome.Size = new System.Drawing.Size(61, 17);
+            this.checkBoxIncome.Size = new System.Drawing.Size(73, 20);
             this.checkBoxIncome.TabIndex = 14;
             this.checkBoxIncome.Text = "Income";
             this.checkBoxIncome.UseVisualStyleBackColor = true;
@@ -215,9 +235,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // buttonUpdate
             // 
             this.buttonUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonUpdate.Location = new System.Drawing.Point(12, 305);
+            this.buttonUpdate.Location = new System.Drawing.Point(16, 375);
+            this.buttonUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonUpdate.Name = "buttonUpdate";
-            this.buttonUpdate.Size = new System.Drawing.Size(75, 23);
+            this.buttonUpdate.Size = new System.Drawing.Size(100, 28);
             this.buttonUpdate.TabIndex = 15;
             this.buttonUpdate.Text = "Update";
             this.buttonUpdate.UseVisualStyleBackColor = true;
@@ -226,9 +247,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // buttonDelete
             // 
             this.buttonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonDelete.Location = new System.Drawing.Point(12, 341);
+            this.buttonDelete.Location = new System.Drawing.Point(16, 420);
+            this.buttonDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(75, 23);
+            this.buttonDelete.Size = new System.Drawing.Size(100, 28);
             this.buttonDelete.TabIndex = 16;
             this.buttonDelete.Text = "Delete";
             this.buttonDelete.UseVisualStyleBackColor = true;
@@ -237,9 +259,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // buttonUnselectAll
             // 
             this.buttonUnselectAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonUnselectAll.Location = new System.Drawing.Point(12, 257);
+            this.buttonUnselectAll.Location = new System.Drawing.Point(16, 316);
+            this.buttonUnselectAll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonUnselectAll.Name = "buttonUnselectAll";
-            this.buttonUnselectAll.Size = new System.Drawing.Size(85, 23);
+            this.buttonUnselectAll.Size = new System.Drawing.Size(113, 28);
             this.buttonUnselectAll.TabIndex = 17;
             this.buttonUnselectAll.Text = "Unselect All";
             this.buttonUnselectAll.UseVisualStyleBackColor = true;
@@ -249,9 +272,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.labelTransKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelTransKey.AutoSize = true;
-            this.labelTransKey.Location = new System.Drawing.Point(12, 241);
+            this.labelTransKey.Location = new System.Drawing.Point(16, 297);
+            this.labelTransKey.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTransKey.Name = "labelTransKey";
-            this.labelTransKey.Size = new System.Drawing.Size(28, 13);
+            this.labelTransKey.Size = new System.Drawing.Size(33, 16);
             this.labelTransKey.TabIndex = 18;
             this.labelTransKey.Text = "Key:";
             // 
@@ -259,19 +283,21 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.labelKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelKey.AutoSize = true;
-            this.labelKey.Location = new System.Drawing.Point(46, 241);
+            this.labelKey.Location = new System.Drawing.Point(61, 297);
+            this.labelKey.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelKey.Name = "labelKey";
-            this.labelKey.Size = new System.Drawing.Size(0, 13);
+            this.labelKey.Size = new System.Drawing.Size(0, 16);
             this.labelKey.TabIndex = 19;
             // 
             // checkBoxUpdateBalance
             // 
             this.checkBoxUpdateBalance.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.checkBoxUpdateBalance.AutoSize = true;
-            this.checkBoxUpdateBalance.Location = new System.Drawing.Point(613, 287);
-            this.checkBoxUpdateBalance.MaximumSize = new System.Drawing.Size(0, 3000);
+            this.checkBoxUpdateBalance.Location = new System.Drawing.Point(817, 354);
+            this.checkBoxUpdateBalance.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBoxUpdateBalance.MaximumSize = new System.Drawing.Size(0, 3692);
             this.checkBoxUpdateBalance.Name = "checkBoxUpdateBalance";
-            this.checkBoxUpdateBalance.Size = new System.Drawing.Size(103, 17);
+            this.checkBoxUpdateBalance.Size = new System.Drawing.Size(127, 20);
             this.checkBoxUpdateBalance.TabIndex = 20;
             this.checkBoxUpdateBalance.Text = "Update Balance";
             this.checkBoxUpdateBalance.UseVisualStyleBackColor = true;
@@ -279,9 +305,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // TransactionEditor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 461);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(1064, 567);
             this.Controls.Add(this.checkBoxUpdateBalance);
             this.Controls.Add(this.labelKey);
             this.Controls.Add(this.labelTransKey);
@@ -303,8 +330,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxTransType);
             this.Controls.Add(this.listView1);
-            this.MaximumSize = new System.Drawing.Size(816, 2000);
-            this.MinimumSize = new System.Drawing.Size(816, 499);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximumSize = new System.Drawing.Size(1082, 2451);
+            this.MinimumSize = new System.Drawing.Size(1082, 603);
             this.Name = "TransactionEditor";
             this.Text = "TransactionEditor";
             this.Load += new System.EventHandler(this.TransactionEditor_Load);
