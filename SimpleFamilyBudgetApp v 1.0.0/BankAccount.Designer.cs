@@ -53,17 +53,18 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.listView1.Dock = System.Windows.Forms.DockStyle.Top;
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(0, 0);
-            this.listView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listView1.Margin = new System.Windows.Forms.Padding(4);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(845, 217);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // comboBoxAccountType
             // 
             this.comboBoxAccountType.FormattingEnabled = true;
             this.comboBoxAccountType.Location = new System.Drawing.Point(292, 273);
-            this.comboBoxAccountType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxAccountType.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxAccountType.MaxLength = 30;
             this.comboBoxAccountType.Name = "comboBoxAccountType";
             this.comboBoxAccountType.Size = new System.Drawing.Size(252, 24);
@@ -93,7 +94,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // buttonAddAccountType
             // 
             this.buttonAddAccountType.Location = new System.Drawing.Point(553, 272);
-            this.buttonAddAccountType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAddAccountType.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAddAccountType.Name = "buttonAddAccountType";
             this.buttonAddAccountType.Size = new System.Drawing.Size(100, 28);
             this.buttonAddAccountType.TabIndex = 6;
@@ -114,7 +115,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // textBoxAcctLastFour
             // 
             this.textBoxAcctLastFour.Location = new System.Drawing.Point(292, 306);
-            this.textBoxAcctLastFour.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxAcctLastFour.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxAcctLastFour.MaxLength = 4;
             this.textBoxAcctLastFour.Name = "textBoxAcctLastFour";
             this.textBoxAcctLastFour.Size = new System.Drawing.Size(85, 22);
@@ -134,7 +135,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // textBoxBalance
             // 
             this.textBoxBalance.Location = new System.Drawing.Point(292, 340);
-            this.textBoxBalance.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxBalance.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxBalance.MaxLength = 20;
             this.textBoxBalance.Name = "textBoxBalance";
             this.textBoxBalance.Size = new System.Drawing.Size(252, 22);
@@ -165,7 +166,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.comboBoxInterestFreq.FormattingEnabled = true;
             this.comboBoxInterestFreq.Location = new System.Drawing.Point(292, 407);
-            this.comboBoxInterestFreq.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxInterestFreq.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxInterestFreq.Name = "comboBoxInterestFreq";
             this.comboBoxInterestFreq.Size = new System.Drawing.Size(252, 24);
             this.comboBoxInterestFreq.TabIndex = 13;
@@ -173,7 +174,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // textBoxInterestRate
             // 
             this.textBoxInterestRate.Location = new System.Drawing.Point(292, 441);
-            this.textBoxInterestRate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxInterestRate.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxInterestRate.MaxLength = 30;
             this.textBoxInterestRate.Name = "textBoxInterestRate";
             this.textBoxInterestRate.Size = new System.Drawing.Size(85, 22);
@@ -182,7 +183,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // buttonSubmitNewAccount
             // 
             this.buttonSubmitNewAccount.Location = new System.Drawing.Point(292, 479);
-            this.buttonSubmitNewAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSubmitNewAccount.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSubmitNewAccount.Name = "buttonSubmitNewAccount";
             this.buttonSubmitNewAccount.Size = new System.Drawing.Size(253, 44);
             this.buttonSubmitNewAccount.TabIndex = 15;
@@ -194,7 +195,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.comboBoxUser.FormattingEnabled = true;
             this.comboBoxUser.Location = new System.Drawing.Point(292, 374);
-            this.comboBoxUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxUser.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxUser.Name = "comboBoxUser";
             this.comboBoxUser.Size = new System.Drawing.Size(252, 24);
             this.comboBoxUser.TabIndex = 17;
@@ -214,7 +215,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.comboBoxBankName.FormattingEnabled = true;
             this.comboBoxBankName.Location = new System.Drawing.Point(292, 244);
-            this.comboBoxBankName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxBankName.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxBankName.MaxLength = 30;
             this.comboBoxBankName.Name = "comboBoxBankName";
             this.comboBoxBankName.Size = new System.Drawing.Size(252, 24);
@@ -243,7 +244,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxAccountType);
             this.Controls.Add(this.listView1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "BankAccount";
             this.Text = "Bank Account Editor";
             this.ResumeLayout(false);

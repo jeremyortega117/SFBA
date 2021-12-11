@@ -140,5 +140,24 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
 
         }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string username = listView1.SelectedItems[0].SubItems[1].Text.Trim();
+            string bankname = listView1.SelectedItems[0].SubItems[2].Text.Trim();
+            string lastfour = listView1.SelectedItems[0].SubItems[3].Text.Trim();
+            string accttype = listView1.SelectedItems[0].SubItems[4].Text.Trim();
+            string amount = listView1.SelectedItems[0].SubItems[5].Text.Trim();
+            string InterestFreq = listView1.SelectedItems[0].SubItems[6].Text.Trim();
+            string Interestrate = listView1.SelectedItems[0].SubItems[7].Text.Trim();
+
+            RepoTransaction.GetAcctKeyFromSelected();
+            RepoBankAccount.RetrieveAcctTypeKeyFromName();
+
+            username = username.Trim();
+            bankname = bankname.Trim();
+            lastfour = 
+            //comboBoxBankName.Text = listView1.SelectedItems[0].SubItems[1].Text;
+        }
     }
 }
