@@ -232,7 +232,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             textBoxAmount.Text = listView1.SelectedItems[0].SubItems[1].Text;
 
             // Description
-            textBoxDescription.Text = listView1.SelectedItems[0].SubItems[2].Text;
+            textBoxDescription.Text = listView1.SelectedItems[0].SubItems[3].Text;
 
             // Date Time
             DateTime date = Convert.ToDateTime(listView1.SelectedItems[0].SubItems[0].Text);

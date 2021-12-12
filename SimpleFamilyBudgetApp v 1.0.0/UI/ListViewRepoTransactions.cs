@@ -114,13 +114,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             string HomeType = RepoTransaction.MapTransTypes.ContainsKey(transType.TransDesc) ? RepoTransaction.MapTransTypes[transType.TransDesc] : transType.TransDesc;
 
             // 2
-            transaction.Add(trans[key].TransDesc);
-
-            // 3
+            var bank = RepoBankAccount.Accounts[trans[key].AcctKey];
             transaction.Add(transType.TransDesc);
 
+            // 3
+            transaction.Add(trans[key].TransDesc);
+
             // 4
-            var bank = RepoBankAccount.Accounts[trans[key].AcctKey];
             transaction.Add(bank.BankName);
 
             // 5
