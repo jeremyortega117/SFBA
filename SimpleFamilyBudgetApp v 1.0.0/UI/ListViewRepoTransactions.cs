@@ -160,7 +160,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 }
                 else
                 {
-                    nameAndVal[name] += value;
+                    nameAndVal[HomeType] += value;
                 }
             }
 
