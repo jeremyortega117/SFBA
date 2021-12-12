@@ -218,21 +218,21 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private void FillDataInEditor()
         {
             // Transaction Type
-            int transKey = Convert.ToInt32(listView1.SelectedItems[0].SubItems[1].Text);
+            int transKey = Convert.ToInt32(listView1.SelectedItems[0].SubItems[9].Text);
             labelKey.Text = transKey.ToString();
             ModelTransType type = RepoTransaction.TransTypes[RepoTransaction.Trans[transKey].TransTypeKey];
             string transType = type.TransDesc;
             comboBoxTransType.Text = transType;
 
             // Acct
-            int AcctNum = Convert.ToInt32(listView1.SelectedItems[0].SubItems[9].Text);
+            int AcctNum = Convert.ToInt32(listView1.SelectedItems[0].SubItems[8].Text);
             comboBoxAcct.Text = RepoBankAccount.RetrieveAcctSummaryFromAcctKey(AcctNum);
 
             // Balance
-            textBoxAmount.Text = listView1.SelectedItems[0].SubItems[4].Text;
+            textBoxAmount.Text = listView1.SelectedItems[0].SubItems[1].Text;
 
             // Description
-            textBoxDescription.Text = listView1.SelectedItems[0].SubItems[5].Text;
+            textBoxDescription.Text = listView1.SelectedItems[0].SubItems[2].Text;
 
             // Date Time
             DateTime date = Convert.ToDateTime(listView1.SelectedItems[0].SubItems[0].Text);
@@ -279,6 +279,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             List<ModelTrans> trans = new List<ModelTrans>();
             ModelTrans tran = RepoTransaction.Trans[transKey];
             tran.TransTypeKey = RepoTransaction.GetTransTypeKeyFromSelected(comboBoxTransType.Text);
+            tran.TransDesc = textBoxDescription.Text;
             tran.Amount = Convert.ToDouble(textBoxAmount.Text.Replace("$", "").Replace("(", "").Replace(")", ""));
             trans.Add(tran);
             RepoTransaction.EditTrans(trans, 'U');

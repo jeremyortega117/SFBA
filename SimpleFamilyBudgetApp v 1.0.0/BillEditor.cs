@@ -152,7 +152,18 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             {
                 string billType = comboBoxBillType.Text.Trim();
                 decimal amount;
-                if(decimal.TryParse(textBoxAmount.Text, out amount))
+                string strAmt = textBoxAmount.Text;
+                if (strAmt.StartsWith("$"))
+                {
+                    strAmt = strAmt.Substring(1);
+                }
+                if (strAmt.StartsWith("+") || strAmt.StartsWith("-"))
+                {
+                    strAmt = strAmt.Substring(1);
+                }
+                strAmt = strAmt.Replace("$", "").Replace("(", "").Replace(")", "");
+                strAmt = ConfigClass.RegexMoney.IsMatch(strAmt) ? strAmt.Replace(",", "").Replace("+","").Replace("-","") : "0";
+                if (decimal.TryParse(strAmt, out amount))
                 {
                     billAmount = amount;
                     billChar = getCharFromString(billType);

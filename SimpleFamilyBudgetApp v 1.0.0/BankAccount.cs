@@ -220,6 +220,21 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             e.Handled = true;
         }
 
+        private void buttonAddBank_Click(object sender, EventArgs e)
+        {
+            if (comboBoxBankName.Text.Trim() != "")
+            {
+                List<ModelAccountType> AccountTypes = new List<ModelAccountType>();
+                ModelAccountType accountType = new ModelAccountType();
+                accountType.AcctType = comboBoxAccountType.Text;
+                AccountTypes.Add(accountType);
+                RepoBankAccount.EditAccountType(AccountTypes, 'A');
+                RepoBankAccount.PrepareAccountTypes();
+                PrepareComboBoxes();
+                CheckIfEnableInsertButton();
+            }
+        }
+
         //private void checkBo(object sender, EventArgs e)
         //{
 

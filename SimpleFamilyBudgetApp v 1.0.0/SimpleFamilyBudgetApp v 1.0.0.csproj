@@ -64,6 +64,7 @@
     <Compile Include="BillEditor.Designer.cs">
       <DependentUpon>BillEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConfigClass.cs" />
     <Compile Include="ExpenseMap.cs">
       <SubType>Form</SubType>
     </Compile>

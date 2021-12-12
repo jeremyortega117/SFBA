@@ -8,9 +8,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 {
     internal class ListViewRepoTransactions
     {
-
-        internal static List<string> transactionHeaders = new List<string> {"Date", "Bank", "Acct", "Amount", "File Type", "Home Type", "Sign", "Description" };
-        internal static List<string> transactionHeadersActual = new List<string> { "Date", "Trans ID", "Bank", "Acct", "Amount", "File Type", "Home Type", "Sign", "Description", "Acct Num" };
+        internal static List<string> transactionHeaders = new List<string> { "Date", "Amount", "Home Type", "Description", "Bank", "Acct", "Sign", "File Type" };
+        internal static List<string> transactionHeadersActual = new List<string> { "Date", "Amount", "Home Type", "Description", "Bank", "Acct", "Sign", "File Type", "Acct Num","Trans ID"};
         internal static Dictionary<int, List<string>> TransactionsByTransKey;
         internal static double totalSpent = 0;
         internal static double totalIncome = 0;
@@ -44,32 +43,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             var trans = RepoTransaction.Trans;
             foreach (int key in trans.Keys)
             {
-                List<string> transaction = new List<string>();
-                transaction.Add(trans[key].TransDate.ToString("yyyy/MM/dd"));
-                transaction.Add(trans[key].TransKey.ToString());
-                var bank = RepoBankAccount.Accounts[trans[key].AcctKey];
-                transaction.Add(bank.BankName);
-                transaction.Add(bank.AcctLastFour.ToString());
-                transaction.Add(string.Format("{0:C}", trans[key].Amount));
                 var transType = RepoTransaction.TransTypes[trans[key].TransTypeKey];
-                transaction.Add(transType.TransDesc);
-                string HomeType = RepoTransaction.MapTransTypes.ContainsKey(transType.TransDesc) ? RepoTransaction.MapTransTypes[transType.TransDesc] : transType.TransDesc;
-                transaction.Add(HomeType);
-                transaction.Add(transType.TransSign.ToString());
-                transaction.Add(trans[key].TransDesc);
-                transaction.Add(trans[key].AcctKey.ToString());
-                ListViewItem lvi = new ListViewItem(transaction.ToArray());
-                if (transType.TransSign == '-')
-                {
-                    TransactionsByTransKey.Add(trans[key].TransKey, transaction);
-                    totalSpent += trans[key].Amount;
-                    lvi.BackColor = Color.FromArgb(200, 100, 100);
-                }
-                else if (transType.TransSign == '+')
-                {
-                    totalIncome += trans[key].Amount;
-                    lvi.BackColor = Color.FromArgb(100, 200, 100);
-                }
+                List<string> transaction = GrabTransationsFillData(trans, key, transType);
+                ListViewItem lvi = TransactionListViewItemRetrieval(transaction, trans, key, transType);
                 lview.Items.Add(lvi);
             }
 
@@ -78,6 +54,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             lview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             lview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
+
 
         internal void AddDataToListView(ListView lview, DateTime fromDate, DateTime toDate)
         {
@@ -92,32 +69,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
                 if (toCheck > fromDate && toCheck < toDate)
                 {
-                    List<string> transaction = new List<string>();
-                    transaction.Add(toCheck.ToString("yyyy/MM/dd"));
-                    transaction.Add(trans[key].TransKey.ToString());
-                    var bank = RepoBankAccount.Accounts[trans[key].AcctKey];
-                    transaction.Add(bank.BankName);
-                    transaction.Add(bank.AcctLastFour.ToString());
-                    transaction.Add(string.Format("{0:C}", trans[key].Amount));
                     var transType = RepoTransaction.TransTypes[trans[key].TransTypeKey];
-                    transaction.Add(transType.TransDesc);
-                    string HomeType = RepoTransaction.MapTransTypes.ContainsKey(transType.TransDesc) ? RepoTransaction.MapTransTypes[transType.TransDesc] : transType.TransDesc;
-                    transaction.Add(HomeType);
-                    transaction.Add(transType.TransSign.ToString());
-                    transaction.Add(trans[key].TransDesc);
-                    transaction.Add(trans[key].AcctKey.ToString());
-                    ListViewItem lvi = new ListViewItem(transaction.ToArray());
-                    if (transType.TransSign == '-')
-                    {
-                        TransactionsByTransKey.Add(trans[key].TransKey, transaction);
-                        totalSpent += trans[key].Amount;
-                        lvi.BackColor = Color.FromArgb(200, 100, 100);
-                    }
-                    else if(transType.TransSign == '+')
-                    {
-                        totalIncome += trans[key].Amount;
-                        lvi.BackColor = Color.FromArgb(100, 200, 100);
-                    }
+                    List<string> transaction = GrabTransationsFillData(trans, key, transType);
+                    ListViewItem lvi = TransactionListViewItemRetrieval(transaction, trans, key, transType);
                     lview.Items.Add(lvi);
                 }
             }
@@ -128,6 +82,66 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             lview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
+
+
+
+        private ListViewItem TransactionListViewItemRetrieval(List<string> transaction, Dictionary<int, ModelTrans> trans, int key, ModelTransType transType)
+        {
+            ListViewItem lvi = new ListViewItem(transaction.ToArray());
+            if (transType.TransSign == '-')
+            {
+                TransactionsByTransKey.Add(trans[key].TransKey, transaction);
+                totalSpent += trans[key].Amount;
+                lvi.BackColor = Color.FromArgb(200, 100, 100);
+            }
+            else if (transType.TransSign == '+')
+            {
+                totalIncome += trans[key].Amount;
+                lvi.BackColor = Color.FromArgb(100, 200, 100);
+            }
+            return lvi;
+        }
+
+        internal List<string> GrabTransationsFillData(Dictionary<int, ModelTrans> trans, int key, ModelTransType transType)
+        {
+            List<string> transaction = new List<string>();
+            // 0
+            transaction.Add(trans[key].TransDate.ToString("yyyy/MM/dd"));
+
+            // 1
+            transaction.Add(string.Format("{0:C}", trans[key].Amount));
+
+            string HomeType = RepoTransaction.MapTransTypes.ContainsKey(transType.TransDesc) ? RepoTransaction.MapTransTypes[transType.TransDesc] : transType.TransDesc;
+
+            // 2
+            transaction.Add(trans[key].TransDesc);
+
+            // 3
+            transaction.Add(transType.TransDesc);
+
+            // 4
+            var bank = RepoBankAccount.Accounts[trans[key].AcctKey];
+            transaction.Add(bank.BankName);
+
+            // 5
+            transaction.Add(bank.AcctLastFour.ToString());
+
+            // 6
+            transaction.Add(transType.TransSign.ToString());
+
+            // 7
+            transaction.Add(HomeType);
+
+            // 8
+            transaction.Add(trans[key].AcctKey.ToString());
+
+            // 9
+            transaction.Add(trans[key].TransKey.ToString());
+
+            return transaction;
+        }
+
+
         private void BuildPieChart()
         {
             Dictionary<string, double> nameAndVal = new Dictionary<string, double>();
@@ -136,9 +150,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
             foreach (int transKey in TransactionsByTransKey.Keys)
             {
-                string name = TransactionsByTransKey[transKey][6].ToString();
+                string name = TransactionsByTransKey[transKey][2].ToString();
                 string HomeType = RepoTransaction.MapTransTypes.ContainsKey(name) ? RepoTransaction.MapTransTypes[name] : name;
-                double value = Convert.ToDouble(TransactionsByTransKey[transKey][4].Replace("(", "").Replace(")", "").Replace("$", ""));
+                double value = Convert.ToDouble(TransactionsByTransKey[transKey][9].Replace("(", "").Replace(")", "").Replace("$", ""));
 
                 if (!nameAndVal.ContainsKey(HomeType))
                 {
