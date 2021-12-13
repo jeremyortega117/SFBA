@@ -152,7 +152,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             {
                 string name = TransactionsByTransKey[transKey][2].ToString();
                 string HomeType = RepoTransaction.MapTransTypes.ContainsKey(name) ? RepoTransaction.MapTransTypes[name] : name;
-                double value = Convert.ToDouble(TransactionsByTransKey[transKey][9].Replace("(", "").Replace(")", "").Replace("$", ""));
+                double value = Convert.ToDouble(TransactionsByTransKey[transKey][1].Replace("(", "").Replace(")", "").Replace("$", ""));
 
                 if (!nameAndVal.ContainsKey(HomeType))
                 {

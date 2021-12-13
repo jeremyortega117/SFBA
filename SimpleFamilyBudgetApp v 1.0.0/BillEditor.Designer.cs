@@ -74,6 +74,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.label10 = new System.Windows.Forms.Label();
             this.radioButtonDailyInt = new System.Windows.Forms.RadioButton();
             this.radioButtonMonthlyInt = new System.Windows.Forms.RadioButton();
+            this.buttonUpdate = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -571,12 +573,34 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.radioButtonMonthlyInt.UseVisualStyleBackColor = true;
             this.radioButtonMonthlyInt.CheckedChanged += new System.EventHandler(this.radioButtonMonthlyInt_CheckedChanged);
             // 
+            // buttonUpdate
+            // 
+            this.buttonUpdate.Location = new System.Drawing.Point(13, 458);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(77, 43);
+            this.buttonUpdate.TabIndex = 50;
+            this.buttonUpdate.Text = "Update";
+            this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Location = new System.Drawing.Point(513, 459);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(77, 43);
+            this.buttonDelete.TabIndex = 51;
+            this.buttonDelete.Text = "Delete";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
             // BillEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(601, 514);
+            this.Controls.Add(this.buttonDelete);
+            this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label8);
@@ -669,5 +693,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label TotalPlusInterest;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button buttonUpdate;
+        private System.Windows.Forms.Button buttonDelete;
     }
 }

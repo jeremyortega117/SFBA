@@ -189,8 +189,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             foreach (ModelBill Bill in Bills)
             {
-
-                Bill.FreqKey = Bill.Frequency.FreqKey = RepoFrequency.AddFrequency(Bill.Frequency);
+                //if (!RepoBills.Bills.ContainsKey(Bill.BillKey)) {
+                    Bill.FreqKey = Bill.Frequency.FreqKey = RepoFrequency.AddFrequency(Bill.Frequency);
+                //}
 
                 StringBuilder Builder = new StringBuilder();
                 Builder.AppendLine("EXECUTE proc_BILL_EDITOR");
