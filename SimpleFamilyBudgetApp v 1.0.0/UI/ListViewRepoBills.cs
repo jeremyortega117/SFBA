@@ -188,7 +188,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             foreach (int billKey in tempBillsTable.Keys)
             {
                 ModelBill bill = tempBillsTable[billKey];
-                if(bill.BillEndDate < date || bill.BillStartDate > billTo)
+                if(bill.BillEndDate < date || bill.BillStartDate > billTo || bill.BillType == 'c')
                 {
                     continue;
                 }
@@ -309,6 +309,15 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private bool TimeFrameDoesNotIncludeBill(char freq, ModelBill Bill, DateTime billFrom, DateTime billTo, DateTime date)
         {
+            //if(Bill.BillType == 'c')
+            //{
+            //    if (Bill.BillStartDate.Day == date.Day && Bill.BillStartDate < date)
+            //    {
+            //        return false;
+            //    }
+            //    return true;
+            //}
+
             // Outside scope of 'Timeframe' or outside scope of 'Pay To Own'
             if((Bill.BillStartDate > billTo || Bill.BillEndDate < date) && Bill.BillType != 'c'){
                 return true;

@@ -23,6 +23,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         Dictionary<int, string> Users;
         List<string> Accounts;
         List<string> ExpenseTypes;
+        ListViewColumnSorter lvcs;
 
         internal static DateTime BillFrom;
         internal static DateTime BillTo;
@@ -34,6 +35,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             checkedListBox1.CheckOnClick = true;
             checkedListBox2.CheckOnClick = true;
             PrepareAllData();
+        }
+
+        internal void listView1_ColumnSort(object sender, ColumnClickEventArgs e)
+        {
+            
         }
 
         private void PrepareAllData()
@@ -228,11 +234,15 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             {
                 lvr1 = new ListViewRepoTransactions(listView1, chart1);
                 lvr1.AddDataToListView(listView1, dateTimePickerFrom.Value, dateTimePickerTo.Value);
+                lvcs = new ListViewColumnSorter();
+                listView1.ListViewItemSorter = lvcs;
             }
             else if (radioBills.Checked)
             {
                 lvBill = new ListViewRepoBills(listView1, ListViewRepoBills.BillCycleHeaderList, chart1);
                 lvBill.AddDataToCycleListView(listView1, BillFrom, BillTo);
+                lvcs = new ListViewColumnSorter();
+                listView1.ListViewItemSorter = lvcs;
             }
             //else if (radioBudgets.Checked)
             //{
@@ -406,6 +416,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 labelTotalSpent.Text = string.Format("{0:C}", spent);
                 labelTotalBal.Text = string.Format("{0:C}", bal);
             }
+
+
         }
 
         private void buttonAllExpenses_Click(object sender, EventArgs e)
@@ -688,6 +700,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

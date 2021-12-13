@@ -95,6 +95,7 @@
     <Compile Include="ImportFile.Designer.cs">
       <DependentUpon>ImportFile.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\ListViewColumnSorter.cs" />
     <Compile Include="MODEL\ModelFrequency.cs" />
     <Compile Include="REPO\RepoFrequency.cs" />
     <Compile Include="REPO\RepoBills.cs" />

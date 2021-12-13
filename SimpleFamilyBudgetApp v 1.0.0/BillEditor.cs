@@ -19,6 +19,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         internal static decimal billTotal = 0;
         internal static bool ignore = true;
         internal static ListViewRepoBills lvue;
+        internal static int BillKey = 0;
 
         public BillEditor()
         {
@@ -677,11 +678,33 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         /// <param name="e"></param>
         private void buttonInsertNewBill_Click(object sender, EventArgs e)
         {
+            List<ModelBill> Bills = PrepareDataForDatabase();
+            RepoBills.EditBill(Bills, 'A');
+            UpdateAfterDataBaseInsertion();
+        }
+
+        private void UpdateAfterDataBaseInsertion()
+        {
+            clearText();
+            JustDisableEverything();
+            RepoFrequency.PrepareFrequencyData();
+            RepoBills.PrepareBillEditorData();
+            PrepareListViewData();
+        }
+
+        private List<ModelBill> PrepareDataForDatabase()
+        {
+
             List<ModelBill> Bills = new List<ModelBill>();
             ModelBill Bill = new ModelBill();
+            if (BillKey != 0)
+            {
+                Bill.BillKey = BillKey;
+            }
+            string strAmount = textBoxAmount.Text;
             Bill.Frequency = getCharFromRadioButtonFreq(new ModelFrequency());
             Bill.AccKey = RepoTransaction.GetAcctKeyFromSelected(comboBoxAccount.Text);
-            Bill.Amount = billAmount;
+            Bill.Amount = billAmount != 0 ? billAmount : Convert.ToDecimal(strAmount);
             Bill.Total = billTotal != 0 ? billTotal : billAmount;
             Bill.BillStartDate = dateTimePickerFromDate.Value;
             Bill.Interest = textBoxPercent.Text.Trim() != "" ? Convert.ToDecimal(textBoxPercent.Text) : 0;
@@ -696,18 +719,98 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             }
             Bill.BillType = getCharFromString(comboBoxBillType.Text);
             Bills.Add(Bill);
-
-            RepoBills.EditBill(Bills, 'A');
-            clearText();
-            JustDisableEverything();
-            RepoFrequency.PrepareFrequencyData();
-            RepoBills.PrepareBillEditorData();
-            PrepareListViewData();
+            return Bills;
         }
 
         private void listViewExistingBills_SelectedIndexChanged(object sender, EventArgs e)
         {
+            clearText();
+            if (listViewExistingBills.SelectedItems.Count > 1)
+            {
+                buttonInsertNewBill.Enabled = false;
+                buttonUpdate.Enabled = false;
+                buttonDelete.Enabled = true;
+            }
+            else if (listViewExistingBills.SelectedItems.Count == 1)
+            {
+                FillDataInEditor();
+                buttonDelete.Enabled = true;
+                buttonUpdate.Enabled = true;
+            }
+            else if (listViewExistingBills.SelectedItems.Count == 0)
+            {
+                buttonUpdate.Enabled = false;
+                buttonDelete.Enabled = false;
+            }
+        }
 
+        private void FillDataInEditor()
+        {
+            BillKey = Convert.ToInt32(listViewExistingBills.SelectedItems[0].SubItems[0].Text);
+            dateTimePickerFromDate.Value = Convert.ToDateTime(listViewExistingBills.SelectedItems[0].SubItems[1].Text);
+            dateTimePickerToDate.Value = Convert.ToDateTime(listViewExistingBills.SelectedItems[0].SubItems[2].Text);
+            char bType = Convert.ToChar(listViewExistingBills.SelectedItems[0].SubItems[8].Text);
+            string billType = "";
+            if(RepoBills.BillTypes.ContainsKey(bType))
+            {
+                billType = RepoBills.BillTypes[bType];
+            }
+            comboBoxBillType.Text = billType;
+            comboBoxAccount.Text = listViewExistingBills.SelectedItems[0].SubItems[9].Text;
+            textBoxAmount.Text = listViewExistingBills.SelectedItems[0].SubItems[4].Text;
+            textBoxPayOffTotal.Text = listViewExistingBills.SelectedItems[0].SubItems[5].Text;
+            textBoxPercent.Text = listViewExistingBills.SelectedItems[0].SubItems[6].Text;
+            radioButtonUseExistingDescription.Checked = true; 
+            comboBoxDescription.Text = listViewExistingBills.SelectedItems[0].SubItems[3].Text;
+            int freqKey = -1;
+            if (RepoBills.Bills.ContainsKey(BillKey)) {
+                freqKey = RepoBills.Bills[BillKey].FreqKey;
+            }
+            ModelFrequency freq = null;
+            char freqType = 'm';
+            if (RepoFrequency.Freqs.ContainsKey(freqKey)) 
+            {
+                freq = RepoFrequency.Freqs[freqKey];
+                freqType = freq.FreqType;
+                if(freqType == 'd')
+                {
+                    radioButtonDaily.Checked = true;
+                }
+                else if (freqType == 'w')
+                {
+                    radioButtonWeekly.Checked = true;
+                    checkBoxMonday.Checked = Convert.ToBoolean(listViewExistingBills.SelectedItems[0].SubItems[11].Text);
+                    checkBoxTuesday.Checked = Convert.ToBoolean(listViewExistingBills.SelectedItems[0].SubItems[12].Text);
+                    checkBoxWednesday.Checked = Convert.ToBoolean(listViewExistingBills.SelectedItems[0].SubItems[13].Text);
+                    checkBoxThursday.Checked = Convert.ToBoolean(listViewExistingBills.SelectedItems[0].SubItems[14].Text);
+                    checkBoxFriday.Checked = Convert.ToBoolean(listViewExistingBills.SelectedItems[0].SubItems[15].Text);
+                    checkBoxSaturday.Checked = Convert.ToBoolean(listViewExistingBills.SelectedItems[0].SubItems[16].Text);
+                    checkBoxSunday.Checked = Convert.ToBoolean(listViewExistingBills.SelectedItems[0].SubItems[17].Text);
+                }
+                else if(freqType == 'm')
+                {
+                    radioButtonMonthly.Checked = true;
+                }
+                else if (freqType == 'y')
+                {
+                    radioButtonYearly.Checked = true;
+                }
+            }
+            PredictDates();
+        }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            List<ModelBill> Bills = PrepareDataForDatabase();
+            RepoBills.EditBill(Bills, 'U');
+            UpdateAfterDataBaseInsertion();
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            List<ModelBill> Bills = PrepareDataForDatabase();
+            RepoBills.EditBill(Bills, 'D');
+            UpdateAfterDataBaseInsertion();
         }
 
         private void clearText()
