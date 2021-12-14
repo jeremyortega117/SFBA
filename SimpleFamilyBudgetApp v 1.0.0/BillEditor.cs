@@ -20,6 +20,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         internal static bool ignore = true;
         internal static ListViewRepoBills lvue;
         internal static int BillKey = 0;
+        internal ListViewColumnSorter lvcs;
 
         public BillEditor()
         {
@@ -36,6 +37,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             radioButtonMonthlyInt.Enabled = false;
             textBoxPercent.Text = "";
             textBoxPercent.Enabled = false;
+            lvcs = new ListViewColumnSorter();
+            listViewExistingBills.ListViewItemSorter = lvcs;
             PrepareListViewData();
             PrepComboBox();
         }

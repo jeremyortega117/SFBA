@@ -13,6 +13,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 {
     public partial class BankAccount : Form
     {
+        internal ListViewColumnSorter lvcs;
 
         public BankAccount()
         {
@@ -27,6 +28,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             RepoBankAccount.PrepareAcctEditorData();
             PrepareComboBoxes();
             ClearData();
+            lvcs = new ListViewColumnSorter();
+            listView1.ListViewItemSorter = lvcs;
             ListViewRepoBankAccount lvrba = new ListViewRepoBankAccount(listView1);
             lvrba.AddDataToListView(listView1);
             CheckIfEnableInsertButton();

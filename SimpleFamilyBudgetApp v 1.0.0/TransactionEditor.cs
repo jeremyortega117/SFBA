@@ -40,11 +40,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             RepoBankAccount.PrepareAcctEditorData();
             RepoTransaction.PrepareTransTypes();
             RepoTransaction.PrepareTransData();
+            lvcs = new ListViewColumnSorter();
+            listView1.ListViewItemSorter = lvcs;
             ListViewRepoTransactions lvrt = new ListViewRepoTransactions(listView1);
             lvrt.AddDataToListView(listView1);
             PrepareComboBoxes();
-            lvcs = new ListViewColumnSorter();
-            listView1.ListViewItemSorter = lvcs;
+            //lvcs = new ListViewColumnSorter();
+            //listView1.ListViewItemSorter = lvcs;
         }
 
         private void PrepareComboBoxes()
