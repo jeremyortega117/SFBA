@@ -29,11 +29,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             DataGridViewTextBoxColumn tbCol = new DataGridViewTextBoxColumn();
             DataGridViewComboBoxColumn cbCol = new DataGridViewComboBoxColumn();
             DataGridViewButtonColumn bcCol = new DataGridViewButtonColumn();
+            DataGridViewCheckBoxColumn inCol = new DataGridViewCheckBoxColumn();
             tbCol.HeaderText = "Original Type";
             cbCol.HeaderText = "New Type";
             bcCol.HeaderText = "Color Picker";
             bcCol.Name = "Color Picker";
-            dataGridView1.Columns.AddRange(tbCol, cbCol,bcCol);
+            inCol.HeaderText = "Include Expense";
+            dataGridView1.Columns.AddRange(tbCol, cbCol,bcCol,inCol);
 
 
 
@@ -53,11 +55,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                     color = "White";
                 added.Add(temp.TransDesc);
                 AddAnotherRow(row);
-                dataGridView1.Rows[row].Cells[1].Value = NewValue;
                 dataGridView1.Rows[row].Cells[0].Value = temp.TransDesc;
+                dataGridView1.Rows[row].Cells[1].Value = NewValue;
                 dataGridView1.Rows[row].Cells[2].Value = color;
-
-
+                dataGridView1.Rows[row].Cells[3].Value = RepoTransaction.MapTransTypesByKey[mapID].IncludeExpense;
                 row++;
             }
 
@@ -159,7 +160,21 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 string newVal = cbcell.EditedFormattedValue.ToString().Trim();
                 string colorVal;
                 int mapID = RepoTransaction.GetExpenseTypeKey(origvl);
+                bool checkedExpense = true;
+                
+                DataGridViewCheckBoxCell includeExpense = new DataGridViewCheckBoxCell();
+                includeExpense = (DataGridViewCheckBoxCell)dataGridView1.Rows[i].Cells[3];
+                
+                //if (includeExpense)
+                //{
+                //    checkedExpense = false;
+                //}
+                ////if (includeExpense.Value) {
+                ////    checkedExpense = false;
+                ////}
+                ///
 
+                // Color Picker
                 if (!colorForFiguredTransTypes.ContainsKey(newVal))
                 {
                     colorVal = dataGridView1.Rows[i].Cells[2].EditedFormattedValue.ToString().Trim();
@@ -171,16 +186,19 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                     dataGridView1.Rows[i].Cells[2].Value = colorVal;
                 }
 
+                // Mapped types
                 if (RepoTransaction.MapTransTypes.ContainsKey(origvl))
                 {
                     if (RepoTransaction.MapTransTypes[origvl] != newVal 
-                        || RepoTransaction.MapTransTypesByKey[mapID].ColorValue != colorVal)
+                        || RepoTransaction.MapTransTypesByKey[mapID].ColorValue != colorVal
+                        || RepoTransaction.MapTransTypesByKey[mapID].IncludeExpense != (bool)includeExpense.Value)
                     {
                         ModelMapExpenseTypes map = new ModelMapExpenseTypes();
                         map.MapId = mapID;
                         map.OrigVal = origvl;
                         map.NewVal = newVal;
                         map.ColorValue = colorVal;
+                        map.IncludeExpense = (bool)includeExpense.Value;
                         mapsToUpdate.Add(map);
                     }
                 }
@@ -190,6 +208,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                     map.OrigVal = origvl;
                     map.NewVal = newVal;
                     map.ColorValue = colorVal;
+                    map.IncludeExpense = true;
                     newmaps.Add(map);
                 }
             }
@@ -214,14 +233,17 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //null checking for  the column
-            if (dataGridView1.CurrentRow.Cells["Color Picker"] != null)
+            if (e.ColumnIndex == 2)
             {
-                ColorDialog colorDlg = new ColorDialog(); //create colordialog instance
-                colorDlg.AllowFullOpen = true;
-                colorDlg.AnyColor = true;
-                colorDlg.ShowDialog(); //display dialog
-                dataGridView1.CurrentRow.Cells["Color Picker"].Value = colorDlg.Color.Name; //keep the selected value
+                //null checking for  the column
+                if (dataGridView1.CurrentRow.Cells["Color Picker"] != null)
+                {
+                    ColorDialog colorDlg = new ColorDialog(); //create colordialog instance
+                    colorDlg.AllowFullOpen = true;
+                    colorDlg.AnyColor = true;
+                    colorDlg.ShowDialog(); //display dialog
+                    dataGridView1.CurrentRow.Cells["Color Picker"].Value = colorDlg.Color.Name; //keep the selected value
+                }
             }
         }
     }

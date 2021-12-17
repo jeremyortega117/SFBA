@@ -320,7 +320,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             {
                 foreach (var types in RepoTransaction.MapTransTypes)
                 {
-                    if (!alreadyadded.Contains(types.Value))
+                    if (!alreadyadded.Contains(types.Value) && RepoTransaction.MapTransTypesByIncluded.Contains(types.Value))
                     {
                         alreadyadded.Add(types.Value);
                     }
@@ -330,7 +330,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             {
                 foreach (var types in RepoTransaction.TransTypes.Values)
                 {
-                    if (!alreadyadded.Contains(types.TransDesc))
+                    if (!alreadyadded.Contains(types.TransDesc) && RepoTransaction.MapTransTypesByIncluded.Contains(types.TransDesc))
                     {
                         alreadyadded.Add(types.TransDesc);
                     }

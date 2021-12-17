@@ -21,13 +21,11 @@ C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleF
 C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp_v_1._0._0.BankAccount.resources
 C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp_v_1._0._0.TransactionEditor.resources
 C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp_v_1._0._0.BillEditor.resources
-C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp_v_1._0._0.FrequencyClass.resources
 C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp_v_1._0._0.ChangeOrDeleteAccount.resources
 C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp_v_1._0._0.ImportFile.resources
 C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\bin\Debug\WEB_BROWSER\PieChart.html
 C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp_v_1._0._0.MainEditor.resources
 C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp_v_1._0._0.ExpenseMap.resources
-C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp_v_1._0._0.BudgetWindow.resources
 C:\Users\JPOje\source\repos\SimpleFamilyBudgetApp v 1.0.0\bin\Debug\WEB_BROWSER\PieChart.html
 C:\Users\JPOje\source\repos\SimpleFamilyBudgetApp v 1.0.0\bin\Debug\SimpleFamilyBudgetApp v 1.0.0.exe.config
 C:\Users\JPOje\source\repos\SimpleFamilyBudgetApp v 1.0.0\bin\Debug\SimpleFamilyBudgetApp v 1.0.0.exe

@@ -71,23 +71,11 @@
     <Compile Include="ExpenseMap.Designer.cs">
       <DependentUpon>ExpenseMap.cs</DependentUpon>
     </Compile>
-    <Compile Include="BudgetWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BudgetWindow.Designer.cs">
-      <DependentUpon>BudgetWindow.cs</DependentUpon>
-    </Compile>
     <Compile Include="ChangeOrDeleteAccount.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ChangeOrDeleteAccount.Designer.cs">
       <DependentUpon>ChangeOrDeleteAccount.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrequencyClass.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrequencyClass.Designer.cs">
-      <DependentUpon>FrequencyClass.cs</DependentUpon>
     </Compile>
     <Compile Include="ImportFile.cs">
       <SubType>Form</SubType>
@@ -142,17 +130,11 @@
     <EmbeddedResource Include="ExpenseMap.resx">
       <DependentUpon>ExpenseMap.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BudgetWindow.resx">
-      <DependentUpon>BudgetWindow.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ChangeOrDeleteAccount.resx">
       <DependentUpon>ChangeOrDeleteAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainEditor.resx">
       <DependentUpon>MainEditor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrequencyClass.resx">
-      <DependentUpon>FrequencyClass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImportFile.resx">
       <DependentUpon>ImportFile.cs</DependentUpon>

@@ -12,18 +12,18 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         ListView lview = new ListView();
         internal void PrepareListViewHeaders(ListView lvo, List<string> headerList)
         {
+            lvo.View = View.Details;
+            lvo.FullRowSelect = false;
             lvo.Columns.Clear();
             lvo.Items.Clear();
             lvo.GridLines = true;
             lvo.AllowColumnReorder = true;
-            lvo.LabelEdit = true;
-            lvo.FullRowSelect = true;
+            lvo.LabelEdit = false;
             lvo.Sorting = SortOrder.Ascending;
-            lvo.View = View.Details;
             lvo.Columns.AddRange(PrepareAsColHeaders(headerList).ToArray());
-            //this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             lvo.ColumnClick += new ColumnClickEventHandler(listView1_ColumnSort);
             lview = lvo;
+            
         }
 
         private void listView1_ColumnSort(object sender, ColumnClickEventArgs e)
@@ -62,6 +62,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             {
                 ColumnHeader colHead = new ColumnHeader();
                 colHead.Text = header;
+                
                 temp.Add(colHead);
             }
             return temp;
