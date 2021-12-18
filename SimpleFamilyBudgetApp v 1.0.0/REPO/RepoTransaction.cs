@@ -58,7 +58,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                         mapTo.NewVal = Reader["NEW_VALUE"].ToString();
                         mapTo.ColorValue = Reader["COLOR_VALUE"].Equals(DBNull.Value) ? "WHITE" : Reader["COLOR_VALUE"].ToString();
                         mapTo.TransTypeKey = Convert.ToInt32(Reader["TRANS_TYPE_KEY"]);
-                        mapTo.IncludeExpense = Convert.ToBoolean(Reader["INCLUDE_EXPENSE"]);
+                        mapTo.IncludeExpense = Reader["INCLUDE_EXPENSE"].Equals(DBNull.Value) ? true : Convert.ToBoolean(Reader["INCLUDE_EXPENSE"]);
 
                         if (!MapTransTypesByKey.ContainsKey(mapTo.MapId))
                             MapTransTypesByKey.Add(mapTo.MapId, mapTo);

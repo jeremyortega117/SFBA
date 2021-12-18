@@ -58,7 +58,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 dataGridView1.Rows[row].Cells[0].Value = temp.TransDesc;
                 dataGridView1.Rows[row].Cells[1].Value = NewValue;
                 dataGridView1.Rows[row].Cells[2].Value = color;
-                dataGridView1.Rows[row].Cells[3].Value = RepoTransaction.MapTransTypesByKey[mapID].IncludeExpense;
+                bool mapIDBool = (mapID != int.MinValue && mapID >= 0) ? true : false;
+                if (mapIDBool) {
+                    dataGridView1.Rows[row].Cells[3].Value = RepoTransaction.MapTransTypesByKey[mapID].IncludeExpense;
+                }
                 row++;
             }
 
