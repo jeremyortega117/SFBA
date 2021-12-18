@@ -23,7 +23,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             lvo.Columns.AddRange(PrepareAsColHeaders(headerList).ToArray());
             lvo.ColumnClick += new ColumnClickEventHandler(listView1_ColumnSort);
             lview = lvo;
-            
         }
 
         private void listView1_ColumnSort(object sender, ColumnClickEventArgs e)
