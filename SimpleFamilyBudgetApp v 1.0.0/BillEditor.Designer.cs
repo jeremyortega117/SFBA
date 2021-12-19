@@ -575,6 +575,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // buttonUpdate
             // 
+            this.buttonUpdate.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.buttonUpdate.Location = new System.Drawing.Point(13, 458);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(77, 43);
@@ -585,6 +586,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // buttonDelete
             // 
+            this.buttonDelete.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.buttonDelete.Location = new System.Drawing.Point(513, 459);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(77, 43);

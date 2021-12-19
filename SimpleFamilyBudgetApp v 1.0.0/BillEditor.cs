@@ -230,64 +230,34 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                         totalIntPotential += interest;
                         labellabelNextPrincPayAmt.Text = string.Format("{0:C}", principle);
                         labelNextIntPercAmt.Text = string.Format("{0:C}", interest); 
-                        while (RemainingBalance >= 0)
-                        {
+                        while (RemainingBalance > 0)
+                        { 
                             interest = RemainingBalance * intRate;
+                            //if ((RemainingBalance - billAmount) < 0)
+                            //{
+                            //    billAmount = RemainingBalance + interest;
+                            //}
+                            //billAmount = (RemainingBalance - billAmount) < 0 ? RemainingBalance + 1 + interest : billAmount;
+
                             principle = billAmount - interest;
-                            RemainingBalance -= principle;
+                            if ((RemainingBalance - principle) < 0)
+                            {
+                                RemainingBalance = 0;
+                            }
+                            else
+                            {
+                                RemainingBalance -= principle;
+                                interval++;
+                            }
+
                             totalIntPotential += interest;
-                            interval++;
                         }
                         labelTotalIntPaid.Text = string.Format("{0:C}", totalIntPotential);
                     }
-                    #region temp
-                    //else
-                    //{
-                    //    decimal principle, interest, intRate = Convert.ToDecimal(textBoxPercent.Text.Trim()) / 100 / 365;
-                    //    interest = billTotal * intRate;
-                    //    principle = billAmount/ Convert.ToDecimal(30.25) - interest;
-                    //    decimal RemainingBalance = billTotal - (interest + principle);
-                    //    if (principle <= 0)
-                    //    {
-                    //        labelTotalIntPaid.Text = "";
-                    //        labelNextIntPercAmt.Text = "";
-                    //        labellabelNextPrincPayAmt.Text = "";
-                    //        return;
-                    //    }
-                    //    totalIntPotential += interest;
-                    //    bool firstThirty = true;
-                    //    decimal runningInt = 0;
-                    //    decimal runningPrinc = 0;
-                    //    while (RemainingBalance >= 0)
-                    //    {
-                    //        interest = Convert.ToDecimal((RemainingBalance * intRate)/Convert.ToDecimal(30.25));
-                    //        principle = (billAmount/Convert.ToDecimal(30.25)) - (interest);
-                    //        RemainingBalance -= (interest + principle);
-                    //        totalIntPotential += interest;
-                    //        if (interval % 30 == 0)
-                    //        {
-                    //            if (firstThirty && interval != 0)
-                    //            {
-                    //                decimal interestAmt = (runningInt + interest) * Convert.ToDecimal(30.25);
-                    //                labellabelNextPrincPayAmt.Text = string.Format("{0:C}", billAmount - interestAmt);
-                    //                labelNextIntPercAmt.Text = string.Format("{0:C}", interestAmt);
-                    //                firstThirty = false;
-                    //            }
-                    //            interval++;
-                    //        }
-                    //        else if (firstThirty)
-                    //        {
-                    //            runningInt += interest;
-                    //            runningPrinc += principle;
-                    //        }
-                    //    }
-                    //    totalIntPotential *= 30;
-                    //    labelTotalIntPaid.Text = string.Format("{0:C}", totalIntPotential);
-                    //}
-                    #endregion
                     decimal newTotal = billTotal + totalIntPotential;
                     TotalPlusInterest.Text = string.Format("{0:C}", newTotal);
-                    remainder = newTotal / billAmount;
+                    remainder = 0;
+                    //remainder = newTotal / billAmount;
                 }
                 else
                 {
@@ -761,6 +731,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             comboBoxBillType.Text = billType;
             comboBoxAccount.Text = listViewExistingBills.SelectedItems[0].SubItems[9].Text;
             textBoxAmount.Text = listViewExistingBills.SelectedItems[0].SubItems[4].Text;
+            billAmount = Convert.ToDecimal(textBoxAmount.Text);
             textBoxPayOffTotal.Text = listViewExistingBills.SelectedItems[0].SubItems[5].Text;
             textBoxPercent.Text = listViewExistingBills.SelectedItems[0].SubItems[6].Text;
             radioButtonUseExistingDescription.Checked = true; 
