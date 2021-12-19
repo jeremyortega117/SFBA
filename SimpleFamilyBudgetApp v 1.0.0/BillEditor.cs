@@ -731,6 +731,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             comboBoxBillType.Text = billType;
             comboBoxAccount.Text = listViewExistingBills.SelectedItems[0].SubItems[9].Text;
             textBoxAmount.Text = listViewExistingBills.SelectedItems[0].SubItems[4].Text;
+            billAmount = Convert.ToDecimal(textBoxAmount.Text);
             textBoxPayOffTotal.Text = listViewExistingBills.SelectedItems[0].SubItems[5].Text;
             textBoxPercent.Text = listViewExistingBills.SelectedItems[0].SubItems[6].Text;
             radioButtonUseExistingDescription.Checked = true; 
