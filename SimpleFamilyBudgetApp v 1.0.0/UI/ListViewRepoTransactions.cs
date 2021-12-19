@@ -155,32 +155,46 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 double value = Convert.ToDouble(TransactionsByTransKey[transKey][1].Replace("(", "").Replace(")", "").Replace("$", ""));
 
                 if (!nameAndVal.ContainsKey(HomeType))
-                {
                     nameAndVal.Add(HomeType, value);
-                }
                 else
-                {
                     nameAndVal[HomeType] += value;
-                }
             }
 
             foreach (var trans in nameAndVal)
-            {
                 names.Add(trans.Key + " " + string.Format("{0:C}", trans.Value));
-            }
 
             chart.Series[0].ChartType = SeriesChartType.Pie;
             chart.Series[0]["PieLabelStyle"] = "outside";
-            int i = 0;
             chart.Series[0].Points.DataBindXY(names, nameAndVal.Values);
+            //PieChartColorCustomDefault(nameAndVal, DefaultColors.Greens);
+            //PieChartColorCustomDefault(nameAndVal, DefaultColors.Desert);
+            PieChartColorCustom(nameAndVal);
+            chart.Legends[0].Enabled = true;
+            chart.ChartAreas[0].Area3DStyle.Enable3D = true;
+        }
+
+        private void PieChartColorCustomDefault(Dictionary<string, double> nameAndVal, List<string> greens)
+        {
+            int i = 0;
+            foreach (string name in nameAndVal.Keys)
+            {
+                string color = greens[i%(nameAndVal.Count-1)];
+                Color col = ColorTranslator.FromHtml($"#{color}");
+                chart.Series[0].Points[i++].Color = col;
+            }
+        }
+
+        private void PieChartColorCustom(Dictionary<string, double> nameAndVal)
+        {
+            int i = 0;
             foreach (string name in nameAndVal.Keys)
             {
                 string colorName = "White";
                 Color col;
-                if (RepoTransaction.MapTransTypesToColors.ContainsKey(name) )
+                if (RepoTransaction.MapTransTypesToColors.ContainsKey(name))
                 {
                     string tempColor = RepoTransaction.MapTransTypesToColors[name].Trim();
-                    if(tempColor != "")
+                    if (tempColor != "")
                         colorName = tempColor;
                 }
                 col = Color.FromName(colorName);
@@ -188,9 +202,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                     col = ColorTranslator.FromHtml($"#{colorName}");
                 chart.Series[0].Points[i++].Color = col;
             }
-            chart.Legends[0].Enabled = true;
-            chart.ChartAreas[0].Area3DStyle.Enable3D = true;
-
         }
     }
 }
