@@ -9,9 +9,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 {
     internal class ListViewHeadersClass
     {
-        ListView lview = new ListView();
+        internal ListView lview;// = new ListView();
         internal void PrepareListViewHeaders(ListView lvo, List<string> headerList)
         {
+            lview = new ListView();
             lvo.View = View.Details;
             lvo.FullRowSelect = false;
             lvo.Columns.Clear();

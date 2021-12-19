@@ -152,7 +152,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                         decimal interest = 0, principle = 0;
 
                         if(Bill.Interest != 0)
-                            interest = Bill.Total * Bill.Interest / 100 / 12;
+                            interest = Bill.Total * Bill.Interest / 100 / 12; // Change to percent / use 12 month default interest rate
 
                         Bill.TotalInterest += interest;
 
@@ -161,11 +161,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                         string desc = Bill.BillDesc.ToString();
                         UpdateBillTotalForPieChart(desc, Bill.Amount);
 
+                        Bill.Total -= principle;
+                        Total += Bill.Amount;
+
                         List<string> billHeaders = PrepareBillHeaderForMainBillListView(date, Bill, desc, billType, principle, interest);
                         DataFormats.Add(billHeaders.ToArray());
 
-                        Bill.Total -= principle;
-                        Total += Bill.Amount;
                     }
                 }
                 date = date.AddDays(1);
