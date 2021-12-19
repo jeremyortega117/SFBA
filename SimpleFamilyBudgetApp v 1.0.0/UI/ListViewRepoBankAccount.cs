@@ -19,7 +19,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             lview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
-
         internal void AddDataToListView(ListView lview)
         {
             var Accounts = RepoBankAccount.Accounts;

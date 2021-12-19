@@ -34,7 +34,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         #region Retrieve Account Types
         internal static void PrepareTransMap()
         {
-            string SQL = "select TRANS_TYPE_KEY, TRANS_SIGN, MAP_ID, ORIG_VAL, NEW_VALUE, COLOR_VALUE, INCLUDE_EXPENSE from TRANS_TYPE with(nolock) join MAP_EXPENSE_TYPES with(nolock) on MAP_EXPENSE_TYPES.ORIG_VAL = TRANS_TYPE.TRANS_DESC ORDER BY ORIG_VAL";
+            string SQL = "select TRANS_TYPE_KEY, TRANS_SIGN, MAP_ID, ORIG_VAL, NEW_VALUE, COLOR_VALUE, INCLUDE_EXPENSE FROM TRANS_TYPE with(nolock) join MAP_EXPENSE_TYPES with(nolock) on MAP_EXPENSE_TYPES.ORIG_VAL = TRANS_TYPE.TRANS_DESC ORDER BY ORIG_VAL";
             MapTransOrig = new HashSet<string>();
             MapTransNew = new HashSet<string>();
             MapTransTypes = new Dictionary<string, string>();

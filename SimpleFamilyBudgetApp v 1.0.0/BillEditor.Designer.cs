@@ -86,6 +86,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewExistingBills.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.listViewExistingBills.FullRowSelect = true;
             this.listViewExistingBills.HideSelection = false;
             this.listViewExistingBills.Location = new System.Drawing.Point(0, 0);
             this.listViewExistingBills.Name = "listViewExistingBills";
