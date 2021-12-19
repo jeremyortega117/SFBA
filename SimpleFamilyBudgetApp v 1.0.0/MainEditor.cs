@@ -720,7 +720,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void ToolStripMenuItemCreateBudget_Click(object sender, EventArgs e)
         {
-
+            BudgetEditor budget = new BudgetEditor();
+            budget.ShowDialog();
         }
 
         private void mapExpenseToolStripMenuItem_Click(object sender, EventArgs e)

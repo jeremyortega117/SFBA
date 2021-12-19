@@ -35,9 +35,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             bcCol.HeaderText = "Color Picker";
             bcCol.Name = "Color Picker";
             inCol.HeaderText = "Include Expense";
-            dataGridView1.Columns.AddRange(tbCol, cbCol,bcCol,inCol);
-
-
+            dataGridView1.Columns.AddRange(tbCol,cbCol,bcCol,inCol);
 
             Dictionary<string, string> colorForFiguredTransTypes = new Dictionary<string, string>();
             int row = 0;
@@ -164,15 +162,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 
                 DataGridViewCheckBoxCell includeExpense = new DataGridViewCheckBoxCell();
                 includeExpense = (DataGridViewCheckBoxCell)dataGridView1.Rows[i].Cells[3];
-                
-                //if (includeExpense)
-                //{
-                //    checkedExpense = false;
-                //}
-                ////if (includeExpense.Value) {
-                ////    checkedExpense = false;
-                ////}
-                ///
 
                 // Color Picker
                 if (!colorForFiguredTransTypes.ContainsKey(newVal))
