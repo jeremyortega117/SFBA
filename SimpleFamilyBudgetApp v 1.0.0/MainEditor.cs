@@ -23,6 +23,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         Dictionary<int, string> Users;
         List<string> Accounts;
         List<string> ExpenseTypes;
+        List<string> Bills;
         ListViewColumnSorter lvcs;
 
         internal static DateTime BillFrom;
@@ -34,6 +35,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             checkedListBoxUsers.CheckOnClick = true;
             checkedListBox1.CheckOnClick = true;
             checkedListBox2.CheckOnClick = true;
+            lvcs = new ListViewColumnSorter();
             PrepareAllData();
         }
 
@@ -55,11 +57,14 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             BillTo = dateTimePickerTo.Value = GetEndOfMonth();
             DisplayAllUsersCheckTypes();
             DisplayAllExpenseCheckTypes();
+            DisplayAllBillCheckTypes();
             DisplayAllAccounts();
             radioExpenses.Checked = true;
             PrepareToolOptions();
             refreshAfterFilter();
         }
+
+
 
         private void PrepareLabels()
         {
@@ -234,14 +239,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             {
                 lvr1 = new ListViewRepoTransactions(listView1, chart1);
                 lvr1.AddDataToListView(listView1, dateTimePickerFrom.Value, dateTimePickerTo.Value);
-                lvcs = new ListViewColumnSorter();
                 listView1.ListViewItemSorter = lvcs;
             }
             else if (radioBills.Checked)
             {
                 lvBill = new ListViewRepoBills(listView1, ListViewRepoBills.BillCycleHeaderList, chart1);
                 lvBill.AddDataToCycleListView(listView1, BillFrom, BillTo);
-                lvcs = new ListViewColumnSorter();
                 listView1.ListViewItemSorter = lvcs;
             }
             //else if (radioBudgets.Checked)
@@ -309,6 +312,17 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             {
                 string userCombonation = $"{user.LastName}, {user.FirstName} {user.MiddleInitial} : {user.userName}.";
                 checkedListBoxUsers.Items.Add(userCombonation, CheckState.Checked);
+            }
+        }
+
+        private void DisplayAllBillCheckTypes()
+        {
+            checkedListBoxBills.Items.Clear();
+            Bills = new List<string>();
+            foreach (string names in RepoBills.BillDescriptions)
+            {
+                checkedListBoxBills.Items.Add(names, CheckState.Checked);
+                Bills.Add(names);
             }
         }
 
@@ -397,6 +411,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 FillAccountsAndExpenseTypesChecked(); // Fills objects with filtered data
                 RepoTransaction.PrepareTransDataWithFilters(Accounts, ExpenseTypes);
             }
+            else if (radioBills.Checked)
+            {
+                FillBillsTypesChecked();
+                RepoBills.PrepareBillEditorDataWithFilters(Bills);
+            }
 
             PrepareLabels();
             PrepareListViews();
@@ -418,6 +437,18 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             }
 
 
+        }
+
+        private void FillBillsTypesChecked()
+        {
+            Bills = new List<string>();
+
+            foreach (var checkedIndex in checkedListBoxBills.CheckedItems)
+            {
+                string name = checkedIndex.ToString();
+                if (!Bills.Contains(name))
+                    Bills.Add(name);
+            }
         }
 
         private void buttonAllExpenses_Click(object sender, EventArgs e)
@@ -705,6 +736,32 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonNoBillTypes_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < checkedListBoxBills.Items.Count; i++)
+            {
+                checkedListBoxBills.SetItemChecked(i, false);
+            }
+        }
+
+        private void buttonAllBillTypes_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < checkedListBoxBills.Items.Count; i++)
+            {
+                checkedListBoxBills.SetItemChecked(i, true);
+            }
+        }
+
+        private void checkedListBoxUsers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkedListBoxBills_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

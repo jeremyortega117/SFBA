@@ -14,6 +14,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         internal static Dictionary<char, string> BillTypes = new Dictionary<char, string>();
         internal static string C = "Continuous", T = "Timefreame (\"start - end time\")", P = "Pay To Own";
+        internal static HashSet<string> BillDescriptions;
 
         /// <summary>
         /// Grab data from database.
@@ -24,7 +25,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             BillTypes.Add('c', C);
             BillTypes.Add('t', T);
             BillTypes.Add('p', P);
-
+            BillDescriptions = new HashSet<string>();
             StringBuilder Builder = new StringBuilder();
             Builder.AppendLine("SELECT ");
             Builder.AppendLine("	F.FREQ_KEY, ");
@@ -49,6 +50,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             Builder.AppendLine("FROM ");
             Builder.AppendLine("	BILL B WITH(NOLOCK)");
             Builder.AppendLine("	JOIN FREQUENCY F WITH(NOLOCK) on F.FREQ_KEY = B.FREQ_KEY");
+            Builder.AppendLine("ORDER BY");
+            Builder.AppendLine("    B.BILL_DESC");
             string SQL = Builder.ToString();
             SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);
             SqlDataReader Reader = null;
@@ -74,6 +77,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                         bill.Interest = Convert.ToDecimal(Reader["INTEREST"]);
                         bill.Frequency = RepoFrequency.Freqs[bill.FreqKey];
                         Bills.Add(bill.BillKey, bill);
+                        if (!BillDescriptions.Contains(bill.BillDesc))
+                            BillDescriptions.Add(bill.BillDesc);
                     }
                 }
             }
@@ -108,8 +113,93 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         /// <summary>
         /// Grab data from database.
         /// </summary>
-        internal static void PrepareBillCycleData()
+        internal static void PrepareBillEditorDataWithFilters(List<string> bills)
         {
+            BillTypes.Clear();
+            BillTypes.Add('c', C);
+            BillTypes.Add('t', T);
+            BillTypes.Add('p', P);
+            BillDescriptions = new HashSet<string>();
+            StringBuilder Builder = new StringBuilder();
+            Builder.AppendLine("SELECT ");
+            Builder.AppendLine("	F.FREQ_KEY, ");
+            Builder.AppendLine("	F.FREQ_TYPE, ");
+            Builder.AppendLine("	F.MONDAY, ");
+            Builder.AppendLine("	F.TUESDAY, ");
+            Builder.AppendLine("	F.WEDNESDAY, ");
+            Builder.AppendLine("	F.THURSDAY, ");
+            Builder.AppendLine("	F.FRIDAY, ");
+            Builder.AppendLine("	F.SATURDAY, ");
+            Builder.AppendLine("	F.SUNDAY,");
+            Builder.AppendLine("	B.BILL_KEY, ");
+            Builder.AppendLine("	B.BILL_START_DATE, ");
+            Builder.AppendLine("	B.BILL_END_DATE, ");
+            Builder.AppendLine("	B.BILL_DESC, ");
+            Builder.AppendLine("	B.BILL_TYPE, ");
+            Builder.AppendLine("	B.ACC_KEY, ");
+            Builder.AppendLine("	B.AMOUNT,");
+            Builder.AppendLine("	B.INTEREST,");
+            Builder.AppendLine("	B.REMAINING,");
+            Builder.AppendLine("	ISNULL(B.TOTAL, 0) as [TOTAL]");
+            Builder.AppendLine("FROM ");
+            Builder.AppendLine("	BILL B WITH(NOLOCK)");
+            Builder.AppendLine("	JOIN FREQUENCY F WITH(NOLOCK) on F.FREQ_KEY = B.FREQ_KEY");
+            Builder.AppendLine("ORDER BY");
+            Builder.AppendLine("    B.BILL_DESC");
+            string SQL = Builder.ToString();
+            SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);
+            SqlDataReader Reader = null;
+            try
+            {
+                Reader = Command.ExecuteReader();
+                if (Reader != null)
+                {
+                    Bills = new Dictionary<int, ModelBill>();
+                    while (Reader.Read())
+                    {
+                        string billDesc = Reader["BILL_DESC"].ToString();
+                        if (!BillDescriptions.Contains(billDesc))
+                            BillDescriptions.Add(billDesc);
+                        if (!bills.Contains(billDesc))
+                        {
+                            continue;
+                        }
+
+                        ModelBill bill = new ModelBill();
+                        bill.FreqKey = Convert.ToInt32(Reader["FREQ_KEY"]);
+                        bill.BillKey = Convert.ToInt32(Reader["BILL_KEY"]);
+                        bill.BillStartDate = Convert.ToDateTime(Reader["BILL_START_DATE"]);
+                        bill.BillEndDate = Convert.ToDateTime(Reader["BILL_END_DATE"]);
+                        bill.BillDesc = billDesc;
+                        bill.BillType = Convert.ToChar(Reader["BILL_TYPE"]);
+                        bill.AccKey = Convert.ToInt32(Reader["ACC_KEY"]);
+                        bill.Amount = Convert.ToDecimal(Reader["AMOUNT"]);
+                        bill.Total = Convert.ToDecimal(Reader["TOTAL"]);
+                        bill.Remaining = Convert.ToDecimal(Reader["REMAINING"]);
+                        bill.Interest = Convert.ToDecimal(Reader["INTEREST"]);
+                        bill.Frequency = RepoFrequency.Freqs[bill.FreqKey];
+                        Bills.Add(bill.BillKey, bill);
+                        if (!BillDescriptions.Contains(bill.BillDesc))
+                            BillDescriptions.Add(bill.BillDesc);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR: Grabbing all bill data. " + ex.Message);
+            }
+            Command.Dispose();
+            Reader.Close();
+        }
+
+
+
+        /// <summary>
+        /// Grab data from database.
+        /// </summary>
+        internal static void PrepareBillCycleData(List<string> bills)
+        {
+            BillDescriptions = new HashSet<string>();
             StringBuilder Builder = new StringBuilder();
             Builder.AppendLine("SELECT ");
             Builder.AppendLine("	F.FREQ_KEY, ");
@@ -129,13 +219,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             Builder.AppendLine("	B.ACC_KEY, ");
             Builder.AppendLine("	B.INTEREST,");
             Builder.AppendLine("	B.AMOUNT,");
-            Builder.AppendLine("	ISNULL(B.TOTAL, 0) as [TOTAL]");
+            Builder.AppendLine("	ISNULL(B.TOTAL, 0) as [TOTAL],");
             Builder.AppendLine("	ISNULL(B.REMAINING, 0) as [REMAINING]");
             Builder.AppendLine("FROM ");
             Builder.AppendLine("	BILL B WITH(NOLOCK)");
             Builder.AppendLine("	JOIN FREQUENCY F WITH(NOLOCK) on F.FREQ_KEY = B.FREQ_KEY");
             Builder.AppendLine("WHERE ");
-            Builder.AppendLine("AND (");
+            Builder.AppendLine("    (");
             Builder.AppendLine("    C.FREQ_TYPE = 'c'");
             Builder.AppendLine($"   OR (C.FREQ_TYPE = 't' AND ('{DateTime.Now.ToString("MM-dd-yyyy")} > B.BILL_START_DATE) AND (('{DateTime.Now.ToString("MM-dd-yyyy")} < B.BILL_END_DATE))'");
             Builder.AppendLine($"   OR (c.FREQ_TYPE = 'p' AND B.REMAINING > 0)'");
@@ -152,12 +242,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                     Bills = new Dictionary<int, ModelBill>();
                     while (Reader.Read())
                     {
+                        string billDesc = Reader["BILL_DESC"].ToString();
                         ModelBill bill = new ModelBill();
+                        bill.BillDesc = billDesc;
                         bill.FreqKey = Convert.ToInt32(Reader["FREQ_KEY"]);
                         bill.BillKey = Convert.ToInt32(Reader["BILL_KEY"]);
                         bill.BillStartDate = Convert.ToDateTime(Reader["BILL_START_DATE"]);
                         bill.BillEndDate = Convert.ToDateTime(Reader["BILL_END_DATE"]);
-                        bill.BillDesc = Reader["BILL_DESC"].ToString();
                         bill.BillType = Convert.ToChar(Reader["BILL_TYPE"]);
                         bill.AccKey = Convert.ToInt32(Reader["ACC_KEY"]);
                         bill.Amount = Convert.ToDecimal(Reader["AMOUNT"]);
