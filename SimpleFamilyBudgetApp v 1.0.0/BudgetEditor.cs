@@ -26,7 +26,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             dateTimePicker2.Value = new DateTime(year, month, DateTime.DaysInMonth(year, month));
             //lvcs = new ListViewColumnSorter();
             //listViewBudgetViewWindow.ListViewItemSorter = lvcs;
-            RepoBudget.PrepareBudgetData();
+
+            RefreshData();
+        }
+
+        private void RefreshData()
+        {
+            RepoBudget.PrepareBudgetData(dateTimePicker1.Value, dateTimePicker2.Value);
             RepoBudget.PrepareBudgetPlan();
             PrepareMappings();
             PrepareListViews();
@@ -66,7 +72,82 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
         private void button1_Click(object sender, EventArgs e)
         {
+            List<ModelBudget> budgetsToAdd = new List<ModelBudget>();
+            List<ModelBudget> budgetsToUpdate = new List<ModelBudget>();
+            for (int index = 0; index < dataGridViewBudgets.RowCount-1; index++)
+            {
+                string type = dataGridViewBudgets.Rows[index].Cells[0].Value.ToString();
+                double value = Convert.ToDouble(dataGridViewBudgets.Rows[index].Cells[1].Value);
 
+                ModelBudget budget = new ModelBudget();
+                budget.TRANS_DESC = type;
+                budget.BudgetAmount = value;
+
+                if (RepoBudget.BudgetByString.ContainsKey(type))
+                {
+                    if (value != RepoBudget.BudgetByString[type]) {
+                        int Key = 0;
+                        foreach (int key in RepoBudget.BudgetByID.Keys)
+                        {
+                            if (RepoBudget.BudgetByID[key].TRANS_DESC == type)
+                            {
+                                budget.ID = RepoBudget.BudgetByID[key].ID;
+                                Key = key;
+                                break;
+                            }
+                        }
+                        budget.AcctKey = RepoBudget.BudgetByID[Key].AcctKey;
+                        budgetsToUpdate.Add(budget);
+                    }
+                }
+                else {
+                    budget.AcctKey = 0;
+                    budget.ID = 0;
+                    budgetsToAdd.Add(budget);
+                }
+            }
+            RepoBudget.EditBudgetMap(budgetsToAdd, 'A');
+            RepoBudget.EditBudgetMap(budgetsToUpdate, 'U');
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dateTimePicker1.Value = dateTimePicker1.Value.AddMonths(-1);
+            dateTimePicker1.Value = new DateTime(dateTimePicker1.Value.Year, dateTimePicker1.Value.Month, 1);
+
+            dateTimePicker2.Value = dateTimePicker2.Value.AddMonths(-1);
+            dateTimePicker2.Value = new DateTime(dateTimePicker2.Value.Year, dateTimePicker2.Value.Month, DateTime.DaysInMonth(dateTimePicker2.Value.Year,dateTimePicker2.Value.Month));
+            RefreshData();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            dateTimePicker1.Value = dateTimePicker1.Value.AddMonths(1);
+            dateTimePicker1.Value = new DateTime(dateTimePicker1.Value.Year, dateTimePicker1.Value.Month, 1);
+
+            dateTimePicker2.Value = dateTimePicker2.Value.AddMonths(1);
+            dateTimePicker2.Value = new DateTime(dateTimePicker2.Value.Year, dateTimePicker2.Value.Month, DateTime.DaysInMonth(dateTimePicker2.Value.Year, dateTimePicker2.Value.Month));
+            RefreshData();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            dateTimePicker1.Value = dateTimePicker1.Value.AddYears(-1);
+            dateTimePicker1.Value = new DateTime(dateTimePicker1.Value.Year, dateTimePicker1.Value.Month, 1);
+
+            dateTimePicker2.Value = dateTimePicker2.Value.AddYears(-1);
+            dateTimePicker2.Value = new DateTime(dateTimePicker2.Value.Year, dateTimePicker2.Value.Month, DateTime.DaysInMonth(dateTimePicker2.Value.Year, dateTimePicker2.Value.Month));
+            RefreshData();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            dateTimePicker1.Value = dateTimePicker1.Value.AddYears(1);
+            dateTimePicker1.Value = new DateTime(dateTimePicker1.Value.Year, dateTimePicker1.Value.Month, 1);
+
+            dateTimePicker2.Value = dateTimePicker2.Value.AddYears(1);
+            dateTimePicker2.Value = new DateTime(dateTimePicker2.Value.Year, dateTimePicker2.Value.Month, DateTime.DaysInMonth(dateTimePicker2.Value.Year, dateTimePicker2.Value.Month));
+            RefreshData();
         }
 
         //private void AddAnotherRow(int row)

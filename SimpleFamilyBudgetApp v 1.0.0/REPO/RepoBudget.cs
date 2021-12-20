@@ -117,26 +117,81 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
 
         /// <summary>
+        /// Retrieve account types previously created available.
+        /// </summary>
+        #region Retrieve Account Types
+        internal static void PrepareBudgetData(DateTime time1, DateTime time2)
+        {
+            BudgetTotalsByID = new Dictionary<string, ModelBudgetTotals>();
+
+            List<string> TransDescs = new List<string>();
+
+            foreach (string transDesc in RepoTransaction.MapTransTypesByIncluded)
+                TransDescs.Add($"'{transDesc}'");
+
+            StringBuilder Builder = new StringBuilder();
+            Builder.AppendLine("select");
+            Builder.AppendLine("    TT.TRANS_DESC");
+            Builder.AppendLine("	,SUM(T.AMOUNT) as [Amount]");
+            Builder.AppendLine("	,TT.TRANS_SIGN");
+            Builder.AppendLine("from");
+            Builder.AppendLine("    TRANSACTIONS T with(nolock)");
+            Builder.AppendLine("    JOIN TRANS_TYPE TT with(nolock) on TT.TRANS_TYPE_KEY = T.TRANS_TYPE_KEY");
+            Builder.AppendLine("WHERE");
+            Builder.AppendLine($"   TT.TRANS_DESC in ({string.Join(",", TransDescs)})");
+            Builder.AppendLine($"    AND T.TRANS_DATE BETWEEN '{time1.ToString("MM-dd-yyyy")}' and '{time2.ToString("MM-dd-yyyy")}'");
+            Builder.AppendLine("group by");
+            Builder.AppendLine("    TT.TRANS_DESC, TT.TRANS_SIGN");
+            Builder.AppendLine("order by");
+            Builder.AppendLine("    TT.TRANS_DESC");
+            string SQL = Builder.ToString();
+            SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);
+            SqlDataReader Reader = null;
+            try
+            {
+                Reader = Command.ExecuteReader();
+                if (Reader != null)
+                {
+                    while (Reader.Read())
+                    {
+                        ModelBudgetTotals Budget = new ModelBudgetTotals();
+                        Budget.TransDesc = Convert.ToString(Reader["TRANS_DESC"]);
+                        Budget.Amount = Convert.ToDouble(Reader["AMOUNT"]);
+                        Budget.posNeg = Reader["TRANS_SIGN"].ToString();
+                        BudgetTotalsByID.Add(Budget.TransDesc, Budget);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR: retrieving Trans Type Information. " + ex.Message);
+            }
+            Command.Dispose();
+            Reader.Close();
+        }
+        #endregion
+
+
+
+        /// <summary>
         /// Add New Account Type
         /// </summary>
-        internal static void EditTransMap(List<ModelMapExpenseTypes> Maps, char editType)
+        internal static void EditBudgetMap(List<ModelBudget> Budgets, char editType)
         {
-            foreach (ModelMapExpenseTypes map in Maps)
+            foreach (ModelBudget budget in Budgets)
             {
-                string SQL = $"EXECUTE proc_MAP_EXPENSE_TYPES @MAP_ID, @ORIG_VAL, @NEW_VALUE, @COLOR, @INCLUDE_EXPENSE, @EDIT_TYPE";
+                string SQL = $"EXECUTE proc_BUDGET_EDITOR @ID, @TRANS_DESC, @ACCT_KEY, @BUDGET_AMT, @EDIT_TYPE";
                 SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);
                 List<SqlParameter> parameters = new List<SqlParameter>();
-                SqlParameter MapId = new SqlParameter("@MAP_ID", map.MapId);
-                SqlParameter origVal = new SqlParameter("@ORIG_VAL", map.OrigVal);
-                SqlParameter NewVal = new SqlParameter("@NEW_VALUE", map.NewVal);
-                SqlParameter color = new SqlParameter("@COLOR", map.ColorValue);
-                SqlParameter IncludeExpense = new SqlParameter("@INCLUDE_EXPENSE", map.IncludeExpense);
+                SqlParameter Id = new SqlParameter("@ID", budget.ID);
+                SqlParameter transDesc = new SqlParameter("@TRANS_DESC", budget.TRANS_DESC);
+                SqlParameter AcctKey = new SqlParameter("@ACCT_KEY", budget.AcctKey);
+                SqlParameter BudgetAmount = new SqlParameter("@BUDGET_AMT", budget.BudgetAmount);
                 SqlParameter editTypeParam = new SqlParameter("@EDIT_TYPE", editType);
-                parameters.Add(MapId);
-                parameters.Add(origVal);
-                parameters.Add(NewVal);
-                parameters.Add(color);
-                parameters.Add(IncludeExpense);
+                parameters.Add(Id);
+                parameters.Add(transDesc);
+                parameters.Add(AcctKey);
+                parameters.Add(BudgetAmount);
                 parameters.Add(editTypeParam);
                 Command.Parameters.AddRange(parameters.ToArray());
                 try
@@ -145,7 +200,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"ERROR: Adding/Editing Mapping ExpenseType Type: '{map.OrigVal}' to '{map.NewVal}'. " + ex.Message);
+                    MessageBox.Show($"ERROR: Adding/Editing BUDGET EDITOR Type: '{budget.TRANS_DESC}' " + ex.Message);
                 }
                 Command.Dispose();
             }
