@@ -17,6 +17,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         internal static Dictionary<string, string> MapTransTypes;
         internal static Dictionary<string, string> MapTransTypesToColors;
         internal static HashSet<string> MapTransTypesByIncluded;
+        internal static Dictionary<int, double> MapNewTypeByBalance;
         internal static HashSet<int> MapTransTypesByNotIncluded;
         internal static Dictionary<string, int> MapTransTypesByIncludedByKey;
         internal static Dictionary<int, ModelTrans> Trans;
@@ -161,6 +162,15 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         }
 
 
+        internal static void PrepareDictionaryNewValAndTotal()
+        {
+            MapNewTypeByBalance = new Dictionary<int, double>();
+            foreach (string newType in MapTransNew)
+            {
+
+            }
+        }
+
 
         /// <summary>
         /// Retrieve account types previously created available.
@@ -252,6 +262,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                         trans.Amount = Convert.ToDouble(Reader["AMOUNT"]);
                         trans.TransTypeKey = Convert.ToInt32(Reader["TRANS_TYPE_KEY"]);
                         trans.AcctKey = Convert.ToInt32(Reader["ACC_KEY"]);
+
                         if (!compareTransByDate.ContainsKey(trans.TransDate))
                             compareTransByDate.Add(trans.TransDate, new List<ModelTrans>());
 

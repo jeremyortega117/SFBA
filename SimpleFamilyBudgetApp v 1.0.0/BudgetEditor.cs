@@ -42,7 +42,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             listViewBudgetViewWindow.Clear();
             lvue = new ListViewBudgets(listViewBudgetViewWindow, ListViewBudgets.BudgetHeaderList);
-            lvue.AddDataToListView(listViewBudgetViewWindow);
+            TimeSpan ts = dateTimePicker2.Value - dateTimePicker1.Value;
+            lvue.AddDataToListView(listViewBudgetViewWindow, ts.Days);
         }
 
         private void PrepareMappings()
@@ -60,9 +61,16 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             int row = 0;
             foreach (string strTransType in RepoTransaction.MapTransTypesByIncluded)
             {
+                if (RepoBudget.BudgetTotalsByID.ContainsKey(strTransType))
+                {
+                    if(RepoBudget.BudgetTotalsByID[strTransType].Amount >= 0)
+                    {
+                        continue;
+                    }
+                }
                 dataGridViewBudgets.Rows.Add();
                 dataGridViewBudgets.Rows[row].Cells[0].Value = strTransType;
-                dataGridViewBudgets.Rows[row].Cells[1].Value = row;
+                dataGridViewBudgets.Rows[row].Cells[1].Value = RepoBudget.BudgetByString.ContainsKey(strTransType) ? RepoBudget.BudgetByString[strTransType] : 0;
                 row++;
             }
 
@@ -85,7 +93,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
                 if (RepoBudget.BudgetByString.ContainsKey(type))
                 {
-                    if (value != RepoBudget.BudgetByString[type]) {
+                    double storedAmt = RepoBudget.BudgetByString[type];
+                    if (value != storedAmt) {
                         int Key = 0;
                         foreach (int key in RepoBudget.BudgetByID.Keys)
                         {
@@ -148,6 +157,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             dateTimePicker2.Value = dateTimePicker2.Value.AddYears(1);
             dateTimePicker2.Value = new DateTime(dateTimePicker2.Value.Year, dateTimePicker2.Value.Month, DateTime.DaysInMonth(dateTimePicker2.Value.Year, dateTimePicker2.Value.Month));
             RefreshData();
+        }
+
+        private void dataGridViewBudgets_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
         //private void AddAnotherRow(int row)

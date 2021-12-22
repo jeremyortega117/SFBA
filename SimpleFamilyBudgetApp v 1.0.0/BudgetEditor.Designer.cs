@@ -29,14 +29,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart4 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dataGridViewBudgets = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.listViewBudgetViewWindow = new System.Windows.Forms.ListView();
@@ -47,51 +43,37 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBudgets)).BeginInit();
             this.SuspendLayout();
             // 
             // chart1
             // 
             this.chart1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            chartArea7.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea7);
-            legend7.Name = "Legend1";
-            this.chart1.Legends.Add(legend7);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(12, 12);
             this.chart1.Name = "chart1";
-            series7.ChartArea = "ChartArea1";
-            series7.Legend = "Legend1";
-            series7.Name = "Series1";
-            this.chart1.Series.Add(series7);
-            this.chart1.Size = new System.Drawing.Size(910, 206);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(910, 433);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             // 
-            // chart4
-            // 
-            this.chart4.BackColor = System.Drawing.Color.SandyBrown;
-            chartArea8.Name = "ChartArea1";
-            this.chart4.ChartAreas.Add(chartArea8);
-            legend8.Name = "Legend1";
-            this.chart4.Legends.Add(legend8);
-            this.chart4.Location = new System.Drawing.Point(12, 239);
-            this.chart4.Name = "chart4";
-            series8.ChartArea = "ChartArea1";
-            series8.Legend = "Legend1";
-            series8.Name = "Series1";
-            this.chart4.Series.Add(series8);
-            this.chart4.Size = new System.Drawing.Size(910, 206);
-            this.chart4.TabIndex = 3;
-            this.chart4.Text = "chart4";
-            // 
             // dataGridViewBudgets
             // 
+            this.dataGridViewBudgets.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewBudgets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewBudgets.Location = new System.Drawing.Point(12, 498);
             this.dataGridViewBudgets.Name = "dataGridViewBudgets";
-            this.dataGridViewBudgets.Size = new System.Drawing.Size(300, 252);
+            this.dataGridViewBudgets.Size = new System.Drawing.Size(300, 301);
             this.dataGridViewBudgets.TabIndex = 4;
+            this.dataGridViewBudgets.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBudgets_CellContentClick);
             // 
             // button1
             // 
@@ -105,10 +87,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // listViewBudgetViewWindow
             // 
+            this.listViewBudgetViewWindow.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewBudgetViewWindow.HideSelection = false;
             this.listViewBudgetViewWindow.Location = new System.Drawing.Point(332, 493);
             this.listViewBudgetViewWindow.Name = "listViewBudgetViewWindow";
-            this.listViewBudgetViewWindow.Size = new System.Drawing.Size(577, 257);
+            this.listViewBudgetViewWindow.Size = new System.Drawing.Size(577, 306);
             this.listViewBudgetViewWindow.TabIndex = 6;
             this.listViewBudgetViewWindow.UseCompatibleStateImageBehavior = false;
             // 
@@ -172,7 +157,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(934, 762);
+            this.ClientSize = new System.Drawing.Size(934, 811);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.button5);
@@ -182,14 +167,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.Controls.Add(this.listViewBudgetViewWindow);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridViewBudgets);
-            this.Controls.Add(this.chart4);
             this.Controls.Add(this.chart1);
-            this.MaximumSize = new System.Drawing.Size(950, 801);
-            this.MinimumSize = new System.Drawing.Size(950, 801);
+            this.MaximumSize = new System.Drawing.Size(950, 2000);
+            this.MinimumSize = new System.Drawing.Size(950, 850);
             this.Name = "BudgetEditor";
             this.Text = "BudgetEditor";
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBudgets)).EndInit();
             this.ResumeLayout(false);
 
@@ -198,7 +181,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         #endregion
 
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart4;
         private System.Windows.Forms.DataGridView dataGridViewBudgets;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListView listViewBudgetViewWindow;
