@@ -12,6 +12,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
     class RepoTransaction
     {
         internal static HashSet<string> MapTransNew;
+        internal static HashSet<string> MapTransNewPositive;
         internal static HashSet<string> MapTransOrig;
         internal static Dictionary<int, ModelMapExpenseTypes> MapTransTypesByKey;
         internal static Dictionary<string, string> MapTransTypes;
@@ -38,6 +39,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             string SQL = "select TRANS_TYPE_KEY, TRANS_SIGN, MAP_ID, ORIG_VAL, NEW_VALUE, COLOR_VALUE, INCLUDE_EXPENSE FROM TRANS_TYPE with(nolock) join MAP_EXPENSE_TYPES with(nolock) on MAP_EXPENSE_TYPES.ORIG_VAL = TRANS_TYPE.TRANS_DESC ORDER BY ORIG_VAL";
             MapTransOrig = new HashSet<string>();
             MapTransNew = new HashSet<string>();
+            MapTransNewPositive = new HashSet<string>();
             MapTransTypes = new Dictionary<string, string>();
             MapTransTypesByKey = new Dictionary<int, ModelMapExpenseTypes>();
             MapTransTypesToColors = new Dictionary<string, string>();
@@ -72,6 +74,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
                         if (!MapTransNew.Contains(mapTo.NewVal))
                             MapTransNew.Add(mapTo.NewVal);
+
+                        if (!MapTransNewPositive.Contains(mapTo.NewVal) && Reader["TRANS_SIGN"].ToString() == "-")
+                            MapTransNewPositive.Add(mapTo.NewVal);
 
                         if (!MapTransTypesToColors.ContainsKey(mapTo.NewVal))
                             MapTransTypesToColors.Add(mapTo.NewVal, mapTo.ColorValue);
@@ -162,14 +167,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         }
 
 
-        internal static void PrepareDictionaryNewValAndTotal()
-        {
-            MapNewTypeByBalance = new Dictionary<int, double>();
-            foreach (string newType in MapTransNew)
-            {
-
-            }
-        }
 
 
         /// <summary>

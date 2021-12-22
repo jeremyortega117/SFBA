@@ -59,15 +59,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             dataGridViewBudgets.Columns.AddRange(cbCol, tbCol);
 
             int row = 0;
-            foreach (string strTransType in RepoTransaction.MapTransTypesByIncluded)
+            foreach (string strTransType in RepoTransaction.MapTransNewPositive)
             {
-                if (RepoBudget.BudgetTotalsByID.ContainsKey(strTransType))
-                {
-                    if(RepoBudget.BudgetTotalsByID[strTransType].Amount >= 0)
-                    {
-                        continue;
-                    }
-                }
                 dataGridViewBudgets.Rows.Add();
                 dataGridViewBudgets.Rows[row].Cells[0].Value = strTransType;
                 dataGridViewBudgets.Rows[row].Cells[1].Value = RepoBudget.BudgetByString.ContainsKey(strTransType) ? RepoBudget.BudgetByString[strTransType] : 0;
