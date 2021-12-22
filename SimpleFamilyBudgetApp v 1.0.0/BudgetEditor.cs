@@ -43,7 +43,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             listViewBudgetViewWindow.Clear();
             lvue = new ListViewBudgets(listViewBudgetViewWindow, ListViewBudgets.BudgetHeaderList);
             TimeSpan ts = dateTimePicker2.Value - dateTimePicker1.Value;
-            lvue.AddDataToListView(listViewBudgetViewWindow, ts.Days);
+            lvue.AddDataToListView(listViewBudgetViewWindow, ts.Days + 1, chartSummary);
         }
 
         private void PrepareMappings()
@@ -58,8 +58,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             tbCol.HeaderText = "Budget Amount";
             dataGridViewBudgets.Columns.AddRange(cbCol, tbCol);
 
+            List<string> temp = RepoTransaction.MapTransNewPositive.ToList();
+            temp.Sort();
+
             int row = 0;
-            foreach (string strTransType in RepoTransaction.MapTransNewPositive)
+            foreach (string strTransType in temp)
             {
                 dataGridViewBudgets.Rows.Add();
                 dataGridViewBudgets.Rows[row].Cells[0].Value = strTransType;
@@ -110,6 +113,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             }
             RepoBudget.EditBudgetMap(budgetsToAdd, 'A');
             RepoBudget.EditBudgetMap(budgetsToUpdate, 'U');
+            RefreshData();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -153,6 +157,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         }
 
         private void dataGridViewBudgets_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void listViewBudgetViewWindow_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
