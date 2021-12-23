@@ -27,16 +27,16 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             "Amount Remaining",
         };
 
-        internal void AddDataToListView(ListView lview, int days, Chart chartSummary)
+        internal void AddDataToListView(ListView lview, int days, Label labelBudgeted, Label labelSpent)
         {
             lview.Items.Clear();
-            //var Budget = RepoBudget.BudgetTotalsByID;
-
-            chartSummary = new Chart();
 
             List<string> temp = new List<string>();
             temp = RepoBudget.BudgetTotalsByNewVal.Keys.ToList();
             temp.Sort();
+
+            double totalSpent = 0;
+            double totalBudgeted = 0;
 
             foreach (string str in temp)
             {
@@ -47,13 +47,14 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 double amt = Math.Abs(RepoBudget.BudgetTotalsByNewVal[str] * mod);
                 budgetHeaders.Add(str);
                 budgetHeaders.Add(amt.ToString("0.00"));
+                totalSpent += amt;
 
                 double budgetAmount;
                 if (RepoBudget.BudgetByString.ContainsKey(str))
                     budgetAmount = Math.Abs(RepoBudget.BudgetByString[str] * mod);
                 else
                     budgetAmount = 0;
-
+                totalBudgeted += budgetAmount;
                 budgetHeaders.Add(budgetAmount.ToString("0.00"));
                 budgetHeaders.Add(Math.Abs((Math.Abs(amt) - Math.Abs(budgetAmount))).ToString("0.00"));
 
@@ -84,12 +85,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                         col = ColorTranslator.FromHtml($"#E6341C");
                     }
                 }
-                //chartSummary.Series[str].Points.Clear();
-                //chartSummary.Series[str].Enabled = true;
-                //chartSummary.Series[str].Points.AddXY()
                 lvi.BackColor = col;
                 lview.Items.Add(lvi);
             }
+            labelBudgeted.Text = totalBudgeted.ToString("$0.00");
+            labelSpent.Text = totalSpent.ToString("$0.00");
             lview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             lview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }

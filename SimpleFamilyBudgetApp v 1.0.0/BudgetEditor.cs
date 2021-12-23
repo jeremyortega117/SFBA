@@ -43,7 +43,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             listViewBudgetViewWindow.Clear();
             lvue = new ListViewBudgets(listViewBudgetViewWindow, ListViewBudgets.BudgetHeaderList);
             TimeSpan ts = dateTimePicker2.Value - dateTimePicker1.Value;
-            lvue.AddDataToListView(listViewBudgetViewWindow, ts.Days + 1, chartSummary);
+            lvue.AddDataToListView(listViewBudgetViewWindow, ts.Days + 1, labelBudgeted, labelSpent);
         }
 
         private void PrepareMappings()
@@ -78,6 +78,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             List<ModelBudget> budgetsToAdd = new List<ModelBudget>();
             List<ModelBudget> budgetsToUpdate = new List<ModelBudget>();
+
             for (int index = 0; index < dataGridViewBudgets.RowCount-1; index++)
             {
                 string type = dataGridViewBudgets.Rows[index].Cells[0].Value.ToString();
