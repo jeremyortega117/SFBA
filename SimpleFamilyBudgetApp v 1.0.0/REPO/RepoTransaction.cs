@@ -233,7 +233,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         /// </summary>
         internal static void PrepareTransData()
         {
-            string SQL = $"SELECT * FROM TRANSACTIONS WITH(NOLOCK) WHERE TRANS_TYPE_KEY NOT IN ({string.Join(",",MapTransTypesByNotIncluded.ToArray())}) ORDER BY TRANS_DATE DESC";
+            StringBuilder Builder = new StringBuilder();
+            Builder.AppendLine("SELECT * ");
+            Builder.AppendLine("FROM TRANSACTIONS WITH(NOLOCK)");
+            if(MapTransTypesByNotIncluded.Count > 0)
+            Builder.AppendLine($"WHERE TRANS_TYPE_KEY NOT IN ({string.Join(",",MapTransTypesByNotIncluded.ToArray())})");
+            Builder.AppendLine("ORDER BY TRANS_DATE DESC");
+            string SQL = Builder.ToString();
             SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);
             SqlDataReader Reader = null;
             try
