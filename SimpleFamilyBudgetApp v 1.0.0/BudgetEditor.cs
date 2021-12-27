@@ -26,7 +26,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             dateTimePicker2.Value = new DateTime(year, month, DateTime.DaysInMonth(year, month));
             //lvcs = new ListViewColumnSorter();
             //listViewBudgetViewWindow.ListViewItemSorter = lvcs;
-            RepoBudget.PrepareBudgetData();
+
+            RefreshData();
+        }
+
+        private void RefreshData()
+        {
+            RepoBudget.PrepareBudgetData(dateTimePicker1.Value, dateTimePicker2.Value);
             RepoBudget.PrepareBudgetPlan();
             PrepareMappings();
             PrepareListViews();
@@ -36,7 +42,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
             listViewBudgetViewWindow.Clear();
             lvue = new ListViewBudgets(listViewBudgetViewWindow, ListViewBudgets.BudgetHeaderList);
-            lvue.AddDataToListView(listViewBudgetViewWindow);
+            TimeSpan ts = dateTimePicker2.Value - dateTimePicker1.Value;
+            lvue.AddDataToListView(listViewBudgetViewWindow, ts.Days + 1, labelBudgeted, labelSpent);
         }
 
         private void PrepareMappings()
@@ -51,12 +58,15 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             tbCol.HeaderText = "Budget Amount";
             dataGridViewBudgets.Columns.AddRange(cbCol, tbCol);
 
+            List<string> temp = RepoTransaction.MapTransNewPositive.ToList();
+            temp.Sort();
+
             int row = 0;
-            foreach (string strTransType in RepoTransaction.MapTransTypesByIncluded)
+            foreach (string strTransType in temp)
             {
                 dataGridViewBudgets.Rows.Add();
                 dataGridViewBudgets.Rows[row].Cells[0].Value = strTransType;
-                dataGridViewBudgets.Rows[row].Cells[1].Value = row;
+                dataGridViewBudgets.Rows[row].Cells[1].Value = RepoBudget.BudgetByString.ContainsKey(strTransType) ? RepoBudget.BudgetByString[strTransType] : 0;
                 row++;
             }
 
@@ -65,6 +75,94 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+            List<ModelBudget> budgetsToAdd = new List<ModelBudget>();
+            List<ModelBudget> budgetsToUpdate = new List<ModelBudget>();
+
+            for (int index = 0; index < dataGridViewBudgets.RowCount-1; index++)
+            {
+                string type = dataGridViewBudgets.Rows[index].Cells[0].Value.ToString();
+                double value = Convert.ToDouble(dataGridViewBudgets.Rows[index].Cells[1].Value);
+
+                ModelBudget budget = new ModelBudget();
+                budget.TRANS_DESC = type;
+                budget.BudgetAmount = value;
+
+                if (RepoBudget.BudgetByString.ContainsKey(type))
+                {
+                    double storedAmt = RepoBudget.BudgetByString[type];
+                    if (value != storedAmt) {
+                        int Key = 0;
+                        foreach (int key in RepoBudget.BudgetByID.Keys)
+                        {
+                            if (RepoBudget.BudgetByID[key].TRANS_DESC == type)
+                            {
+                                budget.ID = RepoBudget.BudgetByID[key].ID;
+                                Key = key;
+                                break;
+                            }
+                        }
+                        budget.AcctKey = RepoBudget.BudgetByID[Key].AcctKey;
+                        budgetsToUpdate.Add(budget);
+                    }
+                }
+                else {
+                    budget.AcctKey = 0;
+                    budget.ID = 0;
+                    budgetsToAdd.Add(budget);
+                }
+            }
+            RepoBudget.EditBudgetMap(budgetsToAdd, 'A');
+            RepoBudget.EditBudgetMap(budgetsToUpdate, 'U');
+            RefreshData();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dateTimePicker1.Value = dateTimePicker1.Value.AddMonths(-1);
+            dateTimePicker1.Value = new DateTime(dateTimePicker1.Value.Year, dateTimePicker1.Value.Month, 1);
+
+            dateTimePicker2.Value = dateTimePicker2.Value.AddMonths(-1);
+            dateTimePicker2.Value = new DateTime(dateTimePicker2.Value.Year, dateTimePicker2.Value.Month, DateTime.DaysInMonth(dateTimePicker2.Value.Year,dateTimePicker2.Value.Month));
+            RefreshData();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            dateTimePicker1.Value = dateTimePicker1.Value.AddMonths(1);
+            dateTimePicker1.Value = new DateTime(dateTimePicker1.Value.Year, dateTimePicker1.Value.Month, 1);
+
+            dateTimePicker2.Value = dateTimePicker2.Value.AddMonths(1);
+            dateTimePicker2.Value = new DateTime(dateTimePicker2.Value.Year, dateTimePicker2.Value.Month, DateTime.DaysInMonth(dateTimePicker2.Value.Year, dateTimePicker2.Value.Month));
+            RefreshData();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            dateTimePicker1.Value = dateTimePicker1.Value.AddYears(-1);
+            dateTimePicker1.Value = new DateTime(dateTimePicker1.Value.Year, dateTimePicker1.Value.Month, 1);
+
+            dateTimePicker2.Value = dateTimePicker2.Value.AddYears(-1);
+            dateTimePicker2.Value = new DateTime(dateTimePicker2.Value.Year, dateTimePicker2.Value.Month, DateTime.DaysInMonth(dateTimePicker2.Value.Year, dateTimePicker2.Value.Month));
+            RefreshData();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            dateTimePicker1.Value = dateTimePicker1.Value.AddYears(1);
+            dateTimePicker1.Value = new DateTime(dateTimePicker1.Value.Year, dateTimePicker1.Value.Month, 1);
+
+            dateTimePicker2.Value = dateTimePicker2.Value.AddYears(1);
+            dateTimePicker2.Value = new DateTime(dateTimePicker2.Value.Year, dateTimePicker2.Value.Month, DateTime.DaysInMonth(dateTimePicker2.Value.Year, dateTimePicker2.Value.Month));
+            RefreshData();
+        }
+
+        private void dataGridViewBudgets_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void listViewBudgetViewWindow_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

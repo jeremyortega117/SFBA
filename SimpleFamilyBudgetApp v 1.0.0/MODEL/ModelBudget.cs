@@ -17,6 +17,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
     {
         public string TransDesc { get; set; }
         public double Amount { get; set; }
-        public string posNeg { get; set; }
+        public string NewVal { get; set; }
     }
 }

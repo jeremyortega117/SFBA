@@ -20,6 +20,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         ListViewRepoTransactions lvr1;
         //ListViewRepoTransactions lvr2;
         ListViewRepoBills lvBill;
+        ListViewBudgets lvBudget;
         Dictionary<int, string> Users;
         List<string> Accounts;
         List<string> ExpenseTypes;
@@ -247,6 +248,14 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 lvBill.AddDataToCycleListView(listView1, BillFrom, BillTo);
                 listView1.ListViewItemSorter = lvcs;
             }
+            else if (radioBudgets.Checked)
+            {
+                lvBudget = new ListViewBudgets(listView1, ListViewBudgets.BudgetHeaderList);
+                TimeSpan tspan = new TimeSpan();
+                tspan = dateTimePickerTo.Value - dateTimePickerFrom.Value;
+                lvBudget.AddDataToListView(listView1,tspan.Days, labelTotalSpent, labelTotalSaved);
+                
+            }
             //else if (radioBudgets.Checked)
             //{
             //    lvr2 = new ListViewRepoTransactions(listView1);
@@ -350,6 +359,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                     }
                 }
             }
+            foreach (string type in RepoTransaction.IncludedNewMapVal)
+            {
+                if (!alreadyadded.Contains(type))
+                {
+                    alreadyadded.Add(type);
+                }
+            }
             alreadyadded.Sort();
             foreach (string expenseCheck in alreadyadded)
             {
@@ -416,6 +432,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 FillBillsTypesChecked();
                 RepoBills.PrepareBillEditorDataWithFilters(Bills);
             }
+            else if (radioBudgets.Checked)
+            {
+                RepoBudget.PrepareBudgetData(dateTimePickerFrom.Value, dateTimePickerTo.Value);
+            }
 
             PrepareLabels();
             PrepareListViews();
@@ -434,6 +454,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 labelTotalIncome.Text = string.Format("{0:C}", income);
                 labelTotalSpent.Text = string.Format("{0:C}", spent);
                 labelTotalBal.Text = string.Format("{0:C}", bal);
+            }
+            else if (radioBudgets.Checked)
+            {
+                
             }
 
 

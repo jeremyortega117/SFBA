@@ -29,14 +29,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart4 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dataGridViewBudgets = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.listViewBudgetViewWindow = new System.Windows.Forms.ListView();
@@ -46,58 +38,33 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.button5 = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart4)).BeginInit();
+            this.label1 = new System.Windows.Forms.Label();
+            this.labelSpent = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.labelBudgeted = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBudgets)).BeginInit();
             this.SuspendLayout();
             // 
-            // chart1
-            // 
-            this.chart1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(12, 12);
-            this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(910, 206);
-            this.chart1.TabIndex = 0;
-            this.chart1.Text = "chart1";
-            // 
-            // chart4
-            // 
-            this.chart4.BackColor = System.Drawing.Color.SandyBrown;
-            chartArea2.Name = "ChartArea1";
-            this.chart4.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart4.Legends.Add(legend2);
-            this.chart4.Location = new System.Drawing.Point(12, 239);
-            this.chart4.Name = "chart4";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart4.Series.Add(series2);
-            this.chart4.Size = new System.Drawing.Size(910, 206);
-            this.chart4.TabIndex = 3;
-            this.chart4.Text = "chart4";
-            // 
             // dataGridViewBudgets
             // 
+            this.dataGridViewBudgets.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewBudgets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewBudgets.Location = new System.Drawing.Point(12, 498);
+            this.dataGridViewBudgets.Location = new System.Drawing.Point(17, 70);
+            this.dataGridViewBudgets.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridViewBudgets.Name = "dataGridViewBudgets";
-            this.dataGridViewBudgets.Size = new System.Drawing.Size(300, 252);
+            this.dataGridViewBudgets.RowHeadersWidth = 51;
+            this.dataGridViewBudgets.Size = new System.Drawing.Size(400, 434);
             this.dataGridViewBudgets.TabIndex = 4;
+            this.dataGridViewBudgets.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBudgets_CellContentClick);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(111, 464);
+            this.button1.Location = new System.Drawing.Point(17, 22);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(103, 31);
+            this.button1.Size = new System.Drawing.Size(137, 38);
             this.button1.TabIndex = 5;
             this.button1.Text = "Update Budget";
             this.button1.UseVisualStyleBackColor = true;
@@ -105,70 +72,129 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // listViewBudgetViewWindow
             // 
+            this.listViewBudgetViewWindow.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewBudgetViewWindow.HideSelection = false;
-            this.listViewBudgetViewWindow.Location = new System.Drawing.Point(332, 493);
+            this.listViewBudgetViewWindow.Location = new System.Drawing.Point(444, 71);
+            this.listViewBudgetViewWindow.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listViewBudgetViewWindow.Name = "listViewBudgetViewWindow";
-            this.listViewBudgetViewWindow.Size = new System.Drawing.Size(577, 257);
+            this.listViewBudgetViewWindow.Size = new System.Drawing.Size(768, 440);
             this.listViewBudgetViewWindow.TabIndex = 6;
             this.listViewBudgetViewWindow.UseCompatibleStateImageBehavior = false;
+            this.listViewBudgetViewWindow.SelectedIndexChanged += new System.EventHandler(this.listViewBudgetViewWindow_SelectedIndexChanged);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(413, 464);
+            this.button2.Location = new System.Drawing.Point(552, 22);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(100, 28);
             this.button2.TabIndex = 7;
             this.button2.Text = "Month -";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(493, 464);
+            this.button3.Location = new System.Drawing.Point(659, 22);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(100, 28);
             this.button3.TabIndex = 8;
             this.button3.Text = "Month +";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(574, 464);
+            this.button4.Location = new System.Drawing.Point(767, 22);
+            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.Size = new System.Drawing.Size(100, 28);
             this.button4.TabIndex = 9;
             this.button4.Text = "Year +";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(332, 464);
+            this.button5.Location = new System.Drawing.Point(444, 22);
+            this.button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.Size = new System.Drawing.Size(100, 28);
             this.button5.TabIndex = 10;
             this.button5.Text = "Year -";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(655, 467);
+            this.dateTimePicker1.Location = new System.Drawing.Point(875, 26);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(124, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(164, 22);
             this.dateTimePicker1.TabIndex = 11;
             // 
             // dateTimePicker2
             // 
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(785, 467);
+            this.dateTimePicker2.Location = new System.Drawing.Point(1048, 26);
+            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(124, 20);
+            this.dateTimePicker2.Size = new System.Drawing.Size(164, 22);
             this.dateTimePicker2.TabIndex = 12;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(191, 44);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(48, 16);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Spent: ";
+            // 
+            // labelSpent
+            // 
+            this.labelSpent.AutoSize = true;
+            this.labelSpent.Location = new System.Drawing.Point(253, 44);
+            this.labelSpent.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelSpent.Name = "labelSpent";
+            this.labelSpent.Size = new System.Drawing.Size(14, 16);
+            this.labelSpent.TabIndex = 14;
+            this.labelSpent.Text = "$";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(167, 22);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(72, 16);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Budgeted: ";
+            // 
+            // labelBudgeted
+            // 
+            this.labelBudgeted.AutoSize = true;
+            this.labelBudgeted.Location = new System.Drawing.Point(253, 22);
+            this.labelBudgeted.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelBudgeted.Name = "labelBudgeted";
+            this.labelBudgeted.Size = new System.Drawing.Size(14, 16);
+            this.labelBudgeted.TabIndex = 16;
+            this.labelBudgeted.Text = "$";
             // 
             // BudgetEditor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(934, 762);
+            this.ClientSize = new System.Drawing.Size(1243, 517);
+            this.Controls.Add(this.labelBudgeted);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.labelSpent);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.button5);
@@ -178,23 +204,18 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.Controls.Add(this.listViewBudgetViewWindow);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridViewBudgets);
-            this.Controls.Add(this.chart4);
-            this.Controls.Add(this.chart1);
-            this.MaximumSize = new System.Drawing.Size(950, 801);
-            this.MinimumSize = new System.Drawing.Size(950, 801);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximumSize = new System.Drawing.Size(1261, 1500);
+            this.MinimumSize = new System.Drawing.Size(1261, 564);
             this.Name = "BudgetEditor";
             this.Text = "BudgetEditor";
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBudgets)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart4;
         private System.Windows.Forms.DataGridView dataGridViewBudgets;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListView listViewBudgetViewWindow;
@@ -204,5 +225,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelSpent;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelBudgeted;
     }
 }

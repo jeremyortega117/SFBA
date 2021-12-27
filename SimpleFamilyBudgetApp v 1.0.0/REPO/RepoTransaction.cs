@@ -12,11 +12,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
     class RepoTransaction
     {
         internal static HashSet<string> MapTransNew;
+        internal static HashSet<string> MapTransNewPositive;
         internal static HashSet<string> MapTransOrig;
         internal static Dictionary<int, ModelMapExpenseTypes> MapTransTypesByKey;
         internal static Dictionary<string, string> MapTransTypes;
         internal static Dictionary<string, string> MapTransTypesToColors;
         internal static HashSet<string> MapTransTypesByIncluded;
+        internal static Dictionary<int, double> MapNewTypeByBalance;
         internal static HashSet<int> MapTransTypesByNotIncluded;
         internal static Dictionary<string, int> MapTransTypesByIncludedByKey;
         internal static Dictionary<int, ModelTrans> Trans;
@@ -26,6 +28,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         internal static char editBal = 'Y';
         internal static bool choseColor = false;
 
+        internal static HashSet<string> IncludedNewMapVal;
+
 
 
         /// <summary>
@@ -34,15 +38,17 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         #region Retrieve Account Types
         internal static void PrepareTransMap()
         {
-            string SQL = "select TRANS_TYPE_KEY, TRANS_SIGN, MAP_ID, ORIG_VAL, NEW_VALUE, COLOR_VALUE, INCLUDE_EXPENSE FROM TRANS_TYPE with(nolock) join MAP_EXPENSE_TYPES with(nolock) on MAP_EXPENSE_TYPES.ORIG_VAL = TRANS_TYPE.TRANS_DESC ORDER BY ORIG_VAL";
+            string SQL = "select TRANS_TYPE_KEY, TRANS_SIGN, MAP_ID, ORIG_VAL, NEW_VALUE, COLOR_VALUE, INCLUDE_EXPENSE FROM TRANS_TYPE with(nolock) right outer join MAP_EXPENSE_TYPES with(nolock) on MAP_EXPENSE_TYPES.ORIG_VAL = TRANS_TYPE.TRANS_DESC ORDER BY ORIG_VAL";
             MapTransOrig = new HashSet<string>();
             MapTransNew = new HashSet<string>();
+            MapTransNewPositive = new HashSet<string>();
             MapTransTypes = new Dictionary<string, string>();
             MapTransTypesByKey = new Dictionary<int, ModelMapExpenseTypes>();
             MapTransTypesToColors = new Dictionary<string, string>();
             MapTransTypesByIncluded = new HashSet<string>();
             MapTransTypesByIncludedByKey = new Dictionary<string, int>();
             MapTransTypesByNotIncluded = new HashSet<int>();
+            IncludedNewMapVal = new HashSet<string>();
             SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);
             SqlDataReader Reader = null;
             try
@@ -54,35 +60,40 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                     {
                         ModelMapExpenseTypes mapTo = new ModelMapExpenseTypes();
                         mapTo.MapId = Convert.ToInt32(Reader["MAP_ID"]);
-                        mapTo.OrigVal = Reader["ORIG_VAL"].ToString();
-                        mapTo.NewVal = Reader["NEW_VALUE"].ToString();
+                        mapTo.OrigVal = Reader["ORIG_VAL"].Equals(DBNull.Value) ? "" : Reader["ORIG_VAL"].ToString();
+                        mapTo.NewVal = Reader["NEW_VALUE"].Equals(DBNull.Value) ? "" : Reader["NEW_VALUE"].ToString();
                         mapTo.ColorValue = Reader["COLOR_VALUE"].Equals(DBNull.Value) ? "WHITE" : Reader["COLOR_VALUE"].ToString();
-                        mapTo.TransTypeKey = Convert.ToInt32(Reader["TRANS_TYPE_KEY"]);
+                        mapTo.TransTypeKey = Reader["TRANS_TYPE_KEY"].Equals(DBNull.Value) ? int.MinValue : Convert.ToInt32(Reader["TRANS_TYPE_KEY"]);
                         mapTo.IncludeExpense = Reader["INCLUDE_EXPENSE"].Equals(DBNull.Value) ? true : Convert.ToBoolean(Reader["INCLUDE_EXPENSE"]);
 
                         if (!MapTransTypesByKey.ContainsKey(mapTo.MapId))
                             MapTransTypesByKey.Add(mapTo.MapId, mapTo);
 
-                        if (!MapTransTypes.ContainsKey(mapTo.OrigVal) && mapTo.OrigVal != "")
-                            MapTransTypes.Add(mapTo.OrigVal, mapTo.NewVal);
-
                         if (!MapTransOrig.Contains(mapTo.OrigVal) && mapTo.OrigVal != "")
                             MapTransOrig.Add(mapTo.OrigVal);
 
+                        if (!MapTransTypes.ContainsKey(mapTo.OrigVal) && mapTo.OrigVal != "")
+                            MapTransTypes.Add(mapTo.OrigVal, mapTo.NewVal);
+
                         if (!MapTransNew.Contains(mapTo.NewVal))
                             MapTransNew.Add(mapTo.NewVal);
+
+                        if (!MapTransNewPositive.Contains(mapTo.NewVal) && Reader["TRANS_SIGN"].ToString() == "-")
+                            MapTransNewPositive.Add(mapTo.NewVal);
 
                         if (!MapTransTypesToColors.ContainsKey(mapTo.NewVal))
                             MapTransTypesToColors.Add(mapTo.NewVal, mapTo.ColorValue);
 
                         if (mapTo.IncludeExpense && !MapTransTypesByIncluded.Contains(mapTo.OrigVal))
-                        {
                             MapTransTypesByIncluded.Add(mapTo.OrigVal);
-                        }
                         else
-                        {
                             MapTransTypesByNotIncluded.Add(mapTo.TransTypeKey);
+
+                        if (!IncludedNewMapVal.Contains(mapTo.NewVal) && mapTo.IncludeExpense)
+                        {
+                            IncludedNewMapVal.Add(mapTo.NewVal);
                         }
+
                     }
                 }
             }
@@ -162,6 +173,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
 
 
+
         /// <summary>
         /// Retrieve account types previously created available.
         /// </summary>
@@ -237,7 +249,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             Builder.AppendLine("SELECT * ");
             Builder.AppendLine("FROM TRANSACTIONS WITH(NOLOCK)");
             if(MapTransTypesByNotIncluded.Count > 0)
-            Builder.AppendLine($"WHERE TRANS_TYPE_KEY NOT IN ({string.Join(",",MapTransTypesByNotIncluded.ToArray())})");
+                Builder.AppendLine($"WHERE TRANS_TYPE_KEY NOT IN ({string.Join(",",MapTransTypesByNotIncluded.ToArray())})");
             Builder.AppendLine("ORDER BY TRANS_DATE DESC");
             string SQL = Builder.ToString();
             SqlCommand Command = new SqlCommand(SQL, RepoDBClass.DB);
@@ -258,6 +270,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                         trans.Amount = Convert.ToDouble(Reader["AMOUNT"]);
                         trans.TransTypeKey = Convert.ToInt32(Reader["TRANS_TYPE_KEY"]);
                         trans.AcctKey = Convert.ToInt32(Reader["ACC_KEY"]);
+
                         if (!compareTransByDate.ContainsKey(trans.TransDate))
                             compareTransByDate.Add(trans.TransDate, new List<ModelTrans>());
 
