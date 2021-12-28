@@ -434,6 +434,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             }
             else if (radioBudgets.Checked)
             {
+                RepoBudget.PrepareBudgetPlan();
                 RepoBudget.PrepareBudgetData(dateTimePickerFrom.Value, dateTimePickerTo.Value);
             }
 

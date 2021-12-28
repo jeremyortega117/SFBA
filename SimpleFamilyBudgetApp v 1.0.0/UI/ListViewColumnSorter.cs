@@ -60,49 +60,62 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
 
             bool DBLX = false;
             bool DBLY = false;
+
+            string str1 = "";
+            string str2 = "";
+    
             //bool negX = listviewX.SubItems[ColumnToSort].Text.Contains("(") ? true : false;
             //bool negY = listviewY.SubItems[ColumnToSort].Text.Contains("(") ? true : false;
-            bool negX = listviewX.SubItems[6].Text.Contains("-") ? true : false;
-            bool negY = listviewY.SubItems[6].Text.Contains("-") ? true : false;
-            
-            string str1 = listviewX.SubItems[ColumnToSort].Text.ToString().Replace("$", "").Replace(",", "").Replace("(", "").Replace(")", "");
-            string str2 = listviewY.SubItems[ColumnToSort].Text.ToString().Replace("$", "").Replace(",", "").Replace("(", "").Replace(")", "");
-            double dx,dy;
-            if (double.TryParse(str1,out dx) && double.TryParse(str2, out dy))
+            if (listviewX.SubItems.Count >= 6)
             {
-                if (negX)
-                {
-                    dx *= -1;
-                }
-                if (negY)
-                {
-                    dy *= -1;
-                }
+                bool negX = listviewX.SubItems[6].Text.Contains("-") ? true : false;
+                bool negY = listviewY.SubItems[6].Text.Contains("-") ? true : false;
 
-                compareResult = ObjectCompare.Compare(dx, dy);
-
-                DBLX = true;
-                DBLY = true;
-
-                // Calculate correct return value based on object comparison
-                if (OrderOfSort == SortOrder.Ascending)
+                str1 = listviewX.SubItems[ColumnToSort].Text.ToString().Replace("$", "").Replace(",", "").Replace("(", "").Replace(")", "");
+                str2 = listviewY.SubItems[ColumnToSort].Text.ToString().Replace("$", "").Replace(",", "").Replace("(", "").Replace(")", "");
+                double dx, dy;
+                if (double.TryParse(str1, out dx) && double.TryParse(str2, out dy))
                 {
-                    // Ascending sort is selected, return normal result of compare operation
-                    return compareResult;
+                    if (negX)
+                    {
+                        dx *= -1;
+                    }
+                    if (negY)
+                    {
+                        dy *= -1;
+                    }
+
+                    compareResult = ObjectCompare.Compare(dx, dy);
+
+                    DBLX = true;
+                    DBLY = true;
+
+                    // Calculate correct return value based on object comparison
+                    if (OrderOfSort == SortOrder.Ascending)
+                    {
+                        // Ascending sort is selected, return normal result of compare operation
+                        return compareResult;
+                    }
+                    else if (OrderOfSort == SortOrder.Descending)
+                    {
+                        // Descending sort is selected, return negative result of compare operation
+                        return (-compareResult);
+                    }
                 }
-                else if (OrderOfSort == SortOrder.Descending)
-                {
-                    // Descending sort is selected, return negative result of compare operation
-                    return (-compareResult);
-                }
+            }
+            else
+            {
+                str1 = listviewX.SubItems[ColumnToSort].Text.ToString();
+                str2 = listviewY.SubItems[ColumnToSort].Text.ToString();
             }
 
             //if (DBLX && DBLY)
             //{
             //    compareResult = ObjectCompare.Compare(dx, dy);
             //}
-            if(!DBLX || !DBLY)
+            if (!DBLX || !DBLY)
             {
+
                 // Compare the two items
                 compareResult = ObjectCompare.Compare(str1, str2);
 
