@@ -71,6 +71,12 @@
       <DependentUpon>BudgetEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="ConfigClass.cs" />
+    <Compile Include="InvestmentInterestCalculator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InvestmentInterestCalculator.Designer.cs">
+      <DependentUpon>InvestmentInterestCalculator.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ListViewBudgets.cs" />
     <Compile Include="MODEL\ModelBudget.cs" />
     <Compile Include="REPO\RepoBudget.cs" />
@@ -145,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ChangeOrDeleteAccount.resx">
       <DependentUpon>ChangeOrDeleteAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InvestmentInterestCalculator.resx">
+      <DependentUpon>InvestmentInterestCalculator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainEditor.resx">
       <DependentUpon>MainEditor.cs</DependentUpon>

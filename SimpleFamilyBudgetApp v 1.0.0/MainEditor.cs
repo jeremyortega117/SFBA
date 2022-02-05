@@ -790,5 +790,12 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         {
 
         }
+
+        private void investInterestCalculatorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InvestmentInterestCalculator calc = new InvestmentInterestCalculator();
+            calc.ShowDialog();
+
+        }
     }
 }
