@@ -201,6 +201,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.ToolStripMenuItembillType.Name = "ToolStripMenuItembillType";
             this.ToolStripMenuItembillType.Size = new System.Drawing.Size(180, 26);
+
             this.ToolStripMenuItembillType.Text = "Bill";
             this.ToolStripMenuItembillType.Click += new System.EventHandler(this.billTypeToolStripMenuItem_Click);
             // 
