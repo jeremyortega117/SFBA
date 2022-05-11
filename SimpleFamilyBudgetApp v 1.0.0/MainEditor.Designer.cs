@@ -46,6 +46,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.ToolStripMenuItemtransaction = new System.Windows.Forms.ToolStripMenuItem();
             this.mapExpenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemCreateBudget = new System.Windows.Forms.ToolStripMenuItem();
+            this.investInterestCalculatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainGroupBox = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -98,7 +99,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.label24 = new System.Windows.Forms.Label();
             this.labelTotalSaved = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.investInterestCalculatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.radioButtonAccountBreakdown = new System.Windows.Forms.RadioButton();
             this.panelTopAccountSummary.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.mainGroupBox.SuspendLayout();
@@ -116,7 +117,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.panelTopAccountSummary.Controls.Add(this.toolStrip1);
             this.panelTopAccountSummary.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTopAccountSummary.Location = new System.Drawing.Point(0, 0);
-            this.panelTopAccountSummary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelTopAccountSummary.Margin = new System.Windows.Forms.Padding(4);
             this.panelTopAccountSummary.Name = "panelTopAccountSummary";
             this.panelTopAccountSummary.Size = new System.Drawing.Size(1800, 36);
             this.panelTopAccountSummary.TabIndex = 0;
@@ -201,7 +202,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.ToolStripMenuItembillType.Name = "ToolStripMenuItembillType";
             this.ToolStripMenuItembillType.Size = new System.Drawing.Size(180, 26);
-
             this.ToolStripMenuItembillType.Text = "Bill";
             this.ToolStripMenuItembillType.Click += new System.EventHandler(this.billTypeToolStripMenuItem_Click);
             // 
@@ -226,6 +226,13 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.ToolStripMenuItemCreateBudget.Text = "Create Budget";
             this.ToolStripMenuItemCreateBudget.Click += new System.EventHandler(this.ToolStripMenuItemCreateBudget_Click);
             // 
+            // investInterestCalculatorToolStripMenuItem
+            // 
+            this.investInterestCalculatorToolStripMenuItem.Name = "investInterestCalculatorToolStripMenuItem";
+            this.investInterestCalculatorToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
+            this.investInterestCalculatorToolStripMenuItem.Text = "Invest Interest Calculator";
+            this.investInterestCalculatorToolStripMenuItem.Click += new System.EventHandler(this.investInterestCalculatorToolStripMenuItem_Click);
+            // 
             // mainGroupBox
             // 
             this.mainGroupBox.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -234,9 +241,9 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.mainGroupBox.Controls.Add(this.panel1);
             this.mainGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainGroupBox.Location = new System.Drawing.Point(0, 36);
-            this.mainGroupBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mainGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.mainGroupBox.Name = "mainGroupBox";
-            this.mainGroupBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mainGroupBox.Padding = new System.Windows.Forms.Padding(4);
             this.mainGroupBox.Size = new System.Drawing.Size(1800, 1004);
             this.mainGroupBox.TabIndex = 2;
             this.mainGroupBox.TabStop = false;
@@ -248,7 +255,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.panel3.Controls.Add(this.panelLeftFilterBar);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(4, 142);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1792, 858);
             this.panel3.TabIndex = 3;
@@ -268,7 +275,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.panel5.Controls.Add(this.label5);
             this.panel5.Controls.Add(this.chart1);
             this.panel5.Location = new System.Drawing.Point(279, 7);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1508, 377);
             this.panel5.TabIndex = 0;
@@ -350,7 +357,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(4, 4);
-            this.chart1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chart1.Margin = new System.Windows.Forms.Padding(4);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
@@ -376,7 +383,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.panel4.Controls.Add(this.dateTimePickerFrom);
             this.panel4.Controls.Add(this.listView1);
             this.panel4.Location = new System.Drawing.Point(279, 391);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1509, 462);
             this.panel4.TabIndex = 2;
@@ -407,7 +414,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.buttonBackOneYear.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.buttonBackOneYear.Location = new System.Drawing.Point(385, 11);
-            this.buttonBackOneYear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonBackOneYear.Margin = new System.Windows.Forms.Padding(4);
             this.buttonBackOneYear.Name = "buttonBackOneYear";
             this.buttonBackOneYear.Size = new System.Drawing.Size(85, 28);
             this.buttonBackOneYear.TabIndex = 6;
@@ -419,7 +426,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.ForwardOneYear.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ForwardOneYear.Location = new System.Drawing.Point(665, 11);
-            this.ForwardOneYear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ForwardOneYear.Margin = new System.Windows.Forms.Padding(4);
             this.ForwardOneYear.Name = "ForwardOneYear";
             this.ForwardOneYear.Size = new System.Drawing.Size(85, 28);
             this.ForwardOneYear.TabIndex = 5;
@@ -431,7 +438,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.buttonForwardOneMonth.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.buttonForwardOneMonth.Location = new System.Drawing.Point(572, 11);
-            this.buttonForwardOneMonth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonForwardOneMonth.Margin = new System.Windows.Forms.Padding(4);
             this.buttonForwardOneMonth.Name = "buttonForwardOneMonth";
             this.buttonForwardOneMonth.Size = new System.Drawing.Size(85, 28);
             this.buttonForwardOneMonth.TabIndex = 4;
@@ -443,7 +450,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.buttonBackOneMonth.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.buttonBackOneMonth.Location = new System.Drawing.Point(479, 11);
-            this.buttonBackOneMonth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonBackOneMonth.Margin = new System.Windows.Forms.Padding(4);
             this.buttonBackOneMonth.Name = "buttonBackOneMonth";
             this.buttonBackOneMonth.Size = new System.Drawing.Size(85, 28);
             this.buttonBackOneMonth.TabIndex = 3;
@@ -456,7 +463,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.dateTimePickerTo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.dateTimePickerTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerTo.Location = new System.Drawing.Point(1011, 15);
-            this.dateTimePickerTo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePickerTo.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePickerTo.Name = "dateTimePickerTo";
             this.dateTimePickerTo.Size = new System.Drawing.Size(137, 22);
             this.dateTimePickerTo.TabIndex = 2;
@@ -466,7 +473,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.dateTimePickerFrom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.dateTimePickerFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerFrom.Location = new System.Drawing.Point(813, 15);
-            this.dateTimePickerFrom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePickerFrom.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePickerFrom.Name = "dateTimePickerFrom";
             this.dateTimePickerFrom.Size = new System.Drawing.Size(136, 22);
             this.dateTimePickerFrom.TabIndex = 1;
@@ -478,7 +485,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(228, 47);
-            this.listView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listView1.Margin = new System.Windows.Forms.Padding(4);
             this.listView1.MaximumSize = new System.Drawing.Size(1067, 402);
             this.listView1.MinimumSize = new System.Drawing.Size(863, 402);
             this.listView1.Name = "listView1";
@@ -491,6 +498,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.panelLeftFilterBar.BackColor = System.Drawing.Color.CadetBlue;
             this.panelLeftFilterBar.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelLeftFilterBar.Controls.Add(this.radioButtonAccountBreakdown);
             this.panelLeftFilterBar.Controls.Add(this.buttonAllBillTypes);
             this.panelLeftFilterBar.Controls.Add(this.buttonNoBillTypes);
             this.panelLeftFilterBar.Controls.Add(this.label6);
@@ -514,7 +522,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.panelLeftFilterBar.Controls.Add(this.label1);
             this.panelLeftFilterBar.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeftFilterBar.Location = new System.Drawing.Point(0, 0);
-            this.panelLeftFilterBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelLeftFilterBar.Margin = new System.Windows.Forms.Padding(4);
             this.panelLeftFilterBar.Name = "panelLeftFilterBar";
             this.panelLeftFilterBar.Size = new System.Drawing.Size(269, 858);
             this.panelLeftFilterBar.TabIndex = 1;
@@ -522,8 +530,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // buttonAllBillTypes
             // 
-            this.buttonAllBillTypes.Location = new System.Drawing.Point(213, 607);
-            this.buttonAllBillTypes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAllBillTypes.Location = new System.Drawing.Point(211, 686);
+            this.buttonAllBillTypes.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAllBillTypes.Name = "buttonAllBillTypes";
             this.buttonAllBillTypes.Size = new System.Drawing.Size(39, 28);
             this.buttonAllBillTypes.TabIndex = 19;
@@ -533,8 +541,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // buttonNoBillTypes
             // 
-            this.buttonNoBillTypes.Location = new System.Drawing.Point(9, 608);
-            this.buttonNoBillTypes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonNoBillTypes.Location = new System.Drawing.Point(7, 687);
+            this.buttonNoBillTypes.Margin = new System.Windows.Forms.Padding(4);
             this.buttonNoBillTypes.Name = "buttonNoBillTypes";
             this.buttonNoBillTypes.Size = new System.Drawing.Size(39, 26);
             this.buttonNoBillTypes.TabIndex = 20;
@@ -547,7 +555,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(85, 612);
+            this.label6.Location = new System.Drawing.Point(83, 691);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(83, 20);
@@ -559,10 +567,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.checkedListBoxBills.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.checkedListBoxBills.CheckOnClick = true;
             this.checkedListBoxBills.FormattingEnabled = true;
-            this.checkedListBoxBills.Location = new System.Drawing.Point(9, 636);
-            this.checkedListBoxBills.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkedListBoxBills.Location = new System.Drawing.Point(7, 715);
+            this.checkedListBoxBills.Margin = new System.Windows.Forms.Padding(4);
             this.checkedListBoxBills.Name = "checkedListBoxBills";
-            this.checkedListBoxBills.Size = new System.Drawing.Size(240, 174);
+            this.checkedListBoxBills.Size = new System.Drawing.Size(246, 123);
             this.checkedListBoxBills.TabIndex = 17;
             this.checkedListBoxBills.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxBills_SelectedIndexChanged);
             // 
@@ -570,7 +578,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.radioBills.AutoSize = true;
             this.radioBills.Location = new System.Drawing.Point(104, 43);
-            this.radioBills.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioBills.Margin = new System.Windows.Forms.Padding(4);
             this.radioBills.Name = "radioBills";
             this.radioBills.Size = new System.Drawing.Size(53, 20);
             this.radioBills.TabIndex = 16;
@@ -583,7 +591,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.radioBudgets.AutoSize = true;
             this.radioBudgets.Location = new System.Drawing.Point(169, 43);
-            this.radioBudgets.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioBudgets.Margin = new System.Windows.Forms.Padding(4);
             this.radioBudgets.Name = "radioBudgets";
             this.radioBudgets.Size = new System.Drawing.Size(78, 20);
             this.radioBudgets.TabIndex = 15;
@@ -596,7 +604,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.radioExpenses.AutoSize = true;
             this.radioExpenses.Location = new System.Drawing.Point(9, 43);
-            this.radioExpenses.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioExpenses.Margin = new System.Windows.Forms.Padding(4);
             this.radioExpenses.Name = "radioExpenses";
             this.radioExpenses.Size = new System.Drawing.Size(88, 20);
             this.radioExpenses.TabIndex = 14;
@@ -612,16 +620,16 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.checkedListBoxUsers.CheckOnClick = true;
             this.checkedListBoxUsers.FormattingEnabled = true;
             this.checkedListBoxUsers.Location = new System.Drawing.Point(9, 198);
-            this.checkedListBoxUsers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkedListBoxUsers.Margin = new System.Windows.Forms.Padding(4);
             this.checkedListBoxUsers.Name = "checkedListBoxUsers";
-            this.checkedListBoxUsers.Size = new System.Drawing.Size(247, 51);
+            this.checkedListBoxUsers.Size = new System.Drawing.Size(247, 85);
             this.checkedListBoxUsers.TabIndex = 10;
             this.checkedListBoxUsers.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxUsers_SelectedIndexChanged);
             // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(213, 170);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(39, 28);
             this.button2.TabIndex = 12;
@@ -632,7 +640,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(9, 170);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(39, 26);
             this.button3.TabIndex = 13;
@@ -658,17 +666,17 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.checkedListBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.checkedListBox2.CheckOnClick = true;
             this.checkedListBox2.FormattingEnabled = true;
-            this.checkedListBox2.Location = new System.Drawing.Point(9, 293);
-            this.checkedListBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkedListBox2.Location = new System.Drawing.Point(5, 340);
+            this.checkedListBox2.Margin = new System.Windows.Forms.Padding(4);
             this.checkedListBox2.Name = "checkedListBox2";
-            this.checkedListBox2.Size = new System.Drawing.Size(247, 85);
+            this.checkedListBox2.Size = new System.Drawing.Size(247, 119);
             this.checkedListBox2.TabIndex = 4;
             this.checkedListBox2.SelectedIndexChanged += new System.EventHandler(this.checkedListBox2_SelectedIndexChanged);
             // 
             // buttonUncheckAllBoxes
             // 
-            this.buttonUncheckAllBoxes.Location = new System.Drawing.Point(9, 265);
-            this.buttonUncheckAllBoxes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonUncheckAllBoxes.Location = new System.Drawing.Point(5, 312);
+            this.buttonUncheckAllBoxes.Margin = new System.Windows.Forms.Padding(4);
             this.buttonUncheckAllBoxes.Name = "buttonUncheckAllBoxes";
             this.buttonUncheckAllBoxes.Size = new System.Drawing.Size(41, 28);
             this.buttonUncheckAllBoxes.TabIndex = 9;
@@ -682,10 +690,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.checkedListBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.checkedListBox1.CheckOnClick = true;
             this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(12, 427);
-            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkedListBox1.Location = new System.Drawing.Point(7, 522);
+            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(4);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(241, 119);
+            this.checkedListBox1.Size = new System.Drawing.Size(248, 136);
             this.checkedListBox1.TabIndex = 0;
             this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
@@ -694,7 +702,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(89, 268);
+            this.label3.Location = new System.Drawing.Point(85, 315);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 20);
@@ -703,8 +711,8 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // buttonCheckAllAccounts
             // 
-            this.buttonCheckAllAccounts.Location = new System.Drawing.Point(216, 265);
-            this.buttonCheckAllAccounts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonCheckAllAccounts.Location = new System.Drawing.Point(212, 312);
+            this.buttonCheckAllAccounts.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCheckAllAccounts.Name = "buttonCheckAllAccounts";
             this.buttonCheckAllAccounts.Size = new System.Drawing.Size(41, 28);
             this.buttonCheckAllAccounts.TabIndex = 8;
@@ -730,7 +738,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             this.button1.BackColor = System.Drawing.Color.PaleTurquoise;
             this.button1.Location = new System.Drawing.Point(11, 90);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(241, 50);
             this.button1.TabIndex = 1;
@@ -740,10 +748,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // buttonAllExpenses
             // 
-            this.buttonAllExpenses.Location = new System.Drawing.Point(216, 398);
-            this.buttonAllExpenses.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAllExpenses.Location = new System.Drawing.Point(218, 493);
+            this.buttonAllExpenses.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAllExpenses.Name = "buttonAllExpenses";
-            this.buttonAllExpenses.Size = new System.Drawing.Size(39, 28);
+            this.buttonAllExpenses.Size = new System.Drawing.Size(39, 27);
             this.buttonAllExpenses.TabIndex = 6;
             this.buttonAllExpenses.Text = "[x]";
             this.buttonAllExpenses.UseVisualStyleBackColor = true;
@@ -751,10 +759,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // 
             // buttonUncheckAllExpenses
             // 
-            this.buttonUncheckAllExpenses.Location = new System.Drawing.Point(12, 399);
-            this.buttonUncheckAllExpenses.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonUncheckAllExpenses.Location = new System.Drawing.Point(7, 493);
+            this.buttonUncheckAllExpenses.Margin = new System.Windows.Forms.Padding(4);
             this.buttonUncheckAllExpenses.Name = "buttonUncheckAllExpenses";
-            this.buttonUncheckAllExpenses.Size = new System.Drawing.Size(39, 26);
+            this.buttonUncheckAllExpenses.Size = new System.Drawing.Size(39, 25);
             this.buttonUncheckAllExpenses.TabIndex = 7;
             this.buttonUncheckAllExpenses.Text = "[ ]";
             this.buttonUncheckAllExpenses.UseVisualStyleBackColor = true;
@@ -765,7 +773,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(64, 402);
+            this.label1.Location = new System.Drawing.Point(66, 497);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(123, 20);
@@ -776,7 +784,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             // panel2
             // 
             this.panel2.Location = new System.Drawing.Point(4, 181);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1204, 398);
             this.panel2.TabIndex = 1;
@@ -795,7 +803,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.panel1.Controls.Add(this.label4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(4, 19);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1792, 123);
             this.panel1.TabIndex = 0;
@@ -889,12 +897,17 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.label4.TabIndex = 0;
             this.label4.Text = "Total Saved";
             // 
-            // investInterestCalculatorToolStripMenuItem
+            // radioButtonAccountBreakdown
             // 
-            this.investInterestCalculatorToolStripMenuItem.Name = "investInterestCalculatorToolStripMenuItem";
-            this.investInterestCalculatorToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
-            this.investInterestCalculatorToolStripMenuItem.Text = "Invest Interest Calculator";
-            this.investInterestCalculatorToolStripMenuItem.Click += new System.EventHandler(this.investInterestCalculatorToolStripMenuItem_Click);
+            this.radioButtonAccountBreakdown.AutoSize = true;
+            this.radioButtonAccountBreakdown.Location = new System.Drawing.Point(9, 69);
+            this.radioButtonAccountBreakdown.Name = "radioButtonAccountBreakdown";
+            this.radioButtonAccountBreakdown.Size = new System.Drawing.Size(147, 20);
+            this.radioButtonAccountBreakdown.TabIndex = 21;
+            this.radioButtonAccountBreakdown.TabStop = true;
+            this.radioButtonAccountBreakdown.Text = "Account Breakdown";
+            this.radioButtonAccountBreakdown.UseVisualStyleBackColor = true;
+            this.radioButtonAccountBreakdown.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // MainEditor
             // 
@@ -903,7 +916,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             this.ClientSize = new System.Drawing.Size(1800, 1040);
             this.Controls.Add(this.mainGroupBox);
             this.Controls.Add(this.panelTopAccountSummary);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1815, 934);
             this.Name = "MainEditor";
             this.Text = "Form1";
@@ -995,6 +1008,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckedListBox checkedListBoxBills;
         private System.Windows.Forms.ToolStripMenuItem investInterestCalculatorToolStripMenuItem;
+        private System.Windows.Forms.RadioButton radioButtonAccountBreakdown;
     }
 }
 

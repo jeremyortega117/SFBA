@@ -438,6 +438,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 RepoBudget.PrepareBudgetData(dateTimePickerFrom.Value, dateTimePickerTo.Value);
             }
 
+            else if (radioButtonAccountBreakdown.Checked)
+            {
+
+            }
+
             PrepareLabels();
             PrepareListViews();
             if (radioExpenses.Checked) 
@@ -456,10 +461,10 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
                 labelTotalSpent.Text = string.Format("{0:C}", spent);
                 labelTotalBal.Text = string.Format("{0:C}", bal);
             }
-            else if (radioBudgets.Checked)
-            {
+            //else if (radioBudgets.Checked)
+            //{
                 
-            }
+            //}
 
 
         }
@@ -738,6 +743,11 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             refreshAfterFilter();
         }
 
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            refreshAfterFilter();
+        }
+
         private void chart1_Click(object sender, EventArgs e)
         {
 
@@ -798,5 +808,6 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             calc.ShowDialog();
 
         }
+
     }
 }

@@ -48,3 +48,5 @@ C:\Users\JPOje\source\repos\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamily
 C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp_v_1._0._0.BudgetEditor.resources
 C:\Users\JPOje\source\repos\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp_v_1._0._0.BudgetEditor.resources
 C:\Users\JPOje\source\repos\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp_v_1._0._0.InvestmentInterestCalculator.resources
+C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp v 1.0.0.csproj.SuggestedBindingRedirects.cache
+C:\Users\JPOje\source\repos\SFBA\SimpleFamilyBudgetApp v 1.0.0\obj\Debug\SimpleFamilyBudgetApp_v_1._0._0.InvestmentInterestCalculator.resources

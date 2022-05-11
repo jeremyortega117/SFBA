@@ -67,7 +67,7 @@ namespace SimpleFamilyBudgetApp_v_1._0._0
             {
                 DateTime toCheck = trans[key].TransDate;
 
-                if (toCheck > fromDate && toCheck < toDate)
+                if (toCheck >= fromDate && toCheck <= toDate)
                 {
                     var transType = RepoTransaction.TransTypes[trans[key].TransTypeKey];
                     List<string> transaction = GrabTransationsFillData(trans, key, transType);
